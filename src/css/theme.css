@@ -1,3 +1,5 @@
-p {
-  background-color: red;
+:root {
+  --clr-primary-500: #E95C31;
+
+  --page-width: min(100% - 1rem, 1500px);
 }

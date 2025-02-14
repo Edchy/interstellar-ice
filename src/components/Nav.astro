@@ -1,0 +1,42 @@
+---
+const navItems = [
+  { name: "me", path: "/about" },
+  { name: "blog", path: "/blog" },
+];
+---
+
+<nav role="navigation" aria-label="main-navigation">
+  <ul>
+    {
+      navItems.map((item) => (
+        <li>
+          <a href={item.path}>{item.name}</a>
+        </li>
+      ))
+    }
+  </ul>
+</nav>
+<style>
+  nav {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  ul {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    list-style: none;
+  }
+
+  li {
+    font-family: "Papyrus";
+  }
+
+  a:any-link {
+    text-decoration: none;
+    text-transform: uppercase;
+    color: black;
+    font-weight: bold;
+  }
+</style>

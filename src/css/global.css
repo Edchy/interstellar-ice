@@ -1,0 +1,9 @@
+   body {
+     background-color: var(--clr-primary-500);
+   }
+
+   .wrapper {
+     width: min(100% - 1rem, 1200px);
+     margin-inline: auto;
+     outline: 1px solid black;
+   }
