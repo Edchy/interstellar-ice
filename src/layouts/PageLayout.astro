@@ -15,11 +15,157 @@ import Footer from "./Footer.astro";
     <title>E3E</title>
   </head>
   <body>
-    <Header />
-    <div class="wrapper">
-      <slot />
-      <p>asd</p>
+    <div class="grid">
+      <aside class="x">
+        <div class="container">
+          <h2>hello</h2>
+          <ul>
+            <span>hello</span>
+            <span>hello</span>
+            <span>hello</span>
+          </ul>
+        </div>
+      </aside>
+      <div class="y">main</div>
+      <aside class="z">
+        <div class="container">
+          <h2>hello</h2>
+          <ul>
+            <span>hello</span>
+            <span>hello</span>
+            <span>hello</span>
+          </ul>
+        </div>
+      </aside>
     </div>
-    <!-- <Footer /> -->
+    <section>
+      <p>
+        recusandae labore facilis sit ipsam quisquam dolores deserunt! Soluta
+        ipsum nostrum sunt. Harum, aut architecto? Id blanditiis praesentium
+        necessitatibus cum quas odio corporis a pariatur saepe eum rem doloribus
+        excepturi rerum ullam architecto molestiae dolore soluta sint fugiat
+        alias ex, aspernatur incidunt tempore. Repellendus eligendi distinctio
+        ab nisi recusandae expedita quibusdam quo quae facere, odio nihil
+      </p>
+      <p>
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Cumque alias
+        consectetur veritatis mollitia error, itaque cum eveniet repellendus,
+        dolore in facere doloremque ea illum, dolorem tenetur tempora recusandae
+        sit. Commodi, dolores praesentium mollitia natus ab laborum similique
+        assumenda perferendis quasi quisquam cum inventore cumque soluta totam
+        nostrum! Temporibus repudiandae autem, doloremque a necessitatibus
+        dolorem, itaque fuga facere tenetur rem ab beatae quibusdam impedit quas
+        cupiditate accusamus voluptatibus aspernatur maiores doloribus? Placeat
+        illo sint provident ullam reiciendis aliquid dignissimos, aut, quisquam
+        earum veritatis rem enim maiores consequatur quaerat obcaecati ipsa
+        sunt. Maiores consequuntur autem fugit quaerat nesciunt expedita
+        necessitatibus sequi, repellendus rerum incidunt debitis, ab amet.
+        Distinctio sapiente, esse vero ducimus earum exercitationem soluta? At
+        placeat cupiditate architecto quisquam asperiores, cum expedita sed
+        facere perspiciatis accusamus neque, vitae illo explicabo adipisci
+        impedit consequatur doloremque eum! Modi deleniti voluptatibus facilis
+        repellat, alias harum quisquam mollitia pariatur tenetur ullam
+        blanditiis quas veritatis reprehenderit odit in vero quae quidem
+        repudiandae, consequuntur non? Quibusdam voluptatibus amet veniam
+        sapiente hic placeat, obcaecati velit quia minima impedit iusto ex quos
+        similique provident assumenda exercitationem unde cumque sit? Eos magni
+        aliquid vero minima quia. Maiores, aut architecto iure dolor
+        voluptatibus veniam facere accusantium corrupti iste ipsa placeat
+        maxime, vel accusamus necessitatibus vero! Voluptas, enim. Soluta velit
+        nulla nisi necessitatibus repellat adipisci voluptate architecto vel
+        eveniet eos, praesentium quasi perspiciatis pariatur debitis deserunt.
+        Corporis minus quasi officiis dicta tempore rerum molestias deserunt
+        recusandae cumque, porro aperiam saepe nobis dolor doloremque sed.
+        Magnam dolore quaerat, quae ipsa placeat quo amet ullam fugiat ab
+        debitis aut asperiores commodi architecto esse dicta sapiente
+        necessitatibus neque reiciendis praesentium nostrum dignissimos
+        accusantium! In doloremque non enim nulla repudiandae illum iure, qui
+        iusto aut possimus recusandae, vero totam odit aperiam accusamus commodi
+        porro debitis quidem repellat sunt laudantium. Laboriosam voluptatem
+        nesciunt expedita quae aliquam deleniti id pariatur necessitatibus, quis
+        minima! Laborum, tempora! Deserunt numquam facilis pariatur nostrum
+        perferendis beatae animi quis, consequuntur tempora ipsum iusto
+        assumenda nihil nesciunt qui, blanditiis asperiores quidem quibusdam sit
+        illum neque dolorem quaerat iure reiciendis! Assumenda animi ipsum
+        dolore dicta facere, adipisci minima perspiciatis corrupti libero
+        expedita officiis nobis a dolor nam ab ad, fugit dolores officia
+        repellendus culpa autem minus sequi omnis? Repellat in ea aliquam
+        aliquid omnis dolore, illo ipsum minima sit. Maxime vero quas
+        necessitatibus vitae aut facilis consequatur architecto cumque unde
+        aliquam iste veritatis voluptate exercitationem sapiente illum
+        consectetur explicabo placeat, rerum impedit. Eum sed minus explicabo
+        eos mollitia iste facere sit eius rem. Praesentium ipsum eveniet facere
+        ullam cupiditate, non id adipisci, iste iusto corrupti dolorum sapiente!
+        Recusandae, neque. Tempora dolorum ea, illo quam saepe ducimus dolores
+        provident vel labore voluptates quos, soluta sint esse, natus
+        necessitatibus architecto repudiandae itaque voluptatum? Aspernatur
+        accusantium perspiciatis facilis illo asperiores? Provident eveniet
+        nihil esse consequatur nisi tenetur repellendus repudiandae et, rerum
+        alias ad ullam omnis deserunt neque atque expedita perspiciatis repellat
+        illo culpa iste? Eum non illo iure rem, similique animi quae ab
+        distinctio beatae, voluptas porro repudiandae est dolorum neque unde
+        minima nesciunt! Maiores cum reprehenderit ipsam!
+      </p>
+    </section>
   </body>
 </html>
+
+<style>
+  .grid {
+    --padding: 1rem;
+    --color: red;
+    height: 95vh;
+    display: grid;
+    gap: var(--padding);
+    grid-template-columns: var(--padding) 1fr 90ch 1fr var(--padding);
+    grid-template-rows: auto; /* Simplified to one row since we're using spanning */
+    grid-template-areas: ". x y z .";
+  }
+  aside {
+    position: relative;
+    .container {
+      position: fixed;
+      top: var(--padding); /* Add top positioning */
+
+      height: 50%;
+      width: calc((100vw - 90ch - (var(--padding) * 4)) / 2);
+
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      align-items: center;
+
+      ul {
+        display: flex;
+        flex-direction: column;
+      }
+    }
+  }
+
+  .x {
+    grid-area: x;
+    background-color: bisque;
+
+    .container {
+      left: var(--padding); /* Align to the left edge of the grid area */
+    }
+  }
+  .y {
+    background-color: white;
+    grid-area: y;
+  }
+  .z {
+    background-color: var(--color);
+    grid-area: z;
+    .container {
+      right: calc(
+        var(--padding)
+      ); /* Align to the right edge of the grid area */
+    }
+  }
+
+  section {
+    max-width: 75ch;
+    margin-inline: auto;
+  }
+</style>
