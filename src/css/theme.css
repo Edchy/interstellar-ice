@@ -1,5 +1,9 @@
 :root {
+  --white: #FAF9F6;
+  --black: #121212;
   --clr-primary-500: #E95C31;
-
+  --light: light-dark(#FAF9F6, #121212);
+  --dark: light-dark(#121212, #FAF9F6);
+  --clr-accent: #FF4F46;
   --page-width: min(100% - 1rem, 1500px);
 }

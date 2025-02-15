@@ -2,6 +2,7 @@
 import "../css/main.css";
 import Header from "./Header.astro";
 import Footer from "./Footer.astro";
+import Nav from "../components/Nav.astro";
 import ScrollProgressIndicator from "../components/ScrollProgressIndicator.astro";
 ---
 
@@ -19,19 +20,17 @@ import ScrollProgressIndicator from "../components/ScrollProgressIndicator.astro
     <div id="content" class="grid">
       <ScrollProgressIndicator />
       <!-- Item 1 -->
-      <aside class="x">
+      <header class="x">
         <div class="container">
           <h2>hello</h2>
-          <ul>
-            <span>hello</span>
-            <span>hello</span>
-            <span>hello</span>
-          </ul>
+          <Nav />
           <h3>hello</h3>
         </div>
-      </aside>
+      </header>
       <!-- Item 2 -->
-      <div class="y">main</div>
+      <div class="y">
+        <slot />
+      </div>
       <!-- Item 3 -->
       <aside class="z">
         <div class="container">
@@ -73,7 +72,7 @@ import ScrollProgressIndicator from "../components/ScrollProgressIndicator.astro
 
 <style>
   section {
-    width: 20ch;
+    width: 65ch;
     margin-inline: auto;
   }
   .grid {
@@ -102,9 +101,9 @@ import ScrollProgressIndicator from "../components/ScrollProgressIndicator.astro
       --main-col-width: 100ch;
     }
   }
-  aside {
+  /* aside {
     position: relative;
-  }
+  } */
 
   .container {
     position: fixed;
@@ -131,18 +130,18 @@ import ScrollProgressIndicator from "../components/ScrollProgressIndicator.astro
   }
   .x {
     grid-area: x;
-    background-color: bisque;
+    /* background-color: bisque; */
 
     .container {
       left: calc(var(--padding));
     }
   }
   .y {
-    background-color: white;
+    /* background-color: white; */
     grid-area: y;
   }
   .z {
-    background-color: var(--color);
+    /* background-color: var(--color); */
     grid-area: z;
     .container {
       right: calc(var(--padding));

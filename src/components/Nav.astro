@@ -2,6 +2,8 @@
 const navItems = [
   { name: "me", path: "/about" },
   { name: "blog", path: "/blog" },
+  { name: "fun", path: "/blog" },
+  { name: "news", path: "/blog" },
 ];
 ---
 
@@ -21,22 +23,22 @@ const navItems = [
     display: flex;
     align-items: center;
     justify-content: space-between;
+    transform: rotate(-90deg);
   }
   ul {
     display: flex;
     align-items: center;
-    gap: 1rem;
+    gap: 2rem;
     list-style: none;
   }
 
   li {
-    font-family: "Papyrus";
+    /* font-family: "Papyrus"; */
   }
 
   a:any-link {
     text-decoration: none;
     text-transform: uppercase;
-    color: black;
     font-weight: bold;
   }
 </style>

@@ -31,15 +31,13 @@
   @keyframes progress {
     0% {
       --progress: 0%;
-      /* --angle: -90deg; */
+    }
+
+    2% {
       --angle: -90deg;
     }
 
     10% {
-      --angle: -90deg;
-    }
-
-    20% {
       --angle: -180deg;
     }
 
@@ -50,33 +48,36 @@
   }
 
   .back-to-top {
-    --yellow: oklch(85.33% 0.185 92.12);
-    --white: oklch(100% 0 0);
     background-image: linear-gradient(
-      var(--yellow) 0% var(--progress),
-      var(--white) var(--progress) 100%
+      var(--clr-accent) 0% var(--progress),
+      var(--dark) var(--progress) 100%
     );
     animation: progress linear;
     animation-timeline: scroll();
-    background-color: oklch(100% 0 0);
+    background-color:;
     /* border: 2px solid currentColor; */
-    border-radius: 0.5em;
+    /* border-radius: 0.5em; */
     /* display: inline-block; */
     padding: 0.5rem;
     position: fixed;
     inset: auto 2rem 2rem auto;
     z-index: 2;
     transform: rotate(var(--angle));
+    transition: transform 0.25s ease;
 
     &:any-link {
       /* Instead of the link color, use the text color */
-      color: currentColor;
+      color: var(--light);
       text-decoration: none;
+
+      &:hover {
+        opacity: 0.85;
+      }
     }
 
     @supports not (animation-timeline: scroll()) {
       --angle: -180deg;
-      background: var(--yellow);
+      /* background: var(--clr-accent); */
       /* transform: rotate(-180deg); */
     }
   }
