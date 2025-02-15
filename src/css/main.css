@@ -1,7 +1,5 @@
-@layer reset, global, debug, theme, utils;
+@layer global, theme, utils;
 
 @import "global.css" layer(global);
-@import "reset.css" layer(reset);
-@import "debug.css" layer(debug);
 @import "theme.css" layer(theme);
 @import "utils.css" layer(utils);

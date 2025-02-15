@@ -2,6 +2,7 @@
 import "../css/main.css";
 import Header from "./Header.astro";
 import Footer from "./Footer.astro";
+import ScrollProgressIndicator from "../components/ScrollProgressIndicator.astro";
 ---
 
 <!doctype html>
@@ -15,7 +16,9 @@ import Footer from "./Footer.astro";
     <title>E3E</title>
   </head>
   <body>
-    <div class="grid">
+    <div id="content" class="grid">
+      <ScrollProgressIndicator />
+      <!-- Item 1 -->
       <aside class="x">
         <div class="container">
           <h2>hello</h2>
@@ -24,9 +27,12 @@ import Footer from "./Footer.astro";
             <span>hello</span>
             <span>hello</span>
           </ul>
+          <h3>hello</h3>
         </div>
       </aside>
+      <!-- Item 2 -->
       <div class="y">main</div>
+      <!-- Item 3 -->
       <aside class="z">
         <div class="container">
           <h2>hello</h2>
@@ -39,115 +45,96 @@ import Footer from "./Footer.astro";
       </aside>
     </div>
     <section>
-      <p>
-        recusandae labore facilis sit ipsam quisquam dolores deserunt! Soluta
-        ipsum nostrum sunt. Harum, aut architecto? Id blanditiis praesentium
-        necessitatibus cum quas odio corporis a pariatur saepe eum rem doloribus
-        excepturi rerum ullam architecto molestiae dolore soluta sint fugiat
-        alias ex, aspernatur incidunt tempore. Repellendus eligendi distinctio
-        ab nisi recusandae expedita quibusdam quo quae facere, odio nihil
-      </p>
-      <p>
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Cumque alias
-        consectetur veritatis mollitia error, itaque cum eveniet repellendus,
-        dolore in facere doloremque ea illum, dolorem tenetur tempora recusandae
-        sit. Commodi, dolores praesentium mollitia natus ab laborum similique
-        assumenda perferendis quasi quisquam cum inventore cumque soluta totam
-        nostrum! Temporibus repudiandae autem, doloremque a necessitatibus
-        dolorem, itaque fuga facere tenetur rem ab beatae quibusdam impedit quas
-        cupiditate accusamus voluptatibus aspernatur maiores doloribus? Placeat
-        illo sint provident ullam reiciendis aliquid dignissimos, aut, quisquam
-        earum veritatis rem enim maiores consequatur quaerat obcaecati ipsa
-        sunt. Maiores consequuntur autem fugit quaerat nesciunt expedita
-        necessitatibus sequi, repellendus rerum incidunt debitis, ab amet.
-        Distinctio sapiente, esse vero ducimus earum exercitationem soluta? At
-        placeat cupiditate architecto quisquam asperiores, cum expedita sed
-        facere perspiciatis accusamus neque, vitae illo explicabo adipisci
-        impedit consequatur doloremque eum! Modi deleniti voluptatibus facilis
-        repellat, alias harum quisquam mollitia pariatur tenetur ullam
-        blanditiis quas veritatis reprehenderit odit in vero quae quidem
-        repudiandae, consequuntur non? Quibusdam voluptatibus amet veniam
-        sapiente hic placeat, obcaecati velit quia minima impedit iusto ex quos
-        similique provident assumenda exercitationem unde cumque sit? Eos magni
-        aliquid vero minima quia. Maiores, aut architecto iure dolor
-        voluptatibus veniam facere accusantium corrupti iste ipsa placeat
-        maxime, vel accusamus necessitatibus vero! Voluptas, enim. Soluta velit
-        nulla nisi necessitatibus repellat adipisci voluptate architecto vel
-        eveniet eos, praesentium quasi perspiciatis pariatur debitis deserunt.
-        Corporis minus quasi officiis dicta tempore rerum molestias deserunt
-        recusandae cumque, porro aperiam saepe nobis dolor doloremque sed.
-        Magnam dolore quaerat, quae ipsa placeat quo amet ullam fugiat ab
-        debitis aut asperiores commodi architecto esse dicta sapiente
-        necessitatibus neque reiciendis praesentium nostrum dignissimos
-        accusantium! In doloremque non enim nulla repudiandae illum iure, qui
-        iusto aut possimus recusandae, vero totam odit aperiam accusamus commodi
-        porro debitis quidem repellat sunt laudantium. Laboriosam voluptatem
-        nesciunt expedita quae aliquam deleniti id pariatur necessitatibus, quis
-        minima! Laborum, tempora! Deserunt numquam facilis pariatur nostrum
-        perferendis beatae animi quis, consequuntur tempora ipsum iusto
-        assumenda nihil nesciunt qui, blanditiis asperiores quidem quibusdam sit
-        illum neque dolorem quaerat iure reiciendis! Assumenda animi ipsum
-        dolore dicta facere, adipisci minima perspiciatis corrupti libero
-        expedita officiis nobis a dolor nam ab ad, fugit dolores officia
-        repellendus culpa autem minus sequi omnis? Repellat in ea aliquam
-        aliquid omnis dolore, illo ipsum minima sit. Maxime vero quas
-        necessitatibus vitae aut facilis consequatur architecto cumque unde
-        aliquam iste veritatis voluptate exercitationem sapiente illum
-        consectetur explicabo placeat, rerum impedit. Eum sed minus explicabo
-        eos mollitia iste facere sit eius rem. Praesentium ipsum eveniet facere
-        ullam cupiditate, non id adipisci, iste iusto corrupti dolorum sapiente!
-        Recusandae, neque. Tempora dolorum ea, illo quam saepe ducimus dolores
-        provident vel labore voluptates quos, soluta sint esse, natus
-        necessitatibus architecto repudiandae itaque voluptatum? Aspernatur
-        accusantium perspiciatis facilis illo asperiores? Provident eveniet
-        nihil esse consequatur nisi tenetur repellendus repudiandae et, rerum
-        alias ad ullam omnis deserunt neque atque expedita perspiciatis repellat
-        illo culpa iste? Eum non illo iure rem, similique animi quae ab
-        distinctio beatae, voluptas porro repudiandae est dolorum neque unde
-        minima nesciunt! Maiores cum reprehenderit ipsam!
-      </p>
+      Lorem ipsum dolor sit amet, consectetur adipisicing elit. Totam
+      consequuntur consequatur tempore eos, minima reiciendis perspiciatis sequi
+      magni illum harum aliquam laudantium omnis, doloremque nostrum laboriosam
+      reprehenderit rem ipsam facilis atque veritatis temporibus pariatur ex!
+      Velit beatae animi deleniti explicabo id voluptatum aut facilis, rerum est
+      sint veritatis dolore saepe exercitationem sapiente quia asperiores
+      laboriosam reiciendis ad eveniet laborum hic magnam voluptatibus?
+      Reprehenderit at unde, eligendi fuga, culpa quaerat cumque id voluptatem
+      nihil magni excepturi eveniet cum rerum atque! Cupiditate assumenda
+      similique dicta obcaecati aspernatur quo eum molestias amet sequi totam
+      beatae vitae qui voluptatem fuga expedita impedit velit, eligendi eos nemo
+      dolore odit possimus harum sed. Doloremque nulla nemo suscipit deserunt
+      ipsam quas amet velit neque aut atque repudiandae sunt excepturi
+      repellendus quod accusantium ex libero quisquam laborum laboriosam veniam,
+      quia sed! Soluta impedit debitis molestiae facere nostrum recusandae
+      maiores perspiciatis cupiditate, voluptates quod cum quasi provident
+      optio. Provident, saepe rem. Adipisci quisquam nisi nihil, aut nulla
+      aliquid laudantium tenetur ipsa dicta repudiandae voluptate cupiditate
+      maiores hic, provident, minus laborum quasi molestiae ut reprehenderit
+      consequatur! Optio rem cumque repellat atque quod accusamus illum hic,
+      magni exercitationem reprehenderit animi omnis, quae adipisci tempora,
+      voluptatibus doloribus! Reiciendis excepturi corporis quidem nam.
     </section>
   </body>
 </html>
 
 <style>
+  section {
+    width: 20ch;
+    margin-inline: auto;
+  }
   .grid {
     --padding: 1rem;
-    --color: red;
-    height: 95vh;
+    --color: rgb(73, 53, 222);
+    --height: 95vh;
+    --main-col-width: 55ch;
+    --aside-col-width: 1fr;
+    height: var(--height);
+
     display: grid;
-    gap: var(--padding);
-    grid-template-columns: var(--padding) 1fr 90ch 1fr var(--padding);
-    grid-template-rows: auto; /* Simplified to one row since we're using spanning */
+    /* gap: var(--padding); */
+    grid-template-columns:
+      var(--padding) var(--aside-col-width) var(--main-col-width)
+      var(--aside-col-width) var(--padding);
+    /* grid-template-rows: auto;  */
     grid-template-areas: ". x y z .";
+    @media (width > 900px) {
+      --main-col-width: 65ch;
+    }
+    @media (width > 1100px) {
+      --main-col-width: 75ch;
+      --padding: 4vmax;
+    }
+    @media (width > 1300px) {
+      --main-col-width: 100ch;
+    }
   }
   aside {
     position: relative;
-    .container {
-      position: fixed;
-      top: var(--padding); /* Add top positioning */
-
-      height: 50%;
-      width: calc((100vw - 90ch - (var(--padding) * 4)) / 2);
-
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
-      align-items: center;
-
-      ul {
-        display: flex;
-        flex-direction: column;
-      }
-    }
   }
 
+  .container {
+    position: fixed;
+    /* top: var(--padding); */
+    height: calc(var(--height) - 5vh);
+    width: calc((100vw - var(--main-col-width) - (var(--padding) * 2)) / 2);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .container:not(:has(> :nth-child(3))) {
+    /* background-color: rgb(45, 224, 42); */
+    justify-content: center;
+
+    ul {
+      margin: auto;
+    }
+  }
+  ul {
+    display: flex;
+    flex-direction: column;
+  }
   .x {
     grid-area: x;
     background-color: bisque;
 
     .container {
-      left: var(--padding); /* Align to the left edge of the grid area */
+      left: calc(var(--padding));
     }
   }
   .y {
@@ -158,14 +145,7 @@ import Footer from "./Footer.astro";
     background-color: var(--color);
     grid-area: z;
     .container {
-      right: calc(
-        var(--padding)
-      ); /* Align to the right edge of the grid area */
+      right: calc(var(--padding));
     }
-  }
-
-  section {
-    max-width: 75ch;
-    margin-inline: auto;
   }
 </style>

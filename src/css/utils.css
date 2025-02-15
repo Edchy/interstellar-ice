@@ -1,5 +1,17 @@
-.text-center {
-  text-align: center;
+.debug {
+  outline: 2px solid lime;
+  background: hsl(0 100% 50% / .1)
+}
+
+.hidden {
+  /* Hide text accessibly */
+  clip: rect(0 0 0 0);
+  clip-path: inset(50%);
+  height: 1px;
+  overflow: hidden;
+  position: absolute;
+  white-space: nowrap;
+  width: 1px;
 }
 
 .content-grid {

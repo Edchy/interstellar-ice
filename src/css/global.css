@@ -1,7 +1,5 @@
-   body {
-     background-color: var(--clr-primary-500);
-     /* background-image: url('@/assets/mesh-gradient2.svg'); */
-     background-size: cover;
-     background-repeat: no-repeat;
-
-   }
+@media(prefers-reduced-motion: no-preference) {
+  html {
+    scroll-behavior: smooth;
+  }
+}
