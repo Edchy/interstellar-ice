@@ -53,3 +53,24 @@ h5,
 h6 {
   overflow-wrap: break-word;
 }
+
+
+
+@keyframes progress {
+  0% {
+    --progress: 0%;
+  }
+
+  2% {
+    --angle: -90deg;
+  }
+
+  10% {
+    --angle: -180deg;
+  }
+
+  100% {
+    --angle: -180deg;
+    --progress: 100%;
+  }
+}

@@ -1,0 +1,36 @@
+:root {
+  --white: #FAF9F6;
+  --black: oklch(18.22% 0 0);
+  --neutral-500: oklch(28.22% 0 0);
+  --neutral-400: oklch(38.22% 0 0);
+  --neutral-300: oklch(48.22% 0 0);
+  --neutral-200: oklch(58.22% 0 0);
+  --clr-primary-700: #oklch(50.37% 0.2209 27.39);
+  --clr-primary-600: #oklch(60.37% 0.2209 27.39);
+  --clr-primary-500: #oklch(70.37% 0.2209 27.39);
+  --clr-primary-400: #oklch(80.37% 0.2209 27.39);
+  --clr-primary-300: #oklch(90.37% 0.2209 27.39);
+  --clr-primary-200: #oklch(100.37% 0.2209 27.39);
+
+  --clr-accent: oklch(79.54% 0.2861 148.76);
+
+  /* mode */
+  --light: light-dark(#FAF9F6, #121212);
+  --dark: light-dark(#121212, #FAF9F6);
+
+  /* layout */
+  --page-width: min(100% - 1rem, 1500px);
+
+}
+
+@property --angle {
+  syntax: "<angle>";
+  inherits: true;
+  initial-value: -90deg;
+}
+
+@property --progress {
+  syntax: "<length-percentage>";
+  inherits: false;
+  initial-value: 0%;
+}

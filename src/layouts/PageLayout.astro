@@ -15,8 +15,9 @@ import ScrollProgressIndicator from "../components/ScrollProgressIndicator.astro
     <meta name="generator" content={Astro.generator} />
     <title>E3E</title>
   </head>
-  <body>
+  <body id="page-top">
     <div class="grid-wrapper">
+      <ScrollProgressIndicator anchor="#page-top" />
       <header>
         <div class="inner">
           <div class="flex items-center justify-between">
@@ -50,14 +51,19 @@ import ScrollProgressIndicator from "../components/ScrollProgressIndicator.astro
     /* min-height: 100vb; */
   }
   header {
+    background-color: bisque;
+    /* position: fixed;
+    inset: 0 0 auto 0;
+    background-image: linear-gradient(
+      var(--clr-accent) 0% var(--progress),
+      var(--dark) var(--progress) 100%
+    );
+    animation: progress linear;
+    animation-timeline: scroll(); */
   }
   aside {
-    background-color: rebeccapurple;
+    background-color: rgba(182, 136, 228, 0.291);
     display: none;
-  }
-  section {
-    /* background-color: chartreuse; */
-    padding: 1rem;
   }
 
   @media (width > 1200px) {
