@@ -1,4 +1,6 @@
 ---
+import Socials from "./Socials.astro";
+
 const navItems = [
   { name: "me", path: "/about" },
   { name: "blog", path: "/blog" },
@@ -10,7 +12,7 @@ const BREAKPOINT = 500;
 ---
 
 <nav role="navigation" aria-label="main-navigation">
-  <ul>
+  <ul class="nav-list">
     {
       navItems.map((item) => (
         <li>
@@ -18,17 +20,24 @@ const BREAKPOINT = 500;
         </li>
       ))
     }
-    <li><a href="">x</a></li>
-    <li><a href="">x</a></li>
-    <li><a href="">x</a></li>
-    <li><a href="">x</a></li>
+  </ul>
+  <ul class="hide-at-breakpoint nav-list">
+    <Socials />
   </ul>
 </nav>
 <style>
+  .hide-at-breakpoint {
+    display: flex;
+    flex-wrap: wrap;
+    @media (width > 1200px) {
+      display: none;
+    }
+  }
   nav {
     display: flex;
     align-items: center;
     justify-content: space-between;
+
     @media (width > 1200px) {
       transform: rotate(-90deg);
     }
@@ -37,14 +46,11 @@ const BREAKPOINT = 500;
     display: flex;
     flex-wrap: wrap;
     width: max-content;
-    column-gap: 2rem;
-    list-style: none;
-    /* @media (width > 1200px) {
-      flex-wrap: nowrap;
-    } */
+    column-gap: var(--gap-l);
   }
 
   a:any-link {
+    /* padding: 2rem 1rem; */
     text-decoration: none;
     text-transform: uppercase;
     font-weight: bold;

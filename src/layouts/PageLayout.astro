@@ -4,6 +4,7 @@ import Header from "./Header.astro";
 import Footer from "./Footer.astro";
 import Nav from "../components/Nav.astro";
 import ScrollProgressIndicator from "../components/ScrollProgressIndicator.astro";
+import Socials from "../components/Socials.astro";
 ---
 
 <!doctype html>
@@ -20,9 +21,9 @@ import ScrollProgressIndicator from "../components/ScrollProgressIndicator.astro
       <ScrollProgressIndicator anchor="#page-top" />
       <header>
         <div class="inner">
-          <div class="flex items-center justify-between">
+          <div class="flex items-center justify-between top-nav">
             <div>Logo</div>
-            <button class="header-cta">hej</button>
+            <button class="cta-btn">hej</button>
           </div>
           <Nav />
           <span>x</span>
@@ -34,10 +35,11 @@ import ScrollProgressIndicator from "../components/ScrollProgressIndicator.astro
       <aside>
         <div class="inner">
           <button>Hello</button>
-          <div class="socials">
-            <span>x</span>
-            <span>x</span>
-          </div>
+          <nav class="socials">
+            <ul class="nav-list">
+              <Socials />
+            </ul>
+          </nav>
         </div>
       </aside>
     </div>
@@ -55,15 +57,45 @@ import ScrollProgressIndicator from "../components/ScrollProgressIndicator.astro
     /* position: fixed;
     inset: 0 0 auto 0;
     background-image: linear-gradient(
-      var(--clr-accent) 0% var(--progress),
+      var(--light) 0% var(--progress),
       var(--dark) var(--progress) 100%
     );
     animation: progress linear;
-    animation-timeline: scroll(); */
+    animation-timeline: scroll();
+
+    @media (width > 1200px) {
+      position: initial;
+    } */
+  }
+  .inner {
+    padding-block-start: 0.25rem;
+    padding-inline: 2rem;
+  }
+  .top-nav {
+    background-color: aqua;
+    margin-block-end: var(--gap-xs);
   }
   aside {
     background-color: rgba(182, 136, 228, 0.291);
     display: none;
+    position: fixed;
+    inset: 0 0 auto 0;
+    background-image: linear-gradient(
+      var(--light) 0% var(--progress),
+      var(--neutral-300) var(--progress) 100%
+    );
+    animation: progress linear;
+    animation-timeline: scroll();
+
+    @media (width > 1200px) {
+      position: initial;
+    }
+  }
+
+  ul {
+    display: flex;
+    flex-direction: column;
+    gap: var(--gap-l);
   }
 
   @media (width > 1200px) {
@@ -74,7 +106,7 @@ import ScrollProgressIndicator from "../components/ScrollProgressIndicator.astro
       grid-template-columns: var(--width) 1fr var(--width);
     }
     .inner {
-      border-right: 1px solid white;
+      /* border-right: 1px solid white; */
 
       width: var(--width);
       min-height: 100vb;
@@ -97,7 +129,7 @@ import ScrollProgressIndicator from "../components/ScrollProgressIndicator.astro
         margin: auto;
       }
     }
-    .header-cta {
+    .cta-btn {
       display: none;
     }
   }

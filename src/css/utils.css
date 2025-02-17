@@ -27,6 +27,27 @@
   width: 1px;
 }
 
+.nav-list {
+  list-style: none;
+
+
+
+  @media (hover) and (prefers-reduced-motion: no-preference) {
+    &>li {
+      transform-origin: right center;
+      transition:
+        transform 0.3s,
+        opacity 0.3s;
+    }
+
+    &:has(> li:hover)>li:not(:hover),
+    &:has(> li:focus-within)>li:not(:focus-within) {
+      opacity: 0.25;
+      transform: scale(0.9);
+    }
+  }
+}
+
 .content-grid {
   --padding-inline: 1rem;
   --content-max-width: 75ch;

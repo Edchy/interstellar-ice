@@ -59,8 +59,6 @@ const { anchor } = Astro.props;
     position: fixed;
     inset: auto 2rem 2rem auto;
     z-index: 2;
-    transform: rotate(var(--angle));
-    transition: transform 0.25s ease;
 
     &:any-link {
       /* Instead of the link color, use the text color */
@@ -71,6 +69,10 @@ const { anchor } = Astro.props;
         opacity: 0.85;
       }
     }
+  }
+  svg {
+    transform: rotate(var(--angle));
+    transition: transform 0.25s ease;
 
     @supports not (animation-timeline: scroll()) {
       --angle: -180deg;
