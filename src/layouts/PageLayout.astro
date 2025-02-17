@@ -21,112 +21,77 @@ import ScrollProgressIndicator from "../components/ScrollProgressIndicator.astro
         <div class="inner">
           <div class="flex items-center justify-between">
             <div>Logo</div>
-            <button>hej</button>
+            <button class="header-cta">hej</button>
           </div>
           <Nav />
+          <span>x</span>
         </div>
       </header>
       <section>
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Necessitatibus,
-        natus rem. Accusamus illum sunt culpa dicta modi consequatur aperiam.
-        Reiciendis perspiciatis, aliquid voluptatem a sint eligendi
-        necessitatibus. Dolores nihil cupiditate vitae, molestiae eum eius
-        possimus perferendis necessitatibus ad maxime voluptatem, distinctio
-        culpa veniam inventore! Dolorum delectus laudantium ducimus ut? Minus
-        earum iusto maxime, minima iure labore. Commodi quod totam nemo. Rem
-        beatae at placeat aperiam magnam cum odit cupiditate laboriosam.
-        Explicabo doloribus necessitatibus ex nam consequuntur, libero ullam
-        cumque quam nesciunt laudantium itaque impedit non vel nihil eius culpa
-        iusto possimus, sed tenetur debitis eveniet. Error animi quibusdam saepe
-        odit inventore perferendis dicta asperiores dolorum hic facilis ad
-        mollitia a, assumenda repellat aliquid similique. Eius vel porro
-        delectus nulla nihil, soluta repellat eaque accusantium illo animi iure
-        sequi odit aperiam at voluptatem veniam eveniet ut officiis debitis
-        doloremque? Quo optio suscipit recusandae, adipisci debitis perferendis
-        iste nemo neque sint deleniti dignissimos consequatur unde ipsa voluptas
-        mollitia nam? Iure sapiente commodi modi ad maiores sit? Nesciunt neque
-        modi quisquam quidem temporibus quas ex non placeat at accusantium
-        maiores obcaecati alias minima reiciendis ducimus ea eaque in quis,
-        nobis dicta similique! Saepe atque error quaerat mollitia unde fugit
-        soluta sunt dicta impedit autem. Itaque error neque, dolorem ullam qui
-        quasi modi inventore corporis. Quis impedit deleniti provident dolorem
-        minima nostrum enim distinctio reprehenderit iusto laborum excepturi
-        nam, sunt fugit modi eius. Velit quod tempora dolores ab! Quasi neque
-        minima aliquam laboriosam dignissimos nesciunt soluta fugit id sint
-        voluptatum, doloribus sit quidem corporis minus ut quibusdam,
-        repudiandae perferendis. Temporibus, quia iusto, nisi qui cumque dolor
-        ab ipsam officia, tempora debitis molestias totam voluptates itaque.
-        Eius maiores, sint et similique commodi ut atque at aliquam eos.
-        Temporibus, aspernatur praesentium incidunt nostrum natus distinctio
-        cumque odio quasi sed blanditiis in molestiae laboriosam rerum animi
-        quam est, asperiores ipsa dolorum excepturi. Quasi alias ipsa libero et
-        molestiae quibusdam magni? Nemo obcaecati voluptates dolore, facere
-        harum necessitatibus? Saepe quae, vero veritatis facere voluptate
-        suscipit autem maxime, tenetur odio odit iure incidunt totam delectus
-        dignissimos, sit deleniti non harum hic. Libero rem quasi obcaecati illo
-        illum mollitia facilis et dicta maiores distinctio culpa commodi
-        consequuntur omnis ratione est odio dolor atque, reprehenderit, nesciunt
-        praesentium ad non doloremque iste fugiat! Est sit ducimus laboriosam
-        aspernatur voluptates cupiditate voluptatem fugit provident. Blanditiis
-        delectus unde, rem qui optio ratione et voluptate aperiam dicta pariatur
-        labore quos sapiente ipsam maxime. Veniam sunt assumenda minus explicabo
-        autem consequuntur perferendis id eveniet atque ab facere nesciunt
-        deserunt officiis possimus iusto saepe alias ut omnis iure sequi, amet
-        beatae. Cum repudiandae sapiente distinctio velit molestiae eius vitae
-        est repellat aspernatur doloremque ab, reiciendis, tempora doloribus
-        perferendis soluta laudantium sequi. Error esse quae minima vel in nemo
-        facere fuga sequi tempora commodi doloremque consectetur doloribus ipsa
-        mollitia assumenda harum, architecto debitis sit odit quidem optio
-        libero laboriosam iusto beatae. Nulla cumque voluptatem corporis nostrum
-        facere, vero nobis nam quo recusandae. Modi maiores, cum sunt eum sit
-        incidunt magnam, nesciunt pariatur sint dicta, distinctio amet
-        laudantium soluta?
+        <slot />
       </section>
-      <aside>y</aside>
+      <aside>
+        <div class="inner">
+          <button>Hello</button>
+          <div class="socials">
+            <span>x</span>
+            <span>x</span>
+          </div>
+        </div>
+      </aside>
     </div>
   </body>
 </html>
 
 <style>
   .grid-wrapper {
-    background-color: wheat;
-    min-height: 100vb;
+    --width: 100px;
+    /* background-color: wheat; */
+    /* min-height: 100vb; */
   }
   header {
-    background-color: rgb(8, 98, 176);
   }
   aside {
     background-color: rebeccapurple;
     display: none;
   }
   section {
-    background-color: chartreuse;
+    /* background-color: chartreuse; */
+    padding: 1rem;
   }
 
-  @media (width > 500px) {
+  @media (width > 1200px) {
     .grid-wrapper {
       display: grid;
       max-width: 1200px;
       margin-inline: auto;
-      grid-template-columns: 100px 1fr 100px;
-    }
-    header {
-      height: 100vb;
+      grid-template-columns: var(--width) 1fr var(--width);
     }
     .inner {
-      width: 100px;
-      height: 50vh;
-      background-color: red;
+      border-right: 1px solid white;
+
+      width: var(--width);
+      min-height: 100vb;
       position: fixed;
       display: flex;
       flex-direction: column;
       justify-content: space-between;
       align-items: center;
     }
+    header {
+      height: 100vb;
+    }
+
     aside {
       display: block;
+      .inner {
+        justify-content: center;
+      }
+      .socials {
+        margin: auto;
+      }
     }
-    button {
+    .header-cta {
       display: none;
     }
   }

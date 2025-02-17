@@ -5,6 +5,8 @@ const navItems = [
   { name: "fun", path: "/blog" },
   { name: "news", path: "/blog" },
 ];
+
+const BREAKPOINT = 500;
 ---
 
 <nav role="navigation" aria-label="main-navigation">
@@ -27,18 +29,19 @@ const navItems = [
     display: flex;
     align-items: center;
     justify-content: space-between;
-    @media (width > 500px) {
+    @media (width > 1200px) {
       transform: rotate(-90deg);
     }
   }
   ul {
     display: flex;
     flex-wrap: wrap;
+    width: max-content;
     column-gap: 2rem;
     list-style: none;
-    @media (width > 500px) {
+    /* @media (width > 1200px) {
       flex-wrap: nowrap;
-    }
+    } */
   }
 
   a:any-link {

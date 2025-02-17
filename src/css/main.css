@@ -1,5 +1,5 @@
-/* @layer global, theme, utils; */
+@layer global, theme, utils;
 
-@import "global.css";
+@import "global.css" layer(global);
 @import "theme.css";
 @import "utils.css";
