@@ -3,6 +3,19 @@
   background: hsl(0 100% 50% / .1)
 }
 
+.flex {
+  display: flex;
+
+}
+
+.items-center {
+  align-items: center;
+}
+
+.justify-between {
+  justify-content: space-between;
+}
+
 .hidden {
   /* Hide text accessibly */
   clip: rect(0 0 0 0);

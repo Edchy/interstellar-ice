@@ -16,6 +16,10 @@ const navItems = [
         </li>
       ))
     }
+    <!-- <li><a href="">x</a></li>
+    <li><a href="">x</a></li>
+    <li><a href="">x</a></li>
+    <li><a href="">x</a></li> -->
   </ul>
 </nav>
 <style>
@@ -23,17 +27,18 @@ const navItems = [
     display: flex;
     align-items: center;
     justify-content: space-between;
-    transform: rotate(-90deg);
+    @media (width > 500px) {
+      transform: rotate(-90deg);
+    }
   }
   ul {
     display: flex;
-    align-items: center;
-    gap: 2rem;
+    flex-wrap: wrap;
+    column-gap: 2rem;
     list-style: none;
-  }
-
-  li {
-    /* font-family: "Papyrus"; */
+    @media (width > 500px) {
+      flex-wrap: nowrap;
+    }
   }
 
   a:any-link {
