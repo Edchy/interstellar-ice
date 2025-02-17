@@ -5,6 +5,8 @@ import Footer from "./Footer.astro";
 import Nav from "../components/Nav.astro";
 import ScrollProgressIndicator from "../components/ScrollProgressIndicator.astro";
 import Socials from "../components/Socials.astro";
+import CtaBtn from "../components/CtaBtn.astro";
+import Logo from "../components/Logo.astro";
 ---
 
 <!doctype html>
@@ -22,8 +24,8 @@ import Socials from "../components/Socials.astro";
       <header>
         <div class="inner">
           <div class="flex items-center justify-between top-nav">
-            <div>Logo</div>
-            <button class="cta-btn">hej</button>
+            <Logo />
+            <CtaBtn hideOnDesktop={true} />
           </div>
           <Nav />
           <span>x</span>
@@ -34,7 +36,7 @@ import Socials from "../components/Socials.astro";
       </section>
       <aside>
         <div class="inner">
-          <button>Hello</button>
+          <CtaBtn />
           <nav class="socials">
             <ul class="nav-list">
               <Socials />
@@ -48,12 +50,13 @@ import Socials from "../components/Socials.astro";
 
 <style>
   .grid-wrapper {
-    --width: 100px;
+    --width: 150px;
+    --left-col-width: var(--width);
+    --right-col-width: var(--width);
     /* background-color: wheat; */
     /* min-height: 100vb; */
   }
   header {
-    background-color: bisque;
     /* position: fixed;
     inset: 0 0 auto 0;
     background-image: linear-gradient(
@@ -69,16 +72,15 @@ import Socials from "../components/Socials.astro";
   }
   .inner {
     padding-block-start: 0.25rem;
-    padding-inline: 2rem;
+    /* padding-inline: 2rem; */
   }
   .top-nav {
-    background-color: aqua;
+    /* background-color: aqua; */
     margin-block-end: var(--gap-xs);
   }
   aside {
-    background-color: rgba(182, 136, 228, 0.291);
     display: none;
-    position: fixed;
+    /* position: fixed;
     inset: 0 0 auto 0;
     background-image: linear-gradient(
       var(--light) 0% var(--progress),
@@ -89,7 +91,7 @@ import Socials from "../components/Socials.astro";
 
     @media (width > 1200px) {
       position: initial;
-    }
+    } */
   }
 
   ul {
@@ -103,10 +105,10 @@ import Socials from "../components/Socials.astro";
       display: grid;
       max-width: 1200px;
       margin-inline: auto;
-      grid-template-columns: var(--width) 1fr var(--width);
+      grid-template-columns: var(--left-col-width) 1fr var(--right-col-width);
     }
     .inner {
-      /* border-right: 1px solid white; */
+      border: 1px solid white;
 
       width: var(--width);
       min-height: 100vb;
@@ -128,9 +130,6 @@ import Socials from "../components/Socials.astro";
       .socials {
         margin: auto;
       }
-    }
-    .cta-btn {
-      display: none;
     }
   }
 </style>

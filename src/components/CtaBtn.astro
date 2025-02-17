@@ -1,0 +1,22 @@
+---
+const { hideOnDesktop } = Astro.props;
+---
+
+<button class:list={["cta-btn", { "hide-on-desktop": hideOnDesktop }]}
+  >Contact</button
+>
+
+<style>
+  button {
+    padding: 0.5rem 1rem;
+    border: none;
+    background-color: var(--clr-primary-500);
+    font-weight: bold;
+  }
+
+  .hide-on-desktop {
+    @media (width > 1200px) {
+      display: none;
+    }
+  }
+</style>
