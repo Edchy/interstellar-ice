@@ -50,19 +50,19 @@ const { anchor } = Astro.props;
   .back-to-top {
     background-image: linear-gradient(
       var(--clr-accent) 0% var(--progress),
-      var(--dark) var(--progress) 100%
+      var(--light) var(--progress) 100%
     );
     animation: progress linear;
     animation-timeline: scroll();
-
+    border: 1px solid var(--dark);
     padding: 0.5rem;
-    position: fixed;
-    inset: auto 2rem 2rem auto;
+    /* position: fixed;
+    inset: auto 2rem 2rem auto; */
     z-index: 2;
 
     &:any-link {
       /* Instead of the link color, use the text color */
-      color: var(--light);
+      color: var(--dark);
       text-decoration: none;
 
       &:hover {

@@ -20,7 +20,7 @@ import Logo from "../components/Logo.astro";
   </head>
   <body id="page-top">
     <div class="grid-wrapper">
-      <ScrollProgressIndicator anchor="#page-top" />
+      <!-- <ScrollProgressIndicator anchor="#page-top" /> -->
       <header>
         <div class="inner">
           <div class="flex items-center justify-between top-nav">
@@ -42,6 +42,7 @@ import Logo from "../components/Logo.astro";
               <Socials />
             </ul>
           </nav>
+          <ScrollProgressIndicator anchor="#page-top" />
         </div>
       </aside>
     </div>
@@ -71,12 +72,14 @@ import Logo from "../components/Logo.astro";
     } */
   }
   .inner {
-    padding-block-start: 0.25rem;
+    padding-block-start: 0rem;
     /* padding-inline: 2rem; */
   }
   .top-nav {
     /* background-color: aqua; */
-    margin-block-end: var(--gap-xs);
+    /* margin-block-end: var(--gap-xs);
+    padding-inline: var(--gap-l);
+    padding-block: var(--gap-l); */
   }
   aside {
     display: none;
