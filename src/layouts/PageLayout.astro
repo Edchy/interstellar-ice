@@ -1,12 +1,11 @@
 ---
 import "../css/main.css";
-import Header from "./Header.astro";
 import Footer from "./Footer.astro";
 import Nav from "../components/Nav.astro";
 import ScrollProgressIndicator from "../components/ScrollProgressIndicator.astro";
 import Socials from "../components/Socials.astro";
-import CtaBtn from "../components/CtaBtn.astro";
 import Logo from "../components/Logo.astro";
+import ThemeToggle from "../components/ThemeToggle.astro";
 ---
 
 <!doctype html>
@@ -20,15 +19,12 @@ import Logo from "../components/Logo.astro";
   </head>
   <body id="page-top">
     <div class="grid-wrapper">
-      <!-- <ScrollProgressIndicator anchor="#page-top" /> -->
       <header>
         <div class="inner">
-          <div class="flex items-center justify-between top-nav">
-            <Logo />
-            <CtaBtn hideOnDesktop={true} />
-          </div>
+          <Logo />
           <Nav />
-          <span>x</span>
+          <ThemeToggle />
+          <!-- <p>x</p> -->
         </div>
       </header>
       <section>
@@ -36,7 +32,7 @@ import Logo from "../components/Logo.astro";
       </section>
       <aside>
         <div class="inner">
-          <CtaBtn />
+          <!-- <ThemeToggle /> -->
           <nav class="socials">
             <ul class="nav-list">
               <Socials />
@@ -54,27 +50,29 @@ import Logo from "../components/Logo.astro";
     --width: 150px;
     --left-col-width: var(--width);
     --right-col-width: var(--width);
-    /* background-color: wheat; */
-    /* min-height: 100vb; */
   }
   header {
     /* position: fixed;
-    inset: 0 0 auto 0;
-    background-image: linear-gradient(
-      var(--light) 0% var(--progress),
-      var(--dark) var(--progress) 100%
-    );
-    animation: progress linear;
-    animation-timeline: scroll();
-
-    @media (width > 1200px) {
-      position: initial;
-    } */
+    inset: 0 0 auto 0; */
   }
   .inner {
-    padding-block-start: 0rem;
-    /* padding-inline: 2rem; */
+    /* background: url("nik.gif");
+    background-size: cover;
+    background-position: center;
+    background-repeat: repeat;
+    background-color: rgb(60, 2, 135);
+    background-blend-mode: color-burn;
+    background-blend-mode: difference;
+    background-blend-mode: color-dodge;
+    background-blend-mode: multiply;
+    padding-block-start: 0rem; */
+
+    padding: 1rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
   }
+
   .top-nav {
     /* background-color: aqua; */
     /* margin-block-end: var(--gap-xs);
@@ -83,13 +81,15 @@ import Logo from "../components/Logo.astro";
   }
   aside {
     display: none;
-    background-image: url("@/assets/mesh-gradient2.svg");
+    /* background: url("nik.gif"); */
+    /* background-color: red; */
+    /* background-image: url("@/assets/mesh-gradient2.svg");
     background-size: cover;
-    background-repeat: no-repeat;
+    background-repeat: no-repeat; */
     /* position: fixed;
     inset: 0 0 auto 0;
     background-image: linear-gradient(
-      var(--light) 0% var(--progress),
+      var(--yang) 0% var(--progress),
       var(--neutral-300) var(--progress) 100%
     );
     animation: progress linear;
@@ -109,13 +109,12 @@ import Logo from "../components/Logo.astro";
   @media (width > 1200px) {
     .grid-wrapper {
       display: grid;
-      max-width: 1200px;
+      max-width: 1400px;
       margin-inline: auto;
       grid-template-columns: var(--left-col-width) 1fr var(--right-col-width);
     }
     .inner {
-      border: 1px solid white;
-
+      /* border: 1px solid white; */
       width: var(--width);
       min-height: 100vb;
       position: fixed;

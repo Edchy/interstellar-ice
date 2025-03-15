@@ -15,8 +15,8 @@
   --clr-accent: oklch(79.54% 0.2861 148.76);
 
   /* mode */
-  --light: light-dark(#FAF9F6, #121212);
-  --dark: light-dark(#121212, #FAF9F6);
+  --yang: light-dark(#FAF9F6, #121212);
+  --yin: light-dark(#121212, #FAF9F6);
 
   /* layout */
   --page-width: min(100% - 1rem, 1500px);

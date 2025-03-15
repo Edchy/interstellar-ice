@@ -7,8 +7,8 @@ const { anchor } = Astro.props;
   <span class="hidden">Back to top</span>
   <svg
     xmlns="http://www.w3.org/2000/svg"
-    width="24"
-    height="24"
+    width="20"
+    height="20"
     viewBox="0 0 16 16"
     ><path
       fill="currentColor"
@@ -50,19 +50,19 @@ const { anchor } = Astro.props;
   .back-to-top {
     background-image: linear-gradient(
       var(--clr-accent) 0% var(--progress),
-      var(--light) var(--progress) 100%
+      var(--yang) var(--progress) 100%
     );
     animation: progress linear;
     animation-timeline: scroll();
-    border: 1px solid var(--dark);
-    padding: 0.5rem;
+    /* border: 1px solid var(--yin); */
+    padding: var(--gap-xs);
     /* position: fixed;
     inset: auto 2rem 2rem auto; */
     z-index: 2;
 
     &:any-link {
       /* Instead of the link color, use the text color */
-      color: var(--dark);
+      color: var(--yin);
       text-decoration: none;
 
       &:hover {

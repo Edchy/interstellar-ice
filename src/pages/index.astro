@@ -1,60 +1,33 @@
 ---
 import PageLayout from "../layouts/PageLayout.astro";
+import Nik from "@/assets/nik.gif";
+import MeshGradient from "@/assets/mesh-gradient.svg";
+import { Image } from "astro:assets";
 ---
 
 <PageLayout>
   <main>
-    <h1><span>e3exxx&#123;::::::::::::::::::::::&gt;</span></h1>
-    <p>
-      Lorem ipsum dolor sit amet consectetur adipisicing elit. Nemo tenetur quos
-      nam consequuntur minus, eaque veritatis quo optio reiciendis facilis
-      officiis incidunt ipsa numquam rem quaerat aliquid mollitia deleniti
-      tempora amet aliquam? Molestiae aut tenetur magni dolorum odio consectetur
-      totam sit sequi neque, ipsum, est corrupti iste libero modi, quas iure.
-      Cum, vitae iure eveniet similique atque inventore quam cupiditate quidem
-      rem eligendi minus excepturi suscipit esse natus ipsa tempore asperiores,
-      accusantium dolores architecto. Aliquam sint facilis fugit culpa, ipsa
-      expedita blanditiis iure animi nisi possimus sed vitae ratione rem veniam
-      reiciendis adipisci. Aut iure similique reiciendis nemo magnam, velit a
-      ipsum voluptates. Quae, neque quos. Repudiandae magni maxime nulla soluta
-      at iure iusto reprehenderit quasi dolorem eveniet! Recusandae
-      exercitationem ipsa reprehenderit numquam dolor saepe amet? Nisi minima
-      recusandae vero nihil velit asperiores laborum commodi! Vitae, dicta omnis
-      deserunt necessitatibus, explicabo veritatis quis quo tenetur sed, eum
-      amet impedit ullam hic officiis. Praesentium blanditiis illum atque
-      aliquam earum corrupti, ipsa tenetur tempora repellat placeat quae error
-      enim amet recusandae culpa sit obcaecati harum nobis, explicabo a
-      provident consectetur libero. Pariatur aut nostrum velit quis possimus
-      officia, a iste error facere, dolores nesciunt quod culpa necessitatibus
-      nisi nobis illum! Doloribus, ut.
-    </p>
+    <!-- <h1><span>e3exxx&#123;::::::::::::::::::::::&gt;</span></h1> -->
+    <!-- <Image src={Nik} alt="Nik" class="x" /> -->
+    <div>
+      <h1>hello</h1>
+    </div>
+    <!-- <img src={Nik.src} alt="Nik" /> -->
   </main>
-  <section>
-    <h2>hello</h2>
-    <p>
-      Lorem ipsum dolor sit amet consectetur adipisicing elit. Nobis assumenda
-      velit dolor nam nemo vel quo et pariatur soluta enim!
-    </p>
-    <p>
-      Lorem ipsum dolor sit amet consectetur adipisicing elit. Velit veritatis
-      obcaecati aliquid placeat id ex ipsum rerum. Fugiat sit veniam quas
-      nesciunt necessitatibus quam eos, quidem excepturi eius asperiores
-      quibusdam obcaecati magni officia quis beatae laudantium velit! Sunt
-      nulla, tempore error dolorum molestiae non nostrum commodi quae delectus
-      consectetur minima, aliquid hic repudiandae sequi reiciendis, est
-      voluptates quam neque facere harum ad accusantium. Quisquam iusto dolore
-      ad recusandae? Labore iste beatae voluptas ducimus quae exercitationem
-      harum ab impedit minus praesentium dicta nulla placeat, quos aut dolor
-      saepe at doloribus! Nobis cumque reiciendis totam praesentium ipsam? Minus
-      doloribus velit assumenda suscipit?
-    </p>
-  </section>
-</PageLayout>
 
-<style>
-  main,
-  section {
-    width: 50ch;
-    margin: 0 auto;
-  }
-</style>
+  <style>
+    .x {
+      width: 100%;
+      object-fit: cover;
+    }
+
+    div {
+      background: url("nik.gif");
+      background-size: cover;
+      background-position: center;
+      /* background-color: rgba(61, 1, 199, 0.918); */
+      background-blend-mode: color-burn;
+      /* height: 50vh; */
+    }
+  </style>
+</PageLayout>
