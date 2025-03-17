@@ -3,31 +3,68 @@ import PageLayout from "../layouts/PageLayout.astro";
 import Nik from "@/assets/nik.gif";
 import MeshGradient from "@/assets/mesh-gradient.svg";
 import { Image } from "astro:assets";
+import Card from "../components/Card.astro";
+import Cicada from "../components/Cicada.astro";
 ---
 
 <PageLayout>
-  <main>
-    <!-- <h1><span>e3exxx&#123;::::::::::::::::::::::&gt;</span></h1> -->
-    <!-- <Image src={Nik} alt="Nik" class="x" /> -->
-    <div>
-      <h1>hello</h1>
-    </div>
+  <main class="content-grid">
+    <!-- <img src="nik.gif" alt="Nik" class="x full-bleed" /> -->
+
     <!-- <img src={Nik.src} alt="Nik" /> -->
+    <Cicada />
+    <p>
+      Lorem ipsum dolor sit amet consectetur, adipisicing elit. Ab nobis
+      possimus nostrum enim esse odit accusantium quos perspiciatis ad tempora.
+      Quisquam error, veniam sequi quo provident repellat quia non maiores
+      obcaecati culpa. Aperiam similique assumenda nihil quibusdam nobis quae
+      laudantium ad beatae incidunt optio, vel at quis quod amet. Assumenda!
+      Lorem ipsum dolor sit amet consectetur adipisicing elit. Excepturi illum
+      accusantium sed quis error nemo sapiente ratione, debitis natus? Odit,
+      nobis aliquid. Velit minus voluptatem eaque voluptatibus at! Sit sapiente
+      delectus asperiores nihil, voluptates vel neque, soluta ea praesentium ex
+      facere, qui natus! Repellat nisi alias quis impedit nulla nihil,
+      blanditiis aspernatur explicabo voluptatibus libero, neque perspiciatis,
+      quidem non porro dolore. Dolor cupiditate quos, beatae odio, a consectetur
+      pariatur eveniet vel incidunt eum quod soluta molestias itaque alias totam
+      architecto rerum mollitia voluptate. Nemo nam, eius recusandae consequatur
+      repellendus praesentium pariatur numquam voluptatibus eum, accusamus
+      corrupti asperiores excepturi. Molestias fugiat rerum odio ullam ipsum
+      impedit, dolore adipisci quas voluptas, consequuntur non. Incidunt atque
+      amet obcaecati rem et sequi velit ab quidem perferendis fugit ea
+      blanditiis dicta illum maiores voluptate libero praesentium est, nostrum
+      saepe sed nam animi sit alias? Illo minima sapiente assumenda accusamus
+      earum ipsa officiis, ipsam laudantium, neque omnis atque tenetur. Ex
+      nesciunt laboriosam eum cumque molestias beatae in autem debitis soluta
+      maxime tempore magni qui quaerat aut necessitatibus, illo hic quibusdam
+      sed deserunt assumenda explicabo facere mollitia libero sit! Perspiciatis
+      corporis illum quia libero. Molestiae et ducimus officia quae voluptates
+      odio unde. Beatae ducimus laudantium modi quidem?
+    </p>
   </main>
-
-  <style>
-    .x {
-      width: 100%;
-      object-fit: cover;
-    }
-
-    div {
-      background: url("nik.gif");
-      background-size: cover;
-      background-position: center;
-      /* background-color: rgba(61, 1, 199, 0.918); */
-      background-blend-mode: color-burn;
-      /* height: 50vh; */
-    }
-  </style>
 </PageLayout>
+
+<style>
+  main {
+    display: grid;
+    place-content: center;
+    /* height: 100vh; */
+  }
+  .x {
+    width: 100%;
+    /* height: 50vh; */
+    object-fit: cover;
+  }
+
+  div {
+    background: url("nik.gif");
+    background-size: cover;
+    background-position: center;
+    /* background-color: rgba(61, 1, 199, 0.918); */
+    background-blend-mode: color-burn;
+    /* height: 50vh; */
+  }
+  p {
+    max-width: 50ch;
+  }
+</style>

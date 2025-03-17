@@ -1,6 +1,7 @@
 <div id="cicada-container" aria-hidden="true"></div>
 
 <script>
+  console.log("Hello, fellow cicada. 🌿");
   // The ASCII art content
   const cicadaArt = `
             ++01100101 01110101++         =ඏ=         ++10101110 10100110++
@@ -26,7 +27,51 @@
   document.addEventListener("DOMContentLoaded", () => {
     const container = document.getElementById("cicada-container");
     const pre = document.createElement("pre");
-    pre.textContent = cicadaArt;
+
+    // Split the ASCII art into lines
+    const lines = cicadaArt.split("\n");
+
+    // Process each line
+    lines.forEach((line) => {
+      console.log(line);
+      const lineElement = document.createElement("div");
+      lineElement.className = "ascii-line";
+
+      // Process each character in the line
+      [...line].forEach((char) => {
+        const charSpan = document.createElement("span");
+        charSpan.textContent = char;
+        charSpan.className = "ascii-char";
+        // charSpan.style.color = "red";
+        // Randomize animation properties
+        const animationDelay = Math.random() * 10; // Random delay between 0-10s
+        const animationDuration = 2 + Math.random() * 8; // Random duration between 2-10s
+        const blinkProbability = Math.random();
+
+        // Apply animation classes based on character type
+        if (char === "0" || char === "1") {
+          charSpan.classList.add("binary");
+          charSpan.style.color = "black";
+        } else if (char !== " ") {
+          charSpan.classList.add("symbol");
+          charSpan.style.color = "var(--clr-accent)";
+        }
+
+        // Add blinking animation to some characters
+        if (blinkProbability > 0.7) {
+          charSpan.classList.add("blink");
+        }
+
+        // Set individual animation properties
+        charSpan.style.setProperty("--delay", `${animationDelay}s`);
+        charSpan.style.setProperty("--duration", `${animationDuration}s`);
+
+        lineElement.appendChild(charSpan);
+      });
+
+      pre.appendChild(lineElement);
+    });
+
     if (container) {
       container.appendChild(pre);
     }
@@ -36,14 +81,87 @@
 <style>
   pre {
     font-family: monospace;
-    font-size: 1.5rem;
-    line-height: 1.5;
-    white-space: pre-wrap;
-    margin: 0 auto;
+    /* font-size: 0rem; */
     max-width: 50ch;
+    line-height: 1.2;
+    margin: 0 auto;
   }
 
   #cicada-container {
     min-height: 20rem; /* Reserves space until JS loads */
+    display: flex;
+    justify-content: center;
+    font-size: 8px;
+  }
+
+  .ascii-line {
+    white-space: pre;
+    height: 1.2em;
+  }
+
+  .ascii-char {
+    display: inline-block;
+    animation-iteration-count: infinite;
+    animation-direction: alternate;
+  }
+
+  .binary {
+    animation-name: pulse;
+    animation-duration: var(--duration, 1s);
+    animation-delay: var(--delay, 0s);
+  }
+
+  .symbol {
+    animation-name: glow;
+    animation-duration: var(--duration, 3s);
+    animation-delay: var(--delay, 0s);
+  }
+
+  .blink {
+    animation-name: blink;
+    animation-duration: calc(var(--duration, 2s) / 2);
+    animation-delay: calc(var(--delay, 0s) + 1s);
+  }
+
+  @keyframes pulse {
+    0% {
+      color: rgba(255, 255, 255, 0.3);
+    }
+    50% {
+      color: rgba(255, 255, 255, 1);
+    }
+    100% {
+      color: rgba(255, 255, 255, 0.3);
+    }
+  }
+
+  @keyframes glow {
+    0% {
+      color: rgba(255, 255, 255, 0.7);
+      text-shadow: none;
+    }
+    50% {
+      color: white;
+      text-shadow: 0 0 8px rgba(255, 255, 255, 0.8);
+    }
+    100% {
+      color: rgba(255, 255, 255, 0.7);
+      text-shadow: none;
+    }
+  }
+
+  @keyframes blink {
+    0% {
+      opacity: 1;
+    }
+    49% {
+      opacity: 1;
+    }
+    50% {
+      opacity: 0;
+    }
+    100% {
+      opacity: 0;
+    }
   }
 </style>

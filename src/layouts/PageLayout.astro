@@ -27,16 +27,12 @@ import ThemeToggle from "../components/ThemeToggle.astro";
           <!-- <p>x</p> -->
         </div>
       </header>
-      <section>
-        <slot />
-      </section>
+      <slot />
       <aside>
         <div class="inner">
           <!-- <ThemeToggle /> -->
           <nav class="socials">
-            <ul class="nav-list">
-              <Socials />
-            </ul>
+            <Socials />
           </nav>
           <ScrollProgressIndicator anchor="#page-top" />
         </div>
@@ -98,12 +94,6 @@ import ThemeToggle from "../components/ThemeToggle.astro";
     @media (width > 1200px) {
       position: initial;
     } */
-  }
-
-  ul {
-    display: flex;
-    flex-direction: column;
-    gap: var(--gap-l);
   }
 
   @media (width > 1200px) {

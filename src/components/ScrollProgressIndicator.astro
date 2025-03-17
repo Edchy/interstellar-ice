@@ -9,11 +9,15 @@ const { anchor } = Astro.props;
     xmlns="http://www.w3.org/2000/svg"
     width="20"
     height="20"
-    viewBox="0 0 16 16"
-    ><path
-      fill="currentColor"
-      d="M7 1v10.844L2.146 7.737L.854 9.263L8 15.31l7.146-6.047l-1.292-1.526L9 11.844V1z"
-    ></path></svg
+    viewBox="0 0 24 24"
+    ><!-- Icon from Tabler Icons by Paweł Kuna - https://github.com/tabler/tabler-icons/blob/master/LICENSE -->
+    <path
+      fill="none"
+      stroke="currentColor"
+      stroke-linecap="round"
+      stroke-linejoin="round"
+      stroke-width="2"
+      d="M12 5v14m4-4l-4 4m-4-4l4 4"></path></svg
   >
 </a>
 <style>
@@ -76,7 +80,7 @@ const { anchor } = Astro.props;
 
     @supports not (animation-timeline: scroll()) {
       --angle: -180deg;
-      /* background: var(--clr-accent); */
+      background: var(--clr-accent);
       /* transform: rotate(-180deg); */
     }
   }

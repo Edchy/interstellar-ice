@@ -57,7 +57,7 @@ h6 {
 
 
 
-@keyframes progress {
+/* @keyframes progress {
   0% {
     --progress: 0%;
   }
@@ -74,17 +74,15 @@ h6 {
     --angle: -180deg;
     --progress: 100%;
   }
-}
+} */
 
-@keyframes slide-in-from-left {
+@keyframes circle-in-top-right {
   from {
-    transform: translateX(-100%);
-    opacity: 0;
+    clip-path: circle(0%);
   }
 
   to {
-    transform: translateX(0);
-    opacity: 1;
+    clip-path: circle(150% at top right);
   }
 }
 
@@ -98,6 +96,6 @@ h6 {
 
   /* new page can do fancy stuff! */
   ::view-transition-new(root) {
-    animation: .5s ease-out slide-in-from-left forwards;
+    animation: 2s cubic-bezier(0.25, 1, 0.3, 1) circle-in-top-right forwards;
   }
 }
