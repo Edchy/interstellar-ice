@@ -2,26 +2,30 @@
 import { Icon } from "astro-icon/components";
 ---
 
-<div class="toggle">
+<button aria-label="toggle-theme" class="toggle">
   <span class="icon-container">
     <Icon
       class="theme-icon sun-icon"
       name="TablerSunFilled"
       size={20}
       title="Light mode"
+      aria-label={"Toggle Dark mode"}
     />
     <Icon
       class="theme-icon moon-icon"
       name="TablerMoonFilled"
       size={20}
       title="Dark mode"
+      aria-label={"Toggle Light mode"}
     />
   </span>
-</div>
+</button>
 
 <style>
   .toggle {
-    cursor: pointer;
+    background: none;
+    border: none;
+    /* cursor: pointer; */
     padding: var(--gap-xs);
     display: flex;
     align-items: center;
@@ -38,6 +42,15 @@ import { Icon } from "astro-icon/components";
   }
 
   .theme-icon {
+    /* @keyframes spin {
+      0% {
+        transform: rotate(0deg);
+      }
+      100% {
+        transform: rotate(360deg);
+      }
+    }
+    animation: spin 1s linear infinite; */
     position: absolute;
     transition:
       opacity 0.3s,

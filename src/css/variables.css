@@ -12,14 +12,22 @@
   --clr-primary-300: oklch(90.37% 0.2209 27.39);
   --clr-primary-200: oklch(100.37% 0.2209 27.39);
 
+  --nice-blueish-hue: oklch(50.58% 0.2956 266.08);
+
+  --blu: oklch(0% 0.2956 266.08);
+  --blu2: oklch(75.58% 0.2956 266.08);
+
   --clr-accent: oklch(79.54% 0.2861 148.76);
 
   /* mode */
-  --yang: light-dark(#FAF9F6, #121212);
-  --yin: light-dark(#121212, #FAF9F6);
+  --yang: light-dark(var(--white), #121212);
+  --yin: light-dark(#121212, var(--white));
+  --blueish: light-dark(var(--blu2), var(--blu));
 
   /* layout */
   --page-width: min(100% - 1rem, 1500px);
+
+  --radius: 4px;
 
   /*  */
   --gap-xs: .5rem;
@@ -28,5 +36,7 @@
   --gap-l: 1.5rem;
   --gap-xl: 2rem;
   --gap-xxl: 3rem;
+
+
 
 }

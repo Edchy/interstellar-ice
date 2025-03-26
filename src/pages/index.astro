@@ -5,66 +5,118 @@ import MeshGradient from "@/assets/mesh-gradient.svg";
 import { Image } from "astro:assets";
 import Card from "../components/Card.astro";
 import Cicada from "../components/Cicada.astro";
+import { Code } from "astro:components";
+import Overlap from "../components/Overlap.astro";
+import WordMorph from "../components/WordMorph.astro";
 ---
 
 <PageLayout>
-  <main class="content-grid">
-    <!-- <img src="nik.gif" alt="Nik" class="x full-bleed" /> -->
-
-    <!-- <img src={Nik.src} alt="Nik" /> -->
-    <Cicada />
-    <p>
-      Lorem ipsum dolor sit amet consectetur, adipisicing elit. Ab nobis
-      possimus nostrum enim esse odit accusantium quos perspiciatis ad tempora.
-      Quisquam error, veniam sequi quo provident repellat quia non maiores
-      obcaecati culpa. Aperiam similique assumenda nihil quibusdam nobis quae
-      laudantium ad beatae incidunt optio, vel at quis quod amet. Assumenda!
-      Lorem ipsum dolor sit amet consectetur adipisicing elit. Excepturi illum
-      accusantium sed quis error nemo sapiente ratione, debitis natus? Odit,
-      nobis aliquid. Velit minus voluptatem eaque voluptatibus at! Sit sapiente
-      delectus asperiores nihil, voluptates vel neque, soluta ea praesentium ex
-      facere, qui natus! Repellat nisi alias quis impedit nulla nihil,
-      blanditiis aspernatur explicabo voluptatibus libero, neque perspiciatis,
-      quidem non porro dolore. Dolor cupiditate quos, beatae odio, a consectetur
-      pariatur eveniet vel incidunt eum quod soluta molestias itaque alias totam
-      architecto rerum mollitia voluptate. Nemo nam, eius recusandae consequatur
-      repellendus praesentium pariatur numquam voluptatibus eum, accusamus
-      corrupti asperiores excepturi. Molestias fugiat rerum odio ullam ipsum
-      impedit, dolore adipisci quas voluptas, consequuntur non. Incidunt atque
-      amet obcaecati rem et sequi velit ab quidem perferendis fugit ea
-      blanditiis dicta illum maiores voluptate libero praesentium est, nostrum
-      saepe sed nam animi sit alias? Illo minima sapiente assumenda accusamus
-      earum ipsa officiis, ipsam laudantium, neque omnis atque tenetur. Ex
-      nesciunt laboriosam eum cumque molestias beatae in autem debitis soluta
-      maxime tempore magni qui quaerat aut necessitatibus, illo hic quibusdam
-      sed deserunt assumenda explicabo facere mollitia libero sit! Perspiciatis
-      corporis illum quia libero. Molestiae et ducimus officia quae voluptates
-      odio unde. Beatae ducimus laudantium modi quidem?
-    </p>
+  <main class="co">
+    <!-- <div class="epic-intro">
+      <h1>Hello... I forge worlds in code</h1>
+      <p>Born from nothing, they rise. I watch, I guide, I let them go.</p>
+    </div> -->
+    <WordMorph texts={["hello", "there"]} />
   </main>
+  <section>
+    <div class="inner">
+      Lorem ipsum dolor sit, amet consectetur adipisicing elit. Itaque soluta
+      necessitatibus veniam assumenda esse quam beatae natus saepe similique
+      modi.
+    </div>
+  </section>
 </PageLayout>
 
 <style>
   main {
-    display: grid;
-    place-content: center;
-    /* height: 100vh; */
-  }
-  .x {
-    width: 100%;
-    /* height: 50vh; */
-    object-fit: cover;
+    padding-block-start: 2rem;
+    min-height: 100vh;
+    /* border: 1px solid red; */
+    background-image: url("no-motion-nik.webp");
+    background-position: center;
+
+    background-color: var(--blueish);
+    background-blend-mode: color-dodge;
+    /* background-blend-mode: color-burn; */
+    background-repeat: no-repeat;
+    background-size: cover;
+
+    @media (prefers-reduced-motion: no-preference) {
+      background-image: url("nik.gif");
+    }
   }
 
-  div {
-    background: url("nik.gif");
-    background-size: cover;
-    background-position: center;
-    /* background-color: rgba(61, 1, 199, 0.918); */
-    background-blend-mode: color-burn;
-    /* height: 50vh; */
+  .epic-intro {
+    /* color: var(--nice-blueish-hue); */
+    h1 {
+      font-family: "Revenge", sans-serif;
+      font-size: 5rem;
+      line-height: 1;
+      /* transform: translateX(-30px); */
+      text-wrap: balance;
+    }
+    p {
+      font-family: "Revenge";
+      font-size: 2rem;
+      max-width: 15ch;
+    }
   }
-  p {
-    max-width: 50ch;
+
+  section {
+    height: 50vh;
+    width: 100%;
+    background-color: var(--blueish);
+    background-color: red;
+
+    position: absolute;
+    z-index: 2;
+    left: 0;
+
+    .inner {
+      /* background-color: red; */
+      width: min(100%, 904px);
+      margin-inline: auto;
+    }
   }
 </style>
+
+<!-- <h1>I breathe life into pixels</h1>
+<p>From void to vision, I shape, I summon, I watch over.</p>
+<h1>Architect of the digital realm</h1>
+<p>
+  From the first keystroke to the last sunset, I create, nurture, and let go.
+</p>
+<h1>From thought to existence</h1>
+<p>
+  I summon forms from the void, breathe life into the static, and watch them
+  roam.
+</p>
+<h1>Creator of fleeting infinities</h1>
+<p>
+  I call them into being, watch them evolve, and whisper them into the archive
+  of time.
+</p>
+<h1>God of the in-between</h1>
+<p>From first spark to final echo, I make, I mend, I move on.</p> -->
+
+<!-- <section>
+  <h2>Reality check:</h2>
+  <p>
+    I'm not a god. I just make websites and apps. But I do control the pixels,
+    so that’s something.
+  </p>
+</section>
+<section>
+  <h2>Translation:</h2>
+  <p>
+    I make websites and apps. No divine powers, just a lot of HTML, CSS, and
+    caffeine.
+  </p>
+</section>
+<section>
+  <h2>Okay, but seriously...</h2>
+  <p>
+    I'm a web designer & developer. I build websites, craft interfaces, and make
+    digital things work (most of the time).
+  </p>
+</section> -->

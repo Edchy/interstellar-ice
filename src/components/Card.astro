@@ -1,5 +1,11 @@
+---
+import { Image } from "astro:assets";
+import Nik from "@/assets/img/nik.gif";
+---
+
 <div class="card" data-active="false">
   <img src="nik.gif" alt="" />
+  <!-- <Image src={Nik} alt="Nik" /> -->
 </div>
 <script>
   const CARD = document.querySelector(".card") as HTMLElement;
@@ -70,7 +76,7 @@
     overflow: hidden;
     aspect-ratio: 3 / 4;
     width: clamp(260px, 50vmin, 320px);
-    border-radius: 8px;
+    /* border-radius: 8px; */
     transform-style: preserve-3d;
     touch-action: none;
     transition: transform 0.2s;

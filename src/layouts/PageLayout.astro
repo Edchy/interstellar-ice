@@ -27,10 +27,12 @@ import ThemeToggle from "../components/ThemeToggle.astro";
           <!-- <p>x</p> -->
         </div>
       </header>
-      <slot />
+      <div>
+        <slot />
+      </div>
       <aside>
         <div class="inner">
-          <!-- <ThemeToggle /> -->
+          <p>x</p>
           <nav class="socials">
             <Socials />
           </nav>
@@ -52,21 +54,11 @@ import ThemeToggle from "../components/ThemeToggle.astro";
     inset: 0 0 auto 0; */
   }
   .inner {
-    /* background: url("nik.gif");
-    background-size: cover;
-    background-position: center;
-    background-repeat: repeat;
-    background-color: rgb(60, 2, 135);
-    background-blend-mode: color-burn;
-    background-blend-mode: difference;
-    background-blend-mode: color-dodge;
-    background-blend-mode: multiply;
-    padding-block-start: 0rem; */
-
     padding: 1rem;
     display: flex;
     justify-content: space-between;
     align-items: center;
+    z-index: 3;
   }
 
   .top-nav {

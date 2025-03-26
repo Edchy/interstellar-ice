@@ -1,0 +1,234 @@
+<div class="container">
+  <div class="over"></div>
+
+  <div class="container a">
+    <p id="p0">THE</p>
+  </div>
+  <div class="container b">
+    <p id="p1">QUICK</p>
+  </div>
+  <div class="container c">
+    <p id="p2">BROWN</p>
+  </div>
+  <div class="container d">
+    <p id="p3">FOX</p>
+  </div>
+  <div class="container e">
+    <p id="p4">JUMPS</p>
+  </div>
+  <div class="container f">
+    <p id="p5">OVER</p>
+  </div>
+  <div class="container g">
+    <p id="p6">THE</p>
+  </div>
+  <div class="container h">
+    <p id="p7">LAZY</p>
+  </div>
+  <div class="container i">
+    <p id="p8">DOG</p>
+  </div>
+</div>
+
+<style>
+  .container {
+    --size: 6px;
+    --size2: 5px;
+
+    --mulA: 10;
+    --mulB: 20;
+    --mulC: 30;
+    --mulD: 40;
+    --mulE: 50;
+    --mulF: 60;
+    --mulG: 70;
+    --mulH: 90;
+    --mulI: 100;
+    --per: 5px;
+    --mulL: 0;
+    position: absolute;
+    inset: 20px;
+    overflow-y: hidden;
+    overflow: clip;
+    color: #cb1313;
+    font-family: sans-serif;
+    /*animation: blur-anime 2s steps(1,start) infinite;*/
+  }
+
+  p {
+    /*animation: anim 2s steps(1,start) infinite; */
+  }
+
+  @keyframes anim {
+    0%,
+    50% {
+      display: block;
+    }
+    100% {
+      display: none;
+    }
+  }
+
+  .over {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100%;
+    z-index: 0;
+    mix-blend-mode: difference;
+    /* animation: blur-anime4 2s steps(1, start) infinite; */
+  }
+
+  @keyframes blur-anime4 {
+    0%,
+    50% {
+      background: #fff;
+    }
+    100% {
+      background: #ccc;
+    }
+  }
+
+  .container {
+    mix-blend-mode: difference;
+    position: absolute;
+    display: flex;
+    justify-content: center; /* 水平方向の中央 */
+    align-items: center; /* 垂直方向の中央 */
+    width: 100%;
+    height: 100vh; /* ビューポートの高さを100%に */
+    /*animation: blur-anime1 4s steps(1,start) infinite;*/
+  }
+
+  @keyframes blur-anime1 {
+    0%,
+    90% {
+      display: flex;
+    }
+    100% {
+      display: none;
+    }
+  }
+
+  :root {
+  }
+
+  div {
+    margin: 0;
+    padding: 0;
+  }
+
+  p {
+    -webkit-text-stroke-width: 1px;
+    -webkit-text-stroke-color: #000;
+  }
+
+  .a {
+    animation-delay: 0.1s;
+    z-index: 100;
+    margin-left: calc(var(--size) * var(--mulA) * var(--mulL));
+    font-size: calc(var(--size) * var(--mulA));
+    line-height: calc(var(--size2) * var(--mulA));
+  }
+  .b {
+    animation-delay: 0.2s;
+
+    z-index: 99;
+    margin-left: calc(var(--size) * var(--mulB) * var(--mulL));
+    font-size: calc(var(--size) * var(--mulB));
+    line-height: calc(var(--size2) * var(--mulB));
+  }
+  .c {
+    animation-delay: 0.3s;
+
+    z-index: 98;
+    margin-left: calc(var(--size) * var(--mulC) * var(--mulL));
+    font-size: calc(var(--size) * var(--mulC));
+    line-height: calc(var(--size2) * var(--mulC));
+  }
+  .d {
+    animation-delay: 0.4s;
+
+    z-index: 97;
+    margin-left: calc(var(--size) * var(--mulD) * var(--mulL));
+    font-size: calc(var(--size) * var(--mulD));
+    line-height: calc(var(--size2) * var(--mulD));
+  }
+  .e {
+    animation-delay: 0.5s;
+
+    z-index: 96;
+    margin-left: calc(var(--size) * var(--mulE) * var(--mulL));
+    font-size: calc(var(--size) * var(--mulE));
+    line-height: calc(var(--size2) * var(--mulE));
+  }
+  .f {
+    animation-delay: 0.6s;
+
+    z-index: 95;
+    margin-left: calc(var(--size) * var(--mulF) * var(--mulL));
+    font-size: calc(var(--size) * var(--mulF));
+    line-height: calc(var(--size2) * var(--mulF));
+  }
+  .g {
+    animation-delay: 0.7s;
+
+    z-index: 94;
+    margin-left: calc(var(--size) * var(--mulG) * var(--mulL));
+    font-size: calc(var(--size) * var(--mulG));
+    line-height: calc(var(--size2) * var(--mulG));
+  }
+  .h {
+    animation-delay: 0.8s;
+
+    z-index: 93;
+    margin-left: calc(var(--size) * var(--mulH) * var(--mulL));
+    font-size: calc(var(--size) * var(--mulH));
+    line-height: calc(var(--size2) * var(--mulH));
+  }
+  .i {
+    animation-delay: 0.9s;
+
+    z-index: 92;
+    margin-left: calc(var(--size) * var(--mulI) * var(--mulL));
+    font-size: calc(var(--size) * var(--mulI));
+    line-height: calc(var(--size2) * var(--mulI));
+  }
+</style>
+<script>
+  let hoge = [
+    "水平方向の中央",
+    "QUICK",
+    "BROWN",
+    "FOX",
+    "JUMPS",
+    "OVER",
+    "THE",
+    "LAZY",
+    "DOG",
+  ];
+  let idx = hoge.length * 1000;
+  let count = 0;
+
+  fuga();
+
+  function fuga() {
+    for (let i = 0; i <= 8; i++) {
+      const element = document.getElementById("p" + i);
+      if (element) {
+        element.innerHTML = hoge[(i + idx) % hoge.length];
+      }
+    }
+
+    let time = 50;
+    if (idx % hoge.length == 0) {
+      time = 500;
+    }
+    idx--;
+
+    setTimeout(() => {
+      fuga();
+    }, time);
+  }
+</script>
