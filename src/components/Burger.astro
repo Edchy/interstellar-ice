@@ -1,0 +1,93 @@
+---
+import { Icon } from "astro-icon/components";
+import { navItems } from "../utils";
+---
+
+<button popovertarget="mobile-menu" class="burger">
+  <Icon name="menu-2" size={24} />
+  <span class="sr-only hidden">Open menu</span>
+</button>
+
+<nav popover id="mobile-menu">
+  <button
+    class="close-btn"
+    popovertarget="mobile-menu"
+    popovertargetaction="hide"
+  >
+    <Icon aria-hidden="true" name="x" size={24} />
+    <span class="sr-only hidden">Close menu</span>
+  </button>
+  <ul class="nav-list-sorry-not-sorry">
+    {
+      navItems.map((item) => {
+        return (
+          <li class="quick-flip">
+            <a href={item.path}>{item.name}</a>
+          </li>
+        );
+      })
+    }
+  </ul>
+</nav>
+
+<style>
+  [popover] {
+    background-color: var(--yang);
+    width: 100vw;
+    height: 100vh;
+    translate: 0 -100%;
+    transition: all 0.5s ease-in-out;
+    transition-behavior: allow-discrete;
+    border: none;
+
+    &:popover-open {
+      translate: 0;
+      overscroll-behavior: contain;
+    }
+
+    @starting-style {
+      transform: translateY(-80%); /* Start off-screen */
+    }
+  }
+
+  .close-btn {
+    position: absolute;
+    top: 1.5rem;
+    right: 1.5rem;
+    background: none;
+    border: none;
+    cursor: pointer;
+  }
+
+  .burger {
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 0.5rem;
+
+    @media (width > 768px) {
+      display: none;
+    }
+  }
+
+  ul {
+    list-style: none;
+
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+
+  a {
+    text-decoration: none;
+    color: var(--yin);
+    font-size: 4rem;
+
+    text-transform: uppercase;
+    font-family: var(--font-brand);
+
+    transition: color 0.3s ease;
+  }
+</style>

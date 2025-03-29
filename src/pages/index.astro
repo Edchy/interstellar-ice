@@ -12,53 +12,53 @@ import WordMorph from "../components/WordMorph.astro";
 
 <PageLayout>
   <main class="co">
-    <!-- <div class="epic-intro">
-      <h1>Hello... I forge worlds in code</h1>
-      <p>Born from nothing, they rise. I watch, I guide, I let them go.</p>
-    </div> -->
-    <WordMorph texts={["hello", "there"]} />
+    <WordMorph />
+
+    <p>
+      I'm a web designer & developer. I build websites, apps, interfaces, and
+      make digital things work (most of the time).
+    </p>
   </main>
   <section>
     <div class="inner">
-      Lorem ipsum dolor sit, amet consectetur adipisicing elit. Itaque soluta
-      necessitatibus veniam assumenda esse quam beatae natus saepe similique
-      modi.
+      <h2>Rothko Chillida Ström</h2>
     </div>
+    <!-- <Overlap /> -->
   </section>
 </PageLayout>
 
 <style>
+  p {
+    /* letter-spacing: 2px; */
+    font-family: var(--font-heading);
+    font-size: var(--font-size-fluid-0);
+    max-width: 31ch;
+    align-self: flex-end;
+    text-wrap: pretty;
+    color: var(--white);
+  }
   main {
-    padding-block-start: 2rem;
-    min-height: 100vh;
-    /* border: 1px solid red; */
+    /* padding-block-start: 2rem; */
+    min-height: 90vh;
     background-image: url("no-motion-nik.webp");
     background-position: center;
-
+    padding: 1rem;
     background-color: var(--blueish);
     background-blend-mode: color-dodge;
     /* background-blend-mode: color-burn; */
     background-repeat: no-repeat;
     background-size: cover;
 
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column;
+
+    @media (width > 1200px) {
+      min-height: 100vh;
+    }
+
     @media (prefers-reduced-motion: no-preference) {
       background-image: url("nik.gif");
-    }
-  }
-
-  .epic-intro {
-    /* color: var(--nice-blueish-hue); */
-    h1 {
-      font-family: "Revenge", sans-serif;
-      font-size: 5rem;
-      line-height: 1;
-      /* transform: translateX(-30px); */
-      text-wrap: balance;
-    }
-    p {
-      font-family: "Revenge";
-      font-size: 2rem;
-      max-width: 15ch;
     }
   }
 
@@ -67,6 +67,7 @@ import WordMorph from "../components/WordMorph.astro";
     width: 100%;
     background-color: var(--blueish);
     background-color: red;
+    /* -webkit-mask: var(--mask-edge-zig-zag-top); */
 
     position: absolute;
     z-index: 2;
@@ -74,8 +75,14 @@ import WordMorph from "../components/WordMorph.astro";
 
     .inner {
       /* background-color: red; */
-      width: min(100%, 904px);
+      width: clamp(901px, 78vw, 1100px);
+      width: min(100%, 1100px);
+      background-color: aliceblue;
       margin-inline: auto;
+    }
+
+    h2 {
+      font-size: var(--text-huge);
     }
   }
 </style>

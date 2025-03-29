@@ -1,6 +1,5 @@
 ---
-const { texts } = Astro.props;
-console.log(texts);
+
 ---
 
 <div class="text-container">
@@ -27,7 +26,9 @@ console.log(texts);
 <style>
   .text-container {
     filter: url(#threshold) blur(0.6px);
+    /* filter: url(#threshold) blur(2.6px); */
     /* position: relative; */
+    /* background-color: rgba(232, 232, 240, 0.5); */
   }
 
   #text1,
@@ -35,12 +36,14 @@ console.log(texts);
     position: absolute;
     width: 100%;
     display: inline-block;
-    font-family: "Revenge", sans-serif;
-    font-size: 6rem;
-    text-align: center;
+    font-family: var(--font-brand);
+    font-size: clamp(5rem, 1rem + 10vw, 10rem);
+    /* text-align: center; */
     user-select: none;
     line-height: 1;
-    color: var(--yin);
+    color: var(--blueish2);
+    color: var(--yang);
+    color: var(--white);
     text-wrap: balance;
   }
 </style>
@@ -57,12 +60,12 @@ console.log(texts);
 
   // The strings to morph between. You can change these to anything you want!
   const texts = [
-    "Architects of the digital realm",
-    "We breathe life into pixels",
+    "Architect of the digital realm",
+    "I breathe life into pixels",
     "From thought to existence",
-    "We forge worlds in code",
-    "Creators of fleeting infinities",
-    "Gods of the in-between",
+    "I forge worlds in code",
+    "Creator of fleeting infinities",
+    "God of the in-between",
   ];
 
   // Controls the speed of morphing.

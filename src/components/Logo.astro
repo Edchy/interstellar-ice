@@ -1,15 +1,30 @@
+---
+import { Image } from "astro:assets";
+import logo from "../assets/img/pet.svg";
+---
+
 <div class="logo">
+  <Image color="white" src={logo} width={30} height={30} alt="logo" />
   <!-- <span>e</span><span style="color: var(--clr-primary-500)">three</span><span
     >e</span
   ><span>&#123;:::::::::::&gt;</span> -->
-  <span style="rotate: -90deg; display: block">E</span>
+  <!-- <span style="rotate: -90deg; display: block">E</span>
   <span style="rotate: -45deg; display: block; color: var(--clr-accent);"
     >3</span
   >
-  <span>E</span>
-  <!-- <span>Neon Rats</span> -->
+  <span>E</span> -->
+  <!-- <span>Neon <br /> Rats</span> -->
 </div>
 <style>
+  /* span {
+    line-height: 0.9;
+    font-family: monospace;
+    font-family: "Kass", sans-serif;
+    text-transform: uppercase;
+  } */
+  .logo img {
+    filter: brightness(var(--x)) invert(var(--y)); /* This turns black to white */
+  }
   .logo {
     display: flex;
     gap: 0.5rem;
@@ -17,12 +32,11 @@
     font-weight: bold;
     /* margin-top: 1rem; */
     color: var(--yin);
-    /* font-family: monospace; */
+    font-family: var(--font-heading);
 
     @media (width > 1200px) {
-      rotate: -90deg;
-      /* transform: translateX(-75px); */
-      transform: translateX(-10px);
+      /* rotate: -90deg; */
+      /* transform: translateX(-10px); */
     }
   }
 </style>

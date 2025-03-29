@@ -54,7 +54,7 @@ const { anchor } = Astro.props;
   .back-to-top {
     background-image: linear-gradient(
       var(--clr-accent) 0% var(--progress),
-      var(--yang) var(--progress) 100%
+      transparent var(--progress) 100%
     );
     animation: progress linear;
     animation-timeline: scroll();
@@ -70,7 +70,7 @@ const { anchor } = Astro.props;
       text-decoration: none;
 
       &:hover {
-        opacity: 0.85;
+        opacity: var(--hover);
       }
     }
   }

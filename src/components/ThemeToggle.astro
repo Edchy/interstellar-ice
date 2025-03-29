@@ -2,75 +2,68 @@
 import { Icon } from "astro-icon/components";
 ---
 
-<button aria-label="toggle-theme" class="toggle">
-  <span class="icon-container">
-    <Icon
-      class="theme-icon sun-icon"
-      name="TablerSunFilled"
-      size={20}
-      title="Light mode"
-      aria-label={"Toggle Dark mode"}
-    />
-    <Icon
-      class="theme-icon moon-icon"
-      name="TablerMoonFilled"
-      size={20}
-      title="Dark mode"
-      aria-label={"Toggle Light mode"}
-    />
-  </span>
+<button aria-label="toggle-theme" class="toggle" title="toggle theme">
+  <Icon name="FluentEmojiHighContrastFullMoonFace" size={20} class="moon" />
+  <Icon name="FluentEmojiHighContrastSunWithFace" size={20} class="sun" />
 </button>
 
-<style>
-  .toggle {
+<style is:global>
+  [aria-label="toggle-theme"] {
     background: none;
     border: none;
-    /* cursor: pointer; */
     padding: var(--gap-xs);
     display: flex;
     align-items: center;
     justify-content: center;
-  }
 
-  .icon-container {
-    position: relative;
-    width: 20px;
-    height: 20px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
-
-  .theme-icon {
-    /* @keyframes spin {
-      0% {
-        transform: rotate(0deg);
-      }
-      100% {
-        transform: rotate(360deg);
-      }
+    &:hover {
+      opacity: var(--hover);
     }
-    animation: spin 1s linear infinite; */
-    position: absolute;
-    transition:
-      opacity 0.3s,
-      transform 0.3s;
+    /* Show sun icon in light mode, hide moon icon */
+    & .moon {
+      display: block;
+    }
+
+    & .sun {
+      display: none;
+    }
+
+    /* When toggle has 'active' class (dark mode), show moon icon and hide sun icon */
+    &.active .moon {
+      display: none;
+    }
+
+    &.active .sun {
+      display: block;
+    }
+
+    &::after {
+      content: "";
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      width: 0;
+      height: 0;
+      background: #ffffff5f;
+      border-top-right-radius: 100%;
+      transition: all 0.3s ease-out;
+      z-index: -1;
+      pointer-events: none;
+    }
   }
 
-  .sun-icon {
-    opacity: 0;
-    transform: scale(0.5);
-  }
+  /* :root:has(.toggle:hover) {
+    --yang: light-dark(#121212, var(--white));
+    --yin: light-dark(var(--white), #121212);
+    --blueish: light-dark(var(--blu), var(--blu2));
 
-  .toggle.active .sun-icon {
-    opacity: 1;
-    transform: scale(1);
-  }
+    transition: all 4s ease-out;
 
-  .toggle.active .moon-icon {
-    opacity: 0;
-    transform: scale(0.5);
-  }
+    [aria-label="toggle-theme"] > * {
+      color: var(--yin);
+      transition: all 4s ease-out;
+    }
+  } */
 </style>
 
 <script>

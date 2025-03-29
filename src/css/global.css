@@ -1,4 +1,6 @@
 @import '@fontsource/luckiest-guy';
+@import "open-props/masks/edges";
+@import "open-props/masks/corner-cuts";
 
 @font-face {
   font-family: 'Revenge';
@@ -16,6 +18,14 @@
   font-display: swap;
 }
 
+@font-face {
+  font-family: 'Brockmann';
+  src: url('./fonts/brockmann-medium-webfont.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
 *,
 *::before,
 *::after {
@@ -28,7 +38,7 @@ html {
   interpolate-size: allow-keywords;
   color-scheme: dark light;
   background-color: var(--yang);
-  background-color: var(--blueish);
+  /* background-color: var(--blueish); */
   color: var(--yin);
 
   @media(prefers-reduced-motion: no-preference) {
@@ -40,7 +50,7 @@ body {
   min-height: 100vh;
   line-height: 1.5;
   -webkit-font-smoothing: antialiased;
-  font-family: Inter, Roboto, 'Helvetica Neue', 'Arial Nova', 'Nimbus Sans', Arial, sans-serif;
+  font-family: var(--font-body);
   font-weight: normal;
 
 }
@@ -79,11 +89,18 @@ h6 {
   overflow-wrap: break-word;
 }
 
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  line-height: 1;
+  font-family: var(--font-heading);
+}
 
 
-
-
-@keyframes circle-in-top-right {
+/* @keyframes circle-in-top-right {
   from {
     clip-path: circle(0%);
   }
@@ -101,4 +118,4 @@ h6 {
   ::view-transition-new(root) {
     animation: 1.5s cubic-bezier(0.25, 1, 0.3, 1) circle-in-top-right forwards;
   }
-}
+} */
