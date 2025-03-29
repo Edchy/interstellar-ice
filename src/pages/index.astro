@@ -42,7 +42,8 @@ import WordMorph from "../components/WordMorph.astro";
     min-height: 90vh;
     background-image: url("no-motion-nik.webp");
     background-position: center;
-    padding: 1rem;
+    padding-inline: 1rem;
+    padding-block: 2rem;
     background-color: var(--blueish);
     background-blend-mode: color-dodge;
     /* background-blend-mode: color-burn; */
@@ -63,7 +64,7 @@ import WordMorph from "../components/WordMorph.astro";
   }
 
   section {
-    height: 50vh;
+    /* height: 50vh; */
     width: 100%;
     background-color: var(--blueish);
     background-color: red;
@@ -75,10 +76,14 @@ import WordMorph from "../components/WordMorph.astro";
 
     .inner {
       /* background-color: red; */
-      width: clamp(901px, 78vw, 1100px);
-      width: min(100%, 1100px);
-      background-color: aliceblue;
+      /* background-color: aliceblue; */
       margin-inline: auto;
+      /* width: 100%; */
+
+      @media (width > 1200px) {
+        width: min(100%, 901px);
+        width: clamp(901px, 76vw, 1100px);
+      }
     }
 
     h2 {
