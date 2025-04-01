@@ -3,7 +3,7 @@ import { navItems } from "../utils";
 ---
 
 <nav role="navigation" aria-label="main-navigation">
-  <ul class="nav-list-sorry-not-sorry">
+  <menu class="nav-list-sorry-not-sorry">
     {
       navItems.map((item) => (
         <li class="quick-flip">
@@ -11,7 +11,7 @@ import { navItems } from "../utils";
         </li>
       ))
     }
-  </ul>
+  </menu>
 </nav>
 <style>
   nav {
@@ -30,19 +30,21 @@ import { navItems } from "../utils";
       display: block;
     }
   }
-  ul {
+  menu {
     display: flex;
     flex-wrap: wrap;
     width: max-content;
     /* column-gap: var(--gap-s); */
-    gap: clamp(var(--gap-xs), 1.5vw, var(--gap-m));
+    gap: clamp(var(--gap-m), 1.5vw, var(--gap-l));
+    gap: var(--gap-xl);
   }
 
   a:any-link {
-    /* padding: 2rem 1rem; */
+    padding: 1rem 0;
     text-decoration: none;
     /* text-transform: uppercase; */
-    font-weight: bold;
+    /* font-weight: bold; */
     color: var(--ying);
+    /* font-family: var(--font-heading); */
   }
 </style>

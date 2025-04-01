@@ -1,6 +1,5 @@
 ---
 import "../css/main.css";
-import Footer from "./Footer.astro";
 import Nav from "../components/Nav.astro";
 import ScrollProgressIndicator from "../components/ScrollProgressIndicator.astro";
 import Socials from "../components/Socials.astro";
@@ -8,6 +7,8 @@ import Logo from "../components/Logo.astro";
 import ThemeToggle from "../components/ThemeToggle.astro";
 import Burger from "../components/Burger.astro";
 import BigRedButton2 from "../components/BigRedButton2.astro";
+
+const { title = "Nope Studios" } = Astro.props;
 ---
 
 <!doctype html>
@@ -15,9 +16,12 @@ import BigRedButton2 from "../components/BigRedButton2.astro";
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width" />
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
+    <link rel="manifest" href="/site.webmanifest" />
     <meta name="generator" content={Astro.generator} />
-    <title>E3E</title>
+    <title>{title}</title>
   </head>
   <body id="page-top">
     <div class="grid-wrapper">
@@ -38,6 +42,8 @@ import BigRedButton2 from "../components/BigRedButton2.astro";
       <aside>
         <div class="inner">
           <!-- <BigRedButton2 /> -->
+          <p>아니 사진관</p>
+          <!-- <p>いいえ。</p> -->
           <nav class="socials">
             <Socials />
           </nav>
@@ -49,6 +55,14 @@ import BigRedButton2 from "../components/BigRedButton2.astro";
 </html>
 
 <style>
+  header {
+    /* position: fixed;
+    width: 100%;
+    top: 0;
+    z-index: 9999 !important;
+    border: 1px solid red;
+    background-color: red; */
+  }
   .grid-wrapper {
     --width: 150px;
     --left-col-width: var(--width);

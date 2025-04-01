@@ -1,0 +1,20 @@
+---
+import PageLayout from "../layouts/PageLayout.astro";
+import BlogPost from "../components/BlogPost.astro";
+
+const allPosts: any[] = Object.values(
+  import.meta.glob("./posts/*.md", { eager: true })
+);
+---
+
+<PageLayout title="Blog">
+  <ul>
+    {
+      allPosts.map((post) => {
+        return <BlogPost title={post.frontmatter.title} url={post.url} />;
+      })
+    }
+  </ul>
+</PageLayout>
+
+<style></style>

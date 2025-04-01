@@ -4,15 +4,16 @@
 
 @font-face {
   font-family: 'Revenge';
-  src: url('./fonts/Revenge.otf') format('opentype');
+  src: url('/fonts/Revenge.otf') format('opentype');
   font-weight: normal;
   font-style: normal;
-  font-display: swap;
+  /* block font-swapping */
+  font-display: block;
 }
 
 @font-face {
   font-family: 'Kass';
-  src: url('./fonts/kass-black.otf') format('opentype');
+  src: url('/fonts/kass-black.otf') format('opentype');
   font-weight: 900;
   font-style: normal;
   font-display: swap;
@@ -20,7 +21,7 @@
 
 @font-face {
   font-family: 'Brockmann';
-  src: url('./fonts/brockmann-medium-webfont.ttf') format('truetype');
+  src: url('/fonts/brockmann-medium-webfont.ttf') format('truetype');
   font-weight: normal;
   font-style: normal;
   font-display: swap;

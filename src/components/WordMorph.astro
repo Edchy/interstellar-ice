@@ -25,10 +25,11 @@
 
 <style>
   .text-container {
-    filter: url(#threshold) blur(0.6px);
+    /* filter: url(#threshold) blur(0.6px); */
+    filter: url(#threshold);
     /* filter: url(#threshold) blur(2.6px); */
     /* position: relative; */
-    /* background-color: rgba(232, 232, 240, 0.5); */
+    /* background-color: rgba(232, 232, 240, 0.382); */
   }
 
   #text1,
@@ -37,13 +38,14 @@
     width: 100%;
     display: inline-block;
     font-family: var(--font-brand);
+    font-family: var(--font-heading);
     font-size: clamp(5rem, 1rem + 10vw, 10rem);
     /* text-align: center; */
     user-select: none;
     line-height: 1;
     color: var(--blueish2);
-    color: var(--yang);
     color: var(--white);
+    color: var(--yin);
     text-wrap: balance;
   }
 </style>

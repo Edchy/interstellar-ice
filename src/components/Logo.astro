@@ -4,7 +4,13 @@ import logo from "../assets/img/pet.svg";
 ---
 
 <div class="logo">
-  <Image color="white" src={logo} width={30} height={30} alt="logo" />
+  <!-- <Image color="white" src={logo} width={30} height={30} alt="logo" /> -->
+
+  <a href="/">
+    <span>nøpe</span>
+    <span>studiøs</span>
+  </a>
+
   <!-- <span>e</span><span style="color: var(--clr-primary-500)">three</span><span
     >e</span
   ><span>&#123;:::::::::::&gt;</span> -->
@@ -25,18 +31,22 @@ import logo from "../assets/img/pet.svg";
   .logo img {
     filter: brightness(var(--x)) invert(var(--y)); /* This turns black to white */
   }
-  .logo {
+
+  .logo a:any-link {
     display: flex;
-    gap: 0.5rem;
-    font-size: 1.75rem;
+    flex-direction: column;
+    text-decoration: none;
+    line-height: 0.9;
+    font-size: 1.25rem;
     font-weight: bold;
     /* margin-top: 1rem; */
+    color: var(--clr-accent);
     color: var(--yin);
     font-family: var(--font-heading);
 
-    @media (width > 1200px) {
-      /* rotate: -90deg; */
-      /* transform: translateX(-10px); */
-    }
+    /* @media (width > 1200px) {
+      rotate: -90deg;
+      transform: translateX(-20px);
+    } */
   }
 </style>

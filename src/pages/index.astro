@@ -10,7 +10,7 @@ import Overlap from "../components/Overlap.astro";
 import WordMorph from "../components/WordMorph.astro";
 ---
 
-<PageLayout>
+<PageLayout title="Nope Studios">
   <main class="co">
     <WordMorph />
 
@@ -21,6 +21,8 @@ import WordMorph from "../components/WordMorph.astro";
   </main>
   <section>
     <div class="inner">
+      <h2>Rothko Chillida Ström</h2>
+      <h2>Rothko Chillida Ström</h2>
       <h2>Rothko Chillida Ström</h2>
     </div>
     <!-- <Overlap /> -->
@@ -35,18 +37,23 @@ import WordMorph from "../components/WordMorph.astro";
     max-width: 31ch;
     align-self: flex-end;
     text-wrap: pretty;
-    color: var(--white);
+    color: var(--yin);
+    z-index: 2;
   }
   main {
-    /* padding-block-start: 2rem; */
+    position: relative;
     min-height: 90vh;
-    background-image: url("no-motion-nik.webp");
+    background-image: url("img/no-motion-nik.webp");
     background-position: center;
     padding-inline: 1rem;
     padding-block: 2rem;
     background-color: var(--blueish);
+    background-color: var(--clr-accent);
+    background-color: var(--yang);
+    background-blend-mode: hard-light;
     background-blend-mode: color-dodge;
-    /* background-blend-mode: color-burn; */
+    background-blend-mode: color-burn;
+
     background-repeat: no-repeat;
     background-size: cover;
 
@@ -54,31 +61,82 @@ import WordMorph from "../components/WordMorph.astro";
     justify-content: space-between;
     flex-direction: column;
 
+    &::before {
+      content: "";
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      /* width: 20px; */
+      height: 150px;
+      --hdr-gradient: linear-gradient(
+        to top in oklch,
+        var(--yang) 17% 17%,
+        54%,
+        oklch(98% 0 91 / 0) 81% 81%
+      );
+      --sdr-gradient: linear-gradient(
+        to top,
+        #f8f8f8 17% 17%,
+        54%,
+        #f8f8f800 81% 81%
+      );
+
+      background: var(--hdr-gradient);
+    }
+
     @media (width > 1200px) {
       min-height: 100vh;
     }
 
     @media (prefers-reduced-motion: no-preference) {
-      background-image: url("nik.gif");
+      background-image: url("img/nik.gif");
+    }
+  }
+
+  @keyframes gradient-change {
+    to {
+      --clr-accent: oklch(60% 0.29 149);
+      --white: oklch(90% 0 91);
     }
   }
 
   section {
+    --hdr-gradient: radial-gradient(
+      farthest-corner circle at 50% 50% in oklab,
+      var(--yin) 12% 12%,
+      var(--yang) 56% 56%
+    );
+    --sdr-gradient: radial-gradient(
+      farthest-corner circle at 50% 50%,
+      var(--clr-accent) 12% 12%,
+      var(--yang) 56% 56%
+    );
     /* height: 50vh; */
+
     width: 100%;
     background-color: var(--blueish);
-    background-color: red;
     /* -webkit-mask: var(--mask-edge-zig-zag-top); */
-
+    background-color: var(--clr-primary-600);
+    background-color: var(--clr-accent);
+    background: var(--hdr-gradient);
+    /* padding-top: 2rem;
+    margin-top: -2rem; */
     position: absolute;
     z-index: 2;
     left: 0;
+
+    @media (prefers-reduced-motion: no-preference) {
+      animation: gradient-change 4s linear infinite alternate;
+    }
 
     .inner {
       /* background-color: red; */
       /* background-color: aliceblue; */
       margin-inline: auto;
       /* width: 100%; */
+      display: grid;
+      grid-template-columns: 1fr;
 
       @media (width > 1200px) {
         width: min(100%, 901px);

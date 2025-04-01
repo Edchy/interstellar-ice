@@ -1,5 +1,37 @@
 ---
 import PageLayout from "../layouts/PageLayout.astro";
+const images = import.meta.glob("src/assets/img/*.{png,jpg,jpeg,svg}");
 ---
 
-<PageLayout><h1>hello</h1></PageLayout>
+<PageLayout title="About">
+  <main class="co">
+    {
+      (
+        <ul>
+          {Object.keys(images).map((path, i) => {
+            return (
+              <li>
+                <img src={path} alt={`image${i}`} />
+              </li>
+            );
+          })}
+        </ul>
+      )
+    }
+  </main>
+</PageLayout>
+
+<style>
+  ul {
+    display: flex;
+  }
+  section {
+    --hdr-gradient: linear-gradient(
+      to top in oklab,
+      oklch(80% 0.29 149) 12% 12%,
+      oklch(98% 0 91) 68% 68%
+    );
+
+    background: var(--hdr-gradient);
+  }
+</style>

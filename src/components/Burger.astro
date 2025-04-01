@@ -17,7 +17,7 @@ import { navItems } from "../utils";
     <Icon aria-hidden="true" name="x" size={24} />
     <span class="sr-only hidden">Close menu</span>
   </button>
-  <ul class="nav-list-sorry-not-sorry">
+  <menu class="nav-list-sorry-not-sorry">
     {
       navItems.map((item) => {
         return (
@@ -27,7 +27,7 @@ import { navItems } from "../utils";
         );
       })
     }
-  </ul>
+  </menu>
 </nav>
 
 <style>
@@ -39,6 +39,10 @@ import { navItems } from "../utils";
     transition: all 0.5s ease-in-out;
     transition-behavior: allow-discrete;
     border: none;
+
+    &::backdrop {
+      /* background-color: rgba(0, 0, 0, 0.9); */
+    }
 
     &:popover-open {
       translate: 0;
@@ -70,7 +74,7 @@ import { navItems } from "../utils";
     }
   }
 
-  ul {
+  menu {
     list-style: none;
 
     height: 100vh;
