@@ -3,8 +3,8 @@ import { Icon } from "astro-icon/components";
 ---
 
 <button aria-label="toggle-theme" class="toggle" title="toggle theme">
-  <Icon name="FluentEmojiHighContrastFullMoonFace" size={20} class="moon" />
-  <Icon name="FluentEmojiHighContrastSunWithFace" size={20} class="sun" />
+  <Icon aria-hidden="true" name="ri:moon-line" size={20} class="moon" />
+  <Icon aria-hidden="true" name="ri:sun-line" size={20} class="sun" />
 </button>
 
 <style>
@@ -69,59 +69,49 @@ import { Icon } from "astro-icon/components";
 <script>
   const toggle = document.querySelector(".toggle");
 
-  // Apply theme with view transitions if supported
-  function applyThemeWithTransition(isDark: boolean) {
-    const updateDOM = () => {
-      // Update the document color scheme
-      document.documentElement.style.setProperty(
-        "color-scheme",
-        isDark ? "dark" : "light"
-      );
-
-      // Update toggle class for styling purposes
-      toggle?.classList.toggle("active", isDark);
-    };
-
-    if (document.startViewTransition) {
-      // Use View Transitions API if available
-      document.startViewTransition(() => updateDOM());
-    } else {
-      // Fallback for browsers without View Transitions support
-      updateDOM();
-    }
+  function applyTheme(isDark: boolean) {
+    document.documentElement.style.setProperty(
+      "color-scheme",
+      isDark ? "dark" : "light"
+    );
+    toggle?.classList.toggle("active", isDark);
   }
 
-  function applyInitialTheme() {
-    const stored = localStorage.getItem("theme");
-    if (stored) {
-      const isDark = stored === "moon";
-      applyThemeWithTransition(isDark);
-      return;
-    }
-
-    if (window.matchMedia("(prefers-color-scheme: dark)").matches) {
-      applyThemeWithTransition(true);
-    } else {
-      applyThemeWithTransition(false);
-    }
-  }
-
-  function handleSystemThemeChange({ matches }: { matches: boolean }) {
-    // Only apply if user hasn't set a preference
-    if (!localStorage.getItem("theme")) {
-      applyThemeWithTransition(matches);
-    }
-  }
-
-  applyInitialTheme();
-
+  // Handle system theme changes
   window
     .matchMedia("(prefers-color-scheme: dark)")
-    .addEventListener("change", handleSystemThemeChange);
+    .addEventListener("change", ({ matches }) => {
+      if (!localStorage.getItem("theme")) {
+        applyTheme(matches);
+      }
+    });
 
+  // Handle toggle button clicks
   toggle?.addEventListener("click", () => {
     const isDark = !toggle.classList.contains("active");
     localStorage.setItem("theme", isDark ? "moon" : "sun");
-    applyThemeWithTransition(isDark);
+    applyTheme(isDark);
+  });
+</script>
+<script is:inline>
+  // This script runs immediately when the page loads
+  function getThemePreference() {
+    if (typeof localStorage !== "undefined" && localStorage.getItem("theme")) {
+      return localStorage.getItem("theme") === "moon" ? "dark" : "light";
+    }
+    return window.matchMedia("(prefers-color-scheme: dark)").matches
+      ? "dark"
+      : "light";
+  }
+
+  const theme = getThemePreference();
+  document.documentElement.style.setProperty("color-scheme", theme);
+
+  // Add a class to the toggle button if it exists
+  window.addEventListener("DOMContentLoaded", () => {
+    const toggle = document.querySelector(".toggle");
+    if (toggle) {
+      toggle.classList.toggle("active", theme === "dark");
+    }
   });
 </script>

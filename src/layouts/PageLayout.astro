@@ -7,22 +7,15 @@ import Logo from "../components/Logo.astro";
 import ThemeToggle from "../components/ThemeToggle.astro";
 import Burger from "../components/Burger.astro";
 import BigRedButton2 from "../components/BigRedButton2.astro";
+import Head from "./Head.astro";
+import Footer from "./Footer.astro";
 
-const { title = "Nope Studios" } = Astro.props;
+const { title, description } = Astro.props;
 ---
 
 <!doctype html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width" />
-    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
-    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
-    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
-    <link rel="manifest" href="/site.webmanifest" />
-    <meta name="generator" content={Astro.generator} />
-    <title>{title}</title>
-  </head>
+  <Head {title} {description} />
   <body id="page-top">
     <div class="grid-wrapper">
       <header>
@@ -51,6 +44,7 @@ const { title = "Nope Studios" } = Astro.props;
         </div>
       </aside>
     </div>
+    <!-- <Footer /> -->
   </body>
 </html>
 

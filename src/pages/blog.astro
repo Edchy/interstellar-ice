@@ -7,14 +7,18 @@ const allPosts: any[] = Object.values(
 );
 ---
 
-<PageLayout title="Blog">
-  <ul>
+<PageLayout title="Blog" description="Blog posts about various topics">
+  <main>
     {
       allPosts.map((post) => {
         return <BlogPost title={post.frontmatter.title} url={post.url} />;
       })
     }
-  </ul>
+  </main>
 </PageLayout>
 
-<style></style>
+<style>
+  main {
+    background-color: aliceblue;
+  }
+</style>

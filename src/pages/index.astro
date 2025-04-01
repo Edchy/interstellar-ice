@@ -10,7 +10,10 @@ import Overlap from "../components/Overlap.astro";
 import WordMorph from "../components/WordMorph.astro";
 ---
 
-<PageLayout title="Nope Studios">
+<PageLayout
+  title="Nope Studios"
+  description="Nope Studios is a web design and development studio. We create websites, apps, and digital experiences that are beautiful, functional, and user-friendly."
+>
   <main class="co">
     <WordMorph />
 
@@ -33,7 +36,7 @@ import WordMorph from "../components/WordMorph.astro";
   p {
     /* letter-spacing: 2px; */
     font-family: var(--font-heading);
-    font-size: var(--font-size-fluid-0);
+    font-size: 1rem;
     max-width: 31ch;
     align-self: flex-end;
     text-wrap: pretty;
@@ -42,6 +45,9 @@ import WordMorph from "../components/WordMorph.astro";
   }
   main {
     position: relative;
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column;
     min-height: 90vh;
     background-image: url("img/no-motion-nik.webp");
     background-position: center;
@@ -50,16 +56,10 @@ import WordMorph from "../components/WordMorph.astro";
     background-color: var(--blueish);
     background-color: var(--clr-accent);
     background-color: var(--yang);
-    background-blend-mode: hard-light;
-    background-blend-mode: color-dodge;
-    background-blend-mode: color-burn;
-
     background-repeat: no-repeat;
     background-size: cover;
-
-    display: flex;
-    justify-content: space-between;
-    flex-direction: column;
+    background-blend-mode: hard-light;
+    background-blend-mode: var(--blend-mode);
 
     &::before {
       content: "";
@@ -96,7 +96,7 @@ import WordMorph from "../components/WordMorph.astro";
 
   @keyframes gradient-change {
     to {
-      --clr-accent: oklch(60% 0.29 149);
+      --clr-accent: oklch(30% 0.29 149);
       --white: oklch(90% 0 91);
     }
   }
@@ -104,7 +104,7 @@ import WordMorph from "../components/WordMorph.astro";
   section {
     --hdr-gradient: radial-gradient(
       farthest-corner circle at 50% 50% in oklab,
-      var(--yin) 12% 12%,
+      var(--clr-accent) 12% 12%,
       var(--yang) 56% 56%
     );
     --sdr-gradient: radial-gradient(
@@ -127,7 +127,7 @@ import WordMorph from "../components/WordMorph.astro";
     left: 0;
 
     @media (prefers-reduced-motion: no-preference) {
-      animation: gradient-change 4s linear infinite alternate;
+      animation: gradient-change 10s linear infinite alternate;
     }
 
     .inner {

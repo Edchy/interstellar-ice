@@ -5,8 +5,12 @@ import { Image } from "astro:assets";
 console.log(frontmatter);
 ---
 
-<PageLayout title={frontmatter.title}>
+<PageLayout
+  description={frontmatter.description}
+  title={`Blog | ${frontmatter.title}`}
+>
   <h1>{frontmatter.title}</h1>
+  <h2>{frontmatter.x}</h2>
   <p>Published on: {frontmatter.pubDate.toString().slice(0, 10)}</p>
 
   <p>Written by {frontmatter.author}</p>

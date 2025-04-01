@@ -1,0 +1,14 @@
+---
+import { Icon } from "astro-icon/components";
+---
+
+<footer>
+  No &copy; <span class="copyright"></span> Nøpe. No rights reserved.
+  <Icon name="menu-2" />
+</footer>
+
+<script>
+  document.querySelector(".copyright")!.innerHTML = new Date()
+    .getFullYear()
+    .toString();
+</script>

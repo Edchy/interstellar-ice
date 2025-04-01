@@ -10,6 +10,10 @@
    initial-value: oklch(98% 0 91);
  }
 
+ :root[style*="color-scheme: dark"] {
+   --blend-mode: color-dodge;
+ }
+
  :root {
    --black: oklch(18.22% 0 0);
    --black: oklch(10% 0.29 149);
@@ -36,7 +40,7 @@
    --blueish2: light-dark(var(--blu), var(--blu2));
 
 
-
+   --blend-mode: color-burn;
 
 
    /* typography */

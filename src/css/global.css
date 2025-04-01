@@ -35,6 +35,11 @@
   padding: 0;
 }
 
+::selection {
+  background-color: var(--clr-accent);
+  color: var(--clr-accent);
+}
+
 html {
   interpolate-size: allow-keywords;
   color-scheme: dark light;

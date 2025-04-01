@@ -1,24 +1,18 @@
 ---
+import { Icon } from "astro-icon/components";
+
 const { anchor } = Astro.props;
 ---
 
-<a href={anchor} class="back-to-top">
+<a href={anchor} class="back-to-top" aria-label="Back to top">
   <!-- aria-hidden="true" to hide the icon from screen readers -->
   <span class="hidden">Back to top</span>
-  <svg
-    xmlns="http://www.w3.org/2000/svg"
-    width="20"
-    height="20"
-    viewBox="0 0 24 24"
-    ><!-- Icon from Tabler Icons by Paweł Kuna - https://github.com/tabler/tabler-icons/blob/master/LICENSE -->
-    <path
-      fill="none"
-      stroke="currentColor"
-      stroke-linecap="round"
-      stroke-linejoin="round"
-      stroke-width="2"
-      d="M12 5v14m4-4l-4 4m-4-4l4 4"></path></svg
-  >
+  <Icon
+    name="ri:arrow-down-s-line"
+    size={24}
+    color={"var(--yin)"}
+    aria-hidden="true"
+  />
 </a>
 <style>
   @property --angle {
