@@ -10,7 +10,7 @@ import BigRedButton2 from "../components/BigRedButton2.astro";
 import Head from "./Head.astro";
 import Footer from "./Footer.astro";
 
-const { title, description } = Astro.props;
+const { title, description, showAside } = Astro.props;
 ---
 
 <!doctype html>
@@ -34,15 +34,17 @@ const { title, description } = Astro.props;
       </div>
       <aside>
         <div class="inner">
-          <!-- <BigRedButton2 /> -->
-          <p>아니 사진관</p>
-          <!-- <p>いいえ。</p> -->
-          <nav class="socials">
-            <Socials />
-          </nav>
-          <ScrollProgressIndicator anchor="#page-top" />
-        </div>
-      </aside>
+            {showAside && (
+        <!-- <BigRedButton2 /> -->
+        <p>아니 사진관</p>
+        <!-- <p>いいえ。</p> -->
+        <nav class="socials">
+          <Socials />
+        </nav>
+      )}
+        <ScrollProgressIndicator anchor="#page-top" />
+          </div>
+        </aside>
     </div>
     <!-- <Footer /> -->
   </body>
@@ -64,7 +66,9 @@ const { title, description } = Astro.props;
   }
 
   .inner {
-    padding: 1rem;
+    padding-block: 1rem;
+    padding-inline-start: 1rem;
+    padding-inline-end: .5rem;
     display: flex;
     justify-content: space-between;
     align-items: center;

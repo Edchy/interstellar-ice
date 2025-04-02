@@ -1,37 +1,109 @@
 ---
 const { frontmatter } = Astro.props;
+const { title, readtime } = frontmatter;
 import PageLayout from "./PageLayout.astro";
 import { Image } from "astro:assets";
-console.log(frontmatter);
+import { capitalizeFirstLetter } from "../utils";
+console.log(frontmatter.image);
 ---
 
 <PageLayout
   description={frontmatter.description}
   title={`Blog | ${frontmatter.title}`}
+  showAside={false}
 >
-  <h1>{frontmatter.title}</h1>
-  <h2>{frontmatter.x}</h2>
-  <p>Published on: {frontmatter.pubDate.toString().slice(0, 10)}</p>
+  <main>
+    <div class="inner content-grid">
+      {
+        frontmatter.image && (
+          <Image
+            src={frontmatter.image.url}
+            width={400}
+            height={200}
+            alt=""
+            class="full-bleed"
+          />
+        )
+      }
+      <h1 class="">{capitalizeFirstLetter(title)}</h1>
+      <div class="tags">
+        {
+          frontmatter.tags.map((tag: string) => (
+            <p class="tag">
+              <a href={`/tags/${tag}`}>{tag}</a>
+            </p>
+          ))
+        }
+        <span class="read-time">{readtime} min read</span>
+      </div>
+      <p>Published on: {frontmatter.pubDate.toString().slice(0, 10)}</p>
 
-  <p>Written by {frontmatter.author}</p>
-  <div class="tags">
-    {
-      frontmatter.tags.map((tag: string) => (
-        <p class="tag">
-          <a href={`/tags/${tag}`}>{tag}</a>
-        </p>
-      ))
-    }
-  </div>
-  <!-- <img src={frontmatter.image.url} alt="" /> -->
-  <Image src={frontmatter.image.url} width={600} height={400} alt="" />
-  <slot />
+      <!-- <img src={frontmatter.image.url} alt="" /> -->
+      <div class="content">
+        <slot />
+      </div>
+    </div>
+  </main>
 </PageLayout>
 
 <style>
-  h1 {
-    color: green;
+  .read-time {
+    display: block;
+    margin-left: auto;
+    font-style: italic;
+    font-size: 0.75rem;
+    background-color: var(--yin);
+    color: var(--yang);
+    padding: 0.25rem 0.5rem;
   }
+  .inner {
+    /* max-width: 65ch; */
+    margin: 0 auto;
+  }
+  .tags {
+    display: flex;
+    gap: 0.25rem;
+  }
+  .tag {
+    a {
+      text-decoration: none;
+      color: var(--yang);
+      background-color: var(--yin);
+      padding: 0.25rem 0.5rem;
+      /* border-radius: var(--radius); */
+    }
+  }
+  .content {
+    /* column-count: 2; */
+    p {
+      text-align: justify;
+    }
+  }
+  main {
+  }
+  h1 {
+    text-box: trim-both cap alphabetic;
+
+    font-family: "Kass", cursive;
+    font-family: var(--font-body);
+    /* max-width: 900px; */
+    /* margin: 0 auto; */
+    /* letter-spacing: 2px;  */
+    /* font-weight: 900; */
+    line-height: 0.9;
+    /* text-wrap: balance; */
+    /* text-align: center; */
+    /* text-transform: uppercase; */
+    font-size: clamp(2.5rem, 5vw + 1rem, 4rem);
+    /* padding-block: 1rem; */
+    /* grid-column: span 2; */
+
+    @media (width > 600px) {
+      font-size: var(--text-huge);
+      font-size: 6rem;
+    }
+  }
+
   p {
     font-family: var(--font-heading);
     font-family: monospace;
@@ -39,5 +111,48 @@ console.log(frontmatter);
 
   img {
     object-fit: cover;
+    width: 100%;
+  }
+
+  .content-grid {
+    --padding-inline: 1rem;
+    --content-max-width: 75ch;
+    --breakout-max-width: 140ch;
+
+    --breakout-size: calc(
+      (var(--breakout-max-width) - var(--content-max-width)) / 2
+    );
+
+    display: grid;
+    grid-template-columns:
+      [full-bleed-start] minmax(var(--padding-inline), 1fr)
+      [breakout-start] minmax(0, var(--breakout-size)) [content-start] min(
+        100% - (var(--padding-inline) * 2),
+        var(--content-max-width)
+      )
+      [content-end] minmax(0, var(--breakout-size)) [breakout-end] minmax(
+        var(--padding-inline),
+        1fr
+      )
+      [full-bleed-end];
+
+    row-gap: var(--gap-m);
+    @media (width > 900px) {
+    }
+  }
+
+  .content-grid > :not(.full-bleed, .breakout),
+  .full-bleed > :not(.full-bleed, .breakout) {
+    grid-column: content;
+  }
+
+  .content-grid > .full-bleed {
+    grid-column: full-bleed;
+    display: grid;
+    grid-template-columns: inherit;
+  }
+
+  .content-grid > .breakout {
+    grid-column: breakout;
   }
 </style>
