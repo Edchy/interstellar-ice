@@ -4,7 +4,6 @@ import { capitalizeFirstLetter } from "@/utils/utils";
 import { string_to_slug } from "@/utils/utils";
 
 const { frontmatter } = Astro.props;
-const { title, minutesRead, description, pubDate, author, tags } = frontmatter;
 
 interface Props {
   frontmatter: {
@@ -16,6 +15,7 @@ interface Props {
     minutesRead: string;
   };
 }
+const { title, minutesRead, description, pubDate, author, tags } = frontmatter;
 ---
 
 <PageLayout

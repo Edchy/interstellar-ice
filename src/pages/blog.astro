@@ -7,11 +7,14 @@ import { getCollection } from "astro:content";
 //   import.meta.glob("./posts/*.md", { eager: true })
 // );
 const allPosts = await getCollection("posts");
+console.log("all", allPosts[0]);
 
 allPosts.sort(
   (a, b) =>
     new Date(b.data.pubDate).valueOf() - new Date(a.data.pubDate).valueOf()
 );
+
+console.log(allPosts);
 ---
 
 <PageLayout title="Blog" description="Blog posts about various topics">
