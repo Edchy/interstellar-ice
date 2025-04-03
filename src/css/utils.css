@@ -3,6 +3,10 @@
   background: hsl(0 100% 50% / .1)
 }
 
+.flow>*+* {
+  margin-top: var(--flow-space, 1em);
+}
+
 .flex {
   display: flex;
   align-items: center;

@@ -1,0 +1,28 @@
+---
+import Cicada from "../components/Cicada.astro";
+import PageLayout from "../layouts/PageLayout.astro";
+---
+
+<PageLayout showAside={true} title="404" description="Page not found">
+  <section>
+    <h1>404</h1>
+    <p>sorry that page is gone</p>
+    <Cicada />
+  </section>
+</PageLayout>
+
+<style>
+  section {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+  }
+
+  h1 {
+    font-size: var(--text-huge);
+    color: var(--clr-accent);
+  }
+</style>

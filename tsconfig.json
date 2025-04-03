@@ -7,7 +7,7 @@
     // ...other options
     "baseUrl": ".",
     "paths": {
-      "@/*": ["./*"]
+      "@/*": ["src/*"]
     }
   }
   

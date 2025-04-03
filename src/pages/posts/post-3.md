@@ -1,5 +1,5 @@
 ---
-layout: ../../layouts/MDPostLayout.astro
+layout: ../../layouts/bloglayouts/MDPostLayout.astro
 title: "Container Queries, Why not?"
 pubDate: 2022-07-01
 description: "This is the first post of my new Astro blog."

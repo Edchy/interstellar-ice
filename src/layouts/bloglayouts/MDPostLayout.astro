@@ -1,10 +1,22 @@
 ---
+import PageLayout from "@/layouts/PageLayout.astro";
+import { capitalizeFirstLetter } from "@/utils";
+import { string_to_slug } from "@/utils";
+import type { MarkdownLayoutProps } from "astro";
+
 const { frontmatter } = Astro.props;
 const { title, readtime } = frontmatter;
-import PageLayout from "./PageLayout.astro";
-import { Image } from "astro:assets";
-import { capitalizeFirstLetter } from "../utils";
-console.log(frontmatter.image);
+
+type Props = MarkdownLayoutProps<{
+  // Define frontmatter props here
+  title: string;
+  author: string;
+  date: string;
+  readtime: number;
+  tags: string[];
+  description: string;
+  pubDate: Date;
+}>;
 ---
 
 <PageLayout
@@ -13,18 +25,7 @@ console.log(frontmatter.image);
   showAside={false}
 >
   <main>
-    <div class="inner content-grid">
-      {
-        frontmatter.image && (
-          <Image
-            src={frontmatter.image.url}
-            width={400}
-            height={200}
-            alt=""
-            class="full-bleed"
-          />
-        )
-      }
+    <header class="inner post-header content-grid">
       <h1 class="">{capitalizeFirstLetter(title)}</h1>
       <div class="tags">
         {
@@ -36,13 +37,18 @@ console.log(frontmatter.image);
         }
         <span class="read-time">{readtime} min read</span>
       </div>
-      <p>Published on: {frontmatter.pubDate.toString().slice(0, 10)}</p>
-
-      <!-- <img src={frontmatter.image.url} alt="" /> -->
-      <div class="content">
+      <p>
+        Published on: {frontmatter.pubDate.toString().slice(0, 10)} by <a
+          href={`/author/${string_to_slug(frontmatter.author)}`}
+          >{frontmatter.author}</a
+        >
+      </p>
+    </header>
+    <section class="content-grid">
+      <div class="post-content flow">
         <slot />
       </div>
-    </div>
+    </section>
   </main>
 </PageLayout>
 
@@ -52,16 +58,11 @@ console.log(frontmatter.image);
     margin-left: auto;
     font-style: italic;
     font-size: 0.75rem;
-    background-color: var(--yin);
-    color: var(--yang);
-    padding: 0.25rem 0.5rem;
   }
-  .inner {
-    /* max-width: 65ch; */
-    margin: 0 auto;
-  }
+
   .tags {
     display: flex;
+    flex-wrap: wrap;
     gap: 0.25rem;
   }
   .tag {
@@ -70,48 +71,34 @@ console.log(frontmatter.image);
       color: var(--yang);
       background-color: var(--yin);
       padding: 0.25rem 0.5rem;
-      /* border-radius: var(--radius); */
     }
   }
-  .content {
-    /* column-count: 2; */
+  .post-content {
+    --flow-space: 3em;
+    padding-bottom: 10rem;
+
     p {
       text-align: justify;
     }
-  }
-  main {
-  }
-  h1 {
-    text-box: trim-both cap alphabetic;
 
-    font-family: "Kass", cursive;
-    font-family: var(--font-body);
-    /* max-width: 900px; */
-    /* margin: 0 auto; */
-    /* letter-spacing: 2px;  */
-    /* font-weight: 900; */
-    line-height: 0.9;
-    /* text-wrap: balance; */
-    /* text-align: center; */
-    /* text-transform: uppercase; */
-    font-size: clamp(2.5rem, 5vw + 1rem, 4rem);
-    /* padding-block: 1rem; */
-    /* grid-column: span 2; */
-
-    @media (width > 600px) {
-      font-size: var(--text-huge);
-      font-size: 6rem;
+    pre {
+      /* background-color: var(--blueish) !important; */
+      padding: 1rem;
     }
   }
 
-  p {
+  h1 {
+    text-box: trim-both cap alphabetic;
+    font-family: "Kass", cursive;
     font-family: var(--font-heading);
-    font-family: monospace;
-  }
+    line-height: 0.9;
+    text-wrap: balance;
+    font-size: clamp(2.5rem, 5vw + 1rem, 4rem);
 
-  img {
-    object-fit: cover;
-    width: 100%;
+    @media (width > 500px) {
+      font-size: var(--text-huge);
+      font-size: 6rem;
+    }
   }
 
   .content-grid {
