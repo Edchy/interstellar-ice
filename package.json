@@ -14,6 +14,8 @@
     "@iconify-json/ri": "^1.2.5",
     "astro": "^5.2.5",
     "astro-icon": "^1.1.5",
-    "open-props": "^1.7.12"
+    "mdast-util-to-string": "^4.0.0",
+    "open-props": "^1.7.12",
+    "reading-time": "^1.5.0"
   }
 }

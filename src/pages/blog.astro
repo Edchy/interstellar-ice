@@ -1,9 +1,16 @@
 ---
 import PageLayout from "../layouts/PageLayout.astro";
 import BlogPost from "../components/BlogPost.astro";
+import { getCollection } from "astro:content";
 
-const allPosts: any[] = Object.values(
-  import.meta.glob("./posts/*.md", { eager: true })
+// const allPosts: any[] = Object.values(
+//   import.meta.glob("./posts/*.md", { eager: true })
+// );
+const allPosts = await getCollection("posts");
+
+allPosts.sort(
+  (a, b) =>
+    new Date(b.data.pubDate).valueOf() - new Date(a.data.pubDate).valueOf()
 );
 ---
 
@@ -11,7 +18,7 @@ const allPosts: any[] = Object.values(
   <main>
     {
       allPosts.map((post) => {
-        return <BlogPost title={post.frontmatter.title} url={post.url} />;
+        return <BlogPost title={post.data.title} url={`/posts/${post.slug}`} />;
       })
     }
   </main>

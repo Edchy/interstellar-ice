@@ -1,11 +1,9 @@
 ---
-layout: ../../layouts/bloglayouts/MDPostLayout.astro
 title: "OKLpCH"
-pubDate: 2022-07-01
+pubDate: 2022-08-01
 description: "This is the first post of my new Astro blog."
 author: "Astro Learner"
 tags: ["astro", "blogging", "learning in public"]
-readtime: 5
 ---
 
 After a successful first week learning Astro, I decided to try some more. I wrote and imported a small component from memory!

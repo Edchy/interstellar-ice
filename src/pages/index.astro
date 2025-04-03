@@ -19,8 +19,10 @@ import WordMorph from "../components/WordMorph.astro";
     <WordMorph />
 
     <p>
-      I'm a web designer & developer. I build websites, apps, interfaces, and
-      make digital things work (most of the time).
+      No, but really. I’m an aspiring web designer & developer — not an
+      architect or a god. I design and build websites, apps, and interfaces that
+      (usually) work.
+      <a href="mailto:example@example.com"> (contact?)</a>
     </p>
   </main>
   <section>
@@ -37,7 +39,7 @@ import WordMorph from "../components/WordMorph.astro";
   p {
     /* letter-spacing: 2px; */
     font-family: var(--font-heading);
-    font-size: 1rem;
+    font-size: clamp(0.875rem, 1.5vw, 1rem);
     font-style: italic;
     text-wrap: pretty;
     line-height: 1.2;
@@ -46,6 +48,19 @@ import WordMorph from "../components/WordMorph.astro";
     align-self: flex-end;
     color: var(--yin);
     z-index: 2;
+
+    a:any-link {
+      color: var(--clr-accent);
+      text-decoration: none;
+      font-weight: bold;
+      transition: text-decoration 0.2s ease-in-out;
+      text-align: right;
+
+      &:hover {
+        text-decoration: underline;
+        text-underline-offset: 0.25em;
+      }
+    }
   }
   main {
     position: relative;

@@ -1,27 +1,26 @@
 ---
 import PageLayout from "@/layouts/PageLayout.astro";
-import { capitalizeFirstLetter } from "@/utils";
-import { string_to_slug } from "@/utils";
-import type { MarkdownLayoutProps } from "astro";
+import { capitalizeFirstLetter } from "@/utils/utils";
+import { string_to_slug } from "@/utils/utils";
 
 const { frontmatter } = Astro.props;
-const { title, readtime } = frontmatter;
+const { title, minutesRead, description, pubDate, author, tags } = frontmatter;
 
-type Props = MarkdownLayoutProps<{
-  // Define frontmatter props here
-  title: string;
-  author: string;
-  date: string;
-  readtime: number;
-  tags: string[];
-  description: string;
-  pubDate: Date;
-}>;
+interface Props {
+  frontmatter: {
+    title: string;
+    description: string;
+    author: string;
+    pubDate: Date;
+    tags: string[];
+    minutesRead: string;
+  };
+}
 ---
 
 <PageLayout
-  description={frontmatter.description}
-  title={`Blog | ${frontmatter.title}`}
+  description={description}
+  title={`Blog | ${title}`}
   showAside={false}
 >
   <main>
@@ -29,18 +28,18 @@ type Props = MarkdownLayoutProps<{
       <h1 class="">{capitalizeFirstLetter(title)}</h1>
       <div class="tags">
         {
-          frontmatter.tags.map((tag: string) => (
+          tags.map((tag: string) => (
             <p class="tag">
               <a href={`/tags/${tag}`}>{tag}</a>
             </p>
           ))
         }
-        <span class="read-time">{readtime} min read</span>
+
+        <span class="read-time">{minutesRead}</span>
       </div>
       <p>
-        Published on: {frontmatter.pubDate.toString().slice(0, 10)} by <a
-          href={`/author/${string_to_slug(frontmatter.author)}`}
-          >{frontmatter.author}</a
+        Published on: {pubDate.toString().slice(0, 10)} by <a
+          href={`/author/${string_to_slug(author)}`}>{author}</a
         >
       </p>
     </header>

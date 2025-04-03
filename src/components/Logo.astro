@@ -8,7 +8,8 @@ import logo from "../assets/img/pet.svg";
 
   <a href="/">
     <span>nøpe</span>
-    <span>studios</span>
+    <!-- <span>NØPE</span> -->
+    <span>studio</span>
   </a>
 
   <!-- <span>e</span><span style="color: var(--clr-primary-500)">three</span><span
@@ -28,8 +29,14 @@ import logo from "../assets/img/pet.svg";
     font-family: "Kass", sans-serif;
     text-transform: uppercase;
   } */
-  .logo img {
-    filter: brightness(var(--x)) invert(var(--y)); /* This turns black to white */
+  .logo {
+    display: block;
+    transform: translate(0);
+    transition: all 0.5s ease-in-out;
+
+    @starting-style {
+      transform: translateY(-200%);
+    }
   }
 
   .logo a:any-link {
@@ -37,11 +44,12 @@ import logo from "../assets/img/pet.svg";
     flex-direction: column;
     text-decoration: none;
     line-height: 0.9;
-    font-size: 1.5rem;
+    font-size: 2rem;
     font-weight: bold;
     /* margin-top: 1rem; */
     color: var(--clr-accent);
     color: var(--yin);
+    font-family: var(--font-brand);
     font-family: var(--font-heading);
 
     @media (width > 1200px) {

@@ -1,5 +1,6 @@
 // @ts-check
 import { defineConfig } from "astro/config";
+import { remarkReadingTime } from "./src/utils/readingtime";
 
 import icon from "astro-icon";
 
@@ -16,6 +17,7 @@ export default defineConfig({
     shikiConfig: {
       theme: "dracula",
     },
+    remarkPlugins: [remarkReadingTime],
   },
 
   integrations: [icon()],

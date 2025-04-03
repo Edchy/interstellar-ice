@@ -1,0 +1,24 @@
+---
+import { getCollection, type CollectionEntry } from "astro:content";
+import MDPostLayout from "../../layouts/bloglayouts/MDPostLayout.astro";
+
+export async function getStaticPaths() {
+  const posts = await getCollection("posts");
+  return posts.map((post) => ({
+    params: { slug: post.slug },
+    props: { post },
+  }));
+}
+
+const { post } = Astro.props;
+const { Content, remarkPluginFrontmatter } = await post.render();
+// Combine the original data with the data from the remark plugin
+const combinedFrontmatter = {
+  ...post.data,
+  minutesRead: remarkPluginFrontmatter.minutesRead,
+};
+---
+
+<MDPostLayout frontmatter={combinedFrontmatter}>
+  <Content />
+</MDPostLayout>
