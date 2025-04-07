@@ -1,34 +1,15 @@
 ---
+import BlogPostDisplay from "@/components/BlogPostDisplay.astro";
 import PageLayout from "../layouts/PageLayout.astro";
-import BlogPost from "../components/BlogPost.astro";
-import { getCollection } from "astro:content";
-
-// const allPosts: any[] = Object.values(
-//   import.meta.glob("./posts/*.md", { eager: true })
-// );
-const allPosts = await getCollection("posts");
-console.log("all", allPosts[0]);
-
-allPosts.sort(
-  (a, b) =>
-    new Date(b.data.pubDate).valueOf() - new Date(a.data.pubDate).valueOf()
-);
-
-console.log(allPosts);
 ---
 
-<PageLayout title="Blog" description="Blog posts about various topics">
+<PageLayout
+  title="Blog"
+  description="Blog posts about various topics, mostyly about web development."
+>
   <main>
-    {
-      allPosts.map((post) => {
-        return <BlogPost title={post.data.title} url={`/posts/${post.slug}`} />;
-      })
-    }
+    <BlogPostDisplay />
   </main>
 </PageLayout>
 
-<style>
-  main {
-    background-color: aliceblue;
-  }
-</style>
+<style></style>

@@ -4,6 +4,7 @@ import { defineCollection, z } from "astro:content";
 // Define schema separately
 const postSchema = z.object({
   title: z.string(),
+  subtitle: z.string().optional(),
   pubDate: z.date(),
   description: z.string(),
   author: z.string(),

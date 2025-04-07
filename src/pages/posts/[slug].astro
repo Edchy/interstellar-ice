@@ -5,13 +5,12 @@ import MDPostLayout from "../../layouts/bloglayouts/MDPostLayout.astro";
 export async function getStaticPaths() {
   const posts = await getCollection("posts");
   return posts.map((post) => ({
-    params: { slug: (post as any).slug },
+    params: { slug: post.slug },
     props: { post },
   }));
 }
 
 const { post } = Astro.props;
-console.log("HAHAHA", (post as any).slug);
 const { Content, remarkPluginFrontmatter } = await post.render();
 // Combine the original data with the data from the remark plugin
 const combinedFrontmatter = {

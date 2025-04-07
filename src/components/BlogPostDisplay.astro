@@ -1,0 +1,57 @@
+---
+import { getCollection, type CollectionEntry } from "astro:content";
+import { formatDate } from "@/utils/utils";
+interface Props {
+  filteredPosts?: CollectionEntry<"posts">[]; // Make posts optional
+  tag?: string;
+}
+const { filteredPosts, tag } = Astro.props as Props;
+
+const allPosts = filteredPosts || (await getCollection("posts"));
+
+allPosts.sort(
+  (a, b) =>
+    new Date(b.data.pubDate).valueOf() - new Date(a.data.pubDate).valueOf()
+);
+---
+
+<h1>Blog {tag ? `/ ${tag}` : ""}</h1>
+<div class="grid">
+  {
+    allPosts.map((post) => {
+      return (
+        <article class="blog-post">
+          <a href={`/posts/${post.slug}`} class="card">
+            <h2>{post.data.title}</h2>
+            {post.data.subtitle && <h3>{post.data.subtitle}</h3>}
+            <p>{formatDate(post.data.pubDate)}</p>
+            <p>{post.data.description}</p>
+          </a>
+        </article>
+      );
+    })
+  }
+</div>
+
+<style>
+  h1 {
+    font-size: var(--text-huge);
+  }
+  .grid {
+    margin-block-start: 1.5rem;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 1rem;
+  }
+  article {
+    background-color: var(--blueish);
+    padding: 1rem;
+    border-radius: var(--radius);
+    /* max-width: 400px; */
+  }
+  a:any-link {
+    text-decoration: none;
+    color: var(--white);
+    /* color: inherit; */
+  }
+</style>

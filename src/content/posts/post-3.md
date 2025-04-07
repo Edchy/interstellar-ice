@@ -1,8 +1,8 @@
 ---
 title: "Container Queries, Why not?"
 pubDate: 2024-07-01
-description: "This is the first post of my new Astro blog."
-author: "Astro Learner"
+description: "This is the first post of my new Astro blog. This is the first post of my new Astro blog. This is the first post of my new Astro blog. This is the first post of my new Astro blog. This is the first post of my new Astro blog. This is the first post of my new Astro blog."
+author: "E3E"
 tags: ["astro", "CSS"]
 ---
 

@@ -1,10 +1,12 @@
 ---
 import { Image } from "astro:assets";
 import Nik from "@/assets/img/nik.gif";
+const { title } = Astro.props;
 ---
 
 <div class="card" data-active="false">
-  <img src="nik.gif" alt="" />
+  <img src="img/2.jpeg" alt="" />
+  <p>{title}</p>
   <!-- <Image src={Nik} alt="Nik" /> -->
 </div>
 <script>
@@ -16,16 +18,14 @@ import Nik from "@/assets/img/nik.gif";
 
   const UPDATE = ({ x, y }: { x: number; y: number }) => {
     const BOUNDS = CARD.getBoundingClientRect();
-    // Calculate the range between the center and the pointer position.
+
     const posX = x - BOUNDS.x;
     const posY = y - BOUNDS.y;
     const ratioX = posX / BOUNDS.width;
     const ratioY = posY / BOUNDS.height;
-    // CARD.style.setProperty('--x', posX)
-    // CARD.style.setProperty('--y', posY)
+
     CARD.style.setProperty("--ratio-x", ratioX.toString());
     CARD.style.setProperty("--ratio-y", ratioY.toString());
-    // console.info({ posX, posY })
   };
 
   document.body.addEventListener("pointermove", UPDATE);
@@ -48,7 +48,7 @@ import Nik from "@/assets/img/nik.gif";
   });
 </script>
 <style>
-  div {
+  .card {
     perspective: 100vmin;
   }
 
@@ -109,7 +109,7 @@ import Nik from "@/assets/img/nik.gif";
   .card:before {
     content: "";
     background:
-      url("@/icons/sun.svg") 0 0 / 18% 18%,
+      url("favicon.svg") 0 0 / 18% 18%,
       linear-gradient(
           115deg,
           transparent 20%,

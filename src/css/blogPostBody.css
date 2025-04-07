@@ -1,0 +1,42 @@
+  .post-content {
+    --flow-space: 1.5em;
+    padding-bottom: 10rem;
+    font-family: "Newsreader", sans-serif;
+
+
+
+    p {
+      /* text-align: justify; */
+      text-wrap: pretty;
+      font-weight: 500;
+      font-size: 1.25rem;
+      line-height: 1.4;
+    }
+
+    &>p {
+      &:first-child:first-letter {
+        initial-letter: 2;
+        -webkit-inital-letter: 2;
+        padding-right: .25rem;
+      }
+
+      @supports not (initial-letter: 2) {
+        &:first-child:first-letter {
+          font-size: 5rem;
+          float: left;
+          line-height: 0.8;
+          padding-right: .25rem;
+          margin-top: 4px;
+        }
+      }
+    }
+
+    pre {
+      background-color: var(--blueish) !important;
+      padding: 1rem;
+
+      code {
+        font-family: "Kass", ui-monospace, 'Cascadia Code', 'Source Code Pro', Menlo, Consolas, 'DejaVu Sans Mono', monospace;
+      }
+    }
+  }

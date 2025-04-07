@@ -20,3 +20,11 @@ export function string_to_slug(str: string) {
 
   return str;
 }
+
+export function formatDate(date: Date): string {
+  return new Date(date).toLocaleDateString("en-US", {
+    month: "short",
+    day: "numeric",
+    year: "numeric",
+  });
+}

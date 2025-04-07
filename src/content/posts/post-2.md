@@ -6,7 +6,8 @@ author: "Astro Learner"
 tags: ["astro", "blogging", "learning in public"]
 ---
 
-After a successful first week learning Astro, I decided to try some more. I wrote and imported a small component from memory!
+Efter a successful first week learning Astro, I decided to try some more. I wrote and imported a small component from memory!
+Lorem ipsum dolor sit amet consectetur adipisicing elit. Reprehenderit ea suscipit reiciendis libero illum provident cupiditate iusto nostrum aperiam dolorum inventore doloremque a repellat vel alias earum amet corporis sequi facere eligendi repudiandae et, laboriosam nulla? Aperiam, deserunt adipisci? Vitae fuga saepe esse maxime illo praesentium obcaecati, sed, amet ad accusantium provident tempora natus voluptate corporis possimus? Iste, saepe aut! Ipsam
 
 # Hello World
 
