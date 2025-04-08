@@ -4,9 +4,25 @@ import { Icon } from "astro-icon/components";
 
 <footer>
   No &copy; <span class="copyright"></span> Nøpe. No rights reserved.
-  <Icon name="menu-2" />
+  <!-- <Icon name="menu-2" /> -->
+  <p>
+    Lorem, ipsum dolor sit amet consectetur adipisicing elit. Quasi et nam
+    placeat numquam perspiciatis incidunt consequatur deleniti modi quisquam
+    earum animi a ullam dolorum aliquid maiores, accusamus laudantium tenetur
+    eos nostrum possimus saepe architecto voluptate inventore deserunt? Unde,
+    maxime dolorum!
+  </p>
 </footer>
-
+<style>
+  footer {
+    color: var(--clr-accent);
+    padding-block-start: 20rem;
+    /* width: 100%;
+    height: 30px;
+    position: absolute;
+    bottom: 0; */
+  }
+</style>
 <script>
   document.querySelector(".copyright")!.innerHTML = new Date()
     .getFullYear()

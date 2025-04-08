@@ -6,7 +6,6 @@ import Socials from "../components/Socials.astro";
 import Logo from "../components/Logo.astro";
 import ThemeToggle from "../components/ThemeToggle.astro";
 import Burger from "../components/Burger.astro";
-import BigRedButton2 from "../components/BigRedButton2.astro";
 import Head from "./Head.astro";
 import Footer from "./Footer.astro";
 
@@ -29,13 +28,15 @@ const { title, description, showAside } = Astro.props;
           <!-- <p>x</p> -->
         </div>
       </header>
+    
       <div>
         <slot />
+          
+
       </div>
       <aside>
         <div class="inner">
-            {showAside && (
-        <!-- <BigRedButton2 /> -->
+        {showAside && (
         <p>아니 사진관</p>
         <!-- <p>いいえ。</p> -->
         <nav class="socials">
@@ -46,7 +47,7 @@ const { title, description, showAside } = Astro.props;
           </div>
         </aside>
     </div>
-    <!-- <Footer /> -->
+    <Footer />
   </body>
 </html>
 
@@ -96,7 +97,7 @@ const { title, description, showAside } = Astro.props;
       align-items: center;
     }
     header {
-      height: 100vb;
+      /* height: 100vb; */
     }
 
     aside {

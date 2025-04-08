@@ -21,7 +21,7 @@ import { Icon } from "astro-icon/components";
     width: 100%;
     height: 100%;
     border-radius: var(--radius);
-    background: hsl(0deg 0% 0% / 0.25);
+    /* background: hsl(0deg 0% 0% / 0.25); */
     will-change: transform;
     transform: translateY(2px);
     transition: transform 600ms cubic-bezier(0.3, 0.7, 0.4, 1);
@@ -33,20 +33,21 @@ import { Icon } from "astro-icon/components";
     width: 100%;
     height: 100%;
     border-radius: var(--radius);
+    background-color: transparent;
     /* background: linear-gradient(
       to left,
       hsl(340deg 100% 16%) 0%,
       hsl(340deg 100% 32%) 8%,
       hsl(340deg 100% 32%) 92%,
       hsl(340deg 100% 16%) 100%
-    ); */
+    );
     background: linear-gradient(
       to left,
       oklch(from var(--clr-accent) calc(l - 0.3) c h) 0%,
       oklch(from var(--clr-accent) calc(l - 0.6) c h) 8%,
       oklch(from var(--clr-accent) calc(l - 0.6) c h) 92%,
       oklch(from var(--clr-accent) calc(l - 0.3) c h) 100%
-    );
+    ); */
   }
   .front {
     display: block;
@@ -197,7 +198,7 @@ import { Icon } from "astro-icon/components";
   }
 
   /* Temperature effect */
-  .hot {
+  /* .hot {
     position: fixed;
     bottom: 0;
     left: 0;
@@ -211,21 +212,25 @@ import { Icon } from "astro-icon/components";
 
   .hot.active {
     height: 100%;
-  }
+  } */
 </style>
 
-<button class="pushable" id="melt-button">
+<!-- <span class="front">Don't press!</span>
+    -->
+<li class="pushable" id="melt-button">
   <span class="shadow"></span>
   <span class="edge"></span>
-  <span class="front">Don't press!</span>
-</button>
+  <a aria-label="linkedin" href="">
+    <Icon name="ri:linkedin-line" size={24} color={"var(--yin)"} />
+  </a>
+</li>
 
-<div class="hot" id="hot-effect"></div>
+<!-- <div class="hot" id="hot-effect"></div> -->
 
 <script>
   document.addEventListener("DOMContentLoaded", () => {
     const meltButton = document.getElementById("melt-button");
-    const hotEffect = document.getElementById("hot-effect");
+    // const hotEffect = document.getElementById("hot-effect");
     let meltingActive = false;
 
     meltButton?.addEventListener("click", () => {
@@ -237,7 +242,7 @@ import { Icon } from "astro-icon/components";
       document.body.classList.add("melting-active");
 
       // Show hot effect
-      hotEffect?.classList.add("active");
+      // hotEffect?.classList.add("active");
 
       // Target elements to melt
       const allElements = document.querySelectorAll(
@@ -337,10 +342,21 @@ import { Icon } from "astro-icon/components";
       setTimeout(() => {
         const pre = document.createElement("pre");
         const btn = document.createElement("button");
+        const message = document.createElement("div");
+        message.style.color = "var(--white)";
+        message.style.position = "fixed";
+        message.style.top = "5%";
+        message.style.fontSize = "4rem";
+        message.style.fontWeight = "bold";
+        message.style.zIndex = "998";
+
+        message.textContent =
+          "im not a whore, i dont use likned inn because its the fucking root of all evil and it represents everything that is wrong with this world";
+
         btn.onclick = () => {
           location.reload();
         };
-        btn.textContent = "hepl";
+        btn.textContent = "ok chill take me back";
         pre.style.fontFamily = "monospace";
         pre.style.fontSize = "1rem";
         pre.style.color = "var(--clr-accent)";
@@ -351,9 +367,9 @@ import { Icon } from "astro-icon/components";
         pre.style.top = "0";
         btn.style.zIndex = "1000";
         btn.style.position = "fixed";
-        btn.style.top = "50%";
-        btn.style.left = "50%";
-        btn.style.transform = "translate(-50%, -50%)";
+        btn.style.top = "10px";
+        btn.style.right = "10px";
+        // btn.style.transform = "translate(-50%, -50%)";
         btn.style.backgroundColor = "var(--clr-accent)";
         btn.style.color = "white";
         btn.style.border = "none";
@@ -362,7 +378,7 @@ import { Icon } from "astro-icon/components";
         btn.style.cursor = "pointer";
         btn.style.fontSize = "1rem";
         btn.style.fontFamily = "monospace";
-        document.body.append(pre, btn);
+        document.body.append(pre, message, btn);
 
         // Add random chaos images
         const chaosImages = [
