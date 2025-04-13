@@ -1,5 +1,5 @@
 import { defineCollection, z } from "astro:content";
-// import { glob, file } from "astro/loaders";
+import { glob, file } from "astro/loaders";
 
 // Define schema separately
 const postSchema = z.object({

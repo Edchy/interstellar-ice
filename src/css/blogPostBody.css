@@ -1,15 +1,17 @@
   .post-content {
     --flow-space: 1.5em;
     padding-bottom: 10rem;
-    font-family: "Newsreader", sans-serif;
+    /* font-family: "Newsreader", sans-serif; */
 
-
+    h2 {
+      font-size: 2rem;
+    }
 
     p {
       /* text-align: justify; */
       text-wrap: pretty;
-      font-weight: 500;
-      font-size: 1.25rem;
+      /* font-weight: 500; */
+      font-size: 1.125rem;
       line-height: 1.4;
     }
 

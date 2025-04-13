@@ -8,6 +8,7 @@ import ThemeToggle from "../components/ThemeToggle.astro";
 import Burger from "../components/Burger.astro";
 import Head from "./Head.astro";
 import Footer from "./Footer.astro";
+import { slide } from "astro:transitions";
 
 const { title, description, showAside } = Astro.props;
 ---
@@ -21,18 +22,16 @@ const { title, description, showAside } = Astro.props;
         <div class="inner">
           <Logo />
           <Nav />
-          <div class="flex">
+          <div  class="flex">
             <ThemeToggle />
             <Burger />
           </div>
           <!-- <p>x</p> -->
         </div>
       </header>
-    
-      <div>
+      <!-- <div transition:animate={slide({ duration: "3.4s" })}class="content"> -->
+        <div class="content">
         <slot />
-          
-
       </div>
       <aside>
         <div class="inner">
@@ -46,8 +45,8 @@ const { title, description, showAside } = Astro.props;
         <ScrollProgressIndicator anchor="#page-top" />
           </div>
         </aside>
+        <Footer />
     </div>
-    <Footer />
   </body>
 </html>
 

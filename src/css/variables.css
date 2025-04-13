@@ -41,7 +41,8 @@
 
 
    --blend-mode: color-burn;
-
+   --blend-mode: exclusion;
+   /* background-blend-mode: */
 
    /* typography */
    --text-huge: clamp(5rem, 1rem + 10vw, 10rem);

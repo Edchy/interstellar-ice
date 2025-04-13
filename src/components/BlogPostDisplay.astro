@@ -1,6 +1,8 @@
 ---
 import { getCollection, type CollectionEntry } from "astro:content";
 import { formatDate } from "@/utils/utils";
+import { fade, slide } from "astro:transitions";
+
 interface Props {
   filteredPosts?: CollectionEntry<"posts">[]; // Make posts optional
   tag?: string;
@@ -21,11 +23,11 @@ allPosts.sort(
     allPosts.map((post) => {
       return (
         <article class="blog-post">
-          <a href={`/posts/${post.slug}`} class="card">
-            <h2>{post.data.title}</h2>
+          <a href={`/blog/${post.slug}`} class="card">
+            <h2 transition:name={`${post.data.title}`}>{post.data.title}</h2>
             {post.data.subtitle && <h3>{post.data.subtitle}</h3>}
             <p>{formatDate(post.data.pubDate)}</p>
-            <p>{post.data.description}</p>
+            <p class="description">{post.data.description}</p>
           </a>
         </article>
       );
@@ -36,9 +38,10 @@ allPosts.sort(
 <style>
   h1 {
     font-size: var(--text-huge);
+    font-family: var(--font-heading);
   }
   .grid {
-    margin-block-start: 1.5rem;
+    margin-block-start: 2.5rem;
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
     gap: 1rem;
@@ -48,6 +51,14 @@ allPosts.sort(
     padding: 1rem;
     border-radius: var(--radius);
     /* max-width: 400px; */
+  }
+  .description {
+    display: -webkit-box;
+    -webkit-line-clamp: 6; /* Number of lines to show */
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    line-height: 1.2;
   }
   a:any-link {
     text-decoration: none;

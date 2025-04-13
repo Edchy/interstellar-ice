@@ -12,6 +12,7 @@ export async function getStaticPaths() {
 
 const { post } = Astro.props;
 const { Content, remarkPluginFrontmatter } = await post.render();
+
 // Combine the original data with the data from the remark plugin
 const combinedFrontmatter = {
   ...post.data,

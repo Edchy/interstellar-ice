@@ -9,7 +9,6 @@
     "astro": "astro"
   },
   "dependencies": {
-    "@fontsource/luckiest-guy": "^5.2.5",
     "@iconify-json/devicon": "^1.2.23",
     "@iconify-json/ri": "^1.2.5",
     "astro": "^5.2.5",

@@ -8,6 +8,8 @@ import Cicada from "../components/Cicada.astro";
 import { Code } from "astro:components";
 import Overlap from "../components/Overlap.astro";
 import WordMorph from "../components/WordMorph.astro";
+import { Icon } from "astro-icon/components";
+import { deviconNames } from "../utils/data.js";
 ---
 
 <PageLayout
@@ -25,7 +27,7 @@ import WordMorph from "../components/WordMorph.astro";
       <a href="mailto:example@example.com"> (contact?)</a>
     </p>
   </main>
-  <section>
+  <section class="x">
     <div class="inner">
       <h2>Rothko Chillida Ström</h2>
       <h2>Rothko Chillida Ström</h2>
@@ -33,8 +35,19 @@ import WordMorph from "../components/WordMorph.astro";
     </div>
     <!-- <Overlap /> -->
   </section>
+  <section>
+    <h2>my tech</h2>
+    <ul>
+      {
+        deviconNames.map((name) => (
+          <li title={name}>
+            <Icon name={`devicon:${name}`} size="4rem" />
+          </li>
+        ))
+      }
+    </ul>
+  </section>
 </PageLayout>
-
 <style>
   p {
     /* letter-spacing: 2px; */
@@ -68,7 +81,7 @@ import WordMorph from "../components/WordMorph.astro";
     justify-content: space-between;
     flex-direction: column;
     min-height: 90vh;
-    background-image: url("img/no-motion-nik.webp");
+    background-image: url("/img/no-motion-nik.webp");
     background-position: center;
     padding-inline: 1rem;
     padding-block: 2rem;
@@ -87,18 +100,12 @@ import WordMorph from "../components/WordMorph.astro";
       left: 0;
       right: 0;
       /* width: 20px; */
-      height: 150px;
+      height: 250px;
       --hdr-gradient: linear-gradient(
         to top in oklch,
         var(--yang) 17% 17%,
         54%,
         oklch(98% 0 91 / 0) 81% 81%
-      );
-      --sdr-gradient: linear-gradient(
-        to top,
-        #f8f8f8 17% 17%,
-        54%,
-        #f8f8f800 81% 81%
       );
 
       background: var(--hdr-gradient);
@@ -109,7 +116,7 @@ import WordMorph from "../components/WordMorph.astro";
     }
 
     @media (prefers-reduced-motion: no-preference) {
-      background-image: url("img/nik.gif");
+      background-image: url("/img/nik.gif");
     }
   }
 
@@ -119,19 +126,18 @@ import WordMorph from "../components/WordMorph.astro";
       --white: oklch(90% 0 91);
     }
   }
-
-  section {
+  ul {
+    list-style: none;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(2rem, 1fr));
+    gap: 1rem;
+  }
+  section.x {
     --hdr-gradient: radial-gradient(
       farthest-corner circle at 50% 50% in oklab,
       var(--clr-accent) 12% 12%,
       var(--yang) 56% 56%
     );
-    --sdr-gradient: radial-gradient(
-      farthest-corner circle at 50% 50%,
-      var(--clr-accent) 12% 12%,
-      var(--yang) 56% 56%
-    );
-    /* height: 50vh; */
 
     width: 100%;
     background-color: var(--blueish);

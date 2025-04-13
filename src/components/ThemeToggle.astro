@@ -67,34 +67,61 @@ import { Icon } from "astro-icon/components";
 </style>
 
 <script>
-  const toggle = document.querySelector(".toggle");
+  document.addEventListener("DOMContentLoaded", () => {
+    console.log("DOMContentLoaded");
+  });
+  document.addEventListener("astro:after-preparation", () => {
+    console.log("after-preparation");
+  });
+  document.addEventListener("astro:page-load", () => {
+    console.log("page-load");
+  });
+  document.addEventListener("astro:after-swap", () => {
+    console.log("after-swap");
+  });
+  document.addEventListener("astro:before-preparation", () => {
+    console.log("before-preparation");
+  });
+  document.addEventListener("astro:before-swap", () => {
+    console.log("before-swap");
+  });
 
-  function applyTheme(isDark: boolean) {
-    document.documentElement.style.setProperty(
-      "color-scheme",
-      isDark ? "dark" : "light"
-    );
-    toggle?.classList.toggle("active", isDark);
+  function setupThemeToggle() {
+    const toggle = document.querySelector(".toggle");
+    if (!toggle) return;
+
+    function applyTheme(isDark: boolean) {
+      document.documentElement.style.setProperty(
+        "color-scheme",
+        isDark ? "dark" : "light"
+      );
+      toggle?.classList.toggle("active", isDark);
+    }
+
+    toggle.addEventListener("click", () => {
+      const isDark = !toggle.classList.contains("active");
+      localStorage.setItem("theme", isDark ? "moon" : "sun");
+      applyTheme(isDark);
+      toggle.classList.toggle("active", isDark);
+    });
   }
 
+  document.addEventListener("astro:page-load", setupThemeToggle);
+  // const toggle = document.querySelector(".toggle");
+
   // Handle system theme changes
-  window
-    .matchMedia("(prefers-color-scheme: dark)")
-    .addEventListener("change", ({ matches }) => {
-      if (!localStorage.getItem("theme")) {
-        applyTheme(matches);
-      }
-    });
 
   // Handle toggle button clicks
-  toggle?.addEventListener("click", () => {
-    const isDark = !toggle.classList.contains("active");
-    localStorage.setItem("theme", isDark ? "moon" : "sun");
-    applyTheme(isDark);
-  });
+  // toggle?.addEventListener("click", () => {
+  //   const isDark = !toggle.classList.contains("active");
+  //   localStorage.setItem("theme", isDark ? "moon" : "sun");
+  //   applyTheme(isDark);
+  // });
 </script>
+<!-- // This script runs immediately when the page loads -->
 <script is:inline>
-  // This script runs immediately when the page loads
+  console.log("inline script - theme toggle");
+
   function getThemePreference() {
     if (typeof localStorage !== "undefined" && localStorage.getItem("theme")) {
       return localStorage.getItem("theme") === "moon" ? "dark" : "light";
@@ -104,14 +131,33 @@ import { Icon } from "astro-icon/components";
       : "light";
   }
 
-  const theme = getThemePreference();
-  document.documentElement.style.setProperty("color-scheme", theme);
+  function updateTheme() {
+    const theme = getThemePreference();
+    document.documentElement.style.setProperty("color-scheme", theme);
 
-  // Add a class to the toggle button if it exists
-  window.addEventListener("DOMContentLoaded", () => {
     const toggle = document.querySelector(".toggle");
     if (toggle) {
       toggle.classList.toggle("active", theme === "dark");
     }
+  }
+
+  // Run on initial page load
+  updateTheme();
+
+  // This is the key: run after each View Transition navigation
+  document.addEventListener("astro:after-swap", () => {
+    console.log(
+      "Page loaded in the astro:page-load eventlistener in the Theme Toggle inline script, updating theme"
+    );
+    updateTheme();
   });
+
+  // Listen for system theme changes
+  window
+    .matchMedia("(prefers-color-scheme: dark)")
+    .addEventListener("change", ({ matches }) => {
+      if (!localStorage.getItem("theme")) {
+        applyTheme(matches);
+      }
+    });
 </script>

@@ -4,19 +4,20 @@ import { capitalizeFirstLetter } from "@/utils/utils";
 import { string_to_slug, formatDate } from "@/utils/utils";
 import "@/css/blogPostBody.css";
 import { Icon } from "astro-icon/components";
+import { fade } from "astro:transitions";
 const { frontmatter } = Astro.props;
 
-interface Props {
-  frontmatter: {
-    title: string;
-    subtitle?: string;
-    description: string;
-    author: string;
-    pubDate: Date;
-    tags: string[];
-    minutesRead: string;
-  };
-}
+// interface Props {
+//   frontmatter: {
+//     title: string;
+//     subtitle?: string;
+//     description: string;
+//     author: string;
+//     pubDate: Date;
+//     tags: string[];
+//     minutesRead: string;
+//   };
+// }
 const { title, subtitle, minutesRead, description, pubDate, author, tags } =
   frontmatter;
 ---
@@ -28,7 +29,9 @@ const { title, subtitle, minutesRead, description, pubDate, author, tags } =
 >
   <main>
     <header class="inner post-header content-grid">
-      <h1 class="post-title">{capitalizeFirstLetter(title)}</h1>
+      <h1 transition:name={title} class="post-title">
+        {capitalizeFirstLetter(title)}
+      </h1>
       {subtitle && <p class="subtitle">{subtitle}</p>}
       <div class="tags">
         {
@@ -66,10 +69,10 @@ const { title, subtitle, minutesRead, description, pubDate, author, tags } =
   .post-title {
     text-box: trim-both cap alphabetic;
     font-family: monospace;
-    font-family: "Kass", cursive;
-    font-family: "Luckiest Guy";
     font-family: "Newsreader", sans-serif;
+    font-family: "Kass", cursive;
     font-family: var(--font-heading);
+
     /* font-weight: 900;
     font-optical-sizing: auto;
     font-style: italic;
@@ -118,6 +121,7 @@ const { title, subtitle, minutesRead, description, pubDate, author, tags } =
   }
   .post-description {
     margin-block: 1.5em;
+    background-color: gold;
   }
   .content-grid {
     --padding-inline: 1rem;
