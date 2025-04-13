@@ -1,7 +1,8 @@
 ---
 import PageLayout from "../../layouts/PageLayout.astro";
-import BlogPostDisplay from "../../components/BlogPostDisplay.astro";
+import BlogPostDisplay from "@/pages/blog/BlogPostDisplay.astro";
 import { getCollection } from "astro:content";
+import { string_to_slug } from "@/utils/utils";
 
 export async function getStaticPaths() {
   const allPosts = await getCollection("posts");
@@ -15,18 +16,18 @@ export async function getStaticPaths() {
       post.data.tags.includes(tag)
     );
     return {
-      params: { tag },
-      props: { filteredPosts: filteredPosts },
+      params: { tag: string_to_slug(tag) },
+      props: { originalTag: tag, filteredPosts: filteredPosts },
     };
   });
 }
 
 const { tag } = Astro.params;
-const { filteredPosts } = Astro.props;
+const { filteredPosts, originalTag } = Astro.props;
 console.log(filteredPosts);
 ---
 
 <PageLayout title={tag}>
-  <!-- <p>Posts tagged with {tag}</p> -->
-  <BlogPostDisplay {filteredPosts} {tag} />
+  <p>Posts tagged with {tag}</p>
+  <BlogPostDisplay {filteredPosts} tag={originalTag} />
 </PageLayout>

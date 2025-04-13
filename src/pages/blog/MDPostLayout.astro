@@ -2,7 +2,7 @@
 import PageLayout from "@/layouts/PageLayout.astro";
 import { capitalizeFirstLetter } from "@/utils/utils";
 import { string_to_slug, formatDate } from "@/utils/utils";
-import "@/css/blogPostBody.css";
+import "@/pages/blog/blogPostBody.css";
 import { Icon } from "astro-icon/components";
 import { fade } from "astro:transitions";
 const { frontmatter } = Astro.props;
@@ -46,9 +46,15 @@ const { title, subtitle, minutesRead, description, pubDate, author, tags } =
         <span class="read-time">{minutesRead}</span>
       </div>
       <p>
-        Published on: {formatDate(pubDate)} by <a
-          href={`/author/${string_to_slug(author)}`}>{author}</a
-        >
+        Published on: {formatDate(pubDate)}
+        {
+          author && (
+            <>
+              <span>by</span>
+              <a href={`/about#${string_to_slug(author)}`}>{author}</a>
+            </>
+          )
+        }
       </p>
     </header>
     <section class="content-grid">

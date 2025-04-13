@@ -1,6 +1,7 @@
 ---
 import { getCollection, type CollectionEntry } from "astro:content";
-import MDPostLayout from "../../layouts/bloglayouts/MDPostLayout.astro";
+// import MDPostLayout from "../../layouts/bloglayouts/MDPostLayout.astro";
+import MDPostLayout from "@/pages/blog/MDPostLayout.astro";
 
 export async function getStaticPaths() {
   const posts = await getCollection("posts");

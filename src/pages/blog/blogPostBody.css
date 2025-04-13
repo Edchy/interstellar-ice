@@ -19,7 +19,8 @@
       &:first-child:first-letter {
         initial-letter: 2;
         -webkit-inital-letter: 2;
-        padding-right: .25rem;
+        padding-right: .5rem;
+        /* font-family: Bodoni; */
       }
 
       @supports not (initial-letter: 2) {
@@ -27,7 +28,7 @@
           font-size: 5rem;
           float: left;
           line-height: 0.8;
-          padding-right: .25rem;
+          padding-right: .5rem;
           margin-top: 4px;
         }
       }

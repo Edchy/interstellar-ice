@@ -7,9 +7,9 @@ const postSchema = z.object({
   subtitle: z.string().optional(),
   pubDate: z.date(),
   description: z.string(),
-  author: z.string(),
+  author: z.string().optional(),
   tags: z.array(z.string()),
-  minutesRead: z.string().optional(),
+  // minutesRead: z.string().optional(),
 });
 
 const postsCollection = defineCollection({
