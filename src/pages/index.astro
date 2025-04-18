@@ -8,8 +8,7 @@ import Cicada from "../components/Cicada.astro";
 import { Code } from "astro:components";
 import Overlap from "../components/Overlap.astro";
 import WordMorph from "../components/WordMorph.astro";
-import { Icon } from "astro-icon/components";
-import { deviconNames } from "../utils/data.js";
+import IconCarousel from "@/components/IconCarousel.astro";
 ---
 
 <PageLayout
@@ -29,26 +28,23 @@ import { deviconNames } from "../utils/data.js";
   </main>
   <section class="x">
     <div class="inner">
+      <h2>Baseball Basketball Wienerdog Short Shorts</h2>
+      <h2>Sports Sports Sports</h2>
       <h2>Rothko Chillida Ström</h2>
-      <h2>Rothko Chillida Ström</h2>
-      <h2>Rothko Chillida Ström</h2>
+
+      <h2>Sports</h2>
     </div>
     <!-- <Overlap /> -->
   </section>
-  <section>
+  <section class="bb">
     <h2>my tech</h2>
-    <ul>
-      {
-        deviconNames.map((name) => (
-          <li title={name}>
-            <Icon name={`devicon:${name}`} size="4rem" />
-          </li>
-        ))
-      }
-    </ul>
+    <IconCarousel />
   </section>
 </PageLayout>
 <style>
+  .bb {
+    /* background-color: aqua; */
+  }
   p {
     /* letter-spacing: 2px; */
     font-family: var(--font-heading);
@@ -123,15 +119,10 @@ import { deviconNames } from "../utils/data.js";
   @keyframes gradient-change {
     to {
       --clr-accent: oklch(30% 0.29 149);
-      --white: oklch(90% 0 91);
+      /* --white: oklch(90% 0 91); */
     }
   }
-  ul {
-    list-style: none;
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(2rem, 1fr));
-    gap: 1rem;
-  }
+
   section.x {
     --hdr-gradient: radial-gradient(
       farthest-corner circle at 50% 50% in oklab,
@@ -139,20 +130,14 @@ import { deviconNames } from "../utils/data.js";
       var(--yang) 56% 56%
     );
 
-    width: 100%;
-    background-color: var(--blueish);
+    /* width: 100%;  */
     /* -webkit-mask: var(--mask-edge-zig-zag-top); */
-    background-color: var(--clr-primary-600);
-    background-color: var(--clr-accent);
     background: var(--hdr-gradient);
-    /* padding-top: 2rem;
-    margin-top: -2rem; */
-    /* position: absolute; */
     z-index: 2;
     left: 0;
 
     @media (prefers-reduced-motion: no-preference) {
-      animation: gradient-change 10s linear infinite alternate;
+      animation: gradient-change 6s linear infinite alternate;
     }
 
     .inner {
@@ -161,7 +146,7 @@ import { deviconNames } from "../utils/data.js";
       margin-inline: auto;
       /* width: 100%; */
       display: grid;
-      grid-template-columns: 1fr;
+      grid-template-columns: repeat(auto-fit, minmax(500px, 1fr));
 
       @media (width > 1200px) {
         width: min(100%, 901px);

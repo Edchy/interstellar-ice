@@ -39,10 +39,20 @@
    --blueish: light-dark(var(--blu2), var(--blu));
    --blueish2: light-dark(var(--blu), var(--blu2));
 
+   /* --surface-1: black;
+   --surface-2: var(--neutral-200);
+   --surface-3: var(--neutral-300);
+
+   --foreground-1: var(--neutral-500);
+   --foreground-2: var(--neutral-400);
+   --foreground-3: var(--neutral-300);
+   
+   --figure-1: var(--neutral-200);
+   --ground-1: var(--neutral-100);
+   */
 
    --blend-mode: color-burn;
    --blend-mode: exclusion;
-   /* background-blend-mode: */
 
    /* typography */
    --text-huge: clamp(5rem, 1rem + 10vw, 10rem);

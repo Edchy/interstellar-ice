@@ -1,0 +1,41 @@
+---
+import { getCollection } from "astro:content";
+import { string_to_slug } from "@/utils/utils";
+import { Icon } from "astro-icon/components";
+const allPosts = await getCollection("posts");
+const tags = [...new Set(allPosts.map((post: any) => post.data.tags).flat())];
+---
+
+<ul class="tags">
+  {
+    tags.map((tag) => (
+      <li class="tag">
+        <a href={`/tags/${string_to_slug(tag)}`}>{tag}</a>
+      </li>
+    ))
+  }
+</ul>
+
+<style>
+  ul {
+    list-style: none;
+    display: flex;
+    /* gap: 1rem; */
+    justify-content: center;
+  }
+  a:any-link {
+    color: var(--yin);
+    text-decoration: none;
+  }
+  .tag {
+    font-size: 0.75rem;
+    a {
+      border-radius: var(--radius);
+      text-decoration: none;
+      color: var(--yin);
+      background-color: var(--yang);
+      padding: 0.25rem 0.5rem;
+      border: 1px solid var(--yin);
+    }
+  }
+</style>

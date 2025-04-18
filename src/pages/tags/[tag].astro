@@ -24,10 +24,9 @@ export async function getStaticPaths() {
 
 const { tag } = Astro.params;
 const { filteredPosts, originalTag } = Astro.props;
-console.log(filteredPosts);
 ---
 
 <PageLayout title={tag}>
-  <p>Posts tagged with {tag}</p>
+  <!-- <p>Posts tagged with {tag}</p> -->
   <BlogPostDisplay {filteredPosts} tag={originalTag} />
 </PageLayout>

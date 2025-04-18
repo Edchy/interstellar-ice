@@ -144,7 +144,7 @@ import { Icon } from "astro-icon/components";
   // Run on initial page load
   updateTheme();
 
-  // This is the key: run after each View Transition navigation
+  // run after each View Transition navigation
   document.addEventListener("astro:after-swap", () => {
     console.log(
       "Page loaded in the astro:page-load eventlistener in the Theme Toggle inline script, updating theme"

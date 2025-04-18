@@ -5,47 +5,50 @@ const { title } = Astro.props;
 ---
 
 <div class="card" data-active="false">
-  <img src="img/2.jpeg" alt="" />
+  <!-- <img src="img/2.jpeg" alt="" /> -->
   <p>{title}</p>
   <!-- <Image src={Nik} alt="Nik" /> -->
 </div>
 <script>
-  const CARD = document.querySelector(".card") as HTMLElement;
+  document.addEventListener("astro:page-load", cardInit);
+  function cardInit() {
+    const CARD = document.querySelector(".card") as HTMLElement;
 
-  if (!CARD) {
-    throw new Error("No card found.");
-  }
-
-  const UPDATE = ({ x, y }: { x: number; y: number }) => {
-    const BOUNDS = CARD.getBoundingClientRect();
-
-    const posX = x - BOUNDS.x;
-    const posY = y - BOUNDS.y;
-    const ratioX = posX / BOUNDS.width;
-    const ratioY = posY / BOUNDS.height;
-
-    CARD.style.setProperty("--ratio-x", ratioX.toString());
-    CARD.style.setProperty("--ratio-y", ratioY.toString());
-  };
-
-  document.body.addEventListener("pointermove", UPDATE);
-
-  CARD.addEventListener("pointerenter", () => {
-    CARD.dataset.active = "true";
-  });
-  CARD.addEventListener("pointerleave", () => {
-    CARD.dataset.active = "false";
-    CARD.dataset.parallax = "false";
-  });
-  CARD.addEventListener("transitionend", (event) => {
-    if (
-      event.target === CARD &&
-      event.propertyName === "transform" &&
-      CARD.dataset.active === "true"
-    ) {
-      CARD.dataset.parallax = "true";
+    if (!CARD) {
+      throw new Error("No card found.");
     }
-  });
+
+    const UPDATE = ({ x, y }: { x: number; y: number }) => {
+      const BOUNDS = CARD.getBoundingClientRect();
+
+      const posX = x - BOUNDS.x;
+      const posY = y - BOUNDS.y;
+      const ratioX = posX / BOUNDS.width;
+      const ratioY = posY / BOUNDS.height;
+
+      CARD.style.setProperty("--ratio-x", ratioX.toString());
+      CARD.style.setProperty("--ratio-y", ratioY.toString());
+    };
+
+    document.body.addEventListener("pointermove", UPDATE);
+
+    CARD.addEventListener("pointerenter", () => {
+      CARD.dataset.active = "true";
+    });
+    CARD.addEventListener("pointerleave", () => {
+      CARD.dataset.active = "false";
+      CARD.dataset.parallax = "false";
+    });
+    CARD.addEventListener("transitionend", (event) => {
+      if (
+        event.target === CARD &&
+        event.propertyName === "transform" &&
+        CARD.dataset.active === "true"
+      ) {
+        CARD.dataset.parallax = "true";
+      }
+    });
+  }
 </script>
 <style>
   .card {
@@ -109,7 +112,7 @@ const { title } = Astro.props;
   .card:before {
     content: "";
     background:
-      url("favicon.svg") 0 0 / 18% 18%,
+      url("/favicon.svg") 0 0 / 18% 18%,
       linear-gradient(
           115deg,
           transparent 20%,

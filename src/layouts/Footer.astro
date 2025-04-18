@@ -3,26 +3,83 @@ import { Icon } from "astro-icon/components";
 ---
 
 <footer>
-  No &copy; <span class="copyright"></span> Nøpe. No rights reserved.
+  <section>
+    <span data-entity="spades">&spades; </span>
+    <span data-entity="euro">&euro; </span>
+    <span data-entity="psi">&psi; </span>
+    <span data-entity="kappa">&kappa; </span>
+    <span data-entity="Lambda">&Lambda; </span>
+    <span data-entity="Delta">&Delta; </span>
+    <span data-entity="there4">&there4; </span>
+    <span data-entity="rx">&#8479;</span>
+    <span data-entity="turned-capital-f">&#x2132;</span>
+    <span data-entity="turned-ampersand">&#x214B;</span>
+    <span data-entity="opposition">&#x260D;</span>
+    <span data-entity="chi-rho">&#x2627;</span>
+    <span data-entity="peace">&#x262E;</span>
+    <span data-entity="pluto">&#x2647;</span>
+    <span data-entity="Black Circle With Two White Dots">&#x2689;</span>
+    <span data-entity="coffin">&#x26B0;</span>
+    <span data-entity="heavy-open-center-cross">&#x271C;</span>
+  </section>
   <!-- <Icon name="menu-2" /> -->
+  
+  <div>
+    <span>Nope</span>
+    <span data-entity="dagger">&dagger;</span>
+
+    <span>Studio</span>
+  </div>
   <p>
-    Lorem, ipsum dolor sit amet consectetur adipisicing elit. Quasi et nam
-    placeat numquam perspiciatis incidunt consequatur deleniti modi quisquam
-    earum animi a ullam dolorum aliquid maiores, accusamus laudantium tenetur
-    eos nostrum possimus saepe architecto voluptate inventore deserunt? Unde,
-    maxime dolorum!
+    No &copy;(Cope) <span class="copyright"></span> Nope. 0 rights reserved.
   </p>
+  <p>Faxa mig på: <span>&#x213B;</span> 33011033</p>
 </footer>
 <style>
   footer {
+    --text-huge: clamp(3rem, 1rem + 15vw, 20rem);
+    overflow: hidden;
     color: var(--clr-accent);
-    padding-block-start: 20rem;
+    padding-block-start: 10rem;
     /* padding-inline: 15rem; */
     grid-column: 2 / 3;
+    grid-column: 1 / 4;
     /* width: 100%;
     height: 30px;
     position: absolute;
     bottom: 0; */
+  }
+  section {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    place-content: center;
+    justify-items: center;
+    gap: 1rem;
+  }
+  p {
+    text-align: center;
+    margin-bottom: 2rem;
+    font-size: clamp(0.5rem, 0.75rem + 1vw, 1rem);
+  }
+  div {
+    font-size: var(--text-huge);
+    font-family: var(--font-brand);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    place-content: center;
+    justify-items: center;
+
+   {
+      /* text-box: trim-both cap alphabetic; */
+    }
+
+      [data-entity]{
+      font-family: var(--font-brand);
+      color: var(--yin);
+      width: min-content;
+    }
   }
 </style>
 <script>

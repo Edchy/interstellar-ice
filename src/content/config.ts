@@ -9,10 +9,12 @@ const postSchema = z.object({
   description: z.string(),
   author: z.string().optional(),
   tags: z.array(z.string()),
+  image: z.string().optional(),
   // minutesRead: z.string().optional(),
 });
 
 const postsCollection = defineCollection({
+  loader: glob({ pattern: "**/*.{md,mdx}", base: "src/content/posts" }),
   schema: postSchema,
 });
 
