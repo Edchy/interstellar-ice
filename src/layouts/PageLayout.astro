@@ -55,13 +55,19 @@ const { title, description, showAside } = Astro.props;
     /* padding: 1rem; */
   }
   header {
-    /* position: fixed;
-    width: 100%;
+   
+    @media (width < 1200px) {
+    position: sticky;
     top: 0;
-    z-index: 9999 !important;
-    border: 1px solid red;
-    background-color: red; */
+    background-color: lch(from var(--yang) l c h / 0.8);
+    z-index: calc(infinity - 1);
+    width: 100%;
+    backdrop-filter: blur(0.2rem);
+    }
+    
   }
+  
+ 
   .grid-wrapper {
     --width: 150px;
     --left-col-width: var(--width);

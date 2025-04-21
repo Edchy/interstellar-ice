@@ -15,9 +15,11 @@ import { Icon } from "astro-icon/components";
     display: flex;
     align-items: center;
     justify-content: center;
+    transition: color 0.2s ease-out;
 
     &:hover {
       opacity: var(--hover);
+      color: var(--clr-accent);
     }
     /* Show sun icon in light mode, hide moon icon */
     & .moon {

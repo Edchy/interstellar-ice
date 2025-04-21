@@ -11,8 +11,8 @@
  }
 
  :root[style*="color-scheme: dark"] {
-   --blend-mode: color-dodge;
    --blend-mode: difference;
+   --blend-mode: color-dodge;
  }
 
  :root {

@@ -35,8 +35,8 @@ import { navItems } from "../utils/data";
     background-color: var(--yang);
     width: 100vw;
     height: 100vh;
-    translate: 0 -100%;
-    transition: all 0.5s ease-in-out;
+    translate: 100% 0;
+    transition: all 0.25s ease-out;
     transition-behavior: allow-discrete;
     border: none;
 
@@ -47,10 +47,27 @@ import { navItems } from "../utils/data";
     &:popover-open {
       translate: 0;
       overscroll-behavior: contain;
+      transition: all 0.5s
+        linear(
+          0,
+          0.453 7.8%,
+          0.803 16.1%,
+          1.048 24.9%,
+          1.132 29.5%,
+          1.194 34.4%,
+          1.227 38.4%,
+          1.245 42.5%,
+          1.25 46.9%,
+          1.242 51.7%,
+          1.2 60.5%,
+          1.038 84.9%,
+          1.009 92.5%,
+          1
+        );
     }
 
     @starting-style {
-      transform: translateY(-80%); /* Start off-screen */
+      transform: translateX(100%); /* Start off-screen */
     }
   }
 
@@ -69,6 +86,14 @@ import { navItems } from "../utils/data";
 
     @media (width > 768px) {
       display: none;
+    }
+  }
+
+  .burger,
+  .close-btn {
+    &:hover {
+      opacity: var(--hover);
+      color: var(--clr-accent);
     }
   }
 

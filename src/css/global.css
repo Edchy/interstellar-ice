@@ -53,7 +53,7 @@ html {
   background-color: var(--yang);
   /* background-color: var(--blueish); */
   color: var(--yin);
-  scrollbar-color: var(--blu2) var(--black);
+  scrollbar-color: var(--clr-accent) var(--yang);
 
   @media(prefers-reduced-motion: no-preference) {
     scroll-behavior: smooth;

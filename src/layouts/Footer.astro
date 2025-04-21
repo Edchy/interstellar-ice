@@ -23,15 +23,15 @@ import { Icon } from "astro-icon/components";
     <span data-entity="heavy-open-center-cross">&#x271C;</span>
   </section>
   <!-- <Icon name="menu-2" /> -->
-  
+
   <div>
     <span>Nopes</span>
-    <span data-entity="dagger">&dagger;</span>
+    <span class="dagger" data-entity="dagger">&dagger;</span>
 
     <span>udio</span>
   </div>
   <p>
-    No &copy;(Cope) <span class="copyright"></span> Nope. 0 rights reserved.
+    Can't &copy;ope <span class="copyright"></span> Nope. 0 rights reserved.
   </p>
   <p class="fax">Faxa mig på: <span>&#x213B;</span> 33011033</p>
 </footer>
@@ -51,20 +51,30 @@ import { Icon } from "astro-icon/components";
   }
   .fax {
     font-size: 0.75rem;
-    
+  }
+  .dagger {
+    color: var(--yin);
   }
   section {
     display: flex;
+    flex-wrap: wrap;
     justify-content: center;
     align-items: center;
     place-content: center;
     justify-items: center;
     gap: 1rem;
+
+    [data-entity] {
+      font-family: var(--font-brand);
+      color: var(--yin);
+      width: min-content;
+      font-size: clamp(0.25rem, 0.5rem + 1vw, 1rem);
+    }
   }
   p {
     text-align: center;
     margin-bottom: 2rem;
-    font-size: clamp(0.5rem, 0.75rem + 1vw, 1rem);
+    font-size: clamp(0.25rem, 0.5rem + 1vw, 1rem);
   }
   div {
     font-size: var(--text-huge);
@@ -74,16 +84,6 @@ import { Icon } from "astro-icon/components";
     align-items: center;
     place-content: center;
     justify-items: center;
-
-   {
-      /* text-box: trim-both cap alphabetic; */
-    }
-
-      [data-entity]{
-      font-family: var(--font-brand);
-      color: var(--yin);
-      width: min-content;
-    }
   }
 </style>
 <script>

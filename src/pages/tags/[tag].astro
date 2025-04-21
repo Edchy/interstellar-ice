@@ -26,7 +26,7 @@ const { tag } = Astro.params;
 const { filteredPosts, originalTag } = Astro.props;
 ---
 
-<PageLayout title={tag}>
+<PageLayout title={`Blog | ${tag}`} description={`Posts tagged with ${tag}`}>
   <p>Posts tagged with {tag}</p>
   <BlogPostDisplay {filteredPosts} tag={originalTag} />
 </PageLayout>

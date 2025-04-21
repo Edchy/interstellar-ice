@@ -144,9 +144,25 @@ import IconCarousel from "@/components/IconCarousel.astro";
       left: 0;
       right: 0;
       /* width: 20px; */
-      height: 250px;
+      height: 500px;
       --hdr-gradient: linear-gradient(
         to top in oklch,
+        var(--yang) 17% 17%,
+        54%,
+        oklch(98% 0 91 / 0) 81% 81%
+      );
+
+      background: var(--hdr-gradient);
+    }
+    &::after {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 200px;
+      --hdr-gradient: linear-gradient(
+        to bottom in oklch,
         var(--yang) 17% 17%,
         54%,
         oklch(98% 0 91 / 0) 81% 81%
@@ -157,6 +173,10 @@ import IconCarousel from "@/components/IconCarousel.astro";
 
     @media (width > 1200px) {
       min-height: 100vh;
+
+      &::after {
+        height: 0px;
+      }
     }
 
     @media (prefers-reduced-motion: no-preference) {

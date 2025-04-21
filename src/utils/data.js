@@ -1,9 +1,9 @@
 export const navItems = [
-  { name: "about me", path: "/me" },
+  { name: "about", path: "/me" },
   { name: "blog", path: "/blog" },
-  { name: "fun", path: "/blog" },
+  { name: "cases", path: "/blog" },
   // { name: "news", path: "/blog" },
-  { name: "tags", path: "/tags" },
+  { name: "fun", path: "/tags" },
 ];
 export const devPlain = {
   icon: "devicon-plain",
