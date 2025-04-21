@@ -1,6 +1,6 @@
 ---
 import PageLayout from "../../layouts/PageLayout.astro";
-import BlogPostDisplay from "@/pages/blog/BlogPostDisplay.astro";
+import BlogPostDisplay from "@/layouts/blogLayouts/BlogPostDisplay.astro";
 import { getCollection } from "astro:content";
 import { string_to_slug } from "@/utils/utils";
 
@@ -27,6 +27,6 @@ const { filteredPosts, originalTag } = Astro.props;
 ---
 
 <PageLayout title={tag}>
-  <!-- <p>Posts tagged with {tag}</p> -->
+  <p>Posts tagged with {tag}</p>
   <BlogPostDisplay {filteredPosts} tag={originalTag} />
 </PageLayout>

@@ -39,6 +39,7 @@
     display: inline-block;
     font-family: var(--font-heading);
     font-family: var(--font-brand);
+    font-size: clamp(7rem, 1rem + 15vw, 15rem);
     font-size: clamp(5rem, 1rem + 10vw, 10rem);
     /* text-align: center; */
     user-select: none;
@@ -53,10 +54,20 @@
 
 <script>
   document.addEventListener("astro:page-load", () => {
+    const text1El = document.getElementById("text1");
+    const text2El = document.getElementById("text2");
+
+    // Exit early if elements don't exist on this page
+    if (!text1El || !text2El) {
+      console.log("WordMorph elements not found on this page");
+      return;
+    }
+
     console.log("Word Morphing effect loaded");
+
     const elts = {
-      text1: document.getElementById("text1")!,
-      text2: document.getElementById("text2")!,
+      text1: text1El,
+      text2: text2El,
     };
 
     // The strings to morph between. You can change these to anything you want!

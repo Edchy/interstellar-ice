@@ -51,10 +51,15 @@ import logo from "../assets/img/pet.svg";
     color: var(--yin);
     font-family: var(--font-heading);
     font-family: var(--font-brand);
+    transition: color 0.125s ease-in-out;
 
     @media (width > 1200px) {
       rotate: -90deg;
       transform: translateX(-20px);
+    }
+
+    &:hover {
+      color: var(--clr-accent);
     }
   }
 </style>

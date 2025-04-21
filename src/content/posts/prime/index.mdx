@@ -2,6 +2,84 @@
 title: "What are Prime Numbers?"
 subtitle: "A journey into mathematics"
 pubDate: 2025-04-17
-description: "After learning about encryption, and the story about public key encryption, I wanted to learn more about prime numbers. Also i recently read a book about Cicada 3301 which is all about prime numbers. Im fascinaded but also confused."
+description: "After learning about encryption, and the story about public key encryption, I wanted to learn more about prime numbers. Also i recently read a book about Cicada 3301 which is all about prime numbers. Im fascinated but also confused."
 tags: ["misc"]
 ---
+Cryptopgraphy, number theory, algebra, calculus, combinatorics, probability, topology, mother nature, the universe, God, the devil, aliens, the government, the Illuminati, the Freemasons, the Knights Templar, the Vatican
+So what the heck are prime numbers? I have been reading about them for a while now, and I still don't understand them. I have read that they are the building blocks of all numbers, but I don't understand what that means. I have read that they are used in encryption, but I don't understand how. I have read that they are used in computer science, but I don't understand why.
+I have read that they are used in cryptography, but I don't understand how. 
+
+## Definition of Prime Numbers
+Prime numbers are natural numbers greater than 1 that cannot be formed by multiplying two smaller natural numbers. 
+
+A natural number is a positive integer, which means it is a whole number greater than zero.
+__1, 22, 3, 48, 51,__ etc.
+
+An integer is a whole number i.e __6, -6, 0, 1, 2, 3,__ etc.
+
+A whole number is a number without fractions or decimals. 
+  - __5__ is a whole number
+  - __5.5__ is not a whole number
+
+A prime number is a number that has exactly two distinct positive divisors: 1 and itself.
+
+ For example, the number __5__ is prime because the only way to multiply two whole numbers to get 5 is 1 x 5. However, the number 6 is not prime because it can be divided by 1, 2, 3, and 6.
+
+The number 1 is not prime because it only has one positive divisor: itself.
+
+The number __2__ is prime because it has exactly two distinct positive divisors: 1 and 2. It cannot be written as a product of two smaller natural numbers. 2 is also special, because it is the only even prime number. All other even numbers are divisible by 2, which means they have at least three divisors: 1, 2, and themselves. Since having more than two divisors disqualifies a number from being prime, no even number other than 2 can be prime.
+
+## Checking if a number is prime
+
+-  We check if the number is less than or equal to 1.
+  If it is, it’s not a prime number — like we established above.
+-  Then, we check if the number is divisible by 2. 
+  If it is, it’s not a prime (unless the number is exactly 2).
+- Then, we check if it’s divisible by 3. If it is, it’s not a prime.
+- We keep checking divisibility with every number up to number - 1.
+<hr/>
+For example, to check if 7 is prime:
+1. 7 is greater than 1 → continue.
+2. 7 is not divisible by 2 → continue. // 3.5
+3. 7 is not divisible by 3 → continue. // 2.3333
+4. 7 is not divisible by 4 → continue. // 1.75
+5. 7 is not divisible by 5 → continue. // 1.4
+6. 7 is not divisible by 6 → continue. // 1.1666666666666667
+
+Since none of these divide 7 evenly, 7 is a prime number.
+<hr/>
+
+Check if 6 is prime:
+1. 6 is greater than 1 → continue.
+2. 6 is divisible by 2 → stop. // 3
+3. 6 is not prime.
+<hr/>
+
+
+Basically, when checking if a number is prime, you test whether it is divisible by any number between 2 and the number - 1.
+You exclude 1 and the number itself because a prime number is always divisible by exactly those two, by definition.
+You’re trying to see if it’s divisible by any other number — if it is, then it’s not prime.
+
+
+## Prime Number Algorithm
+Ok, so how do we check if a number is prime in code?
+The brute force way is to check every number from 2 to n - 1, and see if any of them divide n evenly.
+
+```javascript
+ function isPrime2(num) {
+    if (num <= 1) return false; // 1 is not prime
+    if (num === 2) return true; // 2 is prime
+
+    for (let i = 2; i < num; i++) {
+      if (num % i === 0) return false; // divisible by i - not prime
+    }
+    return true;
+  }
+```
+If the number is 1 or 2 we do an early return.
+We then enter a for loop that checks every number from 2 to n - 1. We use the modulus operator to check if the remainder is 0 when dividing num by i. If it is, we return false, because that means it’s not prime. If we get through the whole loop without returning false, we return true, because that means it’s prime.
+
+Since we are checking the condition `i < num`, we are checking all numbers from 2 to n - 1. This could of course be written as `i <= num - 1`.
+
+This is a brute force algorithm, and it works, but it’s not very efficient.
+The time complexity of this algorithm is O(n), which means it takes linear time to check if a number is prime. This is not very efficient for large numbers.

@@ -32,20 +32,8 @@ const { title, subtitle, minutesRead, description, pubDate, author, tags } =
         {capitalizeFirstLetter(title)}
       </h1>
       {subtitle && <p class="subtitle">{subtitle}</p>}
-      <div class="tags">
-        {
-          tags.map((tag: string) => (
-            <p class="tag">
-              <a href={`/tags/${tag}`}>{tag}</a>
-              {/* <Icon size={24} name="devicon:css3" /> */}
-            </p>
-          ))
-        }
-
-        <span class="read-time">{minutesRead}</span>
-      </div>
-      <p>
-        Published on: {formatDate(pubDate)}
+      <div class="flex">
+        <p class="pubdate">{formatDate(pubDate)}</p>
         {
           author && (
             <>
@@ -54,15 +42,30 @@ const { title, subtitle, minutesRead, description, pubDate, author, tags } =
             </>
           )
         }
-      </p>
-    </header>
-    <section class="content-grid">
-      <!-- <p class="post-description">{description}</p> -->
-      <div class="post-content flow">
-        <slot />
+        <span class="read-time">{minutesRead}</span>
       </div>
-    </section>
+      <!-- <div class="tags">
+        {
+          tags.map((tag: string) => (
+            <p class="tag">
+              <a href={`/tags/${tag}`}>{tag}</a>
+            </p>
+          ))
+        } -->
+    </header>
   </main>
+  <section class="content-grid">
+    <!-- <p class="post-description">{description}</p> -->
+    <div class="post-content flow">
+      <slot />
+    </div>
+  </section>
+  <footer>
+    Add nav to other posts <here class=""></here>
+    If you find any mistakes, errors or typos please let me know <a
+      href="mailto:me">my email</a
+    >
+  </footer>
 </PageLayout>
 
 <style>
@@ -72,10 +75,8 @@ const { title, subtitle, minutesRead, description, pubDate, author, tags } =
   }
 
   .post-title {
-    text-box: trim-both cap alphabetic;
-    font-family: monospace;
-    font-family: "Newsreader", sans-serif;
-    font-family: "Kass", cursive;
+    /* text-box: trim-both cap alphabetic; */
+
     font-family: var(--font-heading);
 
     /* font-weight: 900;
@@ -97,12 +98,19 @@ const { title, subtitle, minutesRead, description, pubDate, author, tags } =
     font-size: 1.5rem;
     font-style: italic;
     color: var(--neutral-200);
+    font-family: var(--font-heading);
+    /* text-align: end; */
+  }
+  .pubdate,
+  .read-time {
+    font-family: var(--font-heading);
+    font-size: 0.875rem;
+    /* font-weight: bold; */
   }
   .read-time {
     display: block;
     margin-left: auto;
     font-style: italic;
-    font-size: 0.875rem;
   }
 
   .tags {
@@ -133,7 +141,22 @@ const { title, subtitle, minutesRead, description, pubDate, author, tags } =
     --flow-space: 1.5em;
     padding-bottom: 10rem;
 
-    /* font-family: "Newsreader", sans-serif; */
+    :not(pre) > code {
+      border: 1px dotted var(--neutral-200);
+      padding-inline: 12px;
+    }
+
+    ul,
+    ol {
+      /* margin-block: 1rem; */
+      /* margin-block-start: 0.5rem; */
+      /* padding-left: 2rem; */
+      list-style-position: inside;
+      font-size: clamp(1rem, 2vw + 0.5rem, 1.25rem);
+    }
+    ul {
+      list-style-type: square;
+    }
 
     h2 {
       font-size: 2rem;
@@ -149,6 +172,9 @@ const { title, subtitle, minutesRead, description, pubDate, author, tags } =
     }
 
     & > p {
+      &:first-child {
+        margin-block-start: 2rem;
+      }
       &:first-child:first-letter {
         initial-letter: 2;
         -webkit-inital-letter: 2;
@@ -168,7 +194,7 @@ const { title, subtitle, minutesRead, description, pubDate, author, tags } =
     }
 
     pre {
-      background-color: var(--blueish) !important;
+      background-color: var(--blu) !important;
       padding: 1rem;
 
       code {

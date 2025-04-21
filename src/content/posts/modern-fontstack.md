@@ -3,7 +3,7 @@ title: "Websafe Fonts"
 subtitle: ""
 pubDate: 2025-04-17
 description: "What are websafe fonts?"
-tags: ["css"]
+tags: ["CSS"]
 ---
 
 &para;

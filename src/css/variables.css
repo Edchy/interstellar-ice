@@ -12,17 +12,19 @@
 
  :root[style*="color-scheme: dark"] {
    --blend-mode: color-dodge;
+   --blend-mode: difference;
  }
 
  :root {
    --black: oklch(18.22% 0 0);
    --black: oklch(10% 0.29 149);
    /* --black: oklch(from var(--clr--accent) l c h); */
-   --white: oklch(98% 0 91);
+   /* --white: oklch(98% 0 91); */
    --neutral-500: oklch(28.22% 0 0);
    --neutral-400: oklch(38.22% 0 0);
    --neutral-300: oklch(48.22% 0 0);
    --neutral-200: oklch(58.22% 0 0);
+   --neutral-100: oklch(68.22% 0 0);
    --clr-primary-700: oklch(50.37% 0.2209 27.39);
    --clr-primary-600: oklch(60.37% 0.2209 27.39);
    --clr-primary-500: oklch(70.37% 0.2209 27.39);
@@ -51,8 +53,8 @@
    --ground-1: var(--neutral-100);
    */
 
-   --blend-mode: color-burn;
    --blend-mode: exclusion;
+   --blend-mode: hard-light;
 
    /* typography */
    --text-huge: clamp(5rem, 1rem + 10vw, 10rem);

@@ -14,10 +14,14 @@
     "@iconify-json/devicon": "^1.2.23",
     "@iconify-json/devicon-plain": "^1.2.22",
     "@iconify-json/ri": "^1.2.5",
+    "aos": "^2.3.4",
     "astro": "^5.2.5",
     "astro-icon": "^1.1.5",
     "mdast-util-to-string": "^4.0.0",
     "open-props": "^1.7.12",
     "reading-time": "^1.5.0"
+  },
+  "devDependencies": {
+    "@types/aos": "^3.0.7"
   }
 }

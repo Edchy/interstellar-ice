@@ -1,32 +1,17 @@
 ---
+import ScrollProgressIndicator from "@/components/ScrollProgressIndicator.astro";
 import PageLayout from "../layouts/PageLayout.astro";
-const images = import.meta.glob("src/assets/img/*.{png,jpg,jpeg,svg}");
 ---
 
 <PageLayout title="About">
-  <main class="co">
-    {
-      (
-        <ul>
-          {Object.keys(images).map((path, i) => {
-            return (
-              <li>
-                <img src={path} alt={`image${i}`} />
-              </li>
-            );
-          })}
-        </ul>
-      )
-    }
-  </main>
-  <section></section>
+  <main>lol<ScrollProgressIndicator /></main>
 </PageLayout>
 
 <style>
   ul {
     display: flex;
   }
-  section {
+  main {
     --hdr-gradient: linear-gradient(
       to top in oklab,
       oklch(80% 0.29 149) 12% 12%,
@@ -36,3 +21,32 @@ const images = import.meta.glob("src/assets/img/*.{png,jpg,jpeg,svg}");
     background: var(--hdr-gradient);
   }
 </style>
+
+<script is:inline>
+  console.log("About page loaded");
+  document.addEventListener("astro:page-load", () => {
+    console.log("About page loaded again");
+  });
+
+  function isPrime(num) {
+    if (num <= 1) return false;
+
+    for (let i = 2; i <= Math.sqrt(num); i++) {
+      console.log("doesnt run if num is 2 or 3");
+      if (num % i === 0) return false;
+    }
+    return true;
+  }
+  function isPrime2(num) {
+    if (num <= 1) return false;
+
+    for (let i = 2; i < num; i++) {
+      if (num % i === 0) return false;
+    }
+    return true;
+  }
+  console.log(Math.sqrt(5));
+  console.log(isPrime2(2));
+  console.log(isPrime(3));
+  console.log(2 % 2);
+</script>

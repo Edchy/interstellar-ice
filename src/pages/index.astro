@@ -26,24 +26,72 @@ import IconCarousel from "@/components/IconCarousel.astro";
       <a href="mailto:example@example.com"> (contact?)</a>
     </p>
   </main>
+
   <section class="x">
     <div class="inner">
-      <h2>Baseball Basketball Wienerdog Short Shorts</h2>
-      <h2>Sports Sports Sports</h2>
-      <h2>Rothko Chillida Ström</h2>
-
-      <h2>Sports</h2>
+      <h2>stuff i like</h2>
+      <h3 data-aos="fade-up-right" data-aos-anchor-placement="top-center">
+        Amore
+      </h3>
+      <h3 data-aos="fade-up-left" data-aos-anchor-placement="top-center">
+        Sports
+      </h3>
+      <h3>Sports</h3>
+      <h3>Sports</h3>
+      <h3>Sports</h3>
     </div>
-    <!-- <Overlap /> -->
   </section>
+
+  <!-- <section class="cat-section">
+    &numero;&Popf;
+    <span>&#9787;</span>
+
+  </section> -->
   <section class="bb">
-    <h2>my tech</h2>
+    <h2 data-aos="zoom-in">stuff i use</h2>
     <IconCarousel />
   </section>
 </PageLayout>
+<script>
+  import AOS from "aos";
+  import "aos/dist/aos.css";
+  document.addEventListener("astro:page-load", () => {
+    AOS.init({
+      duration: 500,
+      easing: "ease-in-out",
+      once: false,
+      mirror: false,
+    });
+  });
+</script>
 <style>
+  h2 {
+    font-size: 1rem;
+    font-style: italic;
+    color: var(--clr-accent);
+    /* text-align: center; */
+    text-align: left;
+    margin-bottom: 1rem;
+  }
+  /* .cat-section {
+    background-color: var(--clr-accent);
+    margin-block: 1rem;
+    position: absolute;
+    left: 0;
+    right: 0;
+    height: 10rem;
+    display: grid;
+    place-content: center;
+
+    & > span {
+      color: var(--yang);
+      font-size: 5rem;
+      font-family: var(--font-brand);
+    }
+  } */
   .bb {
-    /* background-color: aqua; */
+    /* margin-top: 15rem; */
+    /* padding: min(1rem, 2vw); */
   }
   p {
     /* letter-spacing: 2px; */
@@ -144,17 +192,22 @@ import IconCarousel from "@/components/IconCarousel.astro";
       /* background-color: red; */
       /* background-color: aliceblue; */
       margin-inline: auto;
-      /* width: 100%; */
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(500px, 1fr));
+      width: 100%;
+      padding-block: 5rem;
+      text-align: center;
+      /* display: grid; */
+      /* grid-template-columns: repeat(auto-fit, minmax(500px, 1fr)); */
 
       @media (width > 1200px) {
         width: min(100%, 901px);
         width: clamp(901px, 76vw, 1100px);
+        width: clamp(901px, 70vw, 1100px);
       }
     }
 
-    h2 {
+    h3 {
+      --text-huge: clamp(5rem, 1rem + 20vw, 20rem);
+      text-box: trim-both cap alphabetic;
       font-size: var(--text-huge);
     }
   }

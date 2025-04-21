@@ -44,11 +44,16 @@
 }
 
 html {
+  /* cursor: url(https://ani.cursors-4u.net/cursors/cur-13/cur1155.ani), url(https://ani.cursors-4u.net/cursors/cur-13/cur1155.png), auto !important; */
+  cursor: url("/mickey_cursor.png"), auto !important;
+
+
   interpolate-size: allow-keywords;
   color-scheme: dark light;
   background-color: var(--yang);
   /* background-color: var(--blueish); */
   color: var(--yin);
+  scrollbar-color: var(--blu2) var(--black);
 
   @media(prefers-reduced-motion: no-preference) {
     scroll-behavior: smooth;
@@ -64,8 +69,15 @@ body {
 
 }
 
-button {
-  cursor: pointer;
+a,
+button,
+input[type="submit"],
+input[type="button"],
+select,
+[role="button"],
+.clickable,
+summary {
+  cursor: url("mickey_pointer.png"), pointer !important;
 }
 
 img,
