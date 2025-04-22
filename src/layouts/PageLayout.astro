@@ -9,6 +9,8 @@ import Burger from "../components/Burger.astro";
 import Head from "./Head.astro";
 import Footer from "./Footer.astro";
 import { slide } from "astro:transitions";
+import { Image } from "astro:assets";
+import neon from "@/assets/img/mickey-v.png";
 
 const { title, description, showAside } = Astro.props;
 ---
@@ -22,7 +24,7 @@ const { title, description, showAside } = Astro.props;
         <div class="inner">
           <Logo />
           <Nav />
-          <div  class="flex">
+          <div class="flex">
             <ThemeToggle />
             <Burger />
           </div>
@@ -30,22 +32,24 @@ const { title, description, showAside } = Astro.props;
         </div>
       </header>
       <!-- <div transition:animate={slide({ duration: "3.4s" })}class="content"> -->
-        <div class="content">
+      <div class="content">
         <slot />
       </div>
       <aside>
         <div class="inner">
-        {showAside && (
-        <p>아니 사진관</p>
-        <!-- <p>いいえ。</p> -->
-        <nav class="socials">
-          <Socials />
-        </nav>
-      )}
-        <ScrollProgressIndicator anchor="#page-top" />
-          </div>
-        </aside>
-        <Footer />
+          {
+            showAside && (
+              // <p>아니 사진관</p>
+            <Image src={neon} alt="neon" class="neon" width={75}/>
+              <nav class="socials">
+                <Socials />
+              </nav>
+            )
+          }
+          <ScrollProgressIndicator anchor="#page-top" />
+        </div>
+      </aside>
+      <!-- <Footer /> -->
     </div>
   </body>
 </html>
@@ -55,19 +59,16 @@ const { title, description, showAside } = Astro.props;
     /* padding: 1rem; */
   }
   header {
-   
     @media (width < 1200px) {
-    position: sticky;
-    top: 0;
-    background-color: lch(from var(--yang) l c h / 0.8);
-    z-index: calc(infinity - 1);
-    width: 100%;
-    backdrop-filter: blur(0.2rem);
+      position: sticky;
+      top: 0;
+      background-color: lch(from var(--yang) l c h / 0.8);
+      z-index: calc(infinity - 1);
+      width: 100%;
+      backdrop-filter: blur(0.2rem);
     }
-    
   }
-  
- 
+
   .grid-wrapper {
     --width: 150px;
     --left-col-width: var(--width);
@@ -77,7 +78,7 @@ const { title, description, showAside } = Astro.props;
   .inner {
     padding-block: 1rem;
     padding-inline-start: 1rem;
-    padding-inline-end: .5rem;
+    padding-inline-end: 0.5rem;
     display: flex;
     justify-content: space-between;
     align-items: center;

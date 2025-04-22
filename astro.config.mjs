@@ -15,7 +15,7 @@ export default defineConfig({
   },
   markdown: {
     shikiConfig: {
-      theme: "dracula",
+      theme: "kanagawa-wave",
     },
     remarkPlugins: [remarkReadingTime],
   },

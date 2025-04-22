@@ -63,7 +63,7 @@ You’re trying to see if it’s divisible by any other number — if it is, the
 
 ## Prime Number Algorithm
 Ok, so how do we check if a number is prime in code?
-The brute force way is to check every number from 2 to n - 1, and see if any of them divide n evenly.
+The "brute force" way is to check every number from 2 to n - 1, and see if any of them divide n evenly.
 
 ```javascript
  function isPrime2(num) {
@@ -79,7 +79,107 @@ The brute force way is to check every number from 2 to n - 1, and see if any of 
 If the number is 1 or 2 we do an early return.
 We then enter a for loop that checks every number from 2 to n - 1. We use the modulus operator to check if the remainder is 0 when dividing num by i. If it is, we return false, because that means it’s not prime. If we get through the whole loop without returning false, we return true, because that means it’s prime.
 
-Since we are checking the condition `i < num`, we are checking all numbers from 2 to n - 1. This could of course be written as `i <= num - 1`.
+Since we are checking the condition `i < num`, we are checking all numbers from 2 to n - 1. This could of course also be written as `i <= num - 1`.
+We could also skip the line `if (num === 2) return true;`, since we are already checking if `num < i` in the for loop. Which it is not in the case of 2 (num(2) is not less than i(2)), and thus it will not enter the loop and instead jump to the next line and return true. On the other hand, we could also check if `num <= 3` since we know that 3 is also prime. Might be a bit more readable, but any way works.
 
-This is a brute force algorithm, and it works, but it’s not very efficient.
-The time complexity of this algorithm is O(n), which means it takes linear time to check if a number is prime. This is not very efficient for large numbers.
+This is all fine and it works, but it’s not very efficient. Let's say we want to check if 1,000,000 is prime. We would have to check every number from 2 to 999,999. That’s a lot of checks!
+The time complexity of this algorithm is [O<sup>(n)</sup>](https://en.wikipedia.org/wiki/Big_O_notation), which means it takes linear time to check if a number is prime. This is not very efficient for large numbers.
+
+Luckily we can improve this algorithm by only checking numbers up to the square root of n. This is because if n is divisible by any number greater than its square root, it must also be divisible by a number smaller than its square root. Dont ask me why, im bad at math, and i've been trying to understand this without much success. I just have to trust the math nerds on this one. 
+
+So what does this look like in practice? Well, say you wanted to check if 25 is prime. The square root of 25 is 5, so you only need to check if it’s divisible by 2, 3, 4, and 5. We can basically skip 20 checks.
+
+And this method becomes much more efficient as the number gets larger.
+For example, if you wanted to check if 1 Million is prime, you would only need to check divisibility by numbers from 2 up to 1,000, because √1,000,000 = 1,000.
+That’s just 999 checks instead of 999,998, which is a massive difference.
+
+```javascript
+  function isPrime(num) {
+    if (num <= 1) return false;
+
+    for (let i = 2; i <= Math.sqrt(num); i++) {
+      
+      if (num % i === 0) return false;
+    }
+    return true;
+  }
+```
+We just check if `i` is less than or equal to the square root of `num` instead of `num - 1`. 
+
+Lets try to highlight this with 25, by replacing `num` with 25 and `Math.sqrt(num)` with 5.
+```javascript
+  function isPrime() {
+    if (25 <= 1) return false;
+
+    for (let i = 2; i <= 5; i++) { // 5 is the square root of 25
+      if (25 % i === 0) return false;
+    }
+
+    return true;
+  }
+```
+- 25 is not less than or equal to 1, so we continue.
+- We enter the for loop, and `i` is 2.
+- `i` is less than or equal to 5, so we continue.
+- We check if 25 is divisible by 2. It’s not, so we continue.
+- `i` is now 3. We check if 25 is divisible by 3. It’s not, so we continue.
+- `i` is now 4. We check if 25 is divisible by 4. It’s not, so we continue.
+- `i` is now 5. We check if 25 is divisible by 5. It is, so we return false.
+
+ 25 is divisible by a number other than 1 and itself → it is not prime.
+
+Could we improve this even further? Yes, we can skip even numbers altogether since we know that a nunber that is divisible by 2 is not prime.
+```javascript
+  function isPrime(num) {
+    if (num <= 1) return false;
+    if (num <= 3) return true; // 2 and 3 are prime
+    if (num % 2 === 0) return false; // even numbers are not prime
+
+    for (let i = 3; i <= Math.sqrt(num); i += 2) { // check only odd numbers
+      if (num % i === 0) return false;
+    }
+    return true;
+  }
+```
+
+The difference now is that we check if the number is even, and if it is, we return false. We also only check odd numbers in the for loop by incrementing `i` by 2 instead of 1 and initializing `i` as 3. 
+This means we skip all even numbers, which makes the algorithm even faster.
+This algorithm has a time complexity of O(√n), which is much more efficient than the previous algorithm. This means it takes square root time to check if a number is prime, which is a significant improvement for large numbers.
+
+Could we improve this eeeeeven more? Why, yes we can! But now we're getting in to spooky territory. I dont quite understand this one yet, but I will try to explain it anyways.
+
+## The 6k ± 1 Rule
+The 6k ± 1 rule states that all prime numbers are of the form 6k ± 1, where k is a positive integer. This means that all prime numbers can be expressed as either 6k + 1 or 6k - 1. I know, i'm confused too. I'll leave this one here for you braniacs to figure out. But just know that this beast right here is an even more efficient way to check if a number is prime.  
+
+```javascript
+  function isPrime(num) {
+    if (num <= 1) return false;
+    if (num <= 3) return true; 
+    if (num % 2 === 0 || num % 3 === 0) return false; // even numbers and multiples of 3 are not prime
+
+    for (let i = 5; i <= Math.sqrt(num); i += 6) { // check only numbers of the form 6k ± 1
+      if (num % i === 0 || num % (i + 2) === 0) return false;
+    }
+    return true;
+  }
+```
+
+So, what the hell is going on here? Firstly, we’ve added an early return for numbers divisible by 2 or 3. This lets us skip all multiples of 2 and 3 (the smallest primes), which are handled up front.
+
+Why do we need this? Because the loop starts at i = 5 and only checks numbers of the form 6k ± 1 (like 5, 7, 11, 13…). These are the only numbers left that might be prime after we’ve ruled out 2 and 3.
+
+Without the num % 3 === 0 check, we could return the wrong result for smaller numbers. For example:
+Let’s test if 9 is prime.
+-	The square root of 9 is 3.
+-	The loop starts at 5, but 5 > 3, so the loop doesn’t run.
+-	If we don’t check num % 3 === 0 earlier, the function skips the fact that 9 is divisible by 3, and wrongly returns true.
+
+We then do the magic of checking only numbers of the form 6k ± 1.
+```javascript
+ for (let i = 5; i <= Math.sqrt(num); i += 6) { // check only numbers of the form 6k ± 1
+      if (num % i === 0 || num % (i + 2) === 0) return false; // check i and i + 2
+    }
+```
+
+
+

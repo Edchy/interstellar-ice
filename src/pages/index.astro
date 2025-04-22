@@ -9,6 +9,7 @@ import { Code } from "astro:components";
 import Overlap from "../components/Overlap.astro";
 import WordMorph from "../components/WordMorph.astro";
 import IconCarousel from "@/components/IconCarousel.astro";
+import Footer from "@/layouts/Footer.astro";
 ---
 
 <PageLayout
@@ -27,14 +28,18 @@ import IconCarousel from "@/components/IconCarousel.astro";
     </p>
   </main>
 
-  <section class="x">
+  <section class="big-words">
     <div class="inner">
       <h2>stuff i like</h2>
-      <h3 data-aos="fade-up-right" data-aos-anchor-placement="top-center">
+      <h3
+        data-aos="fade-up-right"
+        data-aos-anchor-placement="top-center"
+        data-aos-offset="10"
+      >
         Amore
       </h3>
       <h3 data-aos="fade-up-left" data-aos-anchor-placement="top-center">
-        Sports
+        Nehebkau
       </h3>
       <h3>Sports</h3>
       <h3>Sports</h3>
@@ -51,6 +56,7 @@ import IconCarousel from "@/components/IconCarousel.astro";
     <h2 data-aos="zoom-in">stuff i use</h2>
     <IconCarousel />
   </section>
+  <!-- <Footer /> -->
 </PageLayout>
 <script>
   import AOS from "aos";
@@ -65,6 +71,10 @@ import IconCarousel from "@/components/IconCarousel.astro";
   });
 </script>
 <style>
+  section {
+    padding-block: 20rem;
+    padding-inline: 2rem;
+  }
   h2 {
     font-size: 1rem;
     font-style: italic;
@@ -160,7 +170,7 @@ import IconCarousel from "@/components/IconCarousel.astro";
       top: 0;
       left: 0;
       right: 0;
-      height: 200px;
+      height: 20px;
       --hdr-gradient: linear-gradient(
         to bottom in oklch,
         var(--yang) 17% 17%,
@@ -191,7 +201,7 @@ import IconCarousel from "@/components/IconCarousel.astro";
     }
   }
 
-  section.x {
+  section.big-words {
     --hdr-gradient: radial-gradient(
       farthest-corner circle at 50% 50% in oklab,
       var(--clr-accent) 12% 12%,
@@ -220,56 +230,17 @@ import IconCarousel from "@/components/IconCarousel.astro";
 
       @media (width > 1200px) {
         width: min(100%, 901px);
-        width: clamp(901px, 76vw, 1100px);
+
+        /* tinker with these values */
         width: clamp(901px, 70vw, 1100px);
+        width: clamp(801px, 70vw, 1100px);
       }
     }
 
     h3 {
-      --text-huge: clamp(5rem, 1rem + 20vw, 20rem);
+      /* --text-huge: clamp(5rem, 1rem + 20vw, 20rem); */
       text-box: trim-both cap alphabetic;
       font-size: var(--text-huge);
     }
   }
 </style>
-
-<!-- <h1>I breathe life into pixels</h1>
-<p>From void to vision, I shape, I summon, I watch over.</p>
-<h1>Architect of the digital realm</h1>
-<p>
-  From the first keystroke to the last sunset, I create, nurture, and let go.
-</p>
-<h1>From thought to existence</h1>
-<p>
-  I summon forms from the void, breathe life into the static, and watch them
-  roam.
-</p>
-<h1>Creator of fleeting infinities</h1>
-<p>
-  I call them into being, watch them evolve, and whisper them into the archive
-  of time.
-</p>
-<h1>God of the in-between</h1>
-<p>From first spark to final echo, I make, I mend, I move on.</p> -->
-
-<!-- <section>
-  <h2>Reality check:</h2>
-  <p>
-    I'm not a god. I just make websites and apps. But I do control the pixels,
-    so that’s something.
-  </p>
-</section>
-<section>
-  <h2>Translation:</h2>
-  <p>
-    I make websites and apps. No divine powers, just a lot of HTML, CSS, and
-    caffeine.
-  </p>
-</section>
-<section>
-  <h2>Okay, but seriously...</h2>
-  <p>
-    I'm a web designer & developer. I build websites, craft interfaces, and make
-    digital things work (most of the time).
-  </p>
-</section> -->

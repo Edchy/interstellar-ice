@@ -26,18 +26,17 @@ import PageLayout from "../layouts/PageLayout.astro";
   console.log("About page loaded");
   document.addEventListener("astro:page-load", () => {
     console.log("About page loaded again");
+
+    // Run the benchmarks
+    // benchmark(isPrimeBrute, "Brute Force Prime Check");
+    // benchmark(isPrimeBasic, "Basic Prime Check");
+    // benchmark(isPrimeOptimized3, "Optimized3 Prime Check");
+    // benchmark(isPrimeOptimized, "Optimized Prime Check");
+    // benchmark(isPrime6k, "6k Optimized Prime Check");
+    // benchmark(isPrime6k2, "6k2 Optimized Prime Check");
   });
 
-  function isPrime(num) {
-    if (num <= 1) return false;
-
-    for (let i = 2; i <= Math.sqrt(num); i++) {
-      console.log("doesnt run if num is 2 or 3");
-      if (num % i === 0) return false;
-    }
-    return true;
-  }
-  function isPrime2(num) {
+  function isPrimeBrute(num) {
     if (num <= 1) return false;
 
     for (let i = 2; i < num; i++) {
@@ -45,8 +44,70 @@ import PageLayout from "../layouts/PageLayout.astro";
     }
     return true;
   }
-  console.log(Math.sqrt(5));
-  console.log(isPrime2(2));
-  console.log(isPrime(3));
-  console.log(2 % 2);
+
+  function isPrimeBasic(num) {
+    if (num <= 1) return false;
+
+    for (let i = 2; i <= Math.sqrt(num); i++) {
+      if (num % i === 0) return false;
+    }
+    return true;
+  }
+
+  function isPrimeOptimized(num) {
+    if (num <= 1) return false;
+    if (num <= 3) return true;
+    if (num % 2 === 0) return false;
+
+    for (let i = 3; i <= Math.sqrt(num); i += 2) {
+      if (num % i === 0) return false;
+    }
+    return true;
+  }
+  function isPrimeOptimized3(num) {
+    if (num <= 1) return false;
+    if (num <= 3) return true;
+    if (num % 2 === 0 || num % 3 === 0) return false;
+
+    for (let i = 3; i <= Math.sqrt(num); i += 2) {
+      if (num % i === 0) return false;
+    }
+    return true;
+  }
+
+  function isPrime6k(num) {
+    if (num <= 1) return false;
+    if (num <= 3) return true;
+    if (num % 2 === 0 || num % 3 === 0) return false; // even numbers and multiples of 3 are not prime
+
+    for (let i = 5; i <= Math.sqrt(num); i += 6) {
+      // check only numbers of the form 6k ± 1
+      if (num % i === 0 || num % (i + 2) === 0) return false;
+    }
+    return true;
+  }
+  function isPrime6k2(num) {
+    if (num <= 1) return false;
+    if (num <= 3) return true;
+    if (num % 2 === 0) return false;
+
+    for (let i = 5; i <= Math.sqrt(num); i += 6) {
+      // check only numbers of the form 6k ± 1
+      if (num % i === 0 || num % (i + 2) === 0) return false;
+    }
+    return true;
+  }
+
+  console.log(isPrime6k(21));
+  console.log(isPrime6k2(21));
+
+  // Benchmarking function
+  function benchmark(fn, label, limit = 100000) {
+    const start = performance.now();
+    for (let i = 2; i < limit; i++) {
+      fn(i);
+    }
+    const end = performance.now();
+    console.log(`${label}: ${(end - start).toFixed(2)}ms`);
+  }
 </script>

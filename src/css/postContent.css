@@ -1,0 +1,81 @@
+.post-content {
+  --flow-space: 1.5em;
+  padding-bottom: 10rem;
+  font-size: clamp(1rem, 2vw + 0.5rem, 1.25rem);
+
+  &>p {
+    &:first-child {
+      margin-block-start: 2rem;
+    }
+  }
+
+  &:first-child:first-letter {
+    initial-letter: 2;
+    -webkit-inital-letter: 2;
+    padding-right: 0.5rem;
+  }
+
+  @supports not (initial-letter: 2) {
+    &:first-child:first-letter {
+      font-size: 5rem;
+      float: left;
+      line-height: 0.8;
+      padding-right: 0.5rem;
+      margin-top: 4px;
+    }
+  }
+}
+
+a:any-link {
+  text-underline-offset: 0.25rem;
+  color: var(--blu2);
+}
+
+code {
+  font-family: ui-monospace;
+}
+
+:not(pre)>code {
+  border: 1px dotted var(--neutral-200);
+  padding-inline: 12px;
+  border-radius: var(--radius);
+}
+
+ul,
+ol {
+  list-style-position: outside;
+}
+
+ol {
+  list-style-position: inside;
+}
+
+ul {
+  list-style-type: "\276F";
+  padding-left: 1rem;
+}
+
+li {
+  padding-left: 0.5rem;
+  /* Add padding to each list item */
+}
+
+li::marker {
+  color: var(--clr-accent);
+  padding-right: 1rem;
+}
+
+h2 {
+  font-size: 2rem;
+}
+
+p {
+  text-wrap: pretty;
+}
+
+
+pre {
+  background-color: light-dark(var(--blu), var(--black)) !important;
+  padding: 1rem;
+  border-radius: var(--radius);
+}

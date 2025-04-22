@@ -26,16 +26,17 @@ const tags = [...new Set(allPosts.map((post: any) => post.data.tags).flat())];
   a:any-link {
     color: var(--yin);
     text-decoration: none;
-  }
-  .tag {
+    border-radius: var(--radius);
+    text-decoration: none;
+    color: var(--yin);
+    background-color: var(--yang);
+    padding: 0.25rem 0.5rem;
+    border: 1px dotted var(--yin);
     font-size: 0.75rem;
-    a {
-      border-radius: var(--radius);
-      text-decoration: none;
-      color: var(--yin);
-      background-color: var(--yang);
-      padding: 0.25rem 0.5rem;
-      border: 1px solid var(--yin);
-    }
+  }
+
+  li:hover a {
+    background-color: var(--clr-accent);
+    color: var(--black);
   }
 </style>

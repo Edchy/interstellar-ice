@@ -45,10 +45,8 @@ allPosts.sort(
   h1 {
     font-size: var(--text-huge);
     font-family: var(--font-heading);
+    margin-block-end: 2rem;
 
-    .tag {
-      /* text-transform: capitalize; */
-    }
   }
   .subtitle {
     font-size: 1rem;
@@ -63,7 +61,6 @@ allPosts.sort(
     margin-block-start: 0.5rem;
   }
   .grid {
-    margin-block-start: 2.5rem;
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
     gap: 1rem;
@@ -75,11 +72,10 @@ allPosts.sort(
     border-radius: var(--radius);
     border: 1px dotted var(--yin);
 
-    /* max-width: 400px; */
   }
   .description {
     display: -webkit-box;
-    -webkit-line-clamp: 6; /* Number of lines to show */
+    -webkit-line-clamp: 6; 
     -webkit-box-orient: vertical;
     overflow: hidden;
     text-overflow: ellipsis;
@@ -88,6 +84,5 @@ allPosts.sort(
   a:any-link {
     text-decoration: none;
     color: var(--white);
-    /* color: inherit; */
-  }
+s  }
 </style>

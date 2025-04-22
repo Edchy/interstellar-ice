@@ -39,12 +39,12 @@
 }
 
 ::selection {
-  background-color: var(--clr-accent);
-  color: var(--clr-accent);
+  background-color: oklch(from var(--clr-accent) l c h / 0.9);
+  color: var(--yang);
 }
 
 html {
-  /* cursor: url(https://ani.cursors-4u.net/cursors/cur-13/cur1155.ani), url(https://ani.cursors-4u.net/cursors/cur-13/cur1155.png), auto !important; */
+
   cursor: url("/mickey_cursor.png"), auto !important;
 
 
@@ -53,7 +53,28 @@ html {
   background-color: var(--yang);
   /* background-color: var(--blueish); */
   color: var(--yin);
-  scrollbar-color: var(--clr-accent) var(--yang);
+  /* scrollbar-color: var(--clr-accent) var(--yang); */
+
+  ::-webkit-scrollbar {
+    height: 100%;
+    width: .75rem;
+    background-color: initial;
+  }
+
+  ::-webkit-scrollbar-button {
+    display: none;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    border-radius: 9999px;
+    border: .125rem solid transparent;
+    background-clip: content-box;
+    background-image: linear-gradient(180deg, hsl(1deg 100% 84%), hsl(12deg 100% 82%) 10%, hsl(22deg 100% 81%) 20%, hsl(31deg 100% 80%) 30%, hsl(39deg 100% 80%) 40%, hsl(47deg 100% 81%) 50%, hsl(77deg 71% 80%) 60%, hsl(123deg 73% 85%) 70%, hsl(159deg 80% 80%) 80%, hsl(177deg 79% 76%) 90%, hsl(190deg 100% 80%));
+  }
+
+  ::-webkit-scrollbar-track {
+    background-color: initial;
+  }
 
   @media(prefers-reduced-motion: no-preference) {
     scroll-behavior: smooth;
@@ -77,7 +98,7 @@ select,
 [role="button"],
 .clickable,
 summary {
-  cursor: url("mickey_pointer.png"), pointer !important;
+  cursor: url("/mickey_pointer.png"), pointer;
 }
 
 img,

@@ -46,13 +46,14 @@ const { anchor } = Astro.props;
   }
 
   .back-to-top {
+    /* --clr-accent2: oklch(from var(--yin) l c h / 0.2); */
     background-image: linear-gradient(
       var(--clr-accent) 0% var(--progress),
       transparent var(--progress) 100%
     );
     animation: progress linear;
     animation-timeline: scroll();
-    border: 1px solid var(--yin);
+    border: 1px dotted var(--clr-accent);
     border-radius: var(--radius);
     padding: var(--gap-xs);
     /* position: fixed;
@@ -68,6 +69,10 @@ const { anchor } = Astro.props;
       &:hover {
         opacity: var(--hover);
       }
+    }
+
+    @supports not (animation-timeline: scroll()) {
+      display: none;
     }
   }
   svg {

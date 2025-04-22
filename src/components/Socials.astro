@@ -9,12 +9,12 @@ import Chaos from "./Chaos.astro";
       <Icon name="ri:github-line" size={24} color={"var(--yin)"} />
     </a>
   </li>
-  <!-- <li class="">
+  <li class="linkedIn-is-a-meme">
     <a aria-label="linkedin" href="">
       <Icon name="ri:linkedin-line" size={24} color={"var(--yin)"} />
     </a>
-  </li> -->
-  <Chaos />
+  </li>
+  <!-- <Chaos /> -->
   <li class="">
     <a aria-label="github" href="https://github.com/Edchy">
       <Icon name="ri:instagram-line" size={24} color={"var(--yin)"} />
@@ -24,6 +24,12 @@ import Chaos from "./Chaos.astro";
 </ul>
 
 <style>
+  .linkedIn-is-a-meme a {
+    &:hover {
+      border: 1px solid var(--yin);
+      color: red;
+    }
+  }
   ul {
     display: flex;
     flex-direction: column;

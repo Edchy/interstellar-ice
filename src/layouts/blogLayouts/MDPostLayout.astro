@@ -2,6 +2,7 @@
 import PageLayout from "@/layouts/PageLayout.astro";
 import { capitalizeFirstLetter } from "@/utils/utils";
 import { string_to_slug, formatDate } from "@/utils/utils";
+import "@/css/postContent.css";
 import { Icon } from "astro-icon/components";
 import { fade } from "astro:transitions";
 const { frontmatter } = Astro.props;
@@ -19,6 +20,7 @@ const { frontmatter } = Astro.props;
 // }
 const { title, subtitle, minutesRead, description, pubDate, author, tags } =
   frontmatter;
+console.log(tags);
 ---
 
 <PageLayout
@@ -34,14 +36,23 @@ const { title, subtitle, minutesRead, description, pubDate, author, tags } =
       {subtitle && <p class="subtitle">{subtitle}</p>}
       <div class="flex">
         <p class="pubdate">{formatDate(pubDate)}</p>
-        {
+        <!-- {
           author && (
             <>
               <span>by</span>
               <a href={`/about#${string_to_slug(author)}`}>{author}</a>
             </>
           )
-        }
+        } -->
+        <ul class="tags">
+          {
+            tags.map((tag: string) => (
+              <a class="tag" href={`/tags/${string_to_slug(tag)}`}>
+                {tag}
+              </a>
+            ))
+          }
+        </ul>
         <span class="read-time">{minutesRead}</span>
       </div>
       <!-- <div class="tags">
@@ -116,92 +127,28 @@ const { title, subtitle, minutesRead, description, pubDate, author, tags } =
   .tags {
     display: flex;
     flex-wrap: wrap;
-    align-items: center;
-    gap: 0.25rem;
-    margin-block-start: 1.5rem;
+    /* align-items: center; */
+    gap: 0.5rem;
+    /* margin-block-start: 1.5rem; */
   }
 
   .tag {
     font-size: 0.75rem;
-    a {
-      border-radius: var(--radius);
-      text-decoration: none;
-      color: var(--yin);
-      background-color: var(--yang);
-      padding: 0.25rem 0.5rem;
-      border: 1px solid var(--yin);
+    border-radius: var(--radius);
+    text-decoration: none;
+    color: var(--yin);
+    background-color: var(--yang);
+    padding: 0rem 0.55rem;
+    border: 1px dotted var(--yin);
+
+    &:hover {
+      background-color: var(--clr-accent);
+      color: var(--black);
     }
   }
   .post-description {
     margin-block: 1.5em;
     background-color: gold;
-  }
-
-  .post-content {
-    --flow-space: 1.5em;
-    padding-bottom: 10rem;
-
-    :not(pre) > code {
-      border: 1px dotted var(--neutral-200);
-      padding-inline: 12px;
-    }
-
-    ul,
-    ol {
-      /* margin-block: 1rem; */
-      /* margin-block-start: 0.5rem; */
-      /* padding-left: 2rem; */
-      list-style-position: inside;
-      font-size: clamp(1rem, 2vw + 0.5rem, 1.25rem);
-    }
-    ul {
-      list-style-type: square;
-    }
-
-    h2 {
-      font-size: 2rem;
-    }
-
-    p {
-      /* text-align: justify; */
-      text-wrap: pretty;
-      /* font-weight: 500; */
-      font-size: clamp(1rem, 2vw + 0.5rem, 1.25rem);
-      line-height: 1.4;
-      line-height: 1.6;
-    }
-
-    & > p {
-      &:first-child {
-        margin-block-start: 2rem;
-      }
-      &:first-child:first-letter {
-        initial-letter: 2;
-        -webkit-inital-letter: 2;
-        padding-right: 0.5rem;
-        /* font-family: Bodoni; */
-      }
-
-      @supports not (initial-letter: 2) {
-        &:first-child:first-letter {
-          font-size: 5rem;
-          float: left;
-          line-height: 0.8;
-          padding-right: 0.5rem;
-          margin-top: 4px;
-        }
-      }
-    }
-
-    pre {
-      background-color: var(--blu) !important;
-      padding: 1rem;
-
-      code {
-        font-family: ui-monospace, "Cascadia Code", "Source Code Pro", Menlo,
-          Consolas, "DejaVu Sans Mono", monospace;
-      }
-    }
   }
 
   .content-grid {
