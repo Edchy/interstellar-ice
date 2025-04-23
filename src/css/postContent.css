@@ -31,8 +31,9 @@ a:any-link {
   color: var(--blu2);
 }
 
-code {
-  font-family: ui-monospace;
+code,
+pre {
+  font-size: 1rem;
 }
 
 :not(pre)>code {
@@ -67,15 +68,111 @@ li::marker {
 
 h2 {
   font-size: 2rem;
+  position: relative;
+
+  @media (hover: hover) and (width > 850px) {
+    &::before {
+      content: "#";
+      display: none;
+      font-size: 2rem;
+      position: absolute;
+      left: -2rem;
+
+    }
+
+    &:hover {
+      &::before {
+        display: block;
+        color: oklch(from var(--yin) l c h / .3);
+      }
+    }
+  }
 }
 
 p {
   text-wrap: pretty;
-}
+  position: relative;
 
+  @media (hover: hover) and (width > 850px) {
+    &:not(.pubdate)::before {
+      content: "\00B6";
+      display: none;
+      font-size: 2rem;
+      position: absolute;
+      left: -2rem;
+      top: -.5rem;
+    }
+
+    &:hover {
+      &::before {
+        display: block;
+        color: oklch(from var(--yin) l c h / .3);
+      }
+    }
+  }
+}
 
 pre {
   background-color: light-dark(var(--blu), var(--black)) !important;
   padding: 1rem;
   border-radius: var(--radius);
+}
+
+blockquote {
+  hanging-punctuation: first allow-end last;
+  position: relative;
+  color: oklch(from var(--yin) l c h / .7);
+  padding: 1rem;
+  font-family: Seravek, 'Gill Sans Nova', Ubuntu, Calibri, 'DejaVu Sans', source-sans-pro, sans-serif;
+  font-weight: 300;
+
+
+
+  p {
+    font-style: italic;
+    /* font-size: 1rem; */
+  }
+
+  cite {
+    display: block;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    gap: .25rem;
+    text-align: right;
+    font-size: 0.8em;
+    color: var(--yin);
+    font-weight: bold;
+  }
+
+  a,
+  a>* {
+    color: initial;
+  }
+
+  @media (width > 850px) {
+
+    &::before,
+    &::after {
+      font-family: Didot, 'Bodoni MT', 'Noto Serif Display', 'URW Palladio L', P052, Sylfaen, serif;
+      font-weight: 300;
+      font-size: 6rem;
+      color: inherit;
+      position: absolute;
+    }
+
+    &::before {
+      content: open-quote;
+      left: -30px;
+      top: -30px;
+
+
+    }
+
+    &::after {
+      content: close-quote;
+      bottom: -30px;
+      right: -30px;
+    }
+  }
 }

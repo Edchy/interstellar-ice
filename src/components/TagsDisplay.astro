@@ -20,8 +20,10 @@ const tags = [...new Set(allPosts.map((post: any) => post.data.tags).flat())];
   ul {
     list-style: none;
     display: flex;
-    /* gap: 1rem; */
-    justify-content: center;
+    flex-wrap: wrap;
+    gap: 0.125rem;
+    justify-content: end;
+    padding-bottom: 0.5rem;
   }
   a:any-link {
     color: var(--yin);
@@ -29,6 +31,7 @@ const tags = [...new Set(allPosts.map((post: any) => post.data.tags).flat())];
     border-radius: var(--radius);
     text-decoration: none;
     color: var(--yin);
+    background-color: var(--blueish);
     background-color: var(--yang);
     padding: 0.25rem 0.5rem;
     border: 1px dotted var(--yin);

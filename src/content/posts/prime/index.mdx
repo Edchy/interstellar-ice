@@ -1,13 +1,15 @@
 ---
 title: "What are Prime Numbers?"
-subtitle: "A journey into mathematics"
+subtitle: ""
 pubDate: 2025-04-17
-description: "After learning about encryption, and the story about public key encryption, I wanted to learn more about prime numbers. Also i recently read a book about Cicada 3301 which is all about prime numbers. Im fascinated but also confused."
+description: "A short introduction to prime numbers and how to check if a number is prime"
 tags: ["misc"]
 ---
-Cryptopgraphy, number theory, algebra, calculus, combinatorics, probability, topology, mother nature, the universe, God, the devil, aliens, the government, the Illuminati, the Freemasons, the Knights Templar, the Vatican
-So what the heck are prime numbers? I have been reading about them for a while now, and I still don't understand them. I have read that they are the building blocks of all numbers, but I don't understand what that means. I have read that they are used in encryption, but I don't understand how. I have read that they are used in computer science, but I don't understand why.
-I have read that they are used in cryptography, but I don't understand how. 
+import { Icon } from "astro-icon/components";
+
+
+Cryptopgraphy, number theory, algebra, calculus, combinatorics, probability, topology, mother nature, the universe, God, the devil, aliens, the government, the Illuminati, the Freemasons, the Knights Templar, the Vatican. Prime numbers are everywhere. They are the building blocks of all numbers, and they are used in everything from encryption to life itself. But what are they? How do they work? Why are they so important?
+I have been reading about them for a while now, and I still don't understand them. I'm not a math person, but lately i've been more and more fascinated by it. I wanted to learn more about prime numbers, and how they work. I also wanted to learn about the algorithms used to check if a number is prime, and how they work. So I decided to write this post to help myself understand it better, and maybe help someone else along the way.
 
 ## Definition of Prime Numbers
 Prime numbers are natural numbers greater than 1 that cannot be formed by multiplying two smaller natural numbers. 
@@ -181,5 +183,74 @@ We then do the magic of checking only numbers of the form 6k ± 1.
     }
 ```
 
+<div style="text-align: center; font-size: 3rem;">☠️☠️☠️☠️</div>
+
+## Testing the Algorithms
+
+We have now learned about 4 different algorithms to check if a number is prime.
+- The brute force method
+- The square root method
+- The even number method
+- The 6k ± 1 method
+
+Lets put them all to the test and see how they perform by writing a simple test function that runs all 4 algorithms and times them, like so:
+
+```javascript
+  function benchmark(fn, label, limit = 100_000) {
+    const start = performance.now();
+    for (let i = 2; i < limit; i++) {
+      fn(i);
+    }
+    const end = performance.now();
+    console.log(`${label}: ${(end - start).toFixed(2)}ms`);
+  }
+```
+What this function does is it takes a function, a label, and a limit. It then runs the function for every number from 2 to the limit, and times how long it takes by using the performance API. It then logs the label and the time it took to run the function.
 
 
+```javascript
+  benchmark(isPrimeBrute, "Brute Force");
+  benchmark(isPrimeSqrt, "Square Root");
+  benchmark(isPrimeSqrtOptimized, "Even Numbers");
+  benchmark(isPrime6k, "6k ± 1");
+```
+
+Damn computers are fast!! It kind of blows my mind. Just the bruteforce function gets run 100,000 times in less than 500ms 🤯. I mean, i knew computers were fast but this test really made something click for me. 
+
+- The square root function was done in 5ms, not surprisingly.
+- The optimized even number function was done in 2.7ms.
+- The 6k ± 1 function was done in 2ms.
+
+Let's try it with a limit of 1,000,000 and see how it performs.
+```javascript
+  benchmark(isPrimeBrute, "Brute Force"); // 43 Seconds!
+  benchmark(isPrimeSqrt, "Square Root"); // 111ms
+  benchmark(isPrimeSqrtOptimized, "Even Numbers"); // 47ms
+  benchmark(isPrime6k, "6k ± 1"); // 30ms
+```
+
+ This is a massive difference, and it really shows how much more efficient the sqrt algorithms are as we increase the limit. 
+
+ Lets try it with a limit of 10,000,000 and see how it performs.
+```javascript
+  benchmark(isPrimeBrute, "Brute Force"); // Nah! Im not doing that.
+  benchmark(isPrimeSqrt, "Square Root"); // 2144ms
+  benchmark(isPrimeSqrtOptimized, "Even Numbers"); // 1072ms
+  benchmark(isPrime6k, "6k ± 1"); // 650ms
+```
+
+The pattern is clear. The brute force method is not even worth trying, and the square root method is still pretty fast. The optimized even number method is almost twice as fast (since we are skipping half the numbers), and the 6k ± 1 method is the fastest of them all.
+
+## Wrapping Up
+
+I realize that this post is a bit all over the place, and I apologize for that. I just wanted to get my thoughts down on "paper" and try to make sense of it all. I hope this has helped you too, and maybe even inspired you to learn more about them. I'll leave you wth a quote from a reddit user that I found while researching this topic. I think it sums up the mystery of prime numbers quite well.
+
+<blockquote>
+That said, [...primes are] also interesting because sometimes, they just plain show up in places they don't seem to 'belong.' They have a way of inserting themselves into a problem that you initially thought shouldn't have ANYTHING to do with prime numbers. But... you can often get knee-deep into some family of questions that have no relevance to primes, on the surface... and somehow find that the answers sort of clump up in nice neat chunks, separated by the 'fault lines' of prime numbers. It's eerie how often that happens.
+
+Kind of like how pi pops up in certain problems that seem to have nothing to do with circles, and it makes you say "What the hell? How did pi get here? There MUST be a circle hiding in this problem, somehow, some way." Primes similarly just say "Hey, we're super important, and we get all up in your face when you least expect us," from time to time.
+
+So, trying to piece together the how's and why's of why they seem so damn ubiquitous, is a big reason to try to understand them better.
+<cite>angryWinds on <a aria-label="reddit-link" href="https://www.reddit.com/r/math/comments/16z43lq/why_do_people_study_prime_numbers/"><Icon size={32} name="ri:reddit-fill"/></a></cite>
+
+</blockquote>
