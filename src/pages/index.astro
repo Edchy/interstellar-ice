@@ -20,37 +20,53 @@ import Footer from "@/layouts/Footer.astro";
   <main class="co">
     <WordMorph />
 
-    <p>
-      No, but really. I’m an aspiring web designer & developer — not an
-      architect or a god. I design and build websites, apps, and interfaces that
-      (usually) work.
-      <a href="mailto:example@example.com"> (contact?)</a>
+    <p class="hero-text">
+      No, but really. I’m an aspiring web designer, developer && programmer —
+      not an architect or a god (😈). I design and build websites, apps, and
+      interfaces that (usually) work.
+      <a href="mailto:example@example.com"> &#x2937; contact?</a>
     </p>
   </main>
 
   <section class="big-words">
     <div class="inner">
-      <h2>stuff i like</h2>
+      <h2 data-aos="fade-down-right" data-aos-offset="100">stuff i like</h2>
+      <h3
+        data-aos="fade-up-right"
+        data-aos-anchor-placement="top-bottom"
+        data-aos-offset="100"
+      >
+        Sports
+      </h3>
+      <h3 data-aos="fade-up-left" data-aos-anchor-placement="top-center">
+        Sports
+      </h3>
       <h3
         data-aos="fade-up-right"
         data-aos-anchor-placement="top-center"
         data-aos-offset="10"
       >
-        Amore
+        Sports
       </h3>
       <h3 data-aos="fade-up-left" data-aos-anchor-placement="top-center">
-        Nehebkau
+        Sports
       </h3>
-      <h3>Sports</h3>
-      <h3>Sports</h3>
-      <h3>Sports</h3>
+      <h3
+        data-aos="fade-up-right"
+        data-aos-anchor-placement="top-center"
+        data-aos-offset="10"
+      >
+        Sports
+      </h3>
+      <h3 data-aos="fade-up-left" data-aos-anchor-placement="top-center">
+        Sports
+      </h3>
     </div>
   </section>
 
   <!-- <section class="cat-section">
     &numero;&Popf;
     <span>&#9787;</span>
-
   </section> -->
   <section class="bb">
     <h2 data-aos="zoom-in">stuff i use</h2>
@@ -72,7 +88,7 @@ import Footer from "@/layouts/Footer.astro";
 </script>
 <style>
   section {
-    padding-block: 20rem;
+    margin-block-end: 20rem;
     padding-inline: 2rem;
   }
   h2 {
@@ -83,7 +99,7 @@ import Footer from "@/layouts/Footer.astro";
     text-align: left;
     margin-bottom: 1rem;
   }
-  /* .cat-section {
+  .cat-section {
     background-color: var(--clr-accent);
     margin-block: 1rem;
     position: absolute;
@@ -98,12 +114,12 @@ import Footer from "@/layouts/Footer.astro";
       font-size: 5rem;
       font-family: var(--font-brand);
     }
-  } */
+  }
   .bb {
     /* margin-top: 15rem; */
     /* padding: min(1rem, 2vw); */
   }
-  p {
+  p.hero-text {
     /* letter-spacing: 2px; */
     font-family: var(--font-heading);
     font-size: clamp(0.875rem, 1.5vw, 1rem);
@@ -117,11 +133,13 @@ import Footer from "@/layouts/Footer.astro";
     z-index: 2;
 
     a:any-link {
-      color: var(--clr-accent);
+      color: light-dark(var(--black), var(--clr-accent));
       text-decoration: none;
       font-weight: bold;
       transition: text-decoration 0.2s ease-in-out;
       text-align: right;
+      display: block;
+      margin-left: auto;
 
       &:hover {
         text-decoration: underline;
@@ -146,6 +164,7 @@ import Footer from "@/layouts/Footer.astro";
     background-size: cover;
     background-blend-mode: hard-light;
     background-blend-mode: var(--blend-mode);
+    margin-block-end: 5rem;
 
     &::before {
       content: "";
@@ -211,8 +230,9 @@ import Footer from "@/layouts/Footer.astro";
     /* width: 100%;  */
     /* -webkit-mask: var(--mask-edge-zig-zag-top); */
     background: var(--hdr-gradient);
-    z-index: 2;
+    z-index: calc(infinity - 1);
     left: 0;
+    overflow-x: clip;
 
     @media (prefers-reduced-motion: no-preference) {
       animation: gradient-change 6s linear infinite alternate;
@@ -238,7 +258,7 @@ import Footer from "@/layouts/Footer.astro";
     }
 
     h3 {
-      /* --text-huge: clamp(5rem, 1rem + 20vw, 20rem); */
+      --text-huge: clamp(5rem, 1rem + 20vw, 20rem);
       text-box: trim-both cap alphabetic;
       font-size: var(--text-huge);
     }

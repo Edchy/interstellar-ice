@@ -5,18 +5,9 @@ import { devicon, devPlain, catppuccin } from "../utils/data.js";
 
 <ul class="logos">
   {
-    // devPlain.names.map((name) => (
-    //   <li class="tech-icon" title={name}>
-    //     <Icon class="tech-icon" name={`${devPlain.icon}:${name}`} size="2rem" />
-    //   </li>
-    // ))
-    catppuccin.names.map((name) => (
+    devPlain.names.map((name) => (
       <li class="tech-icon" title={name}>
-        <Icon
-          class="tech-icon"
-          name={`${catppuccin.icon}:${name}`}
-          size="2rem"
-        />
+        <Icon class="tech-icon" name={`${devPlain.icon}:${name}`} size="2rem" />
       </li>
     ))
   }

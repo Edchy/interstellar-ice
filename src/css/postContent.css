@@ -27,8 +27,15 @@
 }
 
 a:any-link {
+  --link-light: oklch(from var(--nice-blueish-hue) 60% c h);
   text-underline-offset: 0.25rem;
-  color: var(--blu2);
+  text-decoration-thickness: 3px;
+  text-decoration-color: var(--link-light);
+  color: var(--link-light);
+
+  &:hover {
+    opacity: 0.75;
+  }
 }
 
 code,

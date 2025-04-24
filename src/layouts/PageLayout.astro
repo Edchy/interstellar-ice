@@ -10,7 +10,8 @@ import Head from "./Head.astro";
 import Footer from "./Footer.astro";
 import { slide } from "astro:transitions";
 import { Image } from "astro:assets";
-import neon from "@/assets/img/mickey-v.png";
+import v from "@/assets/img/mickey-v.png";
+import thumb from "@/assets/img/mickey-dislike.png";
 
 const { title, description, showAside } = Astro.props;
 ---
@@ -40,7 +41,7 @@ const { title, description, showAside } = Astro.props;
           {
             showAside && (
               // <p>아니 사진관</p>
-            <Image src={neon} alt="neon" class="neon" width={75}/>
+            <Image src={v} alt="mickey mouse hand doing a V sign" class="mickey" width={75}/>
               <nav class="socials">
                 <Socials />
               </nav>
@@ -62,10 +63,10 @@ const { title, description, showAside } = Astro.props;
     @media (width < 1200px) {
       position: sticky;
       top: 0;
-      background-color: lch(from var(--yang) l c h / 0.6);
+      background-color: lch(from var(--yang) l c h / 0.0);
       z-index: calc(infinity - 1);
       width: 100%;
-      backdrop-filter: blur(0.2rem);
+      backdrop-filter: blur(0.3rem);
     }
   }
 
@@ -83,6 +84,7 @@ const { title, description, showAside } = Astro.props;
     justify-content: space-between;
     align-items: center;
     z-index: 3;
+    
   }
 
   aside {
