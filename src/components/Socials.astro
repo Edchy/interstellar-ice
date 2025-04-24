@@ -10,12 +10,12 @@ import Chaos from "./Chaos.astro";
     </a>
   </li>
   <li class="">
-    <a aria-label="github" href="https://github.com/Edchy">
-      <Icon name="ri:instagram-line" size={24} color={"var(--yin)"} />
+    <a aria-label="github" href="/x">
+      <Icon name="ri:twitter-x-line" size={24} color={"var(--yin)"} />
     </a>
   </li>
   <li class="linkedIn-is-a-meme">
-    <a aria-label="linkedin" href="https://github.com/Edchy">
+    <a aria-label="linkedin" href="#">
       <Icon name="ri:linkedin-line" size={24} color={"var(--yin)"} />
     </a>
   </li>
@@ -31,6 +31,7 @@ import Chaos from "./Chaos.astro";
     gap: var(--gap-xl);
   }
   .linkedIn-is-a-meme {
+    pointer-events: none;
     position: relative;
     transition: transform 0.3s
       linear(
@@ -55,144 +56,261 @@ import Chaos from "./Chaos.astro";
 </style>
 
 <script>
-  const linkedInItem = document.querySelector(
-    ".linkedIn-is-a-meme"
-  ) as HTMLElement;
+  // This function contains all your LinkedIn avoidance logic
+  function initLinkedIn() {
+    const linkedInItem = document.querySelector(
+      ".linkedIn-is-a-meme"
+    ) as HTMLElement;
 
-  // Variables to track user activity
-  let lastMoveTime = Date.now();
-  let resetTimeout: number | null = null;
-  let hasMoved = false;
+    // Only proceed if the linkedInItem exists
+    if (!linkedInItem) return null;
 
-  // Function to reset position
-  const resetPosition = () => {
-    linkedInItem.style.transition =
-      "transform 0.2s cubic-bezier(0.34, 1.56, 0.64, 1)";
-    linkedInItem.style.transform = "translate(0, 0)";
-    hasMoved = false;
-  };
+    // Variables to track user activity
+    let lastMoveTime = Date.now();
+    let resetTimeout: number | null = null;
+    let hasMoved = false;
+    let lastMouseX = 0;
+    let lastMouseY = 0;
+    let preventReset = false;
 
-  const getSafeRandomPosition = () => {
-    // Get current position (if any)
-    let currentX = 0;
-    let currentY = 0;
-
-    if (linkedInItem.style.transform) {
-      const transform = linkedInItem.style.transform;
-      const match = transform.match(
-        /translate\((-?\d+\.?\d*)px,\s*(-?\d+\.?\d*)px\)/
-      );
-      if (match) {
-        currentX = parseFloat(match[1]);
-        currentY = parseFloat(match[2]);
+    // Function to reset position
+    const resetPosition = () => {
+      // Don't reset if prevention flag is set
+      if (preventReset) {
+        preventReset = false;
+        return;
       }
-    }
 
-    // Get viewport dimensions
-    const viewportWidth = window.innerWidth;
-    const itemRect = linkedInItem.getBoundingClientRect();
-    const itemWidth = itemRect.width;
+      linkedInItem.style.transition =
+        "transform 0.2s cubic-bezier(0.34, 1.56, 0.64, 1)";
+      linkedInItem.style.transform = "translate(0, 0)";
+      hasMoved = false;
 
-    // Get absolute position of the parent container
-    const parentRect = linkedInItem.parentElement?.getBoundingClientRect() || {
-      left: 0,
+      // Check after slight delay if cursor is still over element
+      setTimeout(() => {
+        const rect = linkedInItem.getBoundingClientRect();
+        // If cursor is over or very near the element, move it again
+        if (
+          lastMouseX >= rect.left - 20 &&
+          lastMouseX <= rect.right + 20 &&
+          lastMouseY >= rect.top - 20 &&
+          lastMouseY <= rect.bottom + 20
+        ) {
+          const { x, y } = getSafeRandomPosition();
+          linkedInItem.style.transform = `translate(${x}px, ${y}px)`;
+        }
+      }, 100); // Increased delay to give DOM more time to update
     };
-    const offsetLeft = parentRect.left;
 
-    // Calculate maximum safe X (prevent going outside screen to the right)
-    const maxSafeX = viewportWidth - offsetLeft - itemWidth - 20;
+    const getSafeRandomPosition = () => {
+      // Get current position (if any)
+      let currentX = 0;
+      let currentY = 0;
 
-    // Generate new position that's at least 100px away from current position
-    let newX, newY;
-    let attempts = 0;
-
-    do {
-      // Generate random X that's at least 100px away
-      newX =
-        Math.random() > 0.5
-          ? Math.random() * 100 + 100 // 100 to 200px to the right
-          : -Math.random() * 100 - 100; // -100 to -200px to the left
-
-      // If would go beyond right edge, "bounce" it back
-      if (newX > maxSafeX) {
-        newX = maxSafeX - (newX - maxSafeX); // Reflect back from the edge
+      if (linkedInItem.style.transform) {
+        const transform = linkedInItem.style.transform;
+        const match = transform.match(
+          /translate\((-?\d+\.?\d*)px,\s*(-?\d+\.?\d*)px\)/
+        );
+        if (match) {
+          currentX = parseFloat(match[1]);
+          currentY = parseFloat(match[2]);
+        }
       }
 
-      // If would go beyond left edge, bounce it too
-      if (newX < -offsetLeft + 20) {
-        newX = -offsetLeft + 40; // Bounce away from left edge
+      // Get viewport dimensions
+      const viewportWidth = window.innerWidth;
+      const itemRect = linkedInItem.getBoundingClientRect();
+      const itemWidth = itemRect.width;
+
+      // Get absolute position of the parent container
+      const parentRect =
+        linkedInItem.parentElement?.getBoundingClientRect() || {
+          left: 0,
+        };
+      const offsetLeft = parentRect.left;
+
+      // Calculate maximum safe X (prevent going outside screen to the right)
+      const maxSafeX = viewportWidth - offsetLeft - itemWidth - 20;
+
+      // Generate new position that's at least 100px away from current position
+      let newX, newY;
+      let attempts = 0;
+
+      do {
+        // Generate random X that's at least 100px away
+        newX =
+          Math.random() > 0.5
+            ? Math.random() * 100 + 100 // 100 to 200px to the right
+            : -Math.random() * 100 - 100; // -100 to -200px to the left
+
+        // If would go beyond right edge, "bounce" it back
+        if (newX > maxSafeX) {
+          newX = maxSafeX - (newX - maxSafeX); // Reflect back from the edge
+        }
+
+        // If would go beyond left edge, bounce it too
+        if (newX < -offsetLeft + 20) {
+          newX = -offsetLeft + 40; // Bounce away from left edge
+        }
+
+        // Generate random Y that's at least 50px away
+        newY =
+          Math.random() > 0.5
+            ? Math.random() * 50 + 50 // 50 to 100px down
+            : -Math.random() * 50 - 50; // -50 to -100px up
+
+        // Check if new position is at least 100px away from current position
+        const deltaX = newX - currentX;
+        const deltaY = newY - currentY;
+        const distance = Math.sqrt(deltaX * deltaX + deltaY * deltaY);
+
+        // If distance is at least 100px, we're good
+        if (distance >= 100) {
+          break;
+        }
+
+        attempts++;
+      } while (attempts < 10); // Limit attempts to avoid infinite loop
+
+      // Mark that the element has moved
+      hasMoved = true;
+
+      // Reset the timeout if it exists
+      if (resetTimeout) {
+        clearTimeout(resetTimeout);
+        resetTimeout = null;
       }
 
-      // Generate random Y that's at least 50px away
-      newY =
-        Math.random() > 0.5
-          ? Math.random() * 50 + 50 // 50 to 100px down
-          : -Math.random() * 50 - 50; // -50 to -100px up
+      // Set a new timeout to reset position after 3 seconds of inactivity
+      resetTimeout = window.setTimeout(() => {
+        if (Date.now() - lastMoveTime > 1000) {
+          resetPosition();
+        }
+      }, 2000);
 
-      // Check if new position is at least 100px away from current position
-      const deltaX = newX - currentX;
-      const deltaY = newY - currentY;
-      const distance = Math.sqrt(deltaX * deltaX + deltaY * deltaY);
+      return { x: newX, y: newY };
+    };
 
-      // If distance is at least 100px, we're good
-      if (distance >= 100) {
-        break;
+    // Handle mouseover event - move to random position
+    linkedInItem.addEventListener("mouseenter", () => {
+      // Set a flag to prevent automatic reset when we're deliberately moving
+      preventReset = true;
+
+      const { x, y } = getSafeRandomPosition();
+      // Apply the random position
+      linkedInItem.style.transform = `translate(${x}px, ${y}px)`;
+    });
+
+    // Also move if mouse gets close
+    const mouseMoveHandler = (e: MouseEvent) => {
+      lastMoveTime = Date.now();
+      lastMouseX = e.clientX;
+      lastMouseY = e.clientY;
+
+      const rect = linkedInItem.getBoundingClientRect();
+      // Calculate center of the element
+      const centerX = rect.left + rect.width / 2;
+      const centerY = rect.top + rect.height / 2;
+
+      // Calculate distance to mouse pointer
+      const distX = e.clientX - centerX;
+      const distY = e.clientY - centerY;
+      const distance = Math.sqrt(distX * distX + distY * distY);
+
+      // Move to random position if mouse gets within 40px
+      if (distance < 40) {
+        preventReset = true;
+        const { x, y } = getSafeRandomPosition();
+        linkedInItem.style.transform = `translate(${x}px, ${y}px)`;
       }
+    };
+    document.addEventListener("mousemove", mouseMoveHandler);
 
-      attempts++;
-    } while (attempts < 10); // Limit attempts to avoid infinite loop
-    // Mark that the element has moved
-    hasMoved = true;
+    // Add a continuous check to see if mouse is over the element in its original position
+    const checkIfMouseOver = () => {
+      if (!hasMoved) {
+        // Only check when in original position
+        const rect = linkedInItem.getBoundingClientRect();
 
-    // Reset the timeout if it exists
-    if (resetTimeout) {
-      clearTimeout(resetTimeout);
-      resetTimeout = null;
-    }
+        if (
+          lastMouseX >= rect.left - 20 &&
+          lastMouseX <= rect.right + 20 &&
+          lastMouseY >= rect.top - 20 &&
+          lastMouseY <= rect.bottom + 20
+        ) {
+          console.log("Mouse detected over original position");
+          preventReset = true;
+          const { x, y } = getSafeRandomPosition();
+          linkedInItem.style.transform = `translate(${x}px, ${y}px)`;
+        }
+      }
+    };
 
-    // Set a new timeout to reset position after 3 seconds of inactivity
-    resetTimeout = window.setTimeout(() => {
-      if (Date.now() - lastMoveTime > 3000) {
+    // Check every 250ms if mouse is over the element in its original position
+    const mouseOverInterval = setInterval(checkIfMouseOver, 250);
+
+    // Recalculate boundaries on window resize
+    const resizeHandler = () => {
+      // If the element has moved, make sure it's still within boundaries
+      if (linkedInItem.style.transform) {
+        const { x, y } = getSafeRandomPosition();
+        linkedInItem.style.transform = `translate(${x}px, ${y}px)`;
+      }
+    };
+    window.addEventListener("resize", resizeHandler);
+
+    // Setup an interval to check for inactivity
+    const inactivityInterval = setInterval(() => {
+      if (hasMoved && Date.now() - lastMoveTime > 5000 && !preventReset) {
+        console.log("Resetting position due to inactivity");
         resetPosition();
       }
     }, 1000);
-    return { x: newX, y: newY };
-  };
 
-  // Handle mouseover event - move to random position
-  linkedInItem.addEventListener("mouseenter", () => {
-    const { x, y } = getSafeRandomPosition();
+    // Return cleanup function
+    return () => {
+      document.removeEventListener("mousemove", mouseMoveHandler);
+      window.removeEventListener("resize", resizeHandler);
+      if (resetTimeout) {
+        clearTimeout(resetTimeout);
+      }
+      clearInterval(inactivityInterval);
+      clearInterval(mouseOverInterval);
+    };
+  }
 
-    // Apply the random position
-    linkedInItem.style.transform = `translate(${x}px, ${y}px)`;
-  });
+  // Store the cleanup function
+  let cleanup: (() => void) | null = null;
 
-  // Also move if mouse gets close
-  document.addEventListener("mousemove", (e) => {
-    const rect = linkedInItem.getBoundingClientRect();
+  // Initialize on regular page load
+  if (document.readyState === "loading") {
+    document.addEventListener("DOMContentLoaded", () => {
+      cleanup = initLinkedIn();
+    });
+  } else {
+    cleanup = initLinkedIn();
+  }
 
-    // Calculate center of the element
-    const centerX = rect.left + rect.width / 2;
-    const centerY = rect.top + rect.height / 2;
-
-    // Calculate distance to mouse pointer
-    const distX = e.clientX - centerX;
-    const distY = e.clientY - centerY;
-    const distance = Math.sqrt(distX * distX + distY * distY);
-
-    // Move to random position if mouse gets within 40px
-    if (distance < 40) {
-      const { x, y } = getSafeRandomPosition();
-      linkedInItem.style.transform = `translate(${x}px, ${y}px)`;
+  // Re-initialize on Astro view transitions
+  document.addEventListener("astro:page-load", () => {
+    // Clean up previous event listeners if they exist
+    if (cleanup) {
+      cleanup();
     }
+    // Reinitialize
+    cleanup = initLinkedIn();
   });
 
-  // Recalculate boundaries on window resize
-  window.addEventListener("resize", () => {
-    // If the element has moved, make sure it's still within boundaries
-    if (linkedInItem.style.transform) {
-      const { x, y } = getSafeRandomPosition();
-      linkedInItem.style.transform = `translate(${x}px, ${y}px)`;
-    }
-  });
+  // Clean up when transitioning away
+  document.addEventListener(
+    "astro:before-preparation",
+    () => {
+      if (cleanup) {
+        cleanup();
+        cleanup = null;
+      }
+    },
+    { once: true }
+  );
 </script>
