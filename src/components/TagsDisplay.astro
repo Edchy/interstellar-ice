@@ -36,6 +36,7 @@ const tags = [...new Set(allPosts.map((post: any) => post.data.tags).flat())];
     padding: 0.25rem 0.5rem;
     border: 1px dotted var(--yin);
     font-size: 0.75rem;
+    transition: all 0.15s ease-in-out;
   }
 
   li:hover a {

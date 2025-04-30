@@ -5,7 +5,16 @@ import PageLayout from "../layouts/PageLayout.astro";
 
 <PageLayout title="About">
   <main>lol</main>
+  <button class="op">Update</button>
 </PageLayout>
+
+<script>
+  const btn = document.querySelector("button.op")!;
+  btn.addEventListener("click", () => {
+    console.log("clicked");
+    console.log(btn);
+  });
+</script>
 
 <style>
   ul {
@@ -21,67 +30,3 @@ import PageLayout from "../layouts/PageLayout.astro";
     background: var(--hdr-gradient);
   }
 </style>
-
-<script is:inline>
-  console.log("About page loaded");
-  document.addEventListener("astro:page-load", () => {
-    console.log("About page loaded again");
-
-    // Run the benchmarks
-    // benchmark(isPrimeBrute, "Brute Force Prime Check");
-    // benchmark(isPrimeBasic, "Basic Prime Check");
-    // benchmark(isPrimeOptimized, "Optimized Prime Check");
-    // benchmark(isPrime6k, "6k Optimized Prime Check");
-  });
-
-  function isPrimeBrute(num) {
-    if (num <= 1) return false;
-
-    for (let i = 2; i < num; i++) {
-      if (num % i === 0) return false;
-    }
-    return true;
-  }
-
-  function isPrimeBasic(num) {
-    if (num <= 1) return false;
-
-    for (let i = 2; i <= Math.sqrt(num); i++) {
-      if (num % i === 0) return false;
-    }
-    return true;
-  }
-
-  function isPrimeOptimized(num) {
-    if (num <= 1) return false;
-    if (num <= 3) return true;
-    if (num % 2 === 0) return false;
-
-    for (let i = 3; i <= Math.sqrt(num); i += 2) {
-      if (num % i === 0) return false;
-    }
-    return true;
-  }
-
-  function isPrime6k(num) {
-    if (num <= 1) return false;
-    if (num <= 3) return true;
-    if (num % 2 === 0 || num % 3 === 0) return false; // even numbers and multiples of 3 are not prime
-
-    for (let i = 5; i <= Math.sqrt(num); i += 6) {
-      // check only numbers of the form 6k ± 1
-      if (num % i === 0 || num % (i + 2) === 0) return false;
-    }
-    return true;
-  }
-
-  // Benchmarking function
-  function benchmark(fn, label, limit = 10_000_000) {
-    const start = performance.now();
-    for (let i = 2; i < limit; i++) {
-      fn(i);
-    }
-    const end = performance.now();
-    console.log(`${label}: ${(end - start).toFixed(2)}ms`);
-  }
-</script>

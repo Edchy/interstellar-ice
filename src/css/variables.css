@@ -12,7 +12,17 @@
 
  :root[style*="color-scheme: dark"] {
    --blend-mode: difference;
+   --blend-mode: overlay;
+   --blend-mode: hue;
+   --blend-mode: saturation;
+   --blend-mode: screen;
+   --blend-mode: multiply;
+   --blend-mode: luminosity;
+   --blend-mode: exclusion;
+   --blend-mode: darken;
+   --blend-mode: difference;
    --blend-mode: color-dodge;
+   --blend-mode: hard-light;
  }
 
  :root {
@@ -53,9 +63,16 @@
    --ground-1: var(--neutral-100);
    */
 
-   --blend-mode: exclusion;
    --blend-mode: hard-light;
-
+   --blend-mode: darken;
+   --blend-mode: difference;
+   --blend-mode: exclusion;
+   --blend-mode: hue;
+   --blend-mode: overlay;
+   --blend-mode: saturation;
+   --blend-mode: screen;
+   --blend-mode: multiply;
+   --blend-mode: luminosity;
    /* typography */
    --text-huge: clamp(5rem, 1rem + 10vw, 10rem);
    --font-brand: "Revenge",

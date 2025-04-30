@@ -3,7 +3,7 @@ title: "What are Prime Numbers?"
 subtitle: ""
 pubDate: 2025-04-17
 description: "A short introduction to prime numbers and how to check if a number is prime"
-tags: ["misc"]
+tags: ["math", "js"]
 ---
 import { Icon } from "astro-icon/components";
 
@@ -157,9 +157,12 @@ The 6k ± 1 rule states that all prime numbers are of the form 6k ± 1, where k 
   function isPrime(num) {
     if (num <= 1) return false;
     if (num <= 3) return true; 
-    if (num % 2 === 0 || num % 3 === 0) return false; // even numbers and multiples of 3 are not prime
 
-    for (let i = 5; i <= Math.sqrt(num); i += 6) { // check only numbers of the form 6k ± 1
+    // even numbers and multiples of 3 are not prime
+    if (num % 2 === 0 || num % 3 === 0) return false; 
+
+    // check only numbers of the form 6k ± 1
+    for (let i = 5; i <= Math.sqrt(num); i += 6) { 
       if (num % i === 0 || num % (i + 2) === 0) return false;
     }
     return true;
@@ -178,8 +181,11 @@ Let’s test if 9 is prime.
 
 We then do the magic of checking only numbers of the form 6k ± 1.
 ```javascript
- for (let i = 5; i <= Math.sqrt(num); i += 6) { // check only numbers of the form 6k ± 1
-      if (num % i === 0 || num % (i + 2) === 0) return false; // check i and i + 2
+// check only numbers of the form 6k ± 1
+ for (let i = 5; i <= Math.sqrt(num); i += 6) { 
+
+    // check i and i + 2
+      if (num % i === 0 || num % (i + 2) === 0) return false; 
     }
 ```
 

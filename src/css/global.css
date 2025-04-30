@@ -55,7 +55,7 @@ html {
   color: var(--yin);
   /* scrollbar-color: var(--clr-accent) var(--yang); */
 
-  ::-webkit-scrollbar {
+  /* ::-webkit-scrollbar {
     height: 100%;
     width: .75rem;
     background-color: initial;
@@ -74,7 +74,7 @@ html {
 
   ::-webkit-scrollbar-track {
     background-color: initial;
-  }
+  } */
 
   @media(prefers-reduced-motion: no-preference) {
     scroll-behavior: smooth;

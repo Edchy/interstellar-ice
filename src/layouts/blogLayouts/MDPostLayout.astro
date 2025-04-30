@@ -2,9 +2,11 @@
 import PageLayout from "@/layouts/PageLayout.astro";
 import { capitalizeFirstLetter } from "@/utils/utils";
 import { string_to_slug, formatDate } from "@/utils/utils";
-import "@/css/postContent.css";
 import { Icon } from "astro-icon/components";
 import { fade } from "astro:transitions";
+import MDPostHeader from "./MDPostHeader.astro";
+import "@/css/postContent.css";
+
 const { frontmatter } = Astro.props;
 
 // interface Props {
@@ -28,44 +30,9 @@ console.log(tags);
   title={`Blog | ${title}`}
   showAside={false}
 >
-  <main>
-    <header class="inner post-header content-grid">
-      <h1 transition:name={title} class="post-title">
-        {capitalizeFirstLetter(title)}
-      </h1>
-      {subtitle && <p class="subtitle">{subtitle}</p>}
-      <div class="flex">
-        <p class="pubdate">{formatDate(pubDate)}</p>
-        <!-- {
-          author && (
-            <>
-              <span>by</span>
-              <a href={`/about#${string_to_slug(author)}`}>{author}</a>
-            </>
-          )
-        } -->
-        <ul class="tags">
-          {
-            tags.map((tag: string) => (
-              <a class="tag" href={`/tags/${string_to_slug(tag)}`}>
-                {tag}
-              </a>
-            ))
-          }
-        </ul>
-        <span class="read-time">{minutesRead}</span>
-      </div>
-      <!-- <div class="tags">
-        {
-          tags.map((tag: string) => (
-            <p class="tag">
-              <a href={`/tags/${tag}`}>{tag}</a>
-            </p>
-          ))
-        } -->
-    </header>
-  </main>
-  <section class="content-grid">
+  <MDPostHeader frontmatter={frontmatter} />
+
+  <main class="content-grid">
     <!-- <p class="post-description">{description}</p> -->
     <div class="post-content flow">
       <slot />
@@ -74,118 +41,12 @@ console.log(tags);
       Add nav to other posts here. If you find any mistakes, errors or typos
       please let me know <a href="mailto:me">my email</a>
     </footer>
-  </section>
+  </main>
 </PageLayout>
 
 <style>
-  header {
-    margin-block-start: 2rem;
-    /* margin-block-end: 5rem; */
-  }
-
-  .post-title {
-    /* text-box: trim-both cap alphabetic; */
-
-    font-family: var(--font-heading);
-
-    /* font-weight: 900;
-    font-optical-sizing: auto;
-    font-style: italic;
-    font-variant-ligatures: common-ligatures;
-    font-variant-numeric: diagonal-fractions; */
-    line-height: 1;
-    text-wrap: balance;
-    font-size: clamp(2.5rem, 5vw + 1rem, 4rem);
-    /* margin-left: -1rem; */
-
-    @media (width > 500px) {
-      font-size: var(--text-huge);
-      font-size: 5rem;
-    }
-  }
-  .subtitle {
-    font-size: 1.5rem;
-    font-style: italic;
-    color: var(--neutral-200);
-    font-family: var(--font-heading);
-    /* text-align: end; */
-  }
-  .pubdate,
-  .read-time {
-    font-family: var(--font-heading);
-    font-size: 0.875rem;
-    /* font-weight: bold; */
-  }
-  .read-time {
-    display: block;
-    margin-left: auto;
-    font-style: italic;
-  }
-
-  .tags {
-    display: flex;
-    flex-wrap: wrap;
-    /* align-items: center; */
-    gap: 0.5rem;
-    /* margin-block-start: 1.5rem; */
-  }
-
-  .tag {
-    font-size: 0.75rem;
-    border-radius: var(--radius);
-    text-decoration: none;
-    color: var(--yin);
-    background-color: var(--yang);
-    padding: 0rem 0.55rem;
-    border: 1px dotted var(--yin);
-
-    &:hover {
-      background-color: var(--clr-accent);
-      color: var(--black);
-    }
-  }
   .post-description {
     margin-block: 1.5em;
     background-color: gold;
-  }
-
-  .content-grid {
-    --padding-inline: 1rem;
-    --content-max-width: 75ch;
-    --breakout-max-width: 100ch;
-
-    --breakout-size: calc(
-      (var(--breakout-max-width) - var(--content-max-width)) / 2
-    );
-
-    display: grid;
-    grid-template-columns:
-      [full-bleed-start] minmax(var(--padding-inline), 1fr)
-      [breakout-start] minmax(0, var(--breakout-size)) [content-start] min(
-        100% - (var(--padding-inline) * 2),
-        var(--content-max-width)
-      )
-      [content-end] minmax(0, var(--breakout-size)) [breakout-end] minmax(
-        var(--padding-inline),
-        1fr
-      )
-      [full-bleed-end];
-
-    row-gap: var(--gap-s);
-  }
-
-  .content-grid > :not(.full-bleed, .breakout),
-  .full-bleed > :not(.full-bleed, .breakout) {
-    grid-column: content;
-  }
-
-  .content-grid > .full-bleed {
-    grid-column: full-bleed;
-    /* display: grid; */
-    /* grid-template-columns: inherit; */
-  }
-
-  .content-grid > .breakout {
-    grid-column: breakout;
   }
 </style>

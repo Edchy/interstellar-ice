@@ -251,18 +251,19 @@ import Chaos from "./Chaos.astro";
     const mouseOverInterval = setInterval(checkIfMouseOver, 250);
 
     // Recalculate boundaries on window resize
-    const resizeHandler = () => {
-      // If the element has moved, make sure it's still within boundaries
-      if (linkedInItem.style.transform) {
-        const { x, y } = getSafeRandomPosition();
-        linkedInItem.style.transform = `translate(${x}px, ${y}px)`;
-      }
-    };
-    window.addEventListener("resize", resizeHandler);
+    //
+    // const resizeHandler = () => {
+
+    //   if (linkedInItem.style.transform) {
+    //     const { x, y } = getSafeRandomPosition();
+    //     linkedInItem.style.transform = `translate(${x}px, ${y}px)`;
+    //   }
+    // };
+    // window.addEventListener("resize", resizeHandler);
 
     // Setup an interval to check for inactivity
     const inactivityInterval = setInterval(() => {
-      if (hasMoved && Date.now() - lastMoveTime > 5000 && !preventReset) {
+      if (hasMoved && Date.now() - lastMoveTime > 2000 && !preventReset) {
         console.log("Resetting position due to inactivity");
         resetPosition();
       }
@@ -271,7 +272,7 @@ import Chaos from "./Chaos.astro";
     // Return cleanup function
     return () => {
       document.removeEventListener("mousemove", mouseMoveHandler);
-      window.removeEventListener("resize", resizeHandler);
+      // window.removeEventListener("resize", resizeHandler);
       if (resetTimeout) {
         clearTimeout(resetTimeout);
       }

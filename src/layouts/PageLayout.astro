@@ -21,7 +21,7 @@ const { title, description, showAside } = Astro.props;
   <Head {title} {description} />
   <body id="page-top">
     <div class="grid-wrapper">
-      <header>
+      <header >
         <div class="inner">
           <Logo />
           <Nav />
@@ -57,7 +57,7 @@ const { title, description, showAside } = Astro.props;
 
 <style>
   .content {
-    /* padding: 1rem; */
+    padding: 1rem;
   }
   header {
     @media (width < 1200px) {
@@ -84,6 +84,8 @@ const { title, description, showAside } = Astro.props;
     justify-content: space-between;
     align-items: center;
     z-index: 3;
+    /* background-color: rgba(76, 0, 255, 0.737); */
+    border: 14px ridge var(--blu2);
     
   }
 

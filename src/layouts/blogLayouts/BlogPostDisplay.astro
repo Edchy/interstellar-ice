@@ -64,20 +64,20 @@ allPosts.sort(
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
     gap: .5rem;
-      @media (hover) and (prefers-reduced-motion: no-preference) {
-    &>article {
-      /* transform-origin: right center; */
+/* 
+    @media (hover) and (prefers-reduced-motion: no-preference) {
+      &>article {
       transition:
-        transform 0.3s,
-        opacity 0.3s;
+        transform 0.2s,
+        opacity 0.2s;
     }
 
-    &:has(> article:hover)>article:not(:hover),
-    &:has(> article:focus-within)>article:not(:focus-within) {
-      opacity: 0.5;
-      transform: scale(0.95);
-    }
-  }
+      &:has(> article:hover)>article:not(:hover),
+      &:has(> article:focus-within)>article:not(:focus-within) {
+        opacity: 0.5;
+        transform: scale(0.95);
+      }
+    } */
   }
   article {
     background-color: var(--black);

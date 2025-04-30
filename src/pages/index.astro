@@ -30,6 +30,40 @@ import Footer from "@/layouts/Footer.astro";
 
   <section class="big-words">
     <div class="inner">
+      <h2 data-aos="fade-down-right" data-aos-offset="100">...</h2>
+      <h3
+        data-aos="fade-up-right"
+        data-aos-anchor-placement="top-bottom"
+        data-aos-offset="100"
+      >
+        Nope
+      </h3>
+      <h3 data-aos="fade-up-left" data-aos-anchor-placement="top-center">
+        Nope
+      </h3>
+      <h3
+        data-aos="fade-up-right"
+        data-aos-anchor-placement="top-center"
+        data-aos-offset="10"
+      >
+      </h3>
+      <h3 data-aos="fade-up-left" data-aos-anchor-placement="top-center">
+        Nope
+      </h3>
+      <h3
+        data-aos="fade-up-right"
+        data-aos-anchor-placement="top-center"
+        data-aos-offset="10"
+      >
+        Nope
+      </h3>
+      <h3 data-aos="fade-up-left" data-aos-anchor-placement="top-center">
+        Nope
+      </h3>
+    </div>
+  </section>
+  <!-- <section class="big-words">
+    <div class="inner">
       <h2 data-aos="fade-down-right" data-aos-offset="100">stuff i like</h2>
       <h3
         data-aos="fade-up-right"
@@ -62,7 +96,7 @@ import Footer from "@/layouts/Footer.astro";
         Sports
       </h3>
     </div>
-  </section>
+  </section> -->
 
   <!-- <section class="cat-section">
     &numero;&Popf;
@@ -157,9 +191,9 @@ import Footer from "@/layouts/Footer.astro";
     background-position: center;
     padding-inline: 1rem;
     padding-block: 2rem;
+    background-color: var(--yang);
     background-color: var(--clr-accent);
     background-color: var(--blueish);
-    background-color: var(--yang);
     background-repeat: no-repeat;
     background-size: cover;
     background-blend-mode: hard-light;
@@ -181,7 +215,7 @@ import Footer from "@/layouts/Footer.astro";
         oklch(98% 0 91 / 0) 81% 81%
       );
 
-      background: var(--hdr-gradient);
+      /* background: var(--hdr-gradient); */
     }
     &::after {
       content: "";
@@ -197,7 +231,7 @@ import Footer from "@/layouts/Footer.astro";
         oklch(98% 0 91 / 0) 81% 81%
       );
 
-      background: var(--hdr-gradient);
+      /* background: var(--hdr-gradient); */
     }
 
     @media (width > 1200px) {
@@ -216,6 +250,7 @@ import Footer from "@/layouts/Footer.astro";
   @keyframes gradient-change {
     to {
       --clr-accent: oklch(30% 0.29 149);
+      /* --clr-accent: oklch(from var(--clr-accent) l c 249); */
       /* --white: oklch(90% 0 91); */
     }
   }
