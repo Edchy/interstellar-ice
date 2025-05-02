@@ -10,6 +10,7 @@ import Overlap from "../components/Overlap.astro";
 import WordMorph from "../components/WordMorph.astro";
 import IconCarousel from "@/components/IconCarousel.astro";
 import Footer from "@/layouts/Footer.astro";
+import LatestPostsDisplay from "@/components/LatestPostsDisplay.astro";
 ---
 
 <PageLayout
@@ -62,46 +63,13 @@ import Footer from "@/layouts/Footer.astro";
       </h3>
     </div>
   </section>
-  <!-- <section class="big-words">
-    <div class="inner">
-      <h2 data-aos="fade-down-right" data-aos-offset="100">stuff i like</h2>
-      <h3
-        data-aos="fade-up-right"
-        data-aos-anchor-placement="top-bottom"
-        data-aos-offset="100"
-      >
-        Sports
-      </h3>
-      <h3 data-aos="fade-up-left" data-aos-anchor-placement="top-center">
-        Sports
-      </h3>
-      <h3
-        data-aos="fade-up-right"
-        data-aos-anchor-placement="top-center"
-        data-aos-offset="10"
-      >
-        Sports
-      </h3>
-      <h3 data-aos="fade-up-left" data-aos-anchor-placement="top-center">
-        Sports
-      </h3>
-      <h3
-        data-aos="fade-up-right"
-        data-aos-anchor-placement="top-center"
-        data-aos-offset="10"
-      >
-        Sports
-      </h3>
-      <h3 data-aos="fade-up-left" data-aos-anchor-placement="top-center">
-        Sports
-      </h3>
-    </div>
-  </section> -->
-
-  <!-- <section class="cat-section">
+  <section>
+    <LatestPostsDisplay />
+  </section>
+  <section class="cat-section">
     &numero;&Popf;
     <span>&#9787;</span>
-  </section> -->
+  </section>
   <section class="bb">
     <h2 data-aos="zoom-in">stuff i use</h2>
     <IconCarousel />
@@ -135,11 +103,11 @@ import Footer from "@/layouts/Footer.astro";
   }
   .cat-section {
     background-color: var(--clr-accent);
-    margin-block: 1rem;
+    margin-block: 10rem;
     position: absolute;
     left: 0;
     right: 0;
-    height: 10rem;
+    height: 20rem;
     display: grid;
     place-content: center;
 
@@ -215,7 +183,7 @@ import Footer from "@/layouts/Footer.astro";
         oklch(98% 0 91 / 0) 81% 81%
       );
 
-      /* background: var(--hdr-gradient); */
+      background: var(--hdr-gradient);
     }
     &::after {
       content: "";
@@ -294,8 +262,10 @@ import Footer from "@/layouts/Footer.astro";
 
     h3 {
       --text-huge: clamp(5rem, 1rem + 20vw, 20rem);
-      text-box: trim-both cap alphabetic;
+      /* text-box: trim-both cap alphabetic; */
       font-size: var(--text-huge);
+      font-family: var(--font-brand);
+      font-family: "Kass";
     }
   }
 </style>

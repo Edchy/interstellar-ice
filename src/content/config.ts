@@ -1,6 +1,17 @@
 import { defineCollection, z } from "astro:content";
 import { glob, file } from "astro/loaders";
 
+const ALLOWED_TAGS = [
+  "general",
+  "js",
+  "css",
+  "coding",
+  "astro",
+  "react",
+  "design",
+  "ux",
+] as const;
+
 // Define schema separately
 const postSchema = z.object({
   title: z.string(),
@@ -8,7 +19,8 @@ const postSchema = z.object({
   pubDate: z.date(),
   description: z.string(),
   author: z.string().optional(),
-  tags: z.array(z.string()),
+  tags: z.array(z.enum(ALLOWED_TAGS)).default(["general"]),
+
   image: z.string().optional(),
   // minutesRead: z.string().optional(),
 });

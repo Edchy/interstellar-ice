@@ -1,32 +1,75 @@
 ---
-import ScrollProgressIndicator from "@/components/ScrollProgressIndicator.astro";
+import LatestPostCard from "@/components/LatestPostCard.astro";
 import PageLayout from "../layouts/PageLayout.astro";
+import { getCollection } from "astro:content";
+import Card from "@/components/Card.astro";
+
+// Fetch posts and sort by publication date (newest first)
+const allPosts = await getCollection("posts");
+const sortedPosts = allPosts
+  .sort(
+    (a, b) =>
+      new Date(b.data.pubDate).valueOf() - new Date(a.data.pubDate).valueOf()
+  )
+  .filter((_, index) => index < 3);
+const latestPost = sortedPosts.length > 0 ? sortedPosts[0] : null;
+console.log(sortedPosts.length);
 ---
 
 <PageLayout title="About">
   <main>lol</main>
-  <button class="op">Update</button>
+  <!-- <LatestPostCard post={latestPost} />
+  <Card title={latestPost?.data.title} /> -->
+  <ul>
+    {sortedPosts.map((post) => <LatestPostCard {post} />)}
+  </ul>
+
+  <script></script>
+
+  <style>
+    h2 {
+      font-size: 2rem;
+      margin-bottom: 2rem;
+      text-align: center;
+    }
+
+    main {
+      --hdr-gradient: linear-gradient(
+        to top in oklab,
+        oklch(80% 0.29 149) 12% 12%,
+        oklch(98% 0 91) 68% 68%
+      );
+      background: var(--hdr-gradient);
+      padding: 3rem 1rem;
+    }
+
+    ul {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 0.5rem;
+      /* max-width: 1200px; */
+      margin: 0 auto;
+      grid-template-rows: auto;
+      /* Enable subgrid for columns */
+      grid-auto-flow: dense;
+    }
+
+    li {
+      display: grid;
+      grid-template-rows: subgrid;
+      grid-row: span 1;
+    }
+
+    @supports not (grid-template-rows: subgrid) {
+      li {
+        height: 100%;
+      }
+    }
+
+    @media (max-width: 768px) {
+      ul {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
 </PageLayout>
-
-<script>
-  const btn = document.querySelector("button.op")!;
-  btn.addEventListener("click", () => {
-    console.log("clicked");
-    console.log(btn);
-  });
-</script>
-
-<style>
-  ul {
-    display: flex;
-  }
-  main {
-    --hdr-gradient: linear-gradient(
-      to top in oklab,
-      oklch(80% 0.29 149) 12% 12%,
-      oklch(98% 0 91) 68% 68%
-    );
-
-    background: var(--hdr-gradient);
-  }
-</style>

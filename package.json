@@ -6,7 +6,8 @@
     "dev": "astro dev",
     "build": "astro build",
     "preview": "astro preview",
-    "astro": "astro"
+    "astro": "astro",
+    "test": "vitest"
   },
   "dependencies": {
     "@astrojs/mdx": "^4.2.4",
@@ -22,6 +23,10 @@
     "reading-time": "^1.5.0"
   },
   "devDependencies": {
-    "@types/aos": "^3.0.7"
+    "@testing-library/dom": "^10.4.0",
+    "@types/aos": "^3.0.7",
+    "happy-dom": "^17.4.6",
+    "jsdom": "^26.1.0",
+    "vitest": "^3.1.2"
   }
 }

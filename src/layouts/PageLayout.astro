@@ -57,18 +57,23 @@ const { title, description, showAside } = Astro.props;
 
 <style>
   .content {
-    padding: 1rem;
+    /* padding: 1rem; */
   }
   header {
     @media (width < 1200px) {
+      padding-inline: 1rem;
+      
       position: sticky;
+      /* position: absolute; */
       top: 0;
-      background-color: lch(from var(--yang) l c h / 0.0);
       z-index: calc(infinity - 1);
       width: 100%;
-      backdrop-filter: blur(0.3rem);
+      background-color: lch(from var(--yang) l c h / .8);
+      backdrop-filter: blur(0.2rem);
     }
+    
   }
+ 
 
   .grid-wrapper {
     --width: 150px;
@@ -84,8 +89,8 @@ const { title, description, showAside } = Astro.props;
     justify-content: space-between;
     align-items: center;
     z-index: 3;
-    /* background-color: rgba(76, 0, 255, 0.737); */
-    border: 14px ridge var(--blu2);
+    /* background-color: var(--blueish); */
+    /* border: 14px solid var(--yin); */
     
   }
 

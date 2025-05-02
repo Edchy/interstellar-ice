@@ -54,7 +54,9 @@ const { title } = Astro.props;
   .card {
     perspective: 100vmin;
   }
-
+  p {
+    font-size: 4rem;
+  }
   img {
     width: 100%;
     object-fit: cover;
@@ -79,7 +81,7 @@ const { title } = Astro.props;
     overflow: hidden;
     aspect-ratio: 3 / 4;
     width: clamp(260px, 50vmin, 320px);
-    /* border-radius: 8px; */
+    border-radius: var(--radius);
     transform-style: preserve-3d;
     touch-action: none;
     transition: transform 0.2s;
@@ -112,7 +114,7 @@ const { title } = Astro.props;
   .card:before {
     content: "";
     background:
-      url("/favicon.svg") 0 0 / 18% 18%,
+      url("/favicon.ico") 0 0 / 18% 18%,
       linear-gradient(
           115deg,
           transparent 20%,
@@ -125,6 +127,7 @@ const { title } = Astro.props;
     filter: brightness(2) contrast(1);
     background-blend-mode: overlay;
     mix-blend-mode: color-dodge;
+    /* mix-blend-mode: screen; */
     position: absolute;
     inset: 0;
     z-index: 2;

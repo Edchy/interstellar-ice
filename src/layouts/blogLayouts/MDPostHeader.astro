@@ -4,8 +4,9 @@ const { title, subtitle, minutesRead, description, pubDate, author, tags } =
   frontmatter;
 import { string_to_slug, formatDate } from "@/utils/utils";
 import { capitalizeFirstLetter } from "@/utils/utils";
-import { fade } from "astro:transitions";
+import { fade, slide } from "astro:transitions";
 import "@/css/postContent.css";
+console.log(frontmatter);
 ---
 
 <header class="inner post-header content-grid">
@@ -14,7 +15,9 @@ import "@/css/postContent.css";
   </h1>
   {subtitle && <p class="subtitle">{subtitle}</p>}
   <div class="flex">
-    <p class="pubdate">{formatDate(pubDate)}</p>
+    <time datetime={pubDate.toISOString()} class="pubdate"
+      >{formatDate(pubDate)}</time
+    >
     <!-- {
           author && (
             <>
@@ -39,7 +42,7 @@ import "@/css/postContent.css";
 <style>
   header {
     margin-block-start: 2rem;
-    /* margin-block-end: 5rem; */
+    margin-block-end: 5rem;
   }
 
   .post-title {
