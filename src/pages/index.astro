@@ -22,10 +22,10 @@ import LatestPostsDisplay from "@/components/LatestPostsDisplay.astro";
     <WordMorph />
 
     <p class="hero-text">
-      No, but really. I’m an aspiring web designer, developer && programmer —
-      not an architect or a god (😈). I design and build websites, apps, and
-      interfaces that (usually) work.
-      <a href="mailto:example@example.com"> &#x2937; contact?</a>
+      No, but really. <br /> As an aspiring web designer, developer, and programmer,
+      I focus on creating websites, apps, and interfaces that are not only functional
+      — but meaningful, hot and intuitive. Need a hand with your next digital thing?
+      <a href="mailto:edchy@proton.me"> &#x2937; Hit me up.</a>
     </p>
   </main>
 
@@ -128,7 +128,7 @@ import LatestPostsDisplay from "@/components/LatestPostsDisplay.astro";
     font-style: italic;
     text-wrap: pretty;
     line-height: 1.2;
-    max-width: 31ch;
+    max-width: 35ch;
     text-align: justify;
     align-self: flex-end;
     color: var(--yin);
@@ -261,11 +261,10 @@ import LatestPostsDisplay from "@/components/LatestPostsDisplay.astro";
     }
 
     h3 {
-      --text-huge: clamp(5rem, 1rem + 20vw, 20rem);
       /* text-box: trim-both cap alphabetic; */
-      font-size: var(--text-huge);
-      font-family: var(--font-brand);
+      font-size: clamp(5rem, 1rem + 20vw, 20rem);
       font-family: "Kass";
+      font-family: var(--font-heading);
     }
   }
 </style>

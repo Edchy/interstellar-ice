@@ -25,12 +25,12 @@
 
 <style>
   .text-container {
-    /* filter: url(#threshold) blur(0.6px); */
     filter: url(#threshold);
     /* filter: url(#threshold) blur(2.6px); */
+    filter: url(#threshold) blur(0.6px);
     /* position: relative; */
-    /* background-color: rgba(232, 232, 240, 0.382); 
-    */
+    background-color: rgba(232, 232, 240, 0.382);
+    overflow-x: clip;
     position: relative;
     width: 100%;
     max-width: 100vw;
@@ -57,14 +57,14 @@
     font-family: var(--font-heading);
     font-family: var(--font-brand);
     font-size: clamp(7rem, 1rem + 15vw, 15rem);
-    font-size: clamp(5rem, 1rem + 10vw, 10rem);
-    /* text-align: center; */
+    font-size: clamp(4rem, 1rem + 12vw, 12rem);
+    text-align: center;
     user-select: none;
     line-height: 1;
     color: var(--white);
     color: var(--yin);
     color: var(--clr-accent);
-    color: light-dark(var(--black), var(--white));
+    color: light-dark(var(--white), var(--white));
     /* color: rgba(128, 128, 128, 0.552); */
     text-wrap: balance;
   }
@@ -90,29 +90,22 @@
 
     // The strings to morph between. You can change these to anything you want!
     const texts = [
-      "Dreamsmith with a debugger",
+      "Designer of unseen doorways",
+      "Developer of journeys beyond the screen",
       "Caretaker of forgotten breakpoints",
-      "Translating chaos into beauty, one semicolon at a time",
-      "Spiritual advisor to lost UI states",
-      "Binding souls to buttons with JavaScript",
-      "Frontend bard, backend gremlin",
-      "Turning caffeine into functionality",
       "Styling the void into being",
       "Architect of the digital realm",
-      "I breathe life into pixels",
+      "Breathing life into pixels",
       "From thought to existence",
       "I forge worlds in code",
       "Creator of fleeting infinities",
       "God of the in-between",
       "Conjurer of interactive dreams",
-      "Pixel whisperer, code sorcerer",
-      "Weaver of structured chaos",
       "Wielder of the sacred div tag",
       "Animator of stillness, sculptor of logic",
-      "Builder of portals no one sees, yet all pass through",
-
-      "Deity of deployment delays",
-      "High priest of responsive rituals",
+      "Shaping structure from the shapeless",
+      "Creator of fleeting infinities",
+      "Weaving the web of tomorrow",
     ];
 
     // Controls the speed of morphing.
