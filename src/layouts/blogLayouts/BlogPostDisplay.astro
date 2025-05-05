@@ -3,13 +3,18 @@ import { getCollection, type CollectionEntry } from "astro:content";
 import { formatDate, string_to_slug } from "@/utils/utils";
 import { fade, slide } from "astro:transitions";
 import TagsDisplay from "@/components/TagsDisplay.astro";
+import { getPosts } from "@/utils/posts";
+
 interface Props {
   filteredPosts?: CollectionEntry<"posts">[]; // Make posts optional
   tag?: string;
 }
 const { filteredPosts, tag } = Astro.props as Props;
 
-const allPosts = filteredPosts || (await getCollection("posts"));
+
+const blogPosts = filteredPosts || (await getPosts(true));
+
+const allPosts = blogPosts.filter((post) => !post.data.draft);
 
 allPosts.sort(
   (a, b) =>

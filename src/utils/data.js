@@ -1,3 +1,5 @@
+export const EMAIL = "edchy@proton.me";
+
 export const navItems = [
   { name: "about", path: "/me" },
   { name: "blog", path: "/blog" },

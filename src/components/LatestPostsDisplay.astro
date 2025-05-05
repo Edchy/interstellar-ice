@@ -1,16 +1,10 @@
 ---
 import LatestPostCard from "@/components/LatestPostCard.astro";
+import { getPosts } from "@/utils/posts";
 import { getCollection } from "astro:content";
 
-// Fetch posts and sort by publication date (newest first)
-const allPosts = await getCollection("posts");
-const sortedPosts = allPosts
-  .sort(
-    (a, b) =>
-      new Date(b.data.pubDate).valueOf() - new Date(a.data.pubDate).valueOf()
-  )
-  .filter((_, index) => index < 3);
-const latestPost = sortedPosts.length > 0 ? sortedPosts[0] : null;
+const posts = await getPosts(false);
+const sortedPosts = posts.filter((_, index) => index < 4);
 console.log(sortedPosts.length);
 ---
 
@@ -37,7 +31,8 @@ console.log(sortedPosts.length);
 
   ul {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-columns: repeat(3, minmax(300px, 1fr));
     gap: 0.5rem;
     /* max-width: 1200px; */
     margin: 0 auto;
@@ -58,7 +53,12 @@ console.log(sortedPosts.length);
     }
   }
 
-  @media (max-width: 768px) {
+  @media (max-width: 1000px) {
+    ul {
+      grid-template-columns: 1fr 1fr;
+    }
+  }
+  @media (max-width: 600px) {
     ul {
       grid-template-columns: 1fr;
     }

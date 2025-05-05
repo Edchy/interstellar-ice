@@ -11,6 +11,8 @@ import WordMorph from "../components/WordMorph.astro";
 import IconCarousel from "@/components/IconCarousel.astro";
 import Footer from "@/layouts/Footer.astro";
 import LatestPostsDisplay from "@/components/LatestPostsDisplay.astro";
+import HeroText from "@/components/HeroText.astro";
+import BigWords from "@/components/BigWords.astro";
 ---
 
 <PageLayout
@@ -18,78 +20,30 @@ import LatestPostsDisplay from "@/components/LatestPostsDisplay.astro";
   description="Nope Studios is a web design and development studio. We create websites, apps, and digital experiences that are beautiful, functional, and user-friendly."
   showAside={true}
 >
-  <main class="co">
+  <main>
     <WordMorph />
-
-    <p class="hero-text">
-      No, but really. <br /> As an aspiring web designer, developer, and programmer,
-      I focus on creating websites, apps, and interfaces that are not only functional
-      — but meaningful, hot and intuitive. Need a hand with your next digital thing?
-      <a href="mailto:edchy@proton.me"> &#x2937; Hit me up.</a>
-    </p>
+    <HeroText />
   </main>
 
-  <section class="big-words">
-    <div class="inner">
-      <h2 data-aos="fade-down-right" data-aos-offset="100">...</h2>
-      <h3
-        data-aos="fade-up-right"
-        data-aos-anchor-placement="top-bottom"
-        data-aos-offset="100"
-      >
-        Nope
-      </h3>
-      <h3 data-aos="fade-up-left" data-aos-anchor-placement="top-center">
-        Nope
-      </h3>
-      <h3
-        data-aos="fade-up-right"
-        data-aos-anchor-placement="top-center"
-        data-aos-offset="10"
-      >
-      </h3>
-      <h3 data-aos="fade-up-left" data-aos-anchor-placement="top-center">
-        Nope
-      </h3>
-      <h3
-        data-aos="fade-up-right"
-        data-aos-anchor-placement="top-center"
-        data-aos-offset="10"
-      >
-        Nope
-      </h3>
-      <h3 data-aos="fade-up-left" data-aos-anchor-placement="top-center">
-        Nope
-      </h3>
-    </div>
+  <section>
+    <BigWords />
   </section>
   <section>
     <LatestPostsDisplay />
   </section>
-  <section class="cat-section">
+  <!-- <section class="cat-section">
     &numero;&Popf;
     <span>&#9787;</span>
-  </section>
+  </section> -->
   <section class="bb">
     <h2 data-aos="zoom-in">stuff i use</h2>
     <IconCarousel />
   </section>
-  <!-- <Footer /> -->
+  <Footer />
 </PageLayout>
-<script>
-  import AOS from "aos";
-  import "aos/dist/aos.css";
-  document.addEventListener("astro:page-load", () => {
-    AOS.init({
-      duration: 500,
-      easing: "ease-in-out",
-      once: false,
-      mirror: false,
-    });
-  });
-</script>
+
 <style>
-  section {
+  /* section {
     margin-block-end: 20rem;
     padding-inline: 2rem;
   }
@@ -97,10 +51,9 @@ import LatestPostsDisplay from "@/components/LatestPostsDisplay.astro";
     font-size: 1rem;
     font-style: italic;
     color: var(--clr-accent);
-    /* text-align: center; */
     text-align: left;
     margin-bottom: 1rem;
-  }
+  } */
   .cat-section {
     background-color: var(--clr-accent);
     margin-block: 10rem;
@@ -117,38 +70,7 @@ import LatestPostsDisplay from "@/components/LatestPostsDisplay.astro";
       font-family: var(--font-brand);
     }
   }
-  .bb {
-    /* margin-top: 15rem; */
-    /* padding: min(1rem, 2vw); */
-  }
-  p.hero-text {
-    /* letter-spacing: 2px; */
-    font-family: var(--font-heading);
-    font-size: clamp(0.875rem, 1.5vw, 1rem);
-    font-style: italic;
-    text-wrap: pretty;
-    line-height: 1.2;
-    max-width: 35ch;
-    text-align: justify;
-    align-self: flex-end;
-    color: var(--yin);
-    z-index: 2;
 
-    a:any-link {
-      color: light-dark(var(--black), var(--clr-accent));
-      text-decoration: none;
-      font-weight: bold;
-      transition: text-decoration 0.2s ease-in-out;
-      text-align: right;
-      display: block;
-      margin-left: auto;
-
-      &:hover {
-        text-decoration: underline;
-        text-underline-offset: 0.25em;
-      }
-    }
-  }
   main {
     position: relative;
     display: flex;
@@ -212,59 +134,6 @@ import LatestPostsDisplay from "@/components/LatestPostsDisplay.astro";
 
     @media (prefers-reduced-motion: no-preference) {
       background-image: url("/img/nik.gif");
-    }
-  }
-
-  @keyframes gradient-change {
-    to {
-      --clr-accent: oklch(30% 0.29 149);
-      /* --clr-accent: oklch(from var(--clr-accent) l c 249); */
-      /* --white: oklch(90% 0 91); */
-    }
-  }
-
-  section.big-words {
-    --hdr-gradient: radial-gradient(
-      farthest-corner circle at 50% 50% in oklab,
-      var(--clr-accent) 12% 12%,
-      var(--yang) 56% 56%
-    );
-
-    /* width: 100%;  */
-    /* -webkit-mask: var(--mask-edge-zig-zag-top); */
-    background: var(--hdr-gradient);
-    z-index: calc(infinity - 1);
-    left: 0;
-    overflow-x: clip;
-
-    @media (prefers-reduced-motion: no-preference) {
-      animation: gradient-change 6s linear infinite alternate;
-    }
-
-    .inner {
-      /* background-color: red; */
-      /* background-color: aliceblue; */
-      margin-inline: auto;
-      width: 100%;
-      padding-block: 5rem;
-      text-align: center;
-      /* display: grid; */
-      /* grid-template-columns: repeat(auto-fit, minmax(500px, 1fr)); */
-
-      @media (width > 1200px) {
-        width: min(100%, 901px);
-
-        /* tinker with these values */
-        width: clamp(901px, 70vw, 1100px);
-        width: clamp(801px, 70vw, 1100px);
-      }
-    }
-
-    h3 {
-      /* text-box: trim-both cap alphabetic; */
-      font-size: clamp(5rem, 1rem + 20vw, 20rem);
-      font-family: "Kass";
-      font-family: var(--font-heading);
     }
   }
 </style>

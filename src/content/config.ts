@@ -20,7 +20,7 @@ const postSchema = z.object({
   description: z.string(),
   author: z.string().optional(),
   tags: z.array(z.enum(ALLOWED_TAGS)).default(["general"]),
-
+  draft: z.boolean().default(true),
   image: z.string().optional(),
   // minutesRead: z.string().optional(),
 });

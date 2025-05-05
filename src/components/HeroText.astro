@@ -1,0 +1,40 @@
+---
+import { EMAIL } from "@/utils/data";
+---
+
+<p class="hero-text">
+  No, but really. <br /> As an aspiring web designer, developer, and programmer,
+  I focus on creating websites, apps, and interfaces that are not only functional
+  — but meaningful, sexy and intuitive. Need a hand with your next digital thing?
+  <a href={`mailto:${EMAIL}`}> &#x2937; Hit me up.</a>
+</p>
+<style>
+  p.hero-text {
+    /* letter-spacing: 2px; */
+    font-family: var(--font-heading);
+    font-size: clamp(0.875rem, 1.5vw, 1rem);
+    font-style: italic;
+    text-wrap: pretty;
+    line-height: 1.2;
+    max-width: 35ch;
+    text-align: justify;
+    align-self: flex-end;
+    color: var(--yin);
+    z-index: 2;
+
+    a:any-link {
+      color: light-dark(var(--black), var(--clr-accent));
+      text-decoration: none;
+      font-weight: bold;
+      transition: text-decoration 0.2s ease-in-out;
+      text-align: right;
+      display: block;
+      margin-left: auto;
+
+      &:hover {
+        text-decoration: underline;
+        text-underline-offset: 0.25em;
+      }
+    }
+  }
+</style>

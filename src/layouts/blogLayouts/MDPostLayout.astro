@@ -6,6 +6,7 @@ import { Icon } from "astro-icon/components";
 import { fade } from "astro:transitions";
 import MDPostHeader from "./MDPostHeader.astro";
 import "@/css/postContent.css";
+import { EMAIL } from "@/utils/data";
 
 const { frontmatter } = Astro.props;
 
@@ -22,7 +23,7 @@ const { frontmatter } = Astro.props;
 // }
 const { title, subtitle, minutesRead, description, pubDate, author, tags } =
   frontmatter;
-console.log(tags);
+// console.log(tags);
 ---
 
 <PageLayout
@@ -39,7 +40,7 @@ console.log(tags);
     </div>
     <footer>
       Add nav to other posts here. If you find any mistakes, errors or typos
-      please let me know <a href="mailto:me">my email</a>
+      please let me know <a href={`mailto:${EMAIL}`}>my email</a>
     </footer>
   </main>
 </PageLayout>

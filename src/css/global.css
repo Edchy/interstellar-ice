@@ -47,7 +47,6 @@ html {
 
   cursor: url("/mickey_cursor.png"), auto !important;
 
-
   interpolate-size: allow-keywords;
   color-scheme: dark light;
   background-color: var(--yang);
@@ -55,7 +54,7 @@ html {
   color: var(--yin);
   /* scrollbar-color: var(--clr-accent) var(--yang); */
 
-  /* ::-webkit-scrollbar {
+  ::-webkit-scrollbar {
     height: 100%;
     width: .75rem;
     background-color: initial;
@@ -69,12 +68,23 @@ html {
     border-radius: 9999px;
     border: .125rem solid transparent;
     background-clip: content-box;
-    background-image: linear-gradient(180deg, hsl(1deg 100% 84%), hsl(12deg 100% 82%) 10%, hsl(22deg 100% 81%) 20%, hsl(31deg 100% 80%) 30%, hsl(39deg 100% 80%) 40%, hsl(47deg 100% 81%) 50%, hsl(77deg 71% 80%) 60%, hsl(123deg 73% 85%) 70%, hsl(159deg 80% 80%) 80%, hsl(177deg 79% 76%) 90%, hsl(190deg 100% 80%));
+    background-image: linear-gradient(180deg,
+        hsl(210deg 100% 95%),
+        hsl(200deg 100% 92%) 10%,
+        hsl(180deg 100% 90%) 20%,
+        hsl(160deg 80% 88%) 30%,
+        hsl(140deg 70% 87%) 40%,
+        hsl(120deg 70% 85%) 50%,
+        hsl(100deg 60% 86%) 60%,
+        hsl(80deg 70% 88%) 70%,
+        hsl(60deg 90% 90%) 80%,
+        hsl(40deg 100% 92%) 90%,
+        hsl(20deg 100% 93%));
   }
 
   ::-webkit-scrollbar-track {
     background-color: initial;
-  } */
+  }
 
   @media(prefers-reduced-motion: no-preference) {
     scroll-behavior: smooth;
@@ -141,6 +151,11 @@ h6 {
   font-family: var(--font-heading);
 
 }
+
+/* p {
+  margin-block: 1em;
+  margin-block: 1lh;
+} */
 
 
 /* @keyframes circle-in-top-right {
