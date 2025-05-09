@@ -7,6 +7,8 @@ import TagsDisplay from "@/components/TagsDisplay.astro";
 <PageLayout
   title="Blog"
   description="Blog posts about various topics, mostyly about web development."
+  showFooter={false}
+  showAside={false}
 >
   <main>
     <BlogPostDisplay />
@@ -15,6 +17,6 @@ import TagsDisplay from "@/components/TagsDisplay.astro";
 
 <style>
   main {
-    /* padding: 1rem; */
+    padding: 1rem;
   }
 </style>

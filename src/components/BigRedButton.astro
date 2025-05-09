@@ -1,6 +1,7 @@
 ---
 // Import any chaos images you want
 import { Icon } from "astro-icon/components";
+const { text = "click" } = Astro.props;
 ---
 
 <style>
@@ -243,21 +244,47 @@ import { Icon } from "astro-icon/components";
       box-shadow: 0 0 10px rgba(255, 0, 0, 0.8);
     }
   }
+  .chaos-message {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) scale(0);
+    font-family: var(--font-heading);
+    font-size: 3rem;
+    color: red;
+    text-shadow: 0 0 10px rgba(255, 0, 0, 0.8);
+    background: rgba(0, 0, 0, 0.7);
+    padding: 1rem 2rem;
+    border-radius: var(--radius);
+    z-index: 10000;
+    opacity: 0;
+    text-align: center;
+    transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  }
+
+  .chaos-message.visible {
+    transform: translate(-50%, -50%) scale(1);
+    opacity: 1;
+    animation:
+      chaos-colors 2s infinite,
+      pulse 1.5s infinite;
+  }
 </style>
 
 <button class="pushable" id="chaos-button">
   <span class="shadow"></span>
   <span class="edge"></span>
-  <span class="front">Don't touch!</span>
+  <span class="front">{text}</span>
 </button>
-
+<div id="chaos-message" class="chaos-message">OOPS there WENT graVITY</div>
 <button class="reset-button" id="reset-button">RESTORE ORDER</button>
 
 <script>
-  // Chaos mode script
   document.addEventListener("DOMContentLoaded", () => {
     const chaosButton = document.getElementById("chaos-button");
     const resetButton = document.getElementById("reset-button");
+    const chaosMessage = document.getElementById("chaos-message");
+
     let chaosMode = false;
 
     // Add reset functionality
@@ -272,6 +299,9 @@ import { Icon } from "astro-icon/components";
       // Add chaos class to html element
       document.documentElement.classList.add("chaos-active");
       document.body.classList.add("chaos-active");
+      setTimeout(() => {
+        chaosMessage?.classList.add("visible");
+      }, 2000);
 
       // Show the reset button after a delay
       setTimeout(() => {
@@ -285,15 +315,21 @@ import { Icon } from "astro-icon/components";
 
       allElements.forEach((el: any, i) => {
         // Skip the button itself and reset button
-        if (el.closest("#chaos-button") || el.closest("#reset-button")) return;
+        if (
+          el.closest("#chaos-button") ||
+          el.closest("#reset-button") ||
+          el.closest("#chaos-message")
+        )
+          return;
 
-        // Random transformations
+        // Random transformations (without rotation!)
         const randomDelay = Math.random() * 2;
         const randomDuration = 0.5 + Math.random() * 4;
         const randomTransform = [
-          `rotate(${Math.random() * 360}deg)`,
-          `scale(${0.5 + Math.random() * 1.5})`, // Reduced max scale
-          `translate(${-50 + Math.random() * 100}px, ${-50 + Math.random() * 100}px)`, // Reduced translation
+          // Removed the rotate transform
+          `scale(${0.8 + Math.random() * 0.7})`, // Reduced max scale for less chaos
+          `translate(${-30 + Math.random() * 60}px, ${-30 + Math.random() * 60}px)`, // Reduced translation
+          `skew(${-5 + Math.random() * 10}deg, ${-5 + Math.random() * 10}deg)`, // Added skew instead of rotation
         ].join(" ");
 
         setTimeout(() => {
@@ -315,8 +351,8 @@ import { Icon } from "astro-icon/components";
             el.setAttribute("data-text", el.textContent);
           }
 
-          // Random animations
-          const animations = ["chaos-spin", "chaos-scale", "chaos-colors"];
+          // Random animations (without spin)
+          const animations = ["chaos-scale", "chaos-colors"]; // Removed spin animation
           if (Math.random() > 0.6) {
             el.style.animation = `${animations[Math.floor(Math.random() * animations.length)]} ${2 + Math.random() * 6}s infinite alternate`;
           }

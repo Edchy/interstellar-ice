@@ -1,11 +1,14 @@
 <div class="big-words">
   <div class="inner">
-    <span data-aos="fade-up-right">Nope</span>
-    <span data-aos="fade-up-left">Nope</span>
-    <span data-aos="fade-up-right"></span>
-    <span data-aos="fade-up-left">Nope</span>
-    <span data-aos="fade-up-right">Nope</span>
-    <span data-aos="fade-up-left">Nope</span>
+    <span data-aos="fade-up-left">ううん </span>
+    <span data-aos="fade-up-right">nope</span>
+    <span data-aos="fade-up-right">næh </span>
+    <span data-aos="fade-up-right">nah</span>
+    <span data-aos="fade-up-right">nan</span>
+    <span data-aos="fade-up-left">nel</span>
+    <span data-aos="fade-up-left">nö</span>
+    <span data-aos="fade-up-left">la’ </span>
+    <span data-aos="fade-up-left">ei</span>
   </div>
 </div>
 <script>
@@ -29,11 +32,12 @@
     );
 
     /* width: 100%;  */
-    /* -webkit-mask: var(--mask-edge-zig-zag-top); */
+    -webkit-mask: var(--mask-edge-zig-zag-left);
     background: var(--hdr-gradient);
     z-index: calc(infinity - 1);
     left: 0;
     overflow-x: clip;
+    padding-top: 2rem;
 
     @media (prefers-reduced-motion: no-preference) {
       animation: gradient-change 6s linear infinite alternate;
@@ -41,15 +45,13 @@
 
     .inner {
       margin-inline: auto;
-      width: 100%;
-      text-align: center;
+      max-width: 100%;
+      text-align: right;
 
       @media (width > 1200px) {
-        width: min(100%, 901px);
-
-        /* tinker with these values */
+        /* width: min(100%, 901px);
         width: clamp(901px, 70vw, 1100px);
-        width: clamp(801px, 70vw, 1100px);
+        width: clamp(801px, 70vw, 1100px); */
       }
     }
 
@@ -59,6 +61,7 @@
       font-weight: bold;
       display: block;
       font-family: var(--font-heading);
+      /* line-height: 0.77;< */
     }
   }
 

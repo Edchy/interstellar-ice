@@ -13,7 +13,7 @@ import { Image } from "astro:assets";
 import v from "@/assets/img/mickey-v.png";
 import thumb from "@/assets/img/mickey-dislike.png";
 
-const { title, description, showAside } = Astro.props;
+const { title, description, showAside, showScrollProgress, showFooter = true } = Astro.props;
 ---
 
 <!doctype html>
@@ -47,10 +47,13 @@ const { title, description, showAside } = Astro.props;
               </nav>
             )
           }
-          <ScrollProgressIndicator anchor="#page-top" />
+          {showScrollProgress && (
+              <ScrollProgressIndicator anchor="#page-top"/>
+          )}
         </div>
       </aside>
-      <Footer />
+
+      {showFooter && <Footer />}
     </div>
   </body>
 </html>
@@ -58,6 +61,7 @@ const { title, description, showAside } = Astro.props;
 <style>
   .content {
     /* padding: 1rem; */
+    
   }
   header {
     @media (width < 1200px) {
