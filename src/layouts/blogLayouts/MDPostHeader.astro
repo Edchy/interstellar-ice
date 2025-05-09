@@ -29,7 +29,7 @@ import "@/css/postContent.css";
     <ul class="tags">
       {
         tags.map((tag: string) => (
-          <a class="tag" href={`/tags/${string_to_slug(tag)}`}>
+          <a class="tag" href={`/blog/${string_to_slug(tag)}`}>
             {tag}
           </a>
         ))

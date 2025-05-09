@@ -15,11 +15,7 @@ import HeroText from "@/components/HeroText.astro";
 import BigWords from "@/components/BigWords.astro";
 ---
 
-<PageLayout
-  title="Nope Studios"
-  description="Nope Studios is a web design and development studio. We create websites, apps, and digital experiences that are beautiful, functional, and user-friendly."
-  showAside={true}
->
+<PageLayout title="Nope Studios" showAside={true}>
   <main>
     <WordMorph />
     <HeroText />
@@ -39,7 +35,6 @@ import BigWords from "@/components/BigWords.astro";
     <h2 data-aos="zoom-in">stuff i use</h2>
     <IconCarousel />
   </section>
-  <Footer />
 </PageLayout>
 
 <style>
@@ -54,7 +49,7 @@ import BigWords from "@/components/BigWords.astro";
     text-align: left;
     margin-bottom: 1rem;
   } */
-  .cat-section {
+  /* .cat-section {
     background-color: var(--clr-accent);
     margin-block: 10rem;
     position: absolute;
@@ -69,7 +64,7 @@ import BigWords from "@/components/BigWords.astro";
       font-size: 5rem;
       font-family: var(--font-brand);
     }
-  }
+  } */
 
   main {
     position: relative;

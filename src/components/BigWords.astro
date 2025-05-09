@@ -1,11 +1,11 @@
 <div class="big-words">
   <div class="inner">
-    <h3 data-aos="fade-up-right">Nope</h3>
-    <h3 data-aos="fade-up-left">Nope</h3>
-    <h3 data-aos="fade-up-right"></h3>
-    <h3 data-aos="fade-up-left">Nope</h3>
-    <h3 data-aos="fade-up-right">Nope</h3>
-    <h3 data-aos="fade-up-left">Nope</h3>
+    <span data-aos="fade-up-right">Nope</span>
+    <span data-aos="fade-up-left">Nope</span>
+    <span data-aos="fade-up-right"></span>
+    <span data-aos="fade-up-left">Nope</span>
+    <span data-aos="fade-up-right">Nope</span>
+    <span data-aos="fade-up-left">Nope</span>
   </div>
 </div>
 <script>
@@ -40,14 +40,9 @@
     }
 
     .inner {
-      /* background-color: red; */
-      /* background-color: aliceblue; */
       margin-inline: auto;
       width: 100%;
-      padding-block: 5rem;
       text-align: center;
-      /* display: grid; */
-      /* grid-template-columns: repeat(auto-fit, minmax(500px, 1fr)); */
 
       @media (width > 1200px) {
         width: min(100%, 901px);
@@ -58,10 +53,11 @@
       }
     }
 
-    h3 {
-      /* text-box: trim-both cap alphabetic; */
+    span {
+      text-box: trim-both cap alphabetic;
       font-size: clamp(5rem, 1rem + 20vw, 20rem);
-      font-family: "Kass";
+      font-weight: bold;
+      display: block;
       font-family: var(--font-heading);
     }
   }

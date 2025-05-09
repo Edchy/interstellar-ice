@@ -9,7 +9,11 @@ console.log(sortedPosts.length);
 ---
 
 <ul>
-  {sortedPosts.map((post) => <LatestPostCard {post} />)}
+  {
+    sortedPosts.map((post, i) => {
+      return <LatestPostCard {post} {i} />;
+    })
+  }
 </ul>
 
 <style>

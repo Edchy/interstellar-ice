@@ -2,7 +2,7 @@
 import { formatDate, string_to_slug } from "@/utils/utils.js";
 import { calculateReadingTime } from "@/utils/readingtime.js";
 
-const { post } = Astro.props;
+const { post, i } = Astro.props;
 const { title, subtitle, pubDate, description } = post.data;
 
 const readingTime = calculateReadingTime(post.body);
@@ -11,6 +11,7 @@ const minutesRead = parseFloat(minutesReadString) - 1;
 ---
 
 <li class="latest-post-card">
+  {i === 0 ? <span class="badge">fresh from the oven</span> : null}
   <div class="card-inner">
     <div class="title-area">
       <h3 transition:name={title}>{title}</h3>
@@ -29,11 +30,27 @@ const minutesRead = parseFloat(minutesReadString) - 1;
 </li>
 
 <style>
+  .badge {
+    position: absolute;
+    top: -1rem;
+    right: 0.25rem;
+    background-color: var(--blu2);
+    color: var(--white);
+    /* padding: 0.5rem 1rem; */
+    padding-inline: 0.5rem;
+    padding-block: min(0.5rem, 1.5vw);
+    border-radius: var(--radius);
+    font-size: clamp(0.5rem, 1vw + 0.25rem, 0.75rem);
+    font-weight: bold;
+
+    /* text-transform: uppercase; */
+    box-shadow: 0 2px 4px oklch(from var(--yin) l c h / 0.1);
+  }
   .latest-post-card {
     background-color: var(--yang);
     border-radius: var(--radius);
     box-shadow: 0 4px 12px oklch(from var(--yin) l c h / 0.1);
-    overflow: hidden;
+    overflow-x: clip;
     width: 100%;
     /* max-width: 400px; */
     transition:

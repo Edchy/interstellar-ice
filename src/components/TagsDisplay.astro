@@ -13,7 +13,7 @@ const tags = [...new Set(posts.map((post) => post.data.tags).flat())];
   {
     tags.map((tag) => (
       <li class="tag">
-        <a href={`/tags/${string_to_slug(tag)}`}>{tag}</a>
+        <a href={`/blog/${string_to_slug(tag)}`}>{tag}</a>
       </li>
     ))
   }
