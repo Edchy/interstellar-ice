@@ -60,7 +60,7 @@ const { title, description, showAside, showScrollProgress, showFooter = true } =
 
 <style>
   .content {
-    /* padding: 1rem; */
+    /* padding-inline: 1rem; */
     
   }
   header {
@@ -68,12 +68,15 @@ const { title, description, showAside, showScrollProgress, showFooter = true } =
       padding-inline: 1rem;
       
       position: sticky;
+      position: fixed;
       /* position: absolute; */
       top: 0;
       z-index: calc(infinity - 1);
       width: 100%;
-      background-color: lch(from var(--yang) l c h / .8);
-      backdrop-filter: blur(0.2rem);
+      /* background-image: url("/img/nik.gif"); */
+      /* background-color: lch(from var(--yang) l c h / .1); */
+      /* backdrop-filter: blur(0.3rem); */
+
     }
     
   }

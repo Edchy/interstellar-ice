@@ -27,7 +27,7 @@ import BigWords from "@/components/BigWords.astro";
       the spirit
     </h2>
     <p class="motto-text">
-      Here at Nope Studio, we believe in nothing. Absolutely nothing. Optimism?
+      Here at Nope Haus, we believe in nothing. Absolutely nothing. Optimism?
       Pass. Team spirit? Meh. We take pride in saying "no" — to ideas, to
       enthusiasm, to pretty much everything. While other studios are busy
       chasing dreams and disrupting industries, we're busy disrupting coffee
@@ -71,7 +71,7 @@ import BigWords from "@/components/BigWords.astro";
 <style>
   section {
     margin-block: 20rem;
-    padding-inline: 0.75rem;
+    padding-inline: clamp(0.75rem, 0.5rem + 1vw, 2rem);
 
     .motto-text {
       max-width: 65ch;
@@ -121,7 +121,7 @@ import BigWords from "@/components/BigWords.astro";
     min-height: 90vh;
     background-image: url("/img/no-motion-nik.webp");
     background-position: center;
-    padding-inline: 1rem;
+    /* padding-inline: 1rem; */
     padding-block: 2rem;
     background-color: var(--blueish);
     background-color: var(--clr-accent);
