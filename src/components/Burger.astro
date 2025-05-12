@@ -1,0 +1,120 @@
+---
+import { Icon } from "astro-icon/components";
+import { navItems } from "../utils/data";
+---
+
+<button popovertarget="mobile-menu" class="burger">
+  <Icon name="ri:menu-3-line" size={20} />
+  <span class="sr-only hidden">Open menu</span>
+</button>
+
+<nav popover id="mobile-menu">
+  <button
+    class="close-btn"
+    popovertarget="mobile-menu"
+    popovertargetaction="hide"
+  >
+    <Icon aria-hidden="true" name="ri:close-large-line" size={20} />
+    <span class="sr-only hidden">Close menu</span>
+  </button>
+  <menu class="nav-list-sorry-not-sorry">
+    {
+      navItems.map((item) => {
+        return (
+          <li class="quick-flip">
+            <a href={item.path}>{item.name}</a>
+          </li>
+        );
+      })
+    }
+  </menu>
+</nav>
+
+<style>
+  [popover] {
+    background-color: var(--yang);
+    width: 100vw;
+    height: 100vh;
+    translate: 100% 0;
+    transition: all 0.25s ease-out;
+    transition-behavior: allow-discrete;
+    border: none;
+
+    &::backdrop {
+      /* background-color: rgba(0, 0, 0, 0.9); */
+    }
+
+    &:popover-open {
+      translate: 0;
+      overscroll-behavior: contain;
+      transition: all 0.5s
+        linear(
+          0,
+          0.453 7.8%,
+          0.803 16.1%,
+          1.048 24.9%,
+          1.132 29.5%,
+          1.194 34.4%,
+          1.227 38.4%,
+          1.245 42.5%,
+          1.25 46.9%,
+          1.242 51.7%,
+          1.2 60.5%,
+          1.038 84.9%,
+          1.009 92.5%,
+          1
+        );
+    }
+
+    @starting-style {
+      transform: translateX(100%); /* Start off-screen */
+    }
+  }
+
+  .close-btn {
+    position: absolute;
+    top: 1.5rem;
+    right: 1rem;
+    background: none;
+    border: none;
+  }
+
+  .burger {
+    background: none;
+    border: none;
+    padding: var(--gap-xs);
+
+    @media (width > 768px) {
+      display: none;
+    }
+  }
+
+  .burger,
+  .close-btn {
+    color: var(--clr-accent);
+    &:hover {
+      opacity: var(--hover);
+    }
+  }
+
+  menu {
+    list-style: none;
+
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+
+  a {
+    text-decoration: none;
+    color: var(--yin);
+    font-size: 7rem;
+
+    text-transform: uppercase;
+    font-family: var(--font-brand);
+
+    transition: color 0.3s ease;
+  }
+</style>

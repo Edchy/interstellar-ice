@@ -1,0 +1,55 @@
+---
+import PageLayout from "@/layouts/PageLayout.astro";
+import { capitalizeFirstLetter } from "@/utils/utils";
+import { string_to_slug, formatDate } from "@/utils/utils";
+import { Icon } from "astro-icon/components";
+import { fade } from "astro:transitions";
+import MDPostHeader from "./MDPostHeader.astro";
+import "@/css/postContent.css";
+import { EMAIL } from "@/utils/data";
+
+const { frontmatter } = Astro.props;
+
+// interface Props {
+//   frontmatter: {
+//     title: string;
+//     subtitle?: string;
+//     description: string;
+//     author: string;
+//     pubDate: Date;
+//     tags: string[];
+//     minutesRead: string;
+//   };
+// }
+const { title, subtitle, minutesRead, description, pubDate, author, tags } =
+  frontmatter;
+// console.log(tags);
+---
+
+<PageLayout
+  description={description}
+  title={`Blog | ${title}`}
+  showAside={false}
+  showScrollProgress={true}
+  showFooter={false}
+>
+  <MDPostHeader frontmatter={frontmatter} />
+
+  <main class="content-grid">
+    <!-- <p class="post-description">{description}</p> -->
+    <div class="post-content flow">
+      <slot />
+    </div>
+    <footer>
+      Add nav to other posts here. If you find any mistakes, errors or typos
+      please let me know <a href={`mailto:${EMAIL}`}>my email</a>
+    </footer>
+  </main>
+</PageLayout>
+
+<style>
+  .post-description {
+    margin-block: 1.5em;
+    background-color: gold;
+  }
+</style>

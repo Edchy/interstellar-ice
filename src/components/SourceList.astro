@@ -1,0 +1,46 @@
+---
+interface SourceListProps {
+  items: Array<{
+    label: string;
+    href: string;
+  }>;
+}
+
+const { items = [] } = Astro.props as SourceListProps;
+---
+
+<ul class="source-list">
+  <h3>Sources</h3>
+  {
+    items.map((source) => (
+      <li>
+        <a href={source.href} target="_blank" rel="noopener noreferrer">
+          {source.label}
+        </a>
+      </li>
+    ))
+  }
+</ul>
+
+<style>
+  h3 {
+    font-size: 1rem;
+    text-transform: uppercase;
+    margin-bottom: 1rem;
+
+    color: var(--yin);
+  }
+  .source-list {
+    padding-left: 1rem;
+    list-style: disc;
+    line-height: 1.6;
+    font-size: 1rem;
+    /* font-weight: bold; */
+  }
+
+  .source-list a {
+    text-decoration: underline;
+    text-decoration: none;
+    color: var(--yin);
+  }
+</style>

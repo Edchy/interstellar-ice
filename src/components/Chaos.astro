@@ -1,0 +1,419 @@
+---
+// Import any necessary components
+import { Icon } from "astro-icon/components";
+---
+
+<style>
+  .pushable {
+    position: relative;
+    border: none;
+    background: transparent;
+    padding: 0;
+    outline-offset: 4px;
+    transition: filter 250ms;
+    z-index: 1001;
+  }
+  .shadow {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border-radius: var(--radius);
+    /* background: hsl(0deg 0% 0% / 0.25); */
+    will-change: transform;
+    transform: translateY(2px);
+    transition: transform 600ms cubic-bezier(0.3, 0.7, 0.4, 1);
+  }
+  .edge {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border-radius: var(--radius);
+    background-color: transparent;
+    /* background: linear-gradient(
+      to left,
+      hsl(340deg 100% 16%) 0%,
+      hsl(340deg 100% 32%) 8%,
+      hsl(340deg 100% 32%) 92%,
+      hsl(340deg 100% 16%) 100%
+    );
+    background: linear-gradient(
+      to left,
+      oklch(from var(--clr-accent) calc(l - 0.3) c h) 0%,
+      oklch(from var(--clr-accent) calc(l - 0.6) c h) 8%,
+      oklch(from var(--clr-accent) calc(l - 0.6) c h) 92%,
+      oklch(from var(--clr-accent) calc(l - 0.3) c h) 100%
+    ); */
+  }
+  .front {
+    display: block;
+    position: relative;
+    padding: 0.5rem 1rem;
+    border-radius: var(--radius);
+    font-family: var(--font-heading);
+    font-size: 0.75rem;
+    color: white;
+    background: var(--clr-accent);
+    will-change: transform;
+    transform: translateY(-4px);
+    transition: transform 600ms cubic-bezier(0.3, 0.7, 0.4, 1);
+  }
+
+  .pushable:hover {
+    filter: brightness(110%);
+  }
+
+  .pushable:hover .front {
+    transform: translateY(-6px);
+    transition: transform 250ms cubic-bezier(0.3, 0.7, 0.4, 1.5);
+  }
+  .pushable:active .front {
+    transform: translateY(-2px);
+    transition: transform 34ms;
+  }
+
+  .pushable:hover .shadow {
+    transform: translateY(4px);
+    transition: transform 250ms cubic-bezier(0.3, 0.7, 0.4, 1.5);
+  }
+  .pushable:active .shadow {
+    transform: translateY(1px);
+    transition: transform 34ms;
+  }
+
+  .pushable:focus:not(:focus-visible) {
+    outline: none;
+  }
+
+  /* Melting effect styles */
+  .melting-active {
+    overflow: hidden !important;
+    height: 100vh;
+    width: 100vw;
+  }
+
+  .melting-active body {
+    overflow: hidden !important;
+    height: 100vh;
+    width: 100vw;
+  }
+
+  /* Melting animations */
+  @keyframes melt-down {
+    0% {
+      transform: perspective(500px) rotateX(0deg) scaleY(1) translateY(0);
+      filter: blur(0);
+      opacity: 1;
+    }
+    100% {
+      transform: perspective(500px) rotateX(30deg) scaleY(3) translateY(100px);
+      filter: blur(10px);
+      opacity: 0;
+    }
+  }
+
+  @keyframes drip {
+    0% {
+      clip-path: polygon(
+        0% 0%,
+        100% 0%,
+        100% 100%,
+        85% 90%,
+        70% 100%,
+        55% 90%,
+        40% 100%,
+        25% 90%,
+        10% 100%,
+        0% 90%
+      );
+      transform: translateY(0);
+    }
+    50% {
+      clip-path: polygon(
+        0% 0%,
+        100% 0%,
+        100% 100%,
+        85% 100%,
+        70% 90%,
+        55% 100%,
+        40% 90%,
+        25% 100%,
+        10% 90%,
+        0% 100%
+      );
+      transform: translateY(50px);
+    }
+    100% {
+      clip-path: polygon(
+        0% 0%,
+        100% 0%,
+        100% 100%,
+        85% 90%,
+        70% 100%,
+        55% 90%,
+        40% 100%,
+        25% 90%,
+        10% 100%,
+        0% 90%
+      );
+      transform: translateY(100px);
+    }
+  }
+
+  @keyframes slow-melt {
+    0% {
+      border-radius: 0;
+    }
+    100% {
+      border-radius: 0 0 50% 50%;
+      transform: scaleY(1.5) translateY(20%);
+      filter: blur(5px);
+    }
+  }
+
+  .melting {
+    transform-origin: top center !important;
+    will-change: transform, opacity, filter;
+  }
+
+  .dripping {
+    animation: drip 8s ease-in forwards !important;
+    transform-origin: top center !important;
+  }
+
+  / @keyframes pulse {
+    0% {
+      box-shadow: 0 0 10px rgba(255, 0, 0, 0.8);
+    }
+    50% {
+      box-shadow: 0 0 30px rgba(255, 0, 0, 1);
+    }
+    100% {
+      box-shadow: 0 0 10px rgba(255, 0, 0, 0.8);
+    }
+  }
+
+  /* Temperature effect */
+  /* .hot {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 0;
+    background: linear-gradient(to top, rgba(255, 50, 0, 0.3), transparent);
+    z-index: 1;
+    transition: height 5s ease-in;
+    pointer-events: none;
+  }
+
+  .hot.active {
+    height: 100%;
+  } */
+</style>
+
+<!-- <span class="front">Don't press!</span>
+    -->
+<li class="pushable" id="melt-button">
+  <span class="shadow"></span>
+  <span class="edge"></span>
+  <a aria-label="linkedin" href="">
+    <Icon name="ri:linkedin-line" size={24} color={"var(--yin)"} />
+  </a>
+</li>
+
+<!-- <div class="hot" id="hot-effect"></div> -->
+
+<script>
+  document.addEventListener("DOMContentLoaded", () => {
+    const meltButton = document.getElementById("melt-button");
+    // const hotEffect = document.getElementById("hot-effect");
+    let meltingActive = false;
+
+    meltButton?.addEventListener("click", () => {
+      if (meltingActive) return; // Only trigger once
+      meltingActive = true;
+
+      // Add melting class to html element
+      document.documentElement.classList.add("melting-active");
+      document.body.classList.add("melting-active");
+
+      // Show hot effect
+      // hotEffect?.classList.add("active");
+
+      // Target elements to melt
+      const allElements = document.querySelectorAll(
+        "div, p, h1, h2, h3, section, header, footer, nav, img, button, a, span"
+      );
+
+      // Apply melting effects with varying delays and speeds
+      allElements.forEach((el: any) => {
+        // Skip reset button and its container
+        if (
+          el.closest("#reset-button") ||
+          el.classList.contains("reset-container")
+        ) {
+          return;
+        }
+
+        // Random delay for natural looking effect
+        const delay = Math.random() * 5;
+
+        // Random duration for varied melting speeds
+        const duration = 3 + Math.random() * 7;
+
+        // Choose between different melt effects
+        const meltType = Math.random();
+
+        setTimeout(() => {
+          el.classList.add("melting");
+
+          if (meltType < 0.33) {
+            // Dripping effect
+            el.classList.add("dripping");
+          } else if (meltType < 0.66) {
+            // Slow melting
+            el.style.animation = `slow-melt ${duration}s cubic-bezier(0.2, 0.8, 0.3, 1) forwards`;
+          } else {
+            // Standard melt down
+            el.style.animation = `melt-down ${duration}s cubic-bezier(0.4, 0, 0.2, 1) forwards`;
+          }
+
+          // Apply some common melting properties
+          el.style.transformOrigin = "top center";
+
+          // For text elements, make them appear to be dripping
+          if (
+            el.textContent &&
+            el.textContent.trim() &&
+            !el.closest("button") &&
+            !el.closest("a")
+          ) {
+            // Create drip elements for text
+            if (Math.random() > 0.5) {
+              const textContent = el.textContent;
+              el.style.position = "relative";
+
+              // Add falling text drops
+              for (let i = 0; i < Math.min(textContent.length, 5); i++) {
+                const drip = document.createElement("span");
+                const character = textContent.charAt(
+                  Math.floor(Math.random() * textContent.length)
+                );
+
+                drip.textContent = character;
+                drip.style.position = "absolute";
+                drip.style.left = `${Math.random() * 100}%`;
+                drip.style.top = "100%";
+                drip.style.color = getComputedStyle(el).color;
+                drip.style.animation = `melt-down ${5 + Math.random() * 8}s ease-in forwards ${Math.random() * 3}s`;
+                drip.style.opacity = "0.7";
+                drip.style.fontSize = getComputedStyle(el).fontSize;
+                drip.style.pointerEvents = "none";
+
+                document.body.appendChild(drip);
+              }
+            }
+          }
+        }, delay * 1000);
+      });
+      const cicadaArt = `
+            ++01100101 01110101++         =ඏ=         ++10101110 10100110++
+       +011100110110   01001111000      0♢0Ŧ0♢0     00011110010   011011001110+
+   +0110010001100101 0110000101100100   000卄000   0010011010000110 1010011000100110+
+    +01101101011000010111001001101011++00+0卄00++++11010110010011101000011010110110+
+        0111001101100  0010110111001100100\`⁆⁅´0010011001110110100  0011011001110
+              011001100 110000101110010++=\`⁆⁅´=++010011101000011 001100110
+                +01 10100001100101011 10010ʞk01001 11010100110000101 10+
+                     +0111010001101111  +01ʞk10+  1111011000101110+
+                         +110101011011  00.∴.00  110110101011+
+                          +01100101     0+1ʞk1+0    10100110+
+                          +1100101     +0+.∴.+0+     1010011+
+                            +1110010   +0+.∴.+0+   0100111+
+                              +1110100  01 ∴ 10  0010111+
+                                        10 ∴ 01
+                                        10\`∵´01
+                                         00.00
+                                          : :
+  `;
+      setTimeout(() => {
+        const pre = document.createElement("pre");
+        const btn = document.createElement("button");
+        const message = document.createElement("div");
+        message.style.color = "var(--white)";
+        message.style.position = "fixed";
+        message.style.top = "5%";
+        message.style.fontSize = "4rem";
+        message.style.fontWeight = "bold";
+        message.style.zIndex = "998";
+
+        message.textContent =
+          "im not a whore, i dont use likned inn because its the fucking root of all evil and it represents everything that is wrong with this world";
+
+        btn.onclick = () => {
+          location.reload();
+        };
+        btn.textContent = "ok chill take me back";
+        pre.style.fontFamily = "monospace";
+        pre.style.fontSize = "1rem";
+        pre.style.color = "var(--clr-accent)";
+        pre.style.whiteSpace = "pre-wrap";
+        pre.style.zIndex = "500";
+        pre.textContent = cicadaArt;
+        pre.style.position = "fixed";
+        pre.style.top = "0";
+        btn.style.zIndex = "1000";
+        btn.style.position = "fixed";
+        btn.style.top = "10px";
+        btn.style.right = "10px";
+        // btn.style.transform = "translate(-50%, -50%)";
+        btn.style.backgroundColor = "var(--clr-accent)";
+        btn.style.color = "white";
+        btn.style.border = "none";
+        btn.style.padding = "1rem";
+        btn.style.borderRadius = "0.5rem";
+        btn.style.cursor = "pointer";
+        btn.style.fontSize = "1rem";
+        btn.style.fontFamily = "monospace";
+        document.body.append(pre, message, btn);
+
+        // Add random chaos images
+        const chaosImages = [
+          "https://media.giphy.com/media/uFtywzELfasvK/giphy.gif", // Explosion
+          "https://media.giphy.com/media/3o7btNa0RUYa5E7iiQ/giphy.gif", // Glitch
+          "https://media.giphy.com/media/l46CyJmS9KUbokzsI/giphy.gif", // Error
+          "https://media.giphy.com/media/5xaOcLGvzHxDKjufnLW/giphy.gif", // Computer breaking
+          "https://media.giphy.com/media/XKYjR0Hsjh5cs/giphy.gif", // Matrix
+          "https://media.giphy.com/media/VFHqMbqAqzioOxzLhY/giphy.gif", // Glitch face
+        ];
+
+        // Add chaos images to the page (fewer to reduce clutter)
+        for (let i = 0; i < 6; i++) {
+          setTimeout(
+            () => {
+              const img = document.createElement("img");
+              img.src =
+                chaosImages[Math.floor(Math.random() * chaosImages.length)];
+              img.classList.add("chaos-image");
+              img.style.width = `${70 + Math.random() * 150}px`; // Slightly smaller
+              img.style.position = "fixed";
+              img.style.zIndex = "400";
+              img.style.top = `${Math.random() * 90}vh`;
+              img.style.left = `${Math.random() * 90}vw`;
+              img.style.animationDelay = `${Math.random() * 2}s`;
+              document.body.appendChild(img);
+            },
+            500 + i * 1000
+          );
+        }
+      }, 5000);
+      // Make background appear to melt
+      setTimeout(() => {
+        document.body.style.transition = "all 7s ease-in";
+        document.body.style.backgroundColor = "rgba(0, 0, 0)";
+      }, 2000);
+    });
+  });
+</script>

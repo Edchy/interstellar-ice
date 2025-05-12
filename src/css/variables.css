@@ -1,36 +1,109 @@
-:root {
-  --white: #FAF9F6;
-  --black: oklch(18.22% 0 0);
-  --neutral-500: oklch(28.22% 0 0);
-  --neutral-400: oklch(38.22% 0 0);
-  --neutral-300: oklch(48.22% 0 0);
-  --neutral-200: oklch(58.22% 0 0);
-  --clr-primary-700: #oklch(50.37% 0.2209 27.39);
-  --clr-primary-600: #oklch(60.37% 0.2209 27.39);
-  --clr-primary-500: #oklch(70.37% 0.2209 27.39);
-  --clr-primary-400: #oklch(80.37% 0.2209 27.39);
-  --clr-primary-300: #oklch(90.37% 0.2209 27.39);
-  --clr-primary-200: #oklch(100.37% 0.2209 27.39);
+ @property --clr-accent {
+   syntax: "<color>";
+   inherits: false;
+   initial-value: oklch(80% 0.29 149);
+ }
 
-  --clr-accent: oklch(79.54% 0.2861 148.76);
+ @property --white {
+   syntax: "<color>";
+   inherits: false;
+   initial-value: oklch(0.99 0.0353 101.83);
+ }
 
-  /* mode */
-  --light: light-dark(#FAF9F6, #121212);
-  --dark: light-dark(#121212, #FAF9F6);
+ :root[style*="color-scheme: dark"] {
+   --blend-mode: difference;
+   --blend-mode: overlay;
+   --blend-mode: hue;
+   --blend-mode: saturation;
+   --blend-mode: screen;
+   --blend-mode: multiply;
+   --blend-mode: hard-light;
+   --blend-mode: color-dodge;
+   --blend-mode: difference;
+   --blend-mode: darken;
+   --blend-mode: exclusion;
+   --blend-mode: luminosity;
+ }
 
-  /* layout */
-  --page-width: min(100% - 1rem, 1500px);
+ :root {
+   --black: oklch(18.22% 0 0);
+   --black: oklch(10% 0.29 149);
+   /* --black: oklch(from var(--clr--accent) l c h); */
+   /* --white: oklch(98% 0 91); */
+   --neutral-500: oklch(28.22% 0 0);
+   --neutral-400: oklch(38.22% 0 0);
+   --neutral-300: oklch(48.22% 0 0);
+   --neutral-200: oklch(58.22% 0 0);
+   --neutral-100: oklch(68.22% 0 0);
+   --clr-primary-700: oklch(50.37% 0.2209 27.39);
+   --clr-primary-600: oklch(60.37% 0.2209 27.39);
+   --clr-primary-500: oklch(70.37% 0.2209 27.39);
+   --clr-primary-400: oklch(80.37% 0.2209 27.39);
+   --clr-primary-300: oklch(90.37% 0.2209 27.39);
+   --clr-primary-200: oklch(100.37% 0.2209 27.39);
+   --nice-blueish-hue: oklch(50.58% 0.2956 266.08);
+   --blu: oklch(0% 0.2956 266.08);
+   --blu2: oklch(49.58% 0.2956 266.08);
 
-}
+   /* mode */
+   --yang: light-dark(var(--white), var(--black));
+   --yin: light-dark(var(--black), var(--white));
+   --blueish: light-dark(var(--blu2), var(--blu));
+   --blueish2: light-dark(var(--blu), var(--blu2));
 
-@property --angle {
-  syntax: "<angle>";
-  inherits: true;
-  initial-value: -90deg;
-}
+   /* --surface-1: black;
+   --surface-2: var(--neutral-200);
+   --surface-3: var(--neutral-300);
 
-@property --progress {
-  syntax: "<length-percentage>";
-  inherits: false;
-  initial-value: 0%;
-}
+   --foreground-1: var(--neutral-500);
+   --foreground-2: var(--neutral-400);
+   --foreground-3: var(--neutral-300);
+   
+   --figure-1: var(--neutral-200);
+   --ground-1: var(--neutral-100);
+   */
+
+   --blend-mode: hard-light;
+   --blend-mode: darken;
+   --blend-mode: difference;
+   --blend-mode: exclusion;
+   --blend-mode: hue;
+   --blend-mode: overlay;
+   --blend-mode: saturation;
+   --blend-mode: screen;
+   --blend-mode: multiply;
+   --blend-mode: luminosity;
+   /* typography */
+   --text-huge: clamp(5rem, 1rem + 10vw, 10rem);
+   --font-brand: "Revenge",
+     'Helvetica Neue',
+     sans-serif;
+   --font-heading: "Brockmann",
+     'Helvetica Neue',
+     sans-serif;
+   --font-body: Inter,
+     Roboto,
+     'Helvetica Neue',
+     'Arial Nova',
+     'Nimbus Sans',
+     Arial,
+     sans-serif;
+
+   /* layout */
+   --page-width: min(100% - 1rem, 1500px);
+   --radius: 4px;
+
+   /* State */
+   --hover: 0.85;
+
+   /*  */
+   --gap-xs: .5rem;
+   --gap-s: .75rem;
+   --gap-m: 1rem;
+   --gap-l: 1.5rem;
+   --gap-xl: 2rem;
+   --gap-xxl: 3rem;
+
+   --header-offset: 6rem;
+
+ }

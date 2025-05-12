@@ -1,0 +1,23 @@
+---
+import { Icon } from "astro-icon/components";
+import { devicon, devPlain, catppuccin } from "../utils/data.js";
+---
+
+<ul class="logos">
+  {
+    devPlain.names.map((name) => (
+      <li class="tech-icon" title={name}>
+        <Icon class="tech-icon" name={`${devPlain.icon}:${name}`} size="2rem" />
+      </li>
+    ))
+  }
+</ul>
+
+<style>
+  ul {
+    list-style: none;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+  }
+</style>

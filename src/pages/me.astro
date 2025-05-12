@@ -1,0 +1,88 @@
+---
+import LatestPostCard from "@/components/LatestPostCard.astro";
+import PageLayout from "../layouts/PageLayout.astro";
+import { getCollection } from "astro:content";
+import Card from "@/components/Card.astro";
+
+// Fetch posts and sort by publication date (newest first)
+const allPosts = await getCollection("posts");
+const sortedPosts = allPosts
+  .sort(
+    (a, b) =>
+      new Date(b.data.pubDate).valueOf() - new Date(a.data.pubDate).valueOf()
+  )
+  .filter((_, index) => index < 3);
+const latestPost = sortedPosts.length > 0 ? sortedPosts[0] : null;
+console.log(sortedPosts.length);
+---
+
+<PageLayout title="About">
+  <main>lol</main>
+  <h1>Add table of contents to blog posts!</h1>
+  <!-- <LatestPostCard post={latestPost} />
+  <Card title={latestPost?.data.title} /> -->
+  <ul>
+    {sortedPosts.map((post) => <LatestPostCard {post} />)}
+  </ul>
+
+  <p>
+    Summer 2022. I was lost. I was in a rut. I was stuck in a job that I didn't
+    like, doing work that I didn't care about. I stumbled upon <a
+      href="freecodecamp">a free coding site</a
+    >. I had no idea what a &lt;h1&gt; was. But i was hooked pretty much
+    immediately. Now, 3 years later. With two educations in my pocket and
+    countless hours spent building, watching youtube-videos tinkering with code,
+    I can say that I have found my passion. I love building things. I love the
+    feeling of creating something from nothing. I love the feeling of solving a
+    problem. I love the feeling of learning something new. I love the feeling of
+    being challenged. I love the feeling of being in flow. I love the feeling of
+    being in control. I love the feeling of being free.
+
+    <style>
+      h2 {
+        font-size: 2rem;
+        margin-bottom: 2rem;
+        text-align: center;
+      }
+
+      main {
+        --hdr-gradient: linear-gradient(
+          to top in oklab,
+          oklch(80% 0.29 149) 12% 12%,
+          oklch(98% 0 91) 68% 68%
+        );
+        background: var(--hdr-gradient);
+        padding: 3rem 1rem;
+      }
+
+      ul {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 0.5rem;
+        /* max-width: 1200px; */
+        margin: 0 auto;
+        grid-template-rows: auto;
+        /* Enable subgrid for columns */
+        grid-auto-flow: dense;
+      }
+
+      li {
+        display: grid;
+        grid-template-rows: subgrid;
+        grid-row: span 1;
+      }
+
+      @supports not (grid-template-rows: subgrid) {
+        li {
+          height: 100%;
+        }
+      }
+
+      @media (max-width: 768px) {
+        ul {
+          grid-template-columns: 1fr;
+        }
+      }
+    </style>
+  </p>
+</PageLayout>

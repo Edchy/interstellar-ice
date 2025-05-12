@@ -1,3 +1,35 @@
+@import "open-props/masks/edges";
+@import "open-props/masks/corner-cuts";
+
+@font-face {
+  font-family: 'Revenge';
+  src: url('/fonts/Revenge.otf') format('opentype');
+  font-weight: normal;
+  font-style: normal;
+  /* block font-swapping */
+  font-display: block;
+}
+
+/* @font-face {
+  font-family: 'Kass';
+  src: url('/fonts/kass-black.otf') format('opentype');
+  font-weight: 900;
+  font-style: normal;
+  font-display: swap;
+} */
+
+@font-face {
+  font-family: 'Brockmann';
+  src: url('/fonts/brockmann-medium-webfont.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* @view-transition {
+  navigation: auto;
+} */
+
 *,
 *::before,
 *::after {
@@ -6,10 +38,53 @@
   padding: 0;
 }
 
+::selection {
+  background-color: oklch(from var(--clr-accent) l c h / 0.9);
+  color: var(--yang);
+}
+
 html {
-  color-scheme: light dark;
-  background-color: var(--light);
-  color: var(--dark);
+
+  cursor: url("/mickey_cursor.png"), auto !important;
+
+  interpolate-size: allow-keywords;
+  color-scheme: dark light;
+  background-color: var(--yang);
+  /* background-color: var(--blueish); */
+  color: var(--yin);
+  /* scrollbar-color: var(--clr-accent) var(--yang); */
+
+  ::-webkit-scrollbar {
+    height: 100%;
+    width: .75rem;
+    background-color: initial;
+  }
+
+  ::-webkit-scrollbar-button {
+    display: none;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    border-radius: 9999px;
+    border: .125rem solid transparent;
+    background-clip: content-box;
+    background-image: linear-gradient(180deg,
+        hsl(210deg 100% 95%),
+        hsl(200deg 100% 92%) 10%,
+        hsl(180deg 100% 90%) 20%,
+        hsl(160deg 80% 88%) 30%,
+        hsl(140deg 70% 87%) 40%,
+        hsl(120deg 70% 85%) 50%,
+        hsl(100deg 60% 86%) 60%,
+        hsl(80deg 70% 88%) 70%,
+        hsl(60deg 90% 90%) 80%,
+        hsl(40deg 100% 92%) 90%,
+        hsl(20deg 100% 93%));
+  }
+
+  ::-webkit-scrollbar-track {
+    background-color: initial;
+  }
 
   @media(prefers-reduced-motion: no-preference) {
     scroll-behavior: smooth;
@@ -20,10 +95,20 @@ body {
   min-height: 100vh;
   line-height: 1.5;
   -webkit-font-smoothing: antialiased;
-  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
-  /* background-image: url("@/assets/mesh-gradient2.svg");
-  background-size: cover;
-  background-repeat: no-repeat; */
+  font-family: var(--font-body);
+  font-weight: normal;
+
+}
+
+a,
+button,
+input[type="submit"],
+input[type="button"],
+select,
+[role="button"],
+.clickable,
+summary {
+  cursor: url("/mickey_pointer.png"), pointer;
 }
 
 img,
@@ -41,6 +126,8 @@ button,
 textarea,
 select {
   font: inherit;
+
+
 }
 
 
@@ -54,23 +141,56 @@ h6 {
   overflow-wrap: break-word;
 }
 
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  line-height: 1;
+  font-family: var(--font-heading);
+
+}
+
+/* p {
+  margin-block: 1em;
+  margin-block: 1lh;
+} */
 
 
-@keyframes progress {
+/* @keyframes circle-in-top-right {
+  from {
+    clip-path: circle(0%);
+  }
+
+  to {
+    clip-path: circle(150% at top left);
+  }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  ::view-transition-old(root) {
+    animation: none;
+  }
+
+  ::view-transition-new(root) {
+    animation: 1.5s cubic-bezier(0.25, 1, 0.3, 1) circle-in-top-right forwards;
+  }
+} */
+
+@keyframes bump {
   0% {
-    --progress: 0%;
+    opacity: 0;
+    transform: scale(1) translateX(200px);
   }
 
-  2% {
-    --angle: -90deg;
-  }
-
-  10% {
-    --angle: -180deg;
+  50% {
+    opacity: 0.5;
+    transform: scale(1.1);
   }
 
   100% {
-    --angle: -180deg;
-    --progress: 100%;
+    opacity: 1;
+    transform: scale(1) translateX(0);
   }
 }

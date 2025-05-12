@@ -1,0 +1,77 @@
+<div class="big-words">
+  <div class="inner">
+    <span data-aos="fade-up-left">ううん </span>
+    <span class="gradient-text" data-aos="fade-up-right">nope</span>
+    <span data-aos="fade-up-left">næh </span>
+    <span data-aos="fade-up-left">nah</span>
+    <span data-aos="fade-up-left">nan</span>
+    <span data-aos="fade-up-left">nel</span>
+    <span data-aos="fade-up-left">nö</span>
+    <span data-aos="fade-up-left">la’ </span>
+    <span data-aos="fade-up-left">ei</span>
+  </div>
+</div>
+<script>
+  import AOS from "aos";
+  import "aos/dist/aos.css";
+  document.addEventListener("astro:page-load", () => {
+    AOS.init({
+      duration: 500,
+      easing: "ease-in-out",
+      once: false,
+      mirror: false,
+    });
+  });
+</script>
+<style>
+  .big-words {
+    --hdr-gradient: radial-gradient(
+      farthest-corner circle at 50% 50% in oklab,
+      var(--clr-accent) 12% 12%,
+      var(--yang) 56% 56%
+    );
+
+    /* width: 100%;  */
+    /* -webkit-mask: var(--mask-edge-zig-zag-left);
+    -webkit-mask: var(--mask-edge-scalloped-horizontal); */
+    background: var(--hdr-gradient);
+    z-index: calc(infinity - 1);
+    /* left: 0; */
+    overflow-x: clip;
+    padding-top: 2rem;
+    padding-bottom: 2rem;
+
+    @media (prefers-reduced-motion: no-preference) {
+      animation: gradient-change 6s linear infinite alternate;
+    }
+
+    .inner {
+      margin-inline: auto;
+      max-width: 100%;
+      text-align: right;
+
+      @media (width > 1200px) {
+        /* width: min(100%, 901px);
+        width: clamp(901px, 70vw, 1100px);
+        width: clamp(801px, 70vw, 1100px); */
+      }
+    }
+
+    span {
+      /* text-box: trim-both cap alphabetic; */
+      font-size: clamp(5rem, 1rem + 20vw, 20rem);
+      font-weight: bold;
+      display: block;
+      font-family: var(--font-heading);
+      line-height: 0.8;
+    }
+  }
+
+  @keyframes gradient-change {
+    to {
+      --clr-accent: oklch(30% 0.29 149);
+      /* --clr-accent: oklch(from var(--clr-accent) l c 249); */
+      /* --white: oklch(90% 0 91); */
+    }
+  }
+</style>

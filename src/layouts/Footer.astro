@@ -1,14 +1,99 @@
-<footer>
-  <a href="https://www.youtube.com/results?search_query=snl+papyrus">papyrus</a>
-</footer>
+---
+import { Icon } from "astro-icon/components";
+---
 
+<footer>
+  <section>
+    <span data-entity="spades">&spades; </span>
+    <!-- <span data-entity="euro">&euro; </span>
+    <span data-entity="psi">&psi; </span> -->
+    <span data-entity="kappa">&kappa; </span>
+    <span data-entity="Lambda">&Lambda; </span>
+    <span data-entity="Delta">&Delta; </span>
+    <span data-entity="there4">&there4; </span>
+    <span data-entity="rx">&#8479;</span>
+    <span data-entity="turned-capital-f">&#x2132;</span>
+    <span data-entity="turned-ampersand">&#x214B;</span>
+    <span data-entity="opposition">&#x260D;</span>
+    <span data-entity="chi-rho">&#x2627;</span>
+    <span data-entity="peace">&#x262E;</span>
+    <span data-entity="pluto">&#x2647;</span>
+    <span data-entity="Black Circle With Two White Dots">&#x2689;</span>
+    <span data-entity="coffin">&#x26B0;</span>
+    <!-- <span data-entity="heavy-open-center-cross">&#x271C;</span> -->
+  </section>
+  <!-- <Icon name="menu-2" /> -->
+  <!-- <div class="y">
+    <p>Nope Studio</p>
+    <p>Cope Studio</p>
+  </div> -->
+  <div data-aos="zoom-in" class="x">
+    <span>Nope Digital</span>
+    <!-- <span class="dagger" data-entity="dagger">&dagger;</span>
+
+    <span>udio</span> -->
+  </div>
+  <p class="copy-container">
+    Can't &copy;ope <span class="copyright"></span> NoPope. 0 rights reserved.
+  </p>
+  <p class="fax">Faxa mig på: <span>&#x213B;</span> 3301-1033</p>
+</footer>
 <style>
   footer {
-    /* width: var(--page-width);
-    margin-inline: auto; */
-    background-color: var(--clr-primary-500);
-    padding-block: 2rem;
-    display: grid;
+    --text-huge: clamp(3rem, 1rem + 15vw, 300px);
+    overflow: hidden;
+    color: var(--clr-accent);
+    padding-block-start: 10rem;
+    padding-block-end: 10rem;
+    /* padding-inline: 15rem; */
+    grid-column: 2 / 3;
+    grid-column: 1 / 4;
+    /* width: 100%;
+    height: 30px;
+    position: absolute;
+    bottom: 0; */
+  }
+  .fax,
+  .copy-container {
+    font-size: 0.75rem;
+  }
+  .dagger {
+    color: var(--yin);
+  }
+  section {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
     place-content: center;
+    justify-items: center;
+    gap: 1rem;
+
+    [data-entity] {
+      font-family: var(--font-brand);
+      color: var(--yin);
+      width: min-content;
+      font-size: clamp(0.125rem, 0.5rem + 1vw, 0.75rem);
+    }
+  }
+  p {
+    text-align: center;
+    margin-bottom: 0.5rem;
+    font-size: clamp(0.25rem, 0.5rem + 1vw, 1rem);
+  }
+
+  div.x {
+    font-size: var(--text-huge);
+    font-family: var(--font-brand);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    place-content: center;
+    justify-items: center;
   }
 </style>
+<script>
+  document.querySelector(".copyright")!.innerHTML = new Date()
+    .getFullYear()
+    .toString();
+</script>

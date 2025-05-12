@@ -1,0 +1,144 @@
+---
+import { Image } from "astro:assets";
+import Nik from "@/assets/img/nik.gif";
+const { title } = Astro.props;
+---
+
+<div class="card" data-active="false">
+  <!-- <img src="img/2.jpeg" alt="" /> -->
+  <p>{title}</p>
+  <!-- <Image src={Nik} alt="Nik" /> -->
+</div>
+<script>
+  document.addEventListener("astro:page-load", cardInit);
+  function cardInit() {
+    const CARD = document.querySelector(".card") as HTMLElement;
+
+    if (!CARD) {
+      throw new Error("No card found.");
+    }
+
+    const UPDATE = ({ x, y }: { x: number; y: number }) => {
+      const BOUNDS = CARD.getBoundingClientRect();
+
+      const posX = x - BOUNDS.x;
+      const posY = y - BOUNDS.y;
+      const ratioX = posX / BOUNDS.width;
+      const ratioY = posY / BOUNDS.height;
+
+      CARD.style.setProperty("--ratio-x", ratioX.toString());
+      CARD.style.setProperty("--ratio-y", ratioY.toString());
+    };
+
+    document.body.addEventListener("pointermove", UPDATE);
+
+    CARD.addEventListener("pointerenter", () => {
+      CARD.dataset.active = "true";
+    });
+    CARD.addEventListener("pointerleave", () => {
+      CARD.dataset.active = "false";
+      CARD.dataset.parallax = "false";
+    });
+    CARD.addEventListener("transitionend", (event) => {
+      if (
+        event.target === CARD &&
+        event.propertyName === "transform" &&
+        CARD.dataset.active === "true"
+      ) {
+        CARD.dataset.parallax = "true";
+      }
+    });
+  }
+</script>
+<style>
+  .card {
+    perspective: 100vmin;
+  }
+  p {
+    font-size: 4rem;
+  }
+  img {
+    width: 100%;
+    object-fit: cover;
+    height: 100%;
+    scale: 1.2;
+    translate: 0 0;
+    filter: grayscale(1);
+  }
+
+  .card:not(:hover) img {
+    transition: translate 0.2s;
+  }
+
+  .card:hover img {
+    translate: calc((var(--ratio-x) - 0.5) * 20%)
+      calc((var(--ratio-y) - 0.5) * 20%);
+  }
+
+  .card {
+    --ratio-x: 0;
+    --ratio-y: 0;
+    overflow: hidden;
+    aspect-ratio: 3 / 4;
+    width: clamp(260px, 50vmin, 320px);
+    border-radius: var(--radius);
+    transform-style: preserve-3d;
+    touch-action: none;
+    transition: transform 0.2s;
+  }
+
+  .card[data-active="true"][data-parallax="true"] {
+    transition: transform 0s;
+  }
+
+  .card:hover {
+    /*   transition: transform 0s; */
+    transform: rotateX(calc((var(--ratio-y) - 0.5) * 50deg))
+      rotateY(calc((var(--ratio-x) - 0.5) * -40deg));
+  }
+
+  .card:after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(
+      circle at calc(var(--ratio-x) * 100%) calc(var(--ratio-y) * 100%),
+      hsl(0 0% 100% / 0.5),
+      transparent 50%
+    );
+    background-repeat: no-repeat;
+    background-blend-mode: soft-light;
+    z-index: 2;
+  }
+
+  .card:before {
+    content: "";
+    background:
+      url("/favicon.ico") 0 0 / 18% 18%,
+      linear-gradient(
+          115deg,
+          transparent 20%,
+          var(--green-8) 30%,
+          transparent 48% 52%,
+          var(--indigo-8) 70%,
+          transparent
+        )
+        80% 80% / 300% 300%;
+    filter: brightness(2) contrast(1);
+    background-blend-mode: overlay;
+    mix-blend-mode: color-dodge;
+    /* mix-blend-mode: screen; */
+    position: absolute;
+    inset: 0;
+    z-index: 2;
+    opacity: 0.2;
+    transition: opacity 0.2s;
+  }
+
+  .card:hover:before {
+    background-position:
+      calc(var(--ratio-x) * 10%) calc(var(--ratio-y) * 10%),
+      calc(80% + (var(--ratio-x) * -50%)) calc(80% + (var(--ratio-y) * -50%));
+    opacity: 1;
+  }
+</style>

@@ -1,0 +1,49 @@
+---
+import { getPosts } from "@/utils/posts";
+import { string_to_slug } from "@/utils/utils";
+import { Icon } from "astro-icon/components";
+
+// Get only non-draft posts
+const posts = await getPosts();
+// Extract unique tags from only the published posts
+const tags = [...new Set(posts.map((post) => post.data.tags).flat())];
+---
+
+<ul class="tags nav-list-sorry-not-sorry">
+  {
+    tags.map((tag) => (
+      <li class="tag">
+        <a href={`/blog/${string_to_slug(tag)}`}>{tag}</a>
+      </li>
+    ))
+  }
+</ul>
+
+<style>
+  ul {
+    list-style: none;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.125rem;
+    justify-content: end;
+    padding-bottom: 0.5rem;
+  }
+  a:any-link {
+    color: var(--yin);
+    text-decoration: none;
+    border-radius: var(--radius);
+    text-decoration: none;
+    color: var(--yin);
+    background-color: var(--blueish);
+    background-color: var(--yang);
+    padding: 0.25rem 0.5rem;
+    border: 1px solid var(--clr-accent);
+    font-size: 0.75rem;
+    transition: all 0.15s ease-in-out;
+  }
+
+  /* li:hover a {
+    background-color: var(--clr-accent);
+    color: var(--black);
+  } */
+</style>

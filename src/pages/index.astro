@@ -1,38 +1,182 @@
 ---
 import PageLayout from "../layouts/PageLayout.astro";
+import Nik from "@/assets/nik.gif";
+import MeshGradient from "@/assets/mesh-gradient.svg";
+import { Image } from "astro:assets";
+import Card from "../components/Card.astro";
+import Cicada from "../components/Cicada.astro";
+import { Code } from "astro:components";
+import Overlap from "../components/Overlap.astro";
+import WordMorph from "../components/WordMorph.astro";
+import IconCarousel from "@/components/IconCarousel.astro";
+import Footer from "@/layouts/Footer.astro";
+import LatestPostsDisplay from "@/components/LatestPostsDisplay.astro";
+import HeroText from "@/components/HeroText.astro";
+import BigWords from "@/components/BigWords.astro";
 ---
 
-<PageLayout>
+<PageLayout title="Nope Studios" showAside={true}>
   <main>
-    <h1>YOO</h1>
-    <p>
-      Lorem ipsum dolor sit amet consectetur adipisicing elit. Nemo tenetur quos
-      nam consequuntur minus, eaque veritatis quo optio reiciendis facilis
-      officiis incidunt ipsa numquam rem quaerat aliquid mollitia deleniti
-      tempora amet aliquam? Molestiae aut tenetur magni dolorum odio consectetur
-      totam sit sequi neque, ipsum, est corrupti iste libero modi, quas iure.
-      Cum, vitae iure eveniet similique atque inventore quam cupiditate quidem
-      rem eligendi minus excepturi suscipit esse natus ipsa tempore asperiores,
-      accusantium dolores architecto. Aliquam sint facilis fugit culpa, ipsa
-      expedita blanditiis iure animi nisi possimus sed vitae ratione rem veniam
-      reiciendis adipisci. Aut iure similique reiciendis nemo magnam, velit a
-      ipsum voluptates. Quae, neque quos. Repudiandae magni maxime nulla soluta
-      at iure iusto reprehenderit quasi dolorem eveniet! Recusandae
-      exercitationem ipsa reprehenderit numquam dolor saepe amet? Nisi minima
-      recusandae vero nihil velit asperiores laborum commodi! Vitae, dicta omnis
-      deserunt necessitatibus, explicabo veritatis quis quo tenetur sed, eum
-      amet impedit ullam hic officiis. Praesentium blanditiis illum atque
-      aliquam earum corrupti, ipsa tenetur tempora repellat placeat quae error
-      enim amet recusandae culpa sit obcaecati harum nobis, explicabo a
-      provident consectetur libero. Pariatur aut nostrum velit quis possimus
-      officia, a iste error facere, dolores nesciunt quod culpa necessitatibus
-      nisi nobis illum! Doloribus, ut.
-    </p>
+    <h1 class="hidden">Nope Digital. We build for the web.</h1>
+    <WordMorph />
+    <HeroText />
   </main>
+
+  <section>
+    <h2 data-aos="fade-right">
+      <span data-entity="heavy-open-center-cross">&#x271C;</span>
+      the spirit
+    </h2>
+    <p class="motto-text">
+      Here at Nope Digital, we believe in nothing. Absolutely nothing. Optimism?
+      Pass. Team spirit? Meh. We take pride in saying "no" — to ideas, to
+      enthusiasm, to pretty much everything. While other studios are busy
+      chasing dreams and disrupting industries, we're busy disrupting coffee
+      breaks and declining meeting invites. Our motto? <em>"Why bother."</em> If
+      you're looking for innovation, you've come to the wrong place. But if you're
+      into bleak honesty, low-effort brilliance, and the art of doing the bare minimum
+      with style — welcome home, baby!
+    </p>
+    <BigWords />
+  </section>
+  <section>
+    <h2 data-aos="fade-right">
+      <span data-entity="heavy-open-center-cross">&#x271C;</span>
+      the blog
+    </h2>
+    <p class="motto-text">
+      A place for us to think out loud, cement what we’re learning, and maybe
+      help someone else along the way. From web development to the meaning of
+      life (spoiler: it’s nothing), we write to make sense of it all. Below are
+      our latest posts: part notes, part rants, occasionally useful.
+    </p>
+    <LatestPostsDisplay />
+  </section>
+  <!-- <section class="cat-section">
+    &numero;&Popf;
+    <span>&#9787;</span>
+  </section> -->
+  <section class="bb">
+    <div class="idontfuckingknow">
+      <h2 data-aos="fade-right">
+        <span data-entity="heavy-open-center-cross">&#x271C; the tools</span>
+      </h2>
+      <span class="motto-text">
+        (most are just here because they have nice looking logos)
+      </span>
+    </div>
+    <IconCarousel />
+  </section>
 </PageLayout>
 
 <style>
+  section {
+    margin-block: 20rem;
+    /* padding-inline: clamp(0.75rem, 0.5rem + 1vw, 2rem); */
+
+    .motto-text {
+      max-width: 65ch;
+      font-size: clamp(0.7292rem, 0.6515rem + 0.3313vw, 0.9rem);
+      margin-bottom: 3rem;
+      text-wrap: pretty;
+    }
+
+    & > h2,
+    .idontfuckingknow {
+      margin-bottom: 1rem;
+    }
+  }
+  /* section {
+    margin-block-end: 20rem;
+    padding-inline: 2rem;
+  }
+  h2 {
+    font-size: 1rem;
+    font-style: italic;
+    color: var(--clr-accent);
+    text-align: left;
+    margin-bottom: 1rem;
+  } */
+  /* .cat-section {
+    background-color: var(--clr-accent);
+    margin-block: 10rem;
+    position: absolute;
+    left: 0;
+    right: 0;
+    height: 20rem;
+    display: grid;
+    place-content: center;
+
+    & > span {
+      color: var(--yang);
+      font-size: 5rem;
+      font-family: var(--font-brand);
+    }
+  } */
+
   main {
-    width: 24ch;
+    position: relative;
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column;
+    min-height: 100vh;
+    background-image: url("/img/no-motion-nik.webp");
+    background-position: center;
+    padding-inline: 1rem;
+    padding-block: 2rem;
+    background-color: var(--blueish);
+    background-color: var(--clr-accent);
+    background-color: var(--yang);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-blend-mode: hard-light;
+    background-blend-mode: var(--blend-mode);
+    /* margin-block-end: 5rem; */
+
+    &::before {
+      content: "";
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      /* width: 20px; */
+      height: 500px;
+      --hdr-gradient: linear-gradient(
+        to top in oklch,
+        var(--yang) 17% 17%,
+        54%,
+        oklch(98% 0 91 / 0) 81% 81%
+      );
+
+      background: var(--hdr-gradient);
+    }
+    &::after {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 20px;
+      --hdr-gradient: linear-gradient(
+        to bottom in oklch,
+        var(--yang) 17% 17%,
+        54%,
+        oklch(98% 0 91 / 0) 81% 81%
+      );
+
+      /* background: var(--hdr-gradient); */
+    }
+
+    @media (width > 1200px) {
+      min-height: 100vh;
+
+      &::after {
+        height: 0px;
+      }
+    }
+
+    @media (prefers-reduced-motion: no-preference) {
+      background-image: url("/img/nik.gif");
+    }
   }
 </style>

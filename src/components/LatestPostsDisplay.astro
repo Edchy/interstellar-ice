@@ -1,0 +1,70 @@
+---
+import LatestPostCard from "@/components/LatestPostCard.astro";
+import { getPosts } from "@/utils/posts";
+import { getCollection } from "astro:content";
+
+const posts = await getPosts(false);
+const sortedPosts = posts.filter((_, index) => index < 4);
+console.log(sortedPosts.length);
+---
+
+<ul>
+  {
+    sortedPosts.map((post, i) => {
+      return <LatestPostCard {post} {i} />;
+    })
+  }
+</ul>
+
+<style>
+  h2 {
+    font-size: 2rem;
+    margin-bottom: 2rem;
+    text-align: center;
+  }
+
+  main {
+    --hdr-gradient: linear-gradient(
+      to top in oklab,
+      oklch(80% 0.29 149) 12% 12%,
+      oklch(98% 0 91) 68% 68%
+    );
+    background: var(--hdr-gradient);
+    padding: 3rem 1rem;
+  }
+
+  ul {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-columns: repeat(3, minmax(300px, 1fr));
+    gap: 0.5rem;
+    /* max-width: 1200px; */
+    margin: 0 auto;
+    grid-template-rows: auto;
+    /* Enable subgrid for columns */
+    grid-auto-flow: dense;
+  }
+
+  li {
+    display: grid;
+    grid-template-rows: subgrid;
+    grid-row: span 1;
+  }
+
+  @supports not (grid-template-rows: subgrid) {
+    li {
+      height: 100%;
+    }
+  }
+
+  @media (max-width: 1000px) {
+    ul {
+      grid-template-columns: 1fr 1fr;
+    }
+  }
+  @media (max-width: 600px) {
+    ul {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

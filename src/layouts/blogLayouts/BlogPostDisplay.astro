@@ -1,0 +1,119 @@
+---
+import { getCollection, type CollectionEntry } from "astro:content";
+import { formatDate, string_to_slug } from "@/utils/utils";
+import { fade, slide } from "astro:transitions";
+import TagsDisplay from "@/components/TagsDisplay.astro";
+import { getPosts } from "@/utils/posts";
+
+interface Props {
+  filteredPosts?: CollectionEntry<"posts">[]; // Make posts optional
+  tag?: string;
+}
+const { filteredPosts, tag } = Astro.props as Props;
+
+
+const blogPosts = filteredPosts || (await getPosts(true));
+
+const allPosts = blogPosts.filter((post) => !post.data.draft);
+
+allPosts.sort(
+  (a, b) =>
+    new Date(b.data.pubDate).valueOf() - new Date(a.data.pubDate).valueOf()
+);
+
+---
+
+<h1>blog <span class="tag">{tag ? `@ ${tag}` : ""}</span></h1>
+<TagsDisplay />
+<div class="grid">
+  {
+    allPosts.map((post) => {
+      return (
+        <article class="blog-post">
+          <a href={`/blog/${post.id}`} class="card flow">
+            <h2 transition:name={`${post.data.title}`}>{post.data.title}</h2>
+            {post.data.subtitle && (
+              <h3 class="subtitle">{post.data.subtitle}</h3>
+            )}
+            <p class="post-date">{formatDate(post.data.pubDate)}</p>
+            <p class="description">{post.data.description}</p>
+          </a>
+        </article>
+      );
+    })
+  }
+</div>
+
+<style>
+    article {
+      background-color: var(--black);
+      background-color: var(--yang);
+      padding: 1rem;
+      border-radius: var(--radius);
+      border-bottom: 1px solid var(--clr-accent);
+      color: var(--yin);
+
+      /* &:hover {
+        background-color: var(--blueish);
+        color: var(--white);
+      } */
+
+  }
+  a {
+    --flow-space: 0.25em;
+  }
+  h1 {
+    font-size: var(--text-huge);
+    font-family: var(--font-heading);
+    margin-block-end: 2rem;
+
+  }
+  h2, p {
+    color: var(--yin);
+  }
+  .subtitle {
+    font-size: 1rem;
+    color: oklch(from var(--yin) l c h / 0.7);
+    /* color: oklch(from var(--yang) l c h / 0.7); */
+  }
+  .post-date {
+    color: oklch(from var(--yin) l c h / 0.5);
+    /* color: oklch(from var(--yang) l c h / 0.5); */
+    font-weight: bold;
+    font-size: 0.75rem;
+    margin-block-start: 0.5rem;
+    margin-block-end: 1rem;
+  }
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+    gap: .5rem;
+
+    @media (hover) and (prefers-reduced-motion: no-preference) {
+      &>article {
+      transition:
+        transform 0.2s,
+        opacity 0.2s;
+    }
+
+      &:has(> article:hover)>article:not(:hover),
+      &:has(> article:focus-within)>article:not(:focus-within) {
+        opacity: 0.2;
+        transform: scale(0.95);
+      }
+    }
+  }
+
+  .description {
+    display: -webkit-box;
+    -webkit-line-clamp: 6; 
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    line-height: 1.2;
+  }
+  a:any-link {
+    text-decoration: none;
+    color: var(--white);
+s  }
+</style>

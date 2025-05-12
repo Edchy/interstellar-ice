@@ -1,0 +1,95 @@
+---
+title: "React"
+subtitle: "A JavaScript library for building user interfaces"
+pubDate: 2025-04-21
+description: "Understanding React"
+author: ""
+tags: ["react"]
+---
+
+
+
+Think of React as someone else’s JavaScript code.
+It’s just JavaScript that someone else wrote — a toolkit that helps you deal with certain tricky parts of building user interfaces. When i say “building user interfaces,” i mainly mean creating, updating, and managing the Document Object Model (DOM) — the part of the browser that shows buttons, text, images, forms, and everything else users interact with.
+
+## JS - a real 90s kid
+JavaScript is an old language. It wasn’t originally designed to handle complex, dynamic UIs the way we expect today.
+When you’re working with vanilla JavaScript, you often have to manually find and update the parts of the page (the DOM) that need changing.
+As soon as your project grows this can get very tedious and error-prone: if you forget to update one little thing, your UI can get out of sync with your application’s actual state.
+
+React is designed to solve that problem.
+
+Instead of manually telling the browser how to change things step-by-step (imperative programming), with React you just describe what the UI should look like based on the current state (declarative programming), and React handles the updates for you.
+
+	•	JavaScript is imperative:
+You tell it exactly what steps to take, one by one.
+For example, you might say: “I want this span to show the value of count.”
+Then you have to spell it out manually:
+	•	Find the span
+	•	Set its textContent to the value of count
+	•	Update it again every time count changes
+If you forget a step — like updating the span when count changes — your UI will show outdated information.
+
+```javascript
+// Imperative JavaScript
+<div id="app">
+  <button id="myButton">Click me</button>
+  <p id="count">Clicked 0 times</p>
+</div>
+
+<script>
+  let count = 0;
+  const button = document.getElementById('myButton');
+  const countText = document.getElementById('count');
+
+  button.addEventListener('click', () => {
+    count++;
+    countText.textContent = `Clicked ${count} times`;
+  });
+</script>
+```
+
+	•	React is declarative:
+You describe what you want the UI to look like, and React figures out the steps for you.
+You simply say: “This text should display the value of count.”
+Whenever count changes, React automatically updates the right parts of the UI.
+You don’t have to manually find elements or update them — React handles all of that behind the scenes.
+
+```javascript
+// Declarative React
+import { useState } from 'react';
+
+function App() {
+  const [count, setCount] = useState(0);
+
+  return (
+    <div>
+      <button onClick={() => setCount(count + 1)}>Click me</button>
+      <p>Clicked {count} times</p>
+    </div>
+  );
+}
+
+export default App;
+```
+
+
+I mean, it’s not really a problem if you’re building something small.
+But as soon as you have multiple DOM elements depending on the same piece of state — or multiple pieces of state affecting the same DOM elements — things can get messy very quickly. The more moving parts you have, the harder it gets to keep everything in sync manually.
+
+📚 Did You Know?
+
+Where the words come from:
+	•	Imperative comes from Latin imperare, meaning “to command”.
+In imperative programming, you command the computer exactly what to do, step-by-step — like an emperor giving orders.
+	•	Emperor also comes from imperare!
+An emperor is literally the one who commands.
+	•	Declare comes from Latin declarare, meaning “to make clear”.
+Declarative programming is about making clear what you want the result to be — not how to get there.
+	•	Clear comes from clarus, meaning “bright” or “easy to see”.
+(So yes, declare and clear are cousins!)
+
+
+
+https://overreacted.io/react-for-two-computers/
+RFC

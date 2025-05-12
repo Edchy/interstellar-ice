@@ -1,0 +1,424 @@
+---
+// Import any chaos images you want
+import { Icon } from "astro-icon/components";
+const { text = "click" } = Astro.props;
+---
+
+<style>
+  .pushable {
+    position: relative;
+    border: none;
+    background: transparent;
+    padding: 0;
+    outline-offset: 4px;
+    transition: filter 250ms;
+    z-index: 1001; /* Keep button above chaos */
+  }
+  .shadow {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border-radius: var(--radius);
+    background: hsl(0deg 0% 0% / 0.25);
+    will-change: transform;
+    transform: translateY(2px);
+    transition: transform 600ms cubic-bezier(0.3, 0.7, 0.4, 1);
+  }
+  .edge {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border-radius: var(--radius);
+    background: linear-gradient(
+      to left,
+      hsl(340deg 100% 16%) 0%,
+      hsl(340deg 100% 32%) 8%,
+      hsl(340deg 100% 32%) 92%,
+      hsl(340deg 100% 16%) 100%
+    );
+  }
+  .front {
+    display: block;
+    position: relative;
+    padding: 0.5rem 1rem;
+    border-radius: var(--radius);
+    font-family: var(--font-heading);
+    font-size: 0.75rem;
+    color: white;
+    background: hsl(345deg 100% 47%);
+    will-change: transform;
+    transform: translateY(-4px);
+    transition: transform 600ms cubic-bezier(0.3, 0.7, 0.4, 1);
+  }
+
+  .pushable:hover {
+    filter: brightness(110%);
+  }
+
+  .pushable:hover .front {
+    transform: translateY(-6px);
+    transition: transform 250ms cubic-bezier(0.3, 0.7, 0.4, 1.5);
+  }
+  .pushable:active .front {
+    transform: translateY(-2px);
+    transition: transform 34ms;
+  }
+
+  .pushable:hover .shadow {
+    transform: translateY(4px);
+    transition: transform 250ms cubic-bezier(0.3, 0.7, 0.4, 1.5);
+  }
+  .pushable:active .shadow {
+    transform: translateY(1px);
+    transition: transform 34ms;
+  }
+
+  .pushable:focus:not(:focus-visible) {
+    outline: none;
+  }
+
+  /* Chaos mode styles */
+  @keyframes chaos-spin {
+    0% {
+      transform: rotate(0deg);
+    }
+    100% {
+      transform: rotate(3600deg);
+    }
+  }
+
+  @keyframes chaos-scale {
+    0% {
+      transform: scale(1);
+    }
+    50% {
+      transform: scale(2.5);
+    }
+    75% {
+      transform: scale(0.5);
+    }
+    100% {
+      transform: scale(1);
+    }
+  }
+
+  @keyframes chaos-colors {
+    0% {
+      filter: hue-rotate(0deg);
+    }
+    25% {
+      filter: hue-rotate(90deg) contrast(200%);
+    }
+    50% {
+      filter: hue-rotate(180deg) invert(100%);
+    }
+    75% {
+      filter: hue-rotate(270deg) saturate(300%);
+    }
+    100% {
+      filter: hue-rotate(360deg);
+    }
+  }
+
+  @keyframes chaos-move {
+    0% {
+      transform: translate(0, 0);
+    }
+    25% {
+      transform: translate(100px, -50px);
+    }
+    50% {
+      transform: translate(-200px, 100px);
+    }
+    75% {
+      transform: translate(50px, 200px);
+    }
+    100% {
+      transform: translate(0, 0);
+    }
+  }
+
+  .chaos-image {
+    position: fixed;
+    z-index: 1000;
+    pointer-events: none;
+    animation: chaos-move 4s infinite alternate;
+  }
+
+  /* Prevent page from getting taller */
+  .chaos-active {
+    overflow: hidden !important;
+    height: 100vh;
+    width: 100vw;
+  }
+
+  .chaos-active body {
+    overflow: hidden !important;
+    height: 100vh;
+    width: 100vw;
+  }
+
+  .glitch-text {
+    position: relative;
+    animation: chaos-colors 2s infinite;
+  }
+
+  .glitch-text::before,
+  .glitch-text::after {
+    content: attr(data-text);
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+  }
+
+  .glitch-text::before {
+    left: 2px;
+    text-shadow: -2px 0 red;
+    animation: chaos-noise 2s infinite linear alternate-reverse;
+  }
+
+  .glitch-text::after {
+    left: -2px;
+    text-shadow: 2px 0 blue;
+    animation: chaos-noise 3s infinite linear alternate-reverse;
+  }
+
+  @keyframes chaos-noise {
+    0% {
+      clip-path: inset(40% 0 61% 0);
+    }
+    20% {
+      clip-path: inset(92% 0 1% 0);
+    }
+    40% {
+      clip-path: inset(43% 0 1% 0);
+    }
+    60% {
+      clip-path: inset(25% 0 58% 0);
+    }
+    80% {
+      clip-path: inset(54% 0 7% 0);
+    }
+    100% {
+      clip-path: inset(58% 0 43% 0);
+    }
+  }
+
+  /* Reset button styles */
+  .reset-button {
+    position: fixed;
+    z-index: 10000;
+    bottom: 20px;
+    right: 20px;
+    background: #fff;
+    color: #000;
+    font-weight: bold;
+    padding: 10px 20px;
+    border-radius: 30px;
+    box-shadow: 0 0 20px rgba(255, 0, 0, 0.8);
+    border: 2px solid red;
+    animation: pulse 1.5s infinite;
+    font-family: var(--font-heading);
+    transform: scale(0);
+    transition: transform 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  }
+
+  .reset-button.visible {
+    transform: scale(1);
+  }
+
+  @keyframes pulse {
+    0% {
+      box-shadow: 0 0 10px rgba(255, 0, 0, 0.8);
+    }
+    50% {
+      box-shadow: 0 0 30px rgba(255, 0, 0, 1);
+    }
+    100% {
+      box-shadow: 0 0 10px rgba(255, 0, 0, 0.8);
+    }
+  }
+  .chaos-message {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) scale(0);
+    font-family: var(--font-heading);
+    font-size: 3rem;
+    color: red;
+    text-shadow: 0 0 10px rgba(255, 0, 0, 0.8);
+    background: rgba(0, 0, 0, 0.7);
+    padding: 1rem 2rem;
+    border-radius: var(--radius);
+    z-index: 10000;
+    opacity: 0;
+    text-align: center;
+    transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  }
+
+  .chaos-message.visible {
+    transform: translate(-50%, -50%) scale(1);
+    opacity: 1;
+    animation:
+      chaos-colors 2s infinite,
+      pulse 1.5s infinite;
+  }
+</style>
+
+<button class="pushable" id="chaos-button">
+  <span class="shadow"></span>
+  <span class="edge"></span>
+  <span class="front">{text}</span>
+</button>
+<div id="chaos-message" class="chaos-message">OOPS there WENT graVITY</div>
+<button class="reset-button" id="reset-button">RESTORE ORDER</button>
+
+<script>
+  document.addEventListener("DOMContentLoaded", () => {
+    const chaosButton = document.getElementById("chaos-button");
+    const resetButton = document.getElementById("reset-button");
+    const chaosMessage = document.getElementById("chaos-message");
+
+    let chaosMode = false;
+
+    // Add reset functionality
+    resetButton?.addEventListener("click", () => {
+      location.reload();
+    });
+
+    chaosButton?.addEventListener("click", () => {
+      if (chaosMode) return; // Only trigger once
+      chaosMode = true;
+
+      // Add chaos class to html element
+      document.documentElement.classList.add("chaos-active");
+      document.body.classList.add("chaos-active");
+      setTimeout(() => {
+        chaosMessage?.classList.add("visible");
+      }, 2000);
+
+      // Show the reset button after a delay
+      setTimeout(() => {
+        resetButton?.classList.add("visible");
+      }, 3000);
+
+      // Crazy transformations for existing elements
+      const allElements = document.querySelectorAll(
+        "div, p, h1, h2, h3, section, header, footer, nav, img"
+      );
+
+      allElements.forEach((el: any, i) => {
+        // Skip the button itself and reset button
+        if (
+          el.closest("#chaos-button") ||
+          el.closest("#reset-button") ||
+          el.closest("#chaos-message")
+        )
+          return;
+
+        // Random transformations (without rotation!)
+        const randomDelay = Math.random() * 2;
+        const randomDuration = 0.5 + Math.random() * 4;
+        const randomTransform = [
+          // Removed the rotate transform
+          `scale(${0.8 + Math.random() * 0.7})`, // Reduced max scale for less chaos
+          `translate(${-30 + Math.random() * 60}px, ${-30 + Math.random() * 60}px)`, // Reduced translation
+          `skew(${-5 + Math.random() * 10}deg, ${-5 + Math.random() * 10}deg)`, // Added skew instead of rotation
+        ].join(" ");
+
+        setTimeout(() => {
+          el.style.transition = `all ${randomDuration}s cubic-bezier(0.1, 0.9, 0.2, 1.2)`;
+          el.style.transform = randomTransform;
+
+          // Random positioning for some elements, but keep them within viewport
+          if (Math.random() > 0.7) {
+            el.style.position = "fixed";
+            el.style.top = `${Math.random() * 90}%`;
+            el.style.left = `${Math.random() * 90}%`;
+            el.style.zIndex = "999";
+            el.style.maxWidth = "50vw"; // Prevent elements from getting too large
+          }
+
+          // Glitch effect for text
+          if (el.textContent && el.textContent.trim() && Math.random() > 0.5) {
+            el.classList.add("glitch-text");
+            el.setAttribute("data-text", el.textContent);
+          }
+
+          // Random animations (without spin)
+          const animations = ["chaos-scale", "chaos-colors"]; // Removed spin animation
+          if (Math.random() > 0.6) {
+            el.style.animation = `${animations[Math.floor(Math.random() * animations.length)]} ${2 + Math.random() * 6}s infinite alternate`;
+          }
+        }, randomDelay * 1000);
+      });
+
+      // Add random chaos images
+      const chaosImages = [
+        "https://media.giphy.com/media/uFtywzELfasvK/giphy.gif", // Explosion
+        "https://media.giphy.com/media/3o7btNa0RUYa5E7iiQ/giphy.gif", // Glitch
+        "https://media.giphy.com/media/l46CyJmS9KUbokzsI/giphy.gif", // Error
+        "https://media.giphy.com/media/5xaOcLGvzHxDKjufnLW/giphy.gif", // Computer breaking
+        "https://media.giphy.com/media/XKYjR0Hsjh5cs/giphy.gif", // Matrix
+        "https://media.giphy.com/media/VFHqMbqAqzioOxzLhY/giphy.gif", // Glitch face
+      ];
+
+      // Add chaos images to the page (fewer to reduce clutter)
+      for (let i = 0; i < 6; i++) {
+        setTimeout(
+          () => {
+            const img = document.createElement("img");
+            img.src =
+              chaosImages[Math.floor(Math.random() * chaosImages.length)];
+            img.classList.add("chaos-image");
+            img.style.width = `${70 + Math.random() * 150}px`; // Slightly smaller
+            img.style.top = `${Math.random() * 90}vh`;
+            img.style.left = `${Math.random() * 90}vw`;
+            img.style.animationDelay = `${Math.random() * 2}s`;
+            document.body.appendChild(img);
+          },
+          500 + i * 1000
+        );
+      }
+
+      // Change CSS variables to wild values
+      setTimeout(() => {
+        document.documentElement.style.setProperty("--yin", "lime");
+        document.documentElement.style.setProperty("--yang", "--blu");
+        document.documentElement.style.setProperty(
+          "--radius",
+          "50% 20% / 10% 30%"
+        );
+      }, 1000);
+
+      // Break the layout
+      setTimeout(() => {
+        document.body.style.transform = "skew(5deg, -10deg)";
+        document.body.style.transition = "all 2s";
+      }, 3000);
+
+      // Shake the page (less aggressive)
+      const shakeInterval = setInterval(() => {
+        if (Math.random() > 0.7) {
+          document.body.style.transform += ` translate(${-3 + Math.random() * 6}px, ${-3 + Math.random() * 6}px)`;
+        }
+      }, 300);
+
+      // If user hasn't clicked reset after 30 seconds, show more prominently
+      setTimeout(() => {
+        if (document.documentElement.classList.contains("chaos-active")) {
+          if (resetButton) {
+            resetButton.style.transform = "scale(1.5)";
+            resetButton.style.animation = "pulse 0.7s infinite";
+          }
+        }
+      }, 30000);
+    });
+  });
+</script>

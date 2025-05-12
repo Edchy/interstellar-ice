@@ -1,5 +1,6 @@
-@layer global, variables, utils;
+@layer lib, global, variables, utils;
 
+@import "open-props/style" layer(lib);
 @import "global.css" layer(global);
-@import "variables.css";
-@import "utils.css";
+@import "variables.css" layer(variables);
+@import "utils.css" layer(utils);

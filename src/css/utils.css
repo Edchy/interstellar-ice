@@ -3,17 +3,21 @@
   background: hsl(0 100% 50% / .1)
 }
 
+.flow>*+* {
+  margin-top: var(--flow-space, 1em);
+}
+
 .flex {
   display: flex;
-
-}
-
-.items-center {
   align-items: center;
+  /* gap: 1rem; */
 }
 
-.justify-between {
-  justify-content: space-between;
+.gradient-text {
+  background: var(--gradient-1);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
 }
 
 .hidden {
@@ -27,18 +31,74 @@
   width: 1px;
 }
 
+/* .quick-flip {
+  --transition-duration: 0.325s;
+  --timing-function: cubic-bezier(0.66, 0, 0.34, 1);
+  overflow-y: clip;
+
+  >* {
+
+    display: block;
+    transition:
+      transform var(--transition-duration) var(--timing-function),
+      translate 0ms calc(var(--transition-duration) / 2);
+  }
+
+  &:is(:hover, :focus-within)>* {
+    transform: translateY(-2lh);
+    translate: 0 2lh;
+  }
+} */
+
+.nav-list-sorry-not-sorry {
+  list-style: none;
+
+  @media (hover) and (prefers-reduced-motion: no-preference) {
+    &>li {
+      /* transform-origin: right center; */
+      transition:
+        transform 0.5s,
+        opacity 0.5s;
+    }
+
+    &:has(> li:hover)>li:not(:hover),
+    &:has(> li:focus-within)>li:not(:focus-within) {
+      opacity: 0.25;
+      transform: scale(0.9);
+    }
+  }
+}
+
+
+li:has(:focus-visible),
+button:focus-visible,
+a:focus-visible {
+  &:focus-within {
+    outline: 2px solid var(--yin);
+    outline-offset: .5rem;
+    outline-color: var(--clr-accent);
+    border-radius: var(--radius);
+
+    &>* {
+      outline: none;
+    }
+  }
+}
+
 .content-grid {
   --padding-inline: 1rem;
   --content-max-width: 75ch;
-  --breakout-max-width: 140ch;
+  --breakout-max-width: 100ch;
 
   --breakout-size: calc((var(--breakout-max-width) - var(--content-max-width)) / 2);
 
   display: grid;
-  /* gap: 1rem; */
   grid-template-columns:
     [full-bleed-start] minmax(var(--padding-inline), 1fr) [breakout-start] minmax(0, var(--breakout-size)) [content-start] min(100% - (var(--padding-inline) * 2),
-      var(--content-max-width)) [content-end] minmax(0, var(--breakout-size)) [breakout-end] minmax(var(--padding-inline), 1fr) [full-bleed-end];
+      var(--content-max-width)) [content-end] minmax(0, var(--breakout-size)) [breakout-end] minmax(var(--padding-inline),
+      1fr) [full-bleed-end];
+
+  row-gap: var(--gap-s);
 }
 
 .content-grid> :not(.full-bleed, .breakout),
@@ -48,8 +108,8 @@
 
 .content-grid>.full-bleed {
   grid-column: full-bleed;
-  display: grid;
-  grid-template-columns: inherit;
+  /* display: grid; */
+  /* grid-template-columns: inherit; */
 }
 
 .content-grid>.breakout {

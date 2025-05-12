@@ -1,81 +1,131 @@
 ---
 import "../css/main.css";
-import Header from "./Header.astro";
-import Footer from "./Footer.astro";
 import Nav from "../components/Nav.astro";
 import ScrollProgressIndicator from "../components/ScrollProgressIndicator.astro";
+import Socials from "../components/Socials.astro";
+import Logo from "../components/Logo.astro";
+import ThemeToggle from "../components/ThemeToggle.astro";
+import Burger from "../components/Burger.astro";
+import Head from "./Head.astro";
+import Footer from "./Footer.astro";
+import { slide } from "astro:transitions";
+import { Image } from "astro:assets";
+import v from "@/assets/img/mickey-v.png";
+import thumb from "@/assets/img/mickey-dislike.png";
+
+const { title, description, showAside, showScrollProgress, showFooter = true } = Astro.props;
 ---
 
 <!doctype html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width" />
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-    <meta name="generator" content={Astro.generator} />
-    <title>E3E</title>
-  </head>
+  <Head {title} {description} />
   <body id="page-top">
     <div class="grid-wrapper">
-      <ScrollProgressIndicator anchor="#page-top" />
-      <header>
+      <header >
         <div class="inner">
-          <div class="flex items-center justify-between">
-            <div>Logo</div>
-            <button class="header-cta">hej</button>
-          </div>
+          <Logo />
           <Nav />
-          <span>x</span>
+          <div class="flex">
+            <ThemeToggle />
+            <Burger />
+          </div>
+          <!-- <p>x</p> -->
         </div>
       </header>
-      <section>
+      <!-- <div transition:animate={slide({ duration: "3.4s" })}class="content"> -->
+      <div class="content">
         <slot />
-      </section>
+      </div>
       <aside>
         <div class="inner">
-          <button>Hello</button>
-          <div class="socials">
-            <span>x</span>
-            <span>x</span>
-          </div>
+          {
+            showAside && (
+              // <p>아니 사진관</p>
+            <Image src={v} alt="mickey mouse hand doing a V sign" class="mickey" width={75}/>
+              <nav class="socials">
+                <Socials />
+              </nav>
+            )
+          }
+          {showScrollProgress && (
+              <ScrollProgressIndicator anchor="#page-top"/>
+          )}
         </div>
       </aside>
+
+      {showFooter && <Footer />}
     </div>
   </body>
 </html>
 
 <style>
-  .grid-wrapper {
-    --width: 100px;
-    /* background-color: wheat; */
-    /* min-height: 100vb; */
+  .content {
+    /* padding-inline: 1rem; */
+    
   }
   header {
-    background-color: bisque;
-    /* position: fixed;
-    inset: 0 0 auto 0;
-    background-image: linear-gradient(
-      var(--clr-accent) 0% var(--progress),
-      var(--dark) var(--progress) 100%
-    );
-    animation: progress linear;
-    animation-timeline: scroll(); */
+    @media (width < 1200px) {
+      /* padding-inline: 1rem; */
+      
+      position: sticky;
+      position: fixed;
+      /* position: absolute; */
+      top: 0;
+      z-index: calc(infinity - 1);
+      width: 100%;
+      /* background-image: url("/img/nik.gif"); */
+      /* background-color: lch(from var(--yang) l c h / .1); */
+      /* backdrop-filter: blur(0.3rem); */
+
+    }
+    
   }
+ 
+
+  .grid-wrapper {
+    --width: 150px;
+    --left-col-width: var(--width);
+    --right-col-width: var(--width);
+  }
+
+  .inner {
+    padding-block: 2rem;
+    padding-inline: 1rem;
+    /* padding-inline-start: 1rem;
+    padding-inline-end: 0.5rem; */
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    z-index: 3;
+    /* background-color: var(--blueish); */
+    /* background-color: red; */
+    /* background-color: var(--clr-accent); */
+
+    border: 10px solid var(--yin);
+    /* border-radius: var(--radius); */
+    backdrop-filter: blur(0.3rem);
+
+  }
+
   aside {
-    background-color: rgba(182, 136, 228, 0.291);
     display: none;
+  }
+
+  @media (width < 768px) {
+    .inner {
+      border-color: transparent;
+      padding-block: unset;
+    }
   }
 
   @media (width > 1200px) {
     .grid-wrapper {
       display: grid;
-      max-width: 1200px;
+      max-width: 1400px;
       margin-inline: auto;
-      grid-template-columns: var(--width) 1fr var(--width);
+      grid-template-columns: var(--left-col-width) 1fr var(--right-col-width);
     }
     .inner {
-      border-right: 1px solid white;
-
       width: var(--width);
       min-height: 100vb;
       position: fixed;
@@ -83,9 +133,14 @@ import ScrollProgressIndicator from "../components/ScrollProgressIndicator.astro
       flex-direction: column;
       justify-content: space-between;
       align-items: center;
+      border-bottom: 0;
+      border-top: 0;
+      padding-inline: unset;
+      padding-block: unset;
+      
     }
     header {
-      height: 100vb;
+      /* height: 100vb; */
     }
 
     aside {
@@ -96,9 +151,6 @@ import ScrollProgressIndicator from "../components/ScrollProgressIndicator.astro
       .socials {
         margin: auto;
       }
-    }
-    .header-cta {
-      display: none;
     }
   }
 </style>

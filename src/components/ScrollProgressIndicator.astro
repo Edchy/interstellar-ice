@@ -1,20 +1,18 @@
 ---
+import { Icon } from "astro-icon/components";
+
 const { anchor } = Astro.props;
 ---
 
-<a href={anchor} class="back-to-top">
+<a href={anchor} class="back-to-top" aria-label="Back to top">
   <!-- aria-hidden="true" to hide the icon from screen readers -->
   <span class="hidden">Back to top</span>
-  <svg
-    xmlns="http://www.w3.org/2000/svg"
-    width="24"
-    height="24"
-    viewBox="0 0 16 16"
-    ><path
-      fill="currentColor"
-      d="M7 1v10.844L2.146 7.737L.854 9.263L8 15.31l7.146-6.047l-1.292-1.526L9 11.844V1z"
-    ></path></svg
-  >
+  <Icon
+    name="ri:arrow-down-s-line"
+    size={24}
+    color={"var(--yin)"}
+    aria-hidden="true"
+  />
 </a>
 <style>
   @property --angle {
@@ -48,33 +46,44 @@ const { anchor } = Astro.props;
   }
 
   .back-to-top {
+    /* --clr-accent2: oklch(from var(--yin) l c h / 0.2); */
     background-image: linear-gradient(
       var(--clr-accent) 0% var(--progress),
-      var(--dark) var(--progress) 100%
+      transparent var(--progress) 100%
     );
     animation: progress linear;
     animation-timeline: scroll();
-
-    padding: 0.5rem;
-    position: fixed;
-    inset: auto 2rem 2rem auto;
+    /* border: 1px dotted var(--clr-accent); */
+    /* border-bottom: 1px solid var(--clr-accent); */
+    box-shadow: 2px 2px oklch(from var(--clr-accent) l c h / 0.1);
+    border-radius: var(--radius);
+    padding: var(--gap-xs);
+    /* position: fixed;
+    inset: auto 2rem 2rem auto; */
+    z-index: calc(infinity - 1);
     z-index: 2;
-    transform: rotate(var(--angle));
-    transition: transform 0.25s ease;
 
     &:any-link {
       /* Instead of the link color, use the text color */
-      color: var(--light);
+      color: var(--yin);
       text-decoration: none;
 
       &:hover {
-        opacity: 0.85;
+        opacity: var(--hover);
       }
     }
 
     @supports not (animation-timeline: scroll()) {
+      display: none;
+    }
+  }
+  svg {
+    transform: rotate(var(--angle));
+    transition: transform 0.25s ease;
+
+    @supports not (animation-timeline: scroll()) {
       --angle: -180deg;
-      /* background: var(--clr-accent); */
+      background: var(--clr-accent);
       /* transform: rotate(-180deg); */
     }
   }

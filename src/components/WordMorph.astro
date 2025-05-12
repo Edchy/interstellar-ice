@@ -1,0 +1,186 @@
+---
+
+---
+
+<div class="text-container">
+  <span id="text1"></span>
+  <span id="text2"></span>
+  <svg id="filters">
+    <defs>
+      <filter id="threshold">
+        <!-- Basically just a threshold effect - pixels with a high enough opacity are set to full opacity, and all other pixels are set to completely transparent. -->
+        <feColorMatrix
+          in="SourceGraphic"
+          type="matrix"
+          values="1 0 0 0 0
+                      0 1 0 0 0
+                      0 0 1 0 0
+                      0 0 0 255 -140"
+        ></feColorMatrix>
+      </filter>
+    </defs>
+  </svg>
+</div>
+<!-- The SVG filter used to create the merging effect -->
+
+<style>
+  .text-container {
+    filter: url(#threshold);
+    /* filter: url(#threshold) blur(2.6px); */
+    filter: url(#threshold) blur(0.6px);
+    /* position: relative; */
+    /* background-color: rgba(232, 232, 240, 0.382); */
+    overflow-x: clip;
+    position: relative;
+    width: 100%;
+    max-width: 100vw;
+    display: block;
+    @media (width < 1200px) {
+      padding-top: var(--header-offset);
+    }
+  }
+
+  #text1,
+  #text2 {
+    position: absolute;
+    width: 100%;
+    /* text-box: trim both cap alphabetic; */
+    /* safari shit */
+    -webkit-backface-visibility: hidden;
+    -moz-backface-visibility: hidden;
+    -webkit-transform: translate3d(0, 0, 0);
+    -moz-transform: translate3d(0, 0, 0);
+    backface-visibility: hidden;
+    transform: translate3d(0, 0, 0);
+    /* max-width: 100%;
+    left: 0;
+    right: 0;
+    overflow-wrap: break-word; */
+    display: inline-block;
+    font-family: var(--font-heading);
+    font-family: var(--font-brand);
+    font-size: clamp(7rem, 1rem + 15vw, 15rem);
+    font-size: clamp(4rem, 1rem + 12vw, 12rem);
+    text-align: center;
+    user-select: none;
+    line-height: 1;
+    color: var(--white);
+    color: var(--yin);
+    color: var(--clr-accent);
+    color: light-dark(var(--white), var(--white));
+    /* color: rgba(128, 128, 128, 0.552); */
+    text-wrap: balance;
+  }
+</style>
+
+<script>
+  document.addEventListener("astro:page-load", () => {
+    const text1El = document.getElementById("text1");
+    const text2El = document.getElementById("text2");
+
+    // Exit early if elements don't exist on this page
+    if (!text1El || !text2El) {
+      console.log("WordMorph elements not found on this page");
+      return;
+    }
+
+    console.log("Word Morphing effect loaded");
+
+    const elts = {
+      text1: text1El,
+      text2: text2El,
+    };
+
+    // The strings to morph between. You can change these to anything you want!
+    const texts = [
+      "Designers of unseen doorways",
+      // "Developer of journeys",
+      // "That goes Beyond the screen",
+      "Styling the void into being",
+      "Architects of the digital realm",
+      "Breathing life into pixels",
+      "From thought to existence",
+      "Forging worlds in code",
+      "Creators of fleeting infinities",
+      "Gods of the in-between",
+      "Conjurers of interactive dreams",
+      "Wielders of the sacred div tag",
+      "Creators of fleeting infinities",
+      "Weaving the web of tomorrow",
+    ];
+
+    // Controls the speed of morphing.
+    const morphTime = 4;
+    const cooldownTime = 0.25;
+
+    let textIndex = texts.length - 1;
+    let time = new Date().getTime();
+    let morph = 0;
+    let cooldown = cooldownTime;
+
+    elts.text1.textContent = texts[textIndex % texts.length];
+    elts.text2.textContent = texts[(textIndex + 1) % texts.length];
+
+    function doMorph() {
+      morph -= cooldown;
+      cooldown = 0;
+
+      let fraction = morph / morphTime;
+
+      if (fraction > 1) {
+        cooldown = cooldownTime;
+        fraction = 1;
+      }
+
+      setMorph(fraction);
+    }
+
+    // A lot of the magic happens here, this is what applies the blur filter to the text.
+    function setMorph(fraction: number) {
+      // fraction = Math.cos(fraction * Math.PI) / -2 + .5;
+
+      elts.text2.style.filter = `blur(${Math.min(8 / fraction - 8, 100)}px)`;
+      elts.text2.style.opacity = `${Math.pow(fraction, 0.4) * 100}%`;
+
+      fraction = 1 - fraction;
+      elts.text1.style.filter = `blur(${Math.min(8 / fraction - 8, 100)}px)`;
+      elts.text1.style.opacity = `${Math.pow(fraction, 0.4) * 100}%`;
+
+      elts.text1.textContent = texts[textIndex % texts.length];
+      elts.text2.textContent = texts[(textIndex + 1) % texts.length];
+    }
+
+    function doCooldown() {
+      morph = 0;
+
+      elts.text2.style.filter = "";
+      elts.text2.style.opacity = "100%";
+
+      elts.text1.style.filter = "";
+      elts.text1.style.opacity = "0%";
+    }
+
+    // Animation loop, which is called every frame.
+    function animate() {
+      requestAnimationFrame(animate);
+
+      let newTime = new Date().getTime();
+      let shouldIncrementIndex = cooldown > 0;
+      let dt = (newTime - time) / 1000;
+      time = newTime;
+
+      cooldown -= dt;
+
+      if (cooldown <= 0) {
+        if (shouldIncrementIndex) {
+          textIndex++;
+        }
+
+        doMorph();
+      } else {
+        doCooldown();
+      }
+    }
+    animate();
+  });
+</script>

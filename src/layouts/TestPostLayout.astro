@@ -1,0 +1,19 @@
+---
+const { frontmatter } = Astro.props;
+const { title, readtime } = frontmatter;
+
+const compiled = await Astro.props.compiledContent();
+// const headings = await Astro.props.getHeadings();
+---
+
+<h1>{frontmatter.title}</h1>
+<p>Tags: {Astro.props.content.tags[1]}</p>
+<p>RawContent: {Astro.props.rawContent()}</p>
+<h2>compiled: {compiled}</h2>
+<p>File: {Astro.props.file}</p>
+<p>Url: {Astro.props.url}</p>
+<div>{Astro.props.content.author}</div>
+<div>
+  content from slot:
+  <slot />
+</div>
