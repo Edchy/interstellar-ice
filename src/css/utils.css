@@ -50,8 +50,8 @@
     &>li {
       /* transform-origin: right center; */
       transition:
-        transform 0.3s,
-        opacity 0.3s;
+        transform 0.5s,
+        opacity 0.5s;
     }
 
     &:has(> li:hover)>li:not(:hover),

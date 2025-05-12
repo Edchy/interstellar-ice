@@ -29,7 +29,7 @@
   }
 }
 
-a:any-link {
+.post-content :any-link {
   --link-light: oklch(from var(--nice-blueish-hue) 60% c h);
   text-underline-offset: 0.25rem;
   text-decoration-thickness: 1px;

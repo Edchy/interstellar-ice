@@ -5,8 +5,8 @@ import { Icon } from "astro-icon/components";
 <footer>
   <section>
     <span data-entity="spades">&spades; </span>
-    <span data-entity="euro">&euro; </span>
-    <span data-entity="psi">&psi; </span>
+    <!-- <span data-entity="euro">&euro; </span>
+    <span data-entity="psi">&psi; </span> -->
     <span data-entity="kappa">&kappa; </span>
     <span data-entity="Lambda">&Lambda; </span>
     <span data-entity="Delta">&Delta; </span>
@@ -20,17 +20,20 @@ import { Icon } from "astro-icon/components";
     <span data-entity="pluto">&#x2647;</span>
     <span data-entity="Black Circle With Two White Dots">&#x2689;</span>
     <span data-entity="coffin">&#x26B0;</span>
-    <span data-entity="heavy-open-center-cross">&#x271C;</span>
+    <!-- <span data-entity="heavy-open-center-cross">&#x271C;</span> -->
   </section>
   <!-- <Icon name="menu-2" /> -->
+  <!-- <div class="y">
+    <p>Nope Studio</p>
+    <p>Cope Studio</p>
+  </div> -->
+  <div class="x">
+    <span>Nope Haus</span>
+    <!-- <span class="dagger" data-entity="dagger">&dagger;</span>
 
-  <div>
-    <span>Popes</span>
-    <span class="dagger" data-entity="dagger">&dagger;</span>
-
-    <span>udio</span>
+    <span>udio</span> -->
   </div>
-  <p>
+  <p class="copy-container">
     Can't &copy;ope <span class="copyright"></span> NoPope. 0 rights reserved.
   </p>
   <p class="fax">Faxa mig på: <span>&#x213B;</span> 3301-1033</p>
@@ -41,6 +44,7 @@ import { Icon } from "astro-icon/components";
     overflow: hidden;
     color: var(--clr-accent);
     padding-block-start: 10rem;
+    padding-block-end: 10rem;
     /* padding-inline: 15rem; */
     grid-column: 2 / 3;
     grid-column: 1 / 4;
@@ -49,7 +53,8 @@ import { Icon } from "astro-icon/components";
     position: absolute;
     bottom: 0; */
   }
-  .fax {
+  .fax,
+  .copy-container {
     font-size: 0.75rem;
   }
   .dagger {
@@ -68,7 +73,7 @@ import { Icon } from "astro-icon/components";
       font-family: var(--font-brand);
       color: var(--yin);
       width: min-content;
-      font-size: clamp(0.25rem, 0.5rem + 1vw, 1rem);
+      font-size: clamp(0.125rem, 0.5rem + 1vw, 0.75rem);
     }
   }
   p {
@@ -76,7 +81,8 @@ import { Icon } from "astro-icon/components";
     margin-bottom: 0.5rem;
     font-size: clamp(0.25rem, 0.5rem + 1vw, 1rem);
   }
-  div {
+
+  div.x {
     font-size: var(--text-huge);
     font-family: var(--font-brand);
     display: flex;

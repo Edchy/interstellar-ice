@@ -9,7 +9,7 @@ const posts = await getPosts();
 const tags = [...new Set(posts.map((post) => post.data.tags).flat())];
 ---
 
-<ul class="tags">
+<ul class="tags nav-list-sorry-not-sorry">
   {
     tags.map((tag) => (
       <li class="tag">
@@ -42,8 +42,8 @@ const tags = [...new Set(posts.map((post) => post.data.tags).flat())];
     transition: all 0.15s ease-in-out;
   }
 
-  li:hover a {
+  /* li:hover a {
     background-color: var(--clr-accent);
     color: var(--black);
-  }
+  } */
 </style>

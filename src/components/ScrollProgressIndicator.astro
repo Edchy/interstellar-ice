@@ -53,7 +53,9 @@ const { anchor } = Astro.props;
     );
     animation: progress linear;
     animation-timeline: scroll();
-    border: 1px dotted var(--clr-accent);
+    /* border: 1px dotted var(--clr-accent); */
+    /* border-bottom: 1px solid var(--clr-accent); */
+    box-shadow: 2px 2px oklch(from var(--clr-accent) l c h / 0.1);
     border-radius: var(--radius);
     padding: var(--gap-xs);
     /* position: fixed;

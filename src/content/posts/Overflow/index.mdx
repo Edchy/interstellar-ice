@@ -1,8 +1,8 @@
 ---
 title: "Overflow in CSS"
-subtitle: "Diving in to overflow, scroll containers, block formatting contexts, layout modes and stacking contexts"
+subtitle: "Overflow, Scroll Containers, BFCs, Layout Modes, and Stacking Contexts Explained"
 pubDate: 2025-05-11
-description: "Yooo"
+description: "A deep (and slightly magical) dive into how CSS handles overflowing content — exploring everything from scroll containers to the mysteries of block formatting contexts and stacking order."
 author: ""
 tags: ["css"]
 draft: false
@@ -311,6 +311,31 @@ And this, dear conjurers of code, is where the true sorcery of `overflow` begins
 
 As you know, by looking out a window, you can only see what is visible through the window, the rest is "hidden", "cropped off" from view... but it's still there. That is `overflow: hidden` for ya. Now imagine you had some scroll bars on that window, you can scrub 'em up and down to reveal more of the outside environment, that would be `overflow: scroll | auto` for ya.
 
+Now here is a gotcha. Remember how we said that `overflow` is shorthand for `overflow-y` and `overflow-x`? 
+
+You'd think then that you would be able to set `overflow-x` to `hidden` and `overflow-y` to `visible`, to only hide overflow on the x-axis, but no. As soon as you make an element a scroll container (by setting overflow), it will automatically transfer that `<img>` inside of it to the outside of the window (like in the metaphor above). There is no way then to make some part come inside again, its just physically impossible.
+
+In the real world you could probably open the window a bit and let the cat stick its tail back inside again, but in the CSS world, that is not how it works. The `<img>` is now outside of the window and you can't get it back in (unless you remove the scroll container).
+
+You could also think about it as a _stacking context_, where that `<img>` is then moved to the bottom, but since the window is transparent it lets you see parts of it.
+
+<InfoBox title="">
+ CSS allows mixing values like `overflow-x: hidden` and `overflow-y: visible`, but in practice, browsers ignore the visible part once an element becomes a scroll container (it gets converted to `overflow:auto`). The content is confined to the container’s edges, and trying to “let it spill out” in one direction while clipping in the other just doesn’t work. It’s like trying to open a window on only one side of a sealed frame — the layout model simply won’t allow it.
+</InfoBox>
+
+## Clip 'em
+ Ok, so what if we really need to hide something on the x-axis and let it overflow on the y-axis? We’d need something that **doesn’t** create a _scroll container_, right? Because, like we’ve established, a scroll container locks its children out of the house — you can watch them through the window, but they’re not allowed back inside. Ever again 😈.
+
+ Turns out, there’s another (newer) value we can use: `overflow: clip`.
+
+ `clip` works like `hidden` — overflow content is clipped at the element’s _overflow clip edge_. But here’s the key difference: `clip` **doesn’t** create a **scroll container** or a new _formatting context_. That means the children aren’t banished — they can stay “inside,” and you’re free to clip them on one axis and let them overflow on the other.
+ <BlogPostImage src={four} alt="A window with a picture of a cat" caption='confused cat. clipped on one axis. visible on the other.'/>
+
+You also get acces to `overflow-clip-margin` which lets you specify how much of the overflow you wanna clip. Pretty neat.
+
+<InfoBox title="Note">
+  `overflow-clip-margin` has limited support and only works when both axes are using overflow: clip
+</InfoBox>
 
 
 
