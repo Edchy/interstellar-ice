@@ -1,166 +1,49 @@
-<div id="cicada-container" aria-hidden="true"></div>
-
-<script>
-  console.log("Hello, fellow cicada. 🌿");
-  // The ASCII art content
-  const cicadaArt = `
-            ++01100101 01110101++         =ඏ=         ++10101110 10100110++
-       +011100110110   01001111000      0♢0Ŧ0♢0     00011110010   011011001110+
-   +0110010001100101 0110000101100100   000卄000   0010011010000110 1010011000100110+
-    +01101101011000010111001001101011++00+0卄00++++11010110010011101000011010110110+
-        0111001101100  0010110111001100100\`⁆⁅´0010011001110110100  0011011001110
-              011001100 110000101110010++=\`⁆⁅´=++010011101000011 001100110
-                +01 10100001100101011 10010ʞk01001 11010100110000101 10+
-                     +0111010001101111  +01ʞk10+  1111011000101110+
-                         +110101011011  00.∴.00  110110101011+
-                          +01100101     0+1ʞk1+0    10100110+
-                          +1100101     +0+.∴.+0+     1010011+
-                            +1110010   +0+.∴.+0+   0100111+
-                              +1110100  01 ∴ 10  0010111+
-                                        10 ∴ 01
-                                        10\`∵´01
-                                         00.00
-                                          : :
-  `;
-
-  // Only execute for human visitors (client-side)
-  document.addEventListener("DOMContentLoaded", () => {
-    const container = document.getElementById("cicada-container");
-    const pre = document.createElement("pre");
-
-    // Split the ASCII art into lines
-    const lines = cicadaArt.split("\n");
-
-    // Process each line
-    lines.forEach((line) => {
-      const lineElement = document.createElement("div");
-      lineElement.className = "ascii-line";
-
-      // Process each character in the line
-      [...line].forEach((char) => {
-        const charSpan = document.createElement("span");
-        charSpan.textContent = char;
-        charSpan.className = "ascii-char";
-        // charSpan.style.color = "red";
-        // Randomize animation properties
-        const animationDelay = Math.random() * 10; // Random delay between 0-10s
-        const animationDuration = 2 + Math.random() * 8; // Random duration between 2-10s
-        const blinkProbability = Math.random();
-
-        // Apply animation classes based on character type
-        if (char === "0" || char === "1") {
-          charSpan.classList.add("binary");
-          charSpan.style.color = "black";
-        } else if (char !== " ") {
-          charSpan.classList.add("symbol");
-          charSpan.style.color = "var(--clr-accent)";
-        }
-
-        // Add blinking animation to some characters
-        if (blinkProbability > 0.7) {
-          charSpan.classList.add("blink");
-        }
-
-        // Set individual animation properties
-        charSpan.style.setProperty("--delay", `${animationDelay}s`);
-        charSpan.style.setProperty("--duration", `${animationDuration}s`);
-
-        lineElement.appendChild(charSpan);
-      });
-
-      pre.appendChild(lineElement);
-    });
-
-    if (container) {
-      container.appendChild(pre);
-    }
-  });
-</script>
+<div>
+  <pre>
+  
+          ++01100101 01110101++         =ඏ=         ++10101110 10100110++
+      +011100110110   01001111000      0♢0Ŧ0♢0     00011110010   011011001110+
+  +0110010001100101 0110000101100100   000卄000   0010011010000110 1010011000100110+
+   +01101101011000010111001001101011++00+0卄00++++11010110010011101000011010110110+
+      0111001101100  0010110111001100100\`⁆⁅´0010011001110110100  0011011001110
+         1001101100  0010110111001100100\`⁆⁅´0010011001110110100  0011011001
+            011001100 110000101110010++=\`⁆⁅´=++010011101000011 0011001100
+              +01 10100001100101011 10010ʞk01001 11010100110000101 10+
+                   +0111010001101111  +01ʞk10+  1111011000101110+
+                       +110101011011  00.∴.00  110110101011+
+                        +01100101     0+1ʞk1+0    10100110+
+                        +1100101     +0+.∴.+0+     1010011+
+                          +1110010   +0+.∴.+0+   0100111+
+                            +1110100  01 ∴ 10  0010111+
+                                      10 ∴ 01
+                                      10\`∵´01
+                                       00.00
+                                        : :
+  
+  </pre>
+</div>
 
 <style>
+  div {
+    container-type: inline-size;
+    display: flex;
+    justify-content: center;
+    width: 100%;
+  }
   pre {
     font-family: monospace;
+    font-size: 20px;
+    color: oklch(from white l c h / 0.1);
     /* font-size: 0rem; */
-    max-width: 50ch;
+    /* max-width: 50ch; */
     line-height: 1.2;
     margin: 0 auto;
   }
 
-  #cicada-container {
-    min-height: 20rem; /* Reserves space until JS loads */
-    display: flex;
-    justify-content: center;
-    font-size: 8px;
-  }
-
-  .ascii-line {
-    white-space: pre;
-    height: 1.2em;
-  }
-
-  .ascii-char {
-    display: inline-block;
-    animation-iteration-count: infinite;
-    animation-direction: alternate;
-  }
-
-  .binary {
-    animation-name: pulse;
-    animation-duration: var(--duration, 1s);
-    animation-delay: var(--delay, 0s);
-  }
-
-  .symbol {
-    animation-name: glow;
-    animation-duration: var(--duration, 3s);
-    animation-delay: var(--delay, 0s);
-  }
-
-  .blink {
-    animation-name: blink;
-    animation-duration: calc(var(--duration, 2s) / 2);
-    animation-delay: calc(var(--delay, 0s) + 1s);
-  }
-
-  @keyframes pulse {
-    0% {
-      color: rgba(255, 255, 255, 0.3);
-    }
-    50% {
-      color: rgba(255, 255, 255, 1);
-    }
-    100% {
-      color: rgba(255, 255, 255, 0.3);
-    }
-  }
-
-  @keyframes glow {
-    0% {
-      color: rgba(255, 255, 255, 0.7);
-      text-shadow: none;
-    }
-    50% {
-      color: white;
-      text-shadow: 0 0 8px rgba(255, 255, 255, 0.8);
-    }
-    100% {
-      color: rgba(255, 255, 255, 0.7);
-      text-shadow: none;
-    }
-  }
-
-  @keyframes blink {
-    0% {
-      opacity: 1;
-    }
-    49% {
-      opacity: 1;
-    }
-    50% {
-      opacity: 0;
-    }
-    100% {
-      opacity: 0;
+  @container (width < 1000px) {
+    pre {
+      font-size: 0.5rem;
+      line-height: 1.2;
     }
   }
 </style>

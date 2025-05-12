@@ -32,7 +32,7 @@
 a:any-link {
   --link-light: oklch(from var(--nice-blueish-hue) 60% c h);
   text-underline-offset: 0.25rem;
-  text-decoration-thickness: 3px;
+  text-decoration-thickness: 1px;
   text-decoration-color: var(--link-light);
   color: var(--link-light);
 
@@ -43,7 +43,7 @@ a:any-link {
 
 code,
 pre {
-  font-size: 1rem;
+  font-size: clamp(0.875rem, 1.5vw, 1rem);
   /* padding: 0 !important; */
 }
 
@@ -92,6 +92,7 @@ li::marker {
 h2 {
   font-size: 2rem;
   position: relative;
+  text-wrap: balance;
 
   @media (hover: hover) and (width > 850px) {
     &::before {

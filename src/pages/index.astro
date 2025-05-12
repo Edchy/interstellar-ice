@@ -22,9 +22,33 @@ import BigWords from "@/components/BigWords.astro";
   </main>
 
   <section>
+    <h2 data-aos="fade-right">
+      <span data-entity="heavy-open-center-cross">&#x271C;</span>
+      the spirit
+    </h2>
+    <p class="motto-text">
+      Here at Nope Studio, we believe in nothing. Absolutely nothing. Optimism?
+      Pass. Team spirit? Meh. We take pride in saying "no" — to ideas, to
+      enthusiasm, to pretty much everything. While other studios are busy
+      chasing dreams and disrupting industries, we're busy disrupting coffee
+      breaks and declining meeting invites. Our motto? <em>"Why bother."</em> If
+      you're looking for innovation, you've come to the wrong place. But if you're
+      into bleak honesty, low-effort brilliance, and the art of doing the bare minimum
+      with style — welcome home, baby!
+    </p>
     <BigWords />
   </section>
   <section>
+    <h2 data-aos="fade-right">
+      <span data-entity="heavy-open-center-cross">&#x271C;</span>
+      the blog
+    </h2>
+    <p class="motto-text">
+      A place for us to think out loud, cement what we’re learning, and maybe
+      help someone else along the way. From web development to the meaning of
+      life (spoiler: it’s nothing), we write to make sense of it all. Below are
+      our latest posts: part notes, part rants, occasionally useful.
+    </p>
     <LatestPostsDisplay />
   </section>
   <!-- <section class="cat-section">
@@ -32,12 +56,34 @@ import BigWords from "@/components/BigWords.astro";
     <span>&#9787;</span>
   </section> -->
   <section class="bb">
-    <h2 data-aos="zoom-in">stuff i use</h2>
+    <div class="idontfuckingknow">
+      <h2 data-aos="fade-right">
+        <span data-entity="heavy-open-center-cross">&#x271C; the tools</span>
+      </h2>
+      <span class="motto-text">
+        (most are just here because they have nice looking logos)
+      </span>
+    </div>
     <IconCarousel />
   </section>
 </PageLayout>
 
 <style>
+  section {
+    margin-block: 20rem;
+    padding-inline: 0.75rem;
+
+    .motto-text {
+      max-width: 60ch;
+      font-size: clamp(0.7292rem, 0.6515rem + 0.3313vw, 0.9rem);
+      margin-bottom: 3rem;
+    }
+
+    & > h2,
+    .idontfuckingknow {
+      margin-bottom: 1rem;
+    }
+  }
   /* section {
     margin-block-end: 20rem;
     padding-inline: 2rem;
@@ -76,9 +122,9 @@ import BigWords from "@/components/BigWords.astro";
     background-position: center;
     padding-inline: 1rem;
     padding-block: 2rem;
-    background-color: var(--yang);
-    background-color: var(--clr-accent);
     background-color: var(--blueish);
+    background-color: var(--clr-accent);
+    background-color: var(--yang);
     background-repeat: no-repeat;
     background-size: cover;
     background-blend-mode: hard-light;

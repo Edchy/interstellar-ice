@@ -38,6 +38,7 @@
     left: 0;
     overflow-x: clip;
     padding-top: 2rem;
+    padding-bottom: 2rem;
 
     @media (prefers-reduced-motion: no-preference) {
       animation: gradient-change 6s linear infinite alternate;
@@ -56,12 +57,12 @@
     }
 
     span {
-      text-box: trim-both cap alphabetic;
+      /* text-box: trim-both cap alphabetic; */
       font-size: clamp(5rem, 1rem + 20vw, 20rem);
       font-weight: bold;
       display: block;
       font-family: var(--font-heading);
-      /* line-height: 0.77;< */
+      line-height: 0.8;
     }
   }
 

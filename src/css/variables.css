@@ -17,12 +17,12 @@
    --blend-mode: saturation;
    --blend-mode: screen;
    --blend-mode: multiply;
-   --blend-mode: luminosity;
-   --blend-mode: exclusion;
-   --blend-mode: darken;
-   --blend-mode: difference;
-   --blend-mode: color-dodge;
    --blend-mode: hard-light;
+   --blend-mode: color-dodge;
+   --blend-mode: difference;
+   --blend-mode: darken;
+   --blend-mode: exclusion;
+   --blend-mode: luminosity;
  }
 
  :root {

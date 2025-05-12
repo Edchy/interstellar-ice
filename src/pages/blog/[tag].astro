@@ -32,7 +32,7 @@ const { filteredPosts, originalTag } = Astro.props;
     title={`Blog | ${tag}`}
     description={`Blogposts filed under category ${tag}`}
   >
-    <p>Posts tagged with {tag}</p>
+    <!-- <p>Posts tagged with {tag}</p> -->
     <BlogPostDisplay {filteredPosts} tag={originalTag} />
   </PageLayout>
 </main>
