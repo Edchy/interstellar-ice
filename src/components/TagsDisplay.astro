@@ -9,7 +9,7 @@ const posts = await getPosts();
 const tags = [...new Set(posts.map((post) => post.data.tags).flat())];
 ---
 
-<ul class="tags nav-list-sorry-not-sorry">
+<ul class="tags">
   {
     tags.map((tag) => (
       <li class="tag">
@@ -39,11 +39,27 @@ const tags = [...new Set(posts.map((post) => post.data.tags).flat())];
     padding: 0.25rem 0.5rem;
     border: 1px solid var(--clr-accent);
     font-size: 0.75rem;
-    transition: all 0.15s ease-in-out;
+    transition: all 0.15s
+      linear(
+        0,
+        0.453 7.8%,
+        0.803 16.1%,
+        1.048 24.9%,
+        1.132 29.5%,
+        1.194 34.4%,
+        1.227 38.4%,
+        1.245 42.5%,
+        1.25 46.9%,
+        1.242 51.7%,
+        1.2 60.5%,
+        1.038 84.9%,
+        1.009 92.5%,
+        1
+      );
   }
 
-  /* li:hover a {
+  li:hover a {
     background-color: var(--clr-accent);
     color: var(--black);
-  } */
+  }
 </style>

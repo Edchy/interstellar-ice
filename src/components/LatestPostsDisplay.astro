@@ -5,7 +5,6 @@ import { getCollection } from "astro:content";
 
 const posts = await getPosts(false);
 const sortedPosts = posts.filter((_, index) => index < 4);
-console.log(sortedPosts.length);
 ---
 
 <ul>

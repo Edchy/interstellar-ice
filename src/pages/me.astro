@@ -3,27 +3,13 @@ import LatestPostCard from "@/components/LatestPostCard.astro";
 import PageLayout from "../layouts/PageLayout.astro";
 import { getCollection } from "astro:content";
 import Card from "@/components/Card.astro";
-
-// Fetch posts and sort by publication date (newest first)
-const allPosts = await getCollection("posts");
-const sortedPosts = allPosts
-  .sort(
-    (a, b) =>
-      new Date(b.data.pubDate).valueOf() - new Date(a.data.pubDate).valueOf()
-  )
-  .filter((_, index) => index < 3);
-const latestPost = sortedPosts.length > 0 ? sortedPosts[0] : null;
-console.log(sortedPosts.length);
 ---
 
-<PageLayout title="About">
+<PageLayout title="About" showAside={true}>
   <main>lol</main>
   <h1>Add table of contents to blog posts!</h1>
   <!-- <LatestPostCard post={latestPost} />
   <Card title={latestPost?.data.title} /> -->
-  <ul>
-    {sortedPosts.map((post) => <LatestPostCard {post} />)}
-  </ul>
 
   <p>
     Summer 2022. I was lost. I was in a rut. I was stuck in a job that I didn't

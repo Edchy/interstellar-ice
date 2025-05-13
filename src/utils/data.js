@@ -1,13 +1,11 @@
 export const EMAIL = "edchy@proton.me";
 
-
-
 export const navItems = [
   { name: "about", path: "/me" },
   { name: "blog", path: "/blog" },
-  { name: "cases", path: "/blog" },
+  { name: "cases", path: "/cases" },
   // { name: "news", path: "/blog" },
-  { name: "fun", path: "/tags" },
+  { name: "fun", path: "/fun" },
 ];
 export const devPlain = {
   icon: "devicon-plain",

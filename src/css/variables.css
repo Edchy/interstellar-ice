@@ -10,7 +10,7 @@
    initial-value: oklch(0.99 0.0353 101.83);
  }
 
- :root[style*="color-scheme: dark"] {
+ /* :root[style*="color-scheme: dark"] {
    --blend-mode: difference;
    --blend-mode: overlay;
    --blend-mode: hue;
@@ -23,9 +23,21 @@
    --blend-mode: darken;
    --blend-mode: exclusion;
    --blend-mode: luminosity;
- }
+ } */
+
 
  :root {
+   /* 
+   --blend-mode: hard-light;
+  --blend-mode: darken;
+  --blend-mode: difference;
+  --blend-mode: exclusion;
+  --blend-mode: hue;
+  --blend-mode: overlay;
+  --blend-mode: saturation;
+  --blend-mode: screen;
+  --blend-mode: multiply;
+      */
    --black: oklch(18.22% 0 0);
    --black: oklch(10% 0.29 149);
    /* --black: oklch(from var(--clr--accent) l c h); */
@@ -63,16 +75,7 @@
    --ground-1: var(--neutral-100);
    */
 
-   --blend-mode: hard-light;
-   --blend-mode: darken;
-   --blend-mode: difference;
-   --blend-mode: exclusion;
-   --blend-mode: hue;
-   --blend-mode: overlay;
-   --blend-mode: saturation;
-   --blend-mode: screen;
-   --blend-mode: multiply;
-   --blend-mode: luminosity;
+   --shadow: 0 2px 4px oklch(from var(--black) l c h / 0.1);
    /* typography */
    --text-huge: clamp(5rem, 1rem + 10vw, 10rem);
    --font-brand: "Revenge",

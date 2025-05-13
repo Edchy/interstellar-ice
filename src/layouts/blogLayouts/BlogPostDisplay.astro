@@ -50,9 +50,12 @@ allPosts.sort(
       background-color: var(--yang);
       padding: 1rem;
       border-radius: var(--radius);
-      border-bottom: 1px solid var(--clr-accent);
+      /* border-bottom: 1px solid var(--yin);
+      border-left: 1px solid var(--yin); */
       color: var(--yin);
+      box-shadow: var(--shadow);
 
+     
       /* &:hover {
         background-color: var(--blueish);
         color: var(--white);
@@ -73,11 +76,11 @@ allPosts.sort(
   }
   .subtitle {
     font-size: 1rem;
-    color: oklch(from var(--yin) l c h / 0.7);
+    color: oklch(from var(--yin) l c h / 0.6);
     /* color: oklch(from var(--yang) l c h / 0.7); */
   }
   .post-date {
-    color: oklch(from var(--yin) l c h / 0.5);
+    color: oklch(from var(--yin) l c h / 0.4);
     /* color: oklch(from var(--yang) l c h / 0.5); */
     font-weight: bold;
     font-size: 0.75rem;
@@ -87,7 +90,7 @@ allPosts.sort(
   .grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
-    gap: .5rem;
+    gap: 1rem;
 
     @media (hover) and (prefers-reduced-motion: no-preference) {
       &>article {

@@ -1,22 +1,15 @@
 ---
-import BlogPostDisplay from "@/layouts/blogLayouts/BlogPostDisplay.astro";
 import PageLayout from "@/layouts/PageLayout.astro";
-import TagsDisplay from "@/components/TagsDisplay.astro";
+import BlogPostDisplay from "@/layouts/blogLayouts/BlogPostDisplay.astro";
 ---
 
 <PageLayout
   title="Blog"
   description="Blog posts about various topics, mostyly about web development."
+  showAside={true}
   showFooter={false}
-  showAside={false}
 >
   <main>
     <BlogPostDisplay />
   </main>
 </PageLayout>
-
-<style>
-  main {
-    /* padding: 1rem; */
-  }
-</style>

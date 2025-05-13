@@ -16,8 +16,11 @@ import BigWords from "@/components/BigWords.astro";
 ---
 
 <PageLayout title="Nope Studios" showAside={true}>
-  <main>
-    <h1 class="hidden">Nope Digital. We build for the web.</h1>
+  <main class="video-background">
+    <video id="bg-video" autoplay muted loop playsinline>
+      <source src="/img/nikita.mp4" type="video/mp4" />
+    </video>
+    <h1 class="hidden sr-only">Nope Digital. We build for the web.</h1>
     <WordMorph />
     <HeroText />
   </main>
@@ -68,7 +71,17 @@ import BigWords from "@/components/BigWords.astro";
     <IconCarousel />
   </section>
 </PageLayout>
-
+<script>
+  const prefersReducedMotion = window.matchMedia(
+    "(prefers-reduced-motion: reduce)"
+  );
+  if (prefersReducedMotion.matches) {
+    const video = document.getElementById("bg-video");
+    if (video) {
+      video.remove(); // Prevents load and playback entirely
+    }
+  }
+</script>
 <style>
   section {
     margin-block: 20rem;
@@ -120,22 +133,24 @@ import BigWords from "@/components/BigWords.astro";
     justify-content: space-between;
     flex-direction: column;
     min-height: 100vh;
+    padding-inline: 1rem;
+    /* margin-block-end: 5rem; */
+    padding-block: 2rem;
     background-image: url("/img/no-motion-nik.webp");
     background-position: center;
-    padding-inline: 1rem;
-    padding-block: 2rem;
-    background-color: var(--blueish);
     background-color: var(--clr-accent);
-    background-color: var(--yang);
-    background-repeat: no-repeat;
+    background-color: var(--yin);
+    background-color: var(--blueish);
+    /* background-repeat: no-repeat; */
     background-size: cover;
-    background-blend-mode: hard-light;
-    background-blend-mode: var(--blend-mode);
-    /* margin-block-end: 5rem; */
+    background-blend-mode: lighten;
+    /* background-blend-mode: var(--blend-mode); */
+    /* background-color: var(--clr-accent); */
 
     &::before {
       content: "";
       position: absolute;
+      z-index: 1;
       bottom: 0;
       left: 0;
       right: 0;
@@ -150,8 +165,9 @@ import BigWords from "@/components/BigWords.astro";
 
       background: var(--hdr-gradient);
     }
-    &::after {
+    /* &::after {
       content: "";
+      z-index: 1;
       position: absolute;
       top: 0;
       left: 0;
@@ -164,8 +180,8 @@ import BigWords from "@/components/BigWords.astro";
         oklch(98% 0 91 / 0) 81% 81%
       );
 
-      /* background: var(--hdr-gradient); */
-    }
+      background: var(--hdr-gradient);
+    } */
 
     @media (width > 1200px) {
       min-height: 100vh;
@@ -175,8 +191,32 @@ import BigWords from "@/components/BigWords.astro";
       }
     }
 
-    @media (prefers-reduced-motion: no-preference) {
+    /* @media (prefers-reduced-motion: no-preference) {
       background-image: url("/img/nik.gif");
+    } */
+  }
+  .video-background {
+    position: relative;
+    width: 100%;
+    height: 100vh; /* or however tall you want it */
+    overflow: hidden;
+  }
+
+  .video-background video {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    min-width: 100%;
+    min-height: 100%;
+    transform: translate(-50%, -50%);
+    object-fit: cover;
+    mix-blend-mode: luminosity;
+    opacity: 0.7;
+    /* z-index: -1; */
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .video-background video {
+      display: none;
     }
   }
 </style>

@@ -3,8 +3,18 @@ import { Icon } from "astro-icon/components";
 ---
 
 <button aria-label="toggle-theme" class="toggle" title="toggle theme">
-  <Icon aria-hidden="true" name="ri:moon-line" size={20} class="moon" />
-  <Icon aria-hidden="true" name="ri:sun-line" size={20} class="sun" />
+  <Icon
+    aria-hidden="true"
+    name="line-md:sunny-filled-loop-to-moon-filled-alt-loop-transition"
+    size={20}
+    class="moon"
+  />
+  <Icon
+    aria-hidden="true"
+    name="line-md:moon-filled-alt-to-sunny-filled-loop-transition"
+    size={20}
+    class="sun"
+  />
 </button>
 
 <style>
@@ -12,11 +22,12 @@ import { Icon } from "astro-icon/components";
     background: none;
     border: none;
     padding: var(--gap-xs);
+    /* padding-bottom: 2rem; */
     display: flex;
     align-items: center;
     justify-content: center;
     transition: color 0.2s ease-out;
-    color: var(--clr-accent);
+    color: var(--yin);
 
     &:hover {
       opacity: var(--hover);
@@ -55,6 +66,7 @@ import { Icon } from "astro-icon/components";
     }
     @media (width > 1200px) {
       color: var(--yin);
+      margin-bottom: 2rem;
     }
   }
 

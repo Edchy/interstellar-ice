@@ -6,7 +6,7 @@ const { anchor } = Astro.props;
 
 <a href={anchor} class="back-to-top" aria-label="Back to top">
   <!-- aria-hidden="true" to hide the icon from screen readers -->
-  <span class="hidden">Back to top</span>
+  <span class="hidden sr-only">Back to top</span>
   <Icon
     name="ri:arrow-down-s-line"
     size={24}

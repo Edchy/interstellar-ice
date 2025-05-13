@@ -14,7 +14,8 @@ import { navItems } from "../utils/data";
     popovertarget="mobile-menu"
     popovertargetaction="hide"
   >
-    <Icon aria-hidden="true" name="ri:close-large-line" size={20} />
+    <!-- <Icon aria-hidden="true" name="ri:close-large-line" size={20} /> -->
+    &#10008;
     <span class="sr-only hidden">Close menu</span>
   </button>
   <menu class="nav-list-sorry-not-sorry">
@@ -23,6 +24,7 @@ import { navItems } from "../utils/data";
         return (
           <li class="quick-flip">
             <a href={item.path}>{item.name}</a>
+            <span>&#10012;</span>
           </li>
         );
       })
@@ -34,7 +36,7 @@ import { navItems } from "../utils/data";
   [popover] {
     background-color: var(--yang);
     width: 100vw;
-    height: 100vh;
+    max-height: 100vh;
     translate: 100% 0;
     transition: all 0.25s ease-out;
     transition-behavior: allow-discrete;
@@ -73,10 +75,11 @@ import { navItems } from "../utils/data";
 
   .close-btn {
     position: absolute;
-    top: 1.5rem;
-    right: 1rem;
+    top: 0.5rem;
+    right: 2rem;
     background: none;
     border: none;
+    font-size: 2rem;
   }
 
   .burger {
@@ -91,7 +94,7 @@ import { navItems } from "../utils/data";
 
   .burger,
   .close-btn {
-    color: var(--clr-accent);
+    color: var(--yin);
     &:hover {
       opacity: var(--hover);
     }
@@ -110,7 +113,7 @@ import { navItems } from "../utils/data";
   a {
     text-decoration: none;
     color: var(--yin);
-    font-size: 7rem;
+    font-size: 5rem;
 
     text-transform: uppercase;
     font-family: var(--font-brand);

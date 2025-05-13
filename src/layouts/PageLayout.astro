@@ -61,6 +61,7 @@ const { title, description, showAside, showScrollProgress, showFooter = true } =
 <style>
   .content {
     /* padding-inline: 1rem; */
+    /* margin-top: var(--header-offset); */
     
   }
   header {
@@ -89,7 +90,7 @@ const { title, description, showAside, showScrollProgress, showFooter = true } =
   }
 
   .inner {
-    padding-block: 2rem;
+    padding-block: 1rem;
     padding-inline: 1rem;
     /* padding-inline-start: 1rem;
     padding-inline-end: 0.5rem; */
@@ -101,9 +102,10 @@ const { title, description, showAside, showScrollProgress, showFooter = true } =
     /* background-color: red; */
     /* background-color: var(--clr-accent); */
 
-    border: 10px solid var(--yin);
+    /* border: 10px solid var(--yin); */
     /* border-radius: var(--radius); */
     backdrop-filter: blur(0.3rem);
+  
 
   }
 
@@ -111,12 +113,13 @@ const { title, description, showAside, showScrollProgress, showFooter = true } =
     display: none;
   }
 
-  @media (width < 768px) {
+  /* @media (width < 768px) {
     .inner {
       border-color: transparent;
       padding-block: unset;
+      padding-block: 1rem;
     }
-  }
+  } */
 
   @media (width > 1200px) {
     .grid-wrapper {
