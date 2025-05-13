@@ -33,13 +33,21 @@ import BigWords from "@/components/BigWords.astro";
     <p class="motto-text">
       Here at <strong>Nope Digital&trade;</strong>, we believe in <em
         >nothing.</em
-      > Absolutely nothing. Optimism? Pass. Team spirit? Meh. We take pride in saying
-      "no" — to ideas, to enthusiasm, to pretty much everything. While other studios
-      are busy chasing dreams and disrupting industries, we're busy disrupting coffee
-      breaks and declining meeting invites. Our motto? <em>"Why bother."</em> If
-      you're looking for innovation, you've come to the wrong place. But if you're
-      into bleak honesty, low-effort brilliance, and the art of doing the bare minimum
-      with style — welcome home, baby!
+      >
+      <strong>Absolutely nothing.</strong> Optimism? <em>Pass.</em><br />
+      Team spirit? <em>Meh.</em> We take pride in saying <strong>“no”</strong> —
+      to ideas, to enthusiasm, to pretty much everything. While other studios are
+      busy chasing dreams and disrupting industries, <em
+        >we're busy disrupting coffee breaks</em
+      > and <em>declining meeting invites</em>. Our motto? Our motto? <strong
+        >“Why bother.”</strong
+      > If you're looking for innovation, <strong
+        >you’ve come to the wrong place</strong
+      >. But if you’re into <em>bleak honesty</em>, <strong
+        >low-effort brilliance</strong
+      >, and <em>the art of doing the bare minimum with style</em> — <strong
+        >welcome home, baby!</strong
+      >
     </p>
     <BigWords />
   </section>
@@ -49,26 +57,38 @@ import BigWords from "@/components/BigWords.astro";
       the blog
     </h2>
     <p class="motto-text">
-      A place for us to think out loud, cement what we’re learning, and maybe
-      help someone else along the way. From web development to the meaning of
-      life (spoiler: it’s nothing), we write to make sense of it all. Below are
-      our latest posts: part notes, part rants, occasionally useful.
+      <strong>A place for us to think out loud</strong>, <em
+        >cement what we’re learning</em
+      >, and maybe help someone else along the way. From <strong
+        >web development</strong
+      > to <em>the meaning of life</em>
+      <span title="Spoiler alert!"
+        >(spoiler: <strong>it’s nothing</strong>)</span
+      >, we write to make sense of it all. Below are our latest posts: <em
+        >part notes</em
+      >, <em>part rants</em>, <strong>occasionally useful</strong>.
     </p>
     <LatestPostsDisplay />
   </section>
-  <!-- <section class="cat-section">
-    &numero;&Popf;
-    <span>&#9787;</span>
-  </section> -->
+
   <section class="bb">
     <div class="idontfuckingknow">
       <h2 data-aos="fade-right">
-        <span data-entity="heavy-open-center-cross">&#x271C; the tools</span>
+        <span data-entity="heavy-open-center-cross">&#x271C; the stack</span>
       </h2>
-      <span class="motto-text">
-        (most are just here because they have nice looking logos)
-      </span>
     </div>
+    <p class="motto-text">
+      A lovingly bloated shrine to <strong>the tools we claim to use</strong>,
+      plus a few that just have <strong>really sexy logos</strong>.
+      <em>Do we need all of them?</em>
+      <strong>Absolutely not.</strong> But nothing says “we know what we’re doing”
+      like a tech stack that could power a rocket launch — or at least a portfolio
+      site.
+      <em>Notice there’s no WordPress?</em> Yeah, that’s intentional. We prefer to
+      <strong>actually write code</strong>, not wrestle with themes, plugins, or
+      whatever cursed setup your cousin’s wedding site is running.
+      <strong>Build it from scratch or don’t bother.</strong>
+    </p>
     <IconCarousel />
   </section>
 </PageLayout>
@@ -79,7 +99,7 @@ import BigWords from "@/components/BigWords.astro";
   if (prefersReducedMotion.matches) {
     const video = document.getElementById("bg-video");
     if (video) {
-      video.remove(); // Prevents load and playback entirely
+      video.remove();
     }
   }
 </script>
@@ -104,33 +124,6 @@ import BigWords from "@/components/BigWords.astro";
       margin-inline: 1rem;
     }
   }
-  /* section {
-    margin-block-end: 20rem;
-    padding-inline: 2rem;
-  }
-  h2 {
-    font-size: 1rem;
-    font-style: italic;
-    color: var(--clr-accent);
-    text-align: left;
-    margin-bottom: 1rem;
-  } */
-  /* .cat-section {
-    background-color: var(--clr-accent);
-    margin-block: 10rem;
-    position: absolute;
-    left: 0;
-    right: 0;
-    height: 20rem;
-    display: grid;
-    place-content: center;
-
-    & > span {
-      color: var(--yang);
-      font-size: 5rem;
-      font-family: var(--font-brand);
-    }
-  } */
 
   main {
     position: relative;
