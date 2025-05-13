@@ -43,6 +43,9 @@ import "@/css/postContent.css";
   header {
     margin-block-start: 2rem;
     margin-block-end: 5rem;
+    @media (width < 1200px) {
+      padding-top: var(--header-offset);
+    }
   }
 
   .post-title {

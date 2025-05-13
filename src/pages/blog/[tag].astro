@@ -38,8 +38,9 @@ const { filteredPosts, originalTag } = Astro.props;
 </main>
 
 <style>
-  main {
-    /* padding-inline: 1rem; */
-    /* margin-top: var(--header-offset); */
+  @media (width < 1200px) {
+    main {
+      padding-top: var(--header-offset);
+    }
   }
 </style>

@@ -22,7 +22,8 @@ const { title, description, showAside, showScrollProgress, showFooter = true } =
   <body id="page-top">
     <div class="grid-wrapper">
       <header >
-        <div class="inner">
+        <div class="backdrop-edge"></div>
+        <div class="inner backdrop">
           <Logo />
           <Nav />
           <div class="flex">
@@ -37,7 +38,9 @@ const { title, description, showAside, showScrollProgress, showFooter = true } =
         <slot />
       </div>
       <aside>
-        <div class="inner">
+        <div class="inner backdrop">
+        <div class="backdrop-edge"></div>
+
           {
             showAside && (
               // <p>아니 사진관</p>
@@ -59,6 +62,7 @@ const { title, description, showAside, showScrollProgress, showFooter = true } =
 </html>
 
 <style>
+
   .content {
     /* padding-inline: 1rem; */
     /* margin-top: var(--header-offset); */
@@ -66,23 +70,14 @@ const { title, description, showAside, showScrollProgress, showFooter = true } =
   }
   header {
     @media (width < 1200px) {
-      /* padding-inline: 1rem; */
-      
-      position: sticky;
       position: fixed;
-      /* position: absolute; */
       top: 0;
       z-index: calc(infinity - 1);
       width: 100%;
-      /* background-image: url("/img/nik.gif"); */
-      /* background-color: lch(from var(--yang) l c h / .1); */
-      /* backdrop-filter: blur(0.3rem); */
-
     }
     
   }
  
-
   .grid-wrapper {
     --width: 150px;
     --left-col-width: var(--width);
@@ -98,13 +93,14 @@ const { title, description, showAside, showScrollProgress, showFooter = true } =
     justify-content: space-between;
     align-items: center;
     z-index: 3;
+
     /* background-color: var(--blueish); */
     /* background-color: red; */
     /* background-color: var(--clr-accent); */
 
     /* border: 10px solid var(--yin); */
     /* border-radius: var(--radius); */
-    backdrop-filter: blur(0.3rem);
+    /* backdrop-filter: blur(0.3rem); */
   
 
   }

@@ -84,7 +84,7 @@ import BigWords from "@/components/BigWords.astro";
 </script>
 <style>
   section {
-    margin-block: 20rem;
+    margin-block: 15rem;
     /* padding-inline: clamp(0.75rem, 0.5rem + 1vw, 2rem); */
 
     .motto-text {
@@ -97,6 +97,10 @@ import BigWords from "@/components/BigWords.astro";
     & > h2,
     .idontfuckingknow {
       margin-bottom: 1rem;
+    }
+
+    @media (width < 1200px) {
+      margin-inline: 1rem;
     }
   }
   /* section {
