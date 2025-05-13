@@ -28,10 +28,10 @@ const { filteredPosts, originalTag } = Astro.props;
 ---
 
 <main>
-  <PageLayout showAside={true} showFooter={true}>
+  <PageLayout
     title={`Blog | ${tag}`}
     description={`Blogposts filed under category ${tag}`}
-    >
+  >
     <!-- <p>Posts tagged with {tag}</p> -->
     <BlogPostDisplay {filteredPosts} tag={originalTag} />
   </PageLayout>
@@ -39,7 +39,7 @@ const { filteredPosts, originalTag } = Astro.props;
 
 <style>
   main {
-    padding-inline: 1rem;
+    /* padding-inline: 1rem; */
     /* margin-top: var(--header-offset); */
   }
 </style>

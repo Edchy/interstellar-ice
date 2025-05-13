@@ -1,15 +1,31 @@
 ---
-import PageLayout from "@/layouts/PageLayout.astro";
 import BlogPostDisplay from "@/layouts/blogLayouts/BlogPostDisplay.astro";
+import PageLayout from "@/layouts/PageLayout.astro";
 ---
 
 <PageLayout
   title="Blog"
-  description="Blog posts about various topics, mostyly about web development."
+  description="Blog posts about various topics, mostly about web-development."
   showAside={true}
-  showFooter={false}
 >
   <main>
     <BlogPostDisplay />
   </main>
+  <!-- <h1>Add table of contents to blog posts!</h1> -->
+  <!-- <LatestPostCard post={latestPost} />
+  <Card title={latestPost?.data.title} /> -->
+
+  <!-- <p>
+    Summer 2022. I was lost. I was in a rut. I was stuck in a job that I didn't
+    like, doing work that I didn't care about. I stumbled upon <a
+      href="freecodecamp">a free coding site</a
+    >. I had no idea what a &lt;h1&gt; was. But i was hooked pretty much
+    immediately. Now, 3 years later. With two educations in my pocket and
+    countless hours spent building, watching youtube-videos tinkering with code,
+    I can say that I have found my passion. I love building things. I love the
+    feeling of creating something from nothing. I love the feeling of solving a
+    problem. I love the feeling of learning something new. I love the feeling of
+    being challenged. I love the feeling of being in flow. I love the feeling of
+    being in control. I love the feeling of being free.
+  </p> -->
 </PageLayout>

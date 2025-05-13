@@ -3,7 +3,7 @@ export const EMAIL = "edchy@proton.me";
 export const navItems = [
   { name: "about", path: "/me" },
   { name: "blog", path: "/blog" },
-  { name: "cases", path: "/cases" },
+  { name: "work", path: "/work" },
   // { name: "news", path: "/blog" },
   { name: "fun", path: "/fun" },
 ];
