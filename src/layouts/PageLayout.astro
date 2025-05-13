@@ -68,15 +68,7 @@ const { title, description, showAside, showScrollProgress, showFooter = true } =
     /* margin-top: var(--header-offset); */
     
   }
-  header {
-    @media (width < 1200px) {
-      position: fixed;
-      top: 0;
-      z-index: calc(infinity - 1);
-      width: 100%;
-    }
-    
-  }
+
  
   .grid-wrapper {
     --width: 150px;
@@ -85,7 +77,8 @@ const { title, description, showAside, showScrollProgress, showFooter = true } =
   }
 
   .inner {
-    padding-block: 1rem;
+    padding-block-start: 1rem;
+    padding-block-end: 3rem;
     padding-inline: 1rem;
     /* padding-inline-start: 1rem;
     padding-inline-end: 0.5rem; */
@@ -93,6 +86,8 @@ const { title, description, showAside, showScrollProgress, showFooter = true } =
     justify-content: space-between;
     align-items: center;
     z-index: 3;
+      /* border: 20px solid var(--yin); */
+  -webkit-mask: var(--mask-edge-drip-bottom);
 
     /* background-color: var(--blueish); */
     /* background-color: red; */
@@ -100,7 +95,7 @@ const { title, description, showAside, showScrollProgress, showFooter = true } =
 
     /* border: 10px solid var(--yin); */
     /* border-radius: var(--radius); */
-    /* backdrop-filter: blur(0.3rem); */
+    backdrop-filter: blur(0.6rem);
   
 
   }
@@ -116,8 +111,19 @@ const { title, description, showAside, showScrollProgress, showFooter = true } =
       padding-block: 1rem;
     }
   } */
+  header {
+      position: fixed;
+      top: 0;
+      z-index: calc(infinity - 1);
+      width: 100%;
+      padding: 0;
+      
 
+  }
   @media (width > 1200px) {
+    header {
+      position: relative;
+    }
     .grid-wrapper {
       display: grid;
       max-width: 1400px;
