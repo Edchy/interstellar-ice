@@ -74,7 +74,7 @@
    --figure-1: var(--neutral-200);
    --ground-1: var(--neutral-100);
    */
-
+   --mask-edge-drip-bottom: radial-gradient(20px at bottom, transparent 97%, #000) 50% calc(100% - 20px) /40px 100% repeat-x, radial-gradient(20px at 25% 50%, #000 97%, transparent) calc(50% - 20px) 99% /80px 40px repeat-x;
    --shadow: 0 2px 4px oklch(from var(--black) l c h / 0.1);
    /* typography */
    --text-huge: clamp(5rem, 1rem + 10vw, 10rem);

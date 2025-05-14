@@ -15,7 +15,7 @@ import HeroText from "@/components/HeroText.astro";
 import BigWords from "@/components/BigWords.astro";
 ---
 
-<PageLayout title="Nope Studios" showAside={true}>
+<PageLayout title="Nope Digital" showAside={true}>
   <main class="video-background">
     <video id="bg-video" autoplay muted loop playsinline>
       <source src="/img/nikita.mp4" type="video/mp4" />
@@ -39,7 +39,7 @@ import BigWords from "@/components/BigWords.astro";
       to ideas, to enthusiasm, to pretty much everything. While other studios are
       busy chasing dreams and disrupting industries, <em
         >we're busy disrupting coffee breaks</em
-      > and <em>declining meeting invites</em>. Our motto? Our motto? <strong
+      > and <em>declining meeting invites</em>. Our motto? <strong
         >“Why bother.”</strong
       > If you're looking for innovation, <strong
         >you’ve come to the wrong place</strong
@@ -132,7 +132,6 @@ import BigWords from "@/components/BigWords.astro";
     flex-direction: column;
     min-height: 100vh;
     padding-inline: 1rem;
-    /* margin-block-end: 5rem; */
     padding-block: 2rem;
     background-image: url("/img/no-motion-nik.webp");
     background-position: center;
@@ -152,7 +151,6 @@ import BigWords from "@/components/BigWords.astro";
       bottom: 0;
       left: 0;
       right: 0;
-      /* width: 20px; */
       height: 500px;
       --hdr-gradient: linear-gradient(
         to top in oklch,
@@ -163,23 +161,6 @@ import BigWords from "@/components/BigWords.astro";
 
       background: var(--hdr-gradient);
     }
-    /* &::after {
-      content: "";
-      z-index: 1;
-      position: absolute;
-      top: 0;
-      left: 0;
-      right: 0;
-      height: 20px;
-      --hdr-gradient: linear-gradient(
-        to bottom in oklch,
-        var(--yang) 17% 17%,
-        54%,
-        oklch(98% 0 91 / 0) 81% 81%
-      );
-
-      background: var(--hdr-gradient);
-    } */
 
     @media (width > 1200px) {
       min-height: 100vh;
@@ -188,15 +169,11 @@ import BigWords from "@/components/BigWords.astro";
         height: 0px;
       }
     }
-
-    /* @media (prefers-reduced-motion: no-preference) {
-      background-image: url("/img/nik.gif");
-    } */
   }
   .video-background {
     position: relative;
     width: 100%;
-    height: 100vh; /* or however tall you want it */
+    height: 100vh;
     overflow: hidden;
   }
 

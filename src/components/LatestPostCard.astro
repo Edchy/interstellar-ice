@@ -24,6 +24,7 @@ const minutesRead = parseFloat(minutesReadString) - 1;
       <time datetime={pubDate.toISOString()}>{formatDate(pubDate)}</time>
       <span class="read-time">{minutesRead} min read</span>
     </div>
+
     <p>{description}</p>
     <a href={`/blog/${post.id}`} class="read-more">Read More →</a>
   </div>
@@ -49,7 +50,8 @@ const minutesRead = parseFloat(minutesReadString) - 1;
   .latest-post-card {
     background-color: var(--yang);
     border-radius: var(--radius);
-    box-shadow: 0 4px 12px oklch(from var(--yin) l c h / 0.1);
+
+    box-shadow: var(--shadow);
     overflow-x: clip;
     width: 100%;
 
@@ -64,16 +66,17 @@ const minutesRead = parseFloat(minutesReadString) - 1;
     /* grid-row: span 1; */
 
     &:first-of-type {
-      grid-column: 1 / -1;
+      /* grid-column: 1 / -1; */
       background-color: oklch(from var(--blu2) l c h / 0.3);
     }
     &:nth-of-type(2) {
       /* grid-row: span 2; */
-      background-color: oklch(from var(--yin) l c h / 0.2);
+      background-color: oklch(from var(--yin) l c h / 0.3);
     }
     &:nth-of-type(3) {
       /* grid-row: span 2; */
-      background-color: oklch(from var(--clr-accent) l c h / 0.2);
+      background-color: oklch(from var(--clr-accent) l c h / 0);
+      /* grid-column: span 2; */
     }
   }
 
@@ -91,8 +94,7 @@ const minutesRead = parseFloat(minutesReadString) - 1;
   }
 
   .title-area {
-    /* Fixed height for title + subtitle together */
-    min-height: 6rem;
+    /* min-height: 6rem; */
     display: flex;
     flex-direction: column;
   }
@@ -136,6 +138,7 @@ const minutesRead = parseFloat(minutesReadString) - 1;
     /* Fixed height container for date/time info */
     height: 1.5rem;
     margin-bottom: 1rem;
+    font-weight: bold;
   }
 
   time,
