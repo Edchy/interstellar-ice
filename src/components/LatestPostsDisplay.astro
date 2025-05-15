@@ -4,7 +4,7 @@ import { getPosts } from "@/utils/posts";
 import { getCollection } from "astro:content";
 
 const posts = await getPosts(false);
-const sortedPosts = posts.filter((_, index) => index < 4);
+const sortedPosts = posts.filter((_, index) => index < 3);
 ---
 
 <ul>
