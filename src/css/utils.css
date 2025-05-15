@@ -13,13 +13,7 @@
   /* gap: 1rem; */
 }
 
-.gradient-text {
-  background: var(--gradient-14);
-  background-clip: text;
 
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-}
 
 .sr-only {
   /* Hide text accessibly */

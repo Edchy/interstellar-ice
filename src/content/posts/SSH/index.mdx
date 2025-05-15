@@ -4,7 +4,7 @@ subtitle: A no-fluff guide to the invisible tech behind your Git pushes
 pubDate: 2025-05-14
 description: Ever wondered what SSH actually *does* when you push to GitHub? This guide breaks it down — keys, tunnels, trust, and why your terminal doesn't ask for your password anymore.
 author: ""
-tags: ["general"]
+tags: ["nerdstuff", "life"]
 draft: false
 ---
 import InfoBox from "../../../components/InfoBox.astro"
@@ -255,12 +255,19 @@ Are you sure you want to continue connecting (yes/no/[fingerprint])?
 ```
 
 What's this mumbo-jumbo? Well, its just SSH saying:
-> “Hey, I’ve never talked to gitlab.com before. I don’t know if this is really GitLab or someone pretending to be. The server is showing me a fingerprint — do you trust it?”
+> Hey, I’ve never talked to gitlab.com before. I don’t know if this is really GitLab or someone pretending to be. The server is showing me a fingerprint — do you trust it?
 
-This is SSH’s way of **verifying the server’s identity** before continuing. If you answer yes, SSH will save that fingerprint in your ~/.ssh/known_hosts file, so it won’t ask again next time.
+This is SSH’s way of **verifying the server’s identity** before continuing. If you answer yes, SSH will save that fingerprint in your `~/.ssh/known_hosts` file, so it won’t ask again next time.
 
 If you want to be sure that the fingerprint matches. Go to
 [GitLab SSH host key fingerprints](https://docs.gitlab.com/ee/user/gitlab_com/index.html#ssh-host-keys-fingerprints) and check that the **ED25519** fingerprint matches the one you see in your terminal
 
+```bash
+ssh -T gitlab.com
+```
 
+```bash
+Welcome to GitLab, @username!
+```
+This means you’re all set! You can now use SSH to push, pull, and clone without entering your password every time.
 

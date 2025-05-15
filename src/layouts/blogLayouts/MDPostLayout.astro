@@ -40,7 +40,7 @@ const { title, subtitle, minutesRead, description, pubDate, author, tags } =
     <div class="post-content flow">
       <slot />
     </div>
-    <MDPostFooter />
+    <MDPostFooter {tags} {title} />
   </main>
 </PageLayout>
 

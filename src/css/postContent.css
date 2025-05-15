@@ -152,8 +152,8 @@ blockquote {
   position: relative;
   color: oklch(from var(--yin) l c h / .7);
   padding: 1rem;
-  font-family: Seravek, 'Gill Sans Nova', Ubuntu, Calibri, 'DejaVu Sans', source-sans-pro, sans-serif;
-  font-weight: 300;
+  /* font-family: Seravek, 'Gill Sans Nova', Ubuntu, Calibri, 'DejaVu Sans', source-sans-pro, sans-serif; */
+  font-weight: 400;
 
 
 
@@ -183,7 +183,7 @@ blockquote {
 
     &::before,
     &::after {
-      font-family: Didot, 'Bodoni MT', 'Noto Serif Display', 'URW Palladio L', P052, Sylfaen, serif;
+      /* font-family: Didot, 'Bodoni MT', 'Noto Serif Display', 'URW Palladio L', P052, Sylfaen, serif; */
       font-weight: 300;
       font-size: 6rem;
       color: inherit;
@@ -200,7 +200,7 @@ blockquote {
 
     &::after {
       content: close-quote;
-      bottom: -30px;
+      bottom: -60px;
       right: -30px;
     }
   }
