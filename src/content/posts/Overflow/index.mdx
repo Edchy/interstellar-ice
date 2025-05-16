@@ -24,7 +24,7 @@ When something is overflowing, it just means it's too big to fit inside the thin
 Overflow happens in the real world, and also in the world of CSS.
 
 I say **CSS** here, because overflow usually occurs when you give elements fixed widths or heights. It's kind of hard to overflow with just plain HTML — unless you toss in a mega-large image or an unbreakable word like:
-<p>hahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahaha(infinity)</p>
+`<p>thisissupermegamonsterduperquadruplebigandhugewordthathasnoblankspacetowrapat</p>`
 
 Normally, text wraps automatically (especially inside paragraphs), so it won't overflow unless you stop it from wrapping or give it nowhere to go.
 
@@ -91,7 +91,7 @@ Well, we could either just "hide" the parts that are overflowing. Or we could cr
 
 Well here is the definition from [MDN](https://developer.mozilla.org/en-US/):
 A **scroll container** is an element box in which content can be scrolled, whether or not scroll bars are present. A user agent adds scroll bars to an element box to make it a scroll container when the CSS `overflow` property is set to `scroll` or when `overflow` is set to `auto` _and_ the content overflows the container.
-<InfoBox title='Techyunally'>
+<InfoBox title='Technically'>
   `overflow:hidden` also creates a scroll container, even though you can't scroll it. The content could still be scrolled programmatically, but the user can't do it.
 </InfoBox>
  

@@ -13,9 +13,10 @@ import Footer from "@/layouts/Footer.astro";
 import LatestPostsDisplay from "@/components/LatestPostsDisplay.astro";
 import HeroText from "@/components/HeroText.astro";
 import BigWords from "@/components/BigWords.astro";
+import LatestWorkDisplay from "@/components/LatestWorkDisplay.astro";
 ---
 
-<PageLayout title="Nope Digital" showAside={true}>
+<PageLayout showAside={true}>
   <main class="video-background">
     <video id="bg-video" autoplay muted loop playsinline>
       <source src="/img/nikita.mp4" type="video/mp4" />
@@ -69,6 +70,14 @@ import BigWords from "@/components/BigWords.astro";
       >, <em>part rants</em>, <strong>occasionally useful</strong>.
     </p>
     <LatestPostsDisplay />
+  </section>
+  <section>
+    <h2 data-aos="fade-right">
+      <span data-entity="heavy-open-center-cross">&#x271C;</span>
+      the work
+    </h2>
+    <p class="motto-text">A small sample of some previous stuff</p>
+    <LatestWorkDisplay />
   </section>
 
   <section class="bb">

@@ -1,0 +1,17 @@
+---
+interface Props {
+  title: string;
+  description: string;
+}
+const { title, description } = Astro.props as Props;
+---
+
+<meta property="og:title" content={title} />
+<meta property="og:description" content={description} />
+<meta property="og:url" content={"https://nope.digital"} />
+<meta property="og:image" content="https://nope.digital/img/v.png" />
+<meta name="twitter:image" content="https://nope.digital/img/v.png" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content={title} />
+<meta name="twitter:description" content={description} />
+<meta property="og:site_name" content="Nope Digital" />

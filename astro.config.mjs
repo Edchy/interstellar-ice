@@ -6,6 +6,8 @@ import mdx from "@astrojs/mdx";
 
 import sitemap from "@astrojs/sitemap";
 
+import og from "astro-og";
+
 // https://astro.build/config
 export default defineConfig({
   vite: {
@@ -22,5 +24,5 @@ export default defineConfig({
     remarkPlugins: [remarkReadingTime],
   },
   site: "https://nope.digital/",
-  integrations: [icon(), mdx(), sitemap()],
+  integrations: [icon(), mdx(), sitemap(), og()],
 });

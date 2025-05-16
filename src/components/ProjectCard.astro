@@ -1,61 +1,33 @@
 ---
-import { formatDate, string_to_slug } from "@/utils/utils.js";
-import { calculateReadingTime } from "@/utils/readingtime.js";
+import { Image } from "astro:assets";
 
-const { post, i } = Astro.props;
-const { title, subtitle, pubDate, description } = post.data;
-
-const readingTime = calculateReadingTime(post.body);
-const minutesReadString = readingTime.text;
-const minutesRead = parseFloat(minutesReadString) - 1;
+const { project } = Astro.props;
+console.log(project.data);
+const { title, description, cover, alt } = project.data;
 ---
 
-<li class="latest-post-card">
-  {i === 0 ? <span class="badge">New</span> : null}
+<li class="project-card">
   <div class="card-inner">
-    <div class="title-area">
-      <h3 transition:name={title}>{title}</h3>
-      <!-- Fixed height subtitle container -->
-      <div class="subtitle-container">
-        {subtitle ? <h4>{subtitle}</h4> : <div class="empty-subtitle" />}
-      </div>
-    </div>
-    <div class="container">
-      <time datetime={pubDate.toISOString()}>{formatDate(pubDate)}</time>
-      <span class="read-time">{minutesRead} min read</span>
-    </div>
-
+    <!-- <Image width={1200} height={300} src={cover} alt={alt} /> -->
+    <h3 transition:name={title}>{title}</h3>
+    <img src={cover.src} alt={alt} />
     <p>{description}</p>
-    <a href={`/blog/${post.id}`} class="read-more">Read More →</a>
+    <a href={`/blog/${project.id}`} class="read-more">More Info →</a>
   </div>
 </li>
 
 <style>
-  .badge {
-    position: absolute;
-    top: 0.25rem;
-    right: 0.25rem;
-    background-color: var(--yang);
-    color: var(--yin);
-    /* padding: 0.5rem 1rem; */
-    padding-inline: 0.5rem;
-    padding-block: min(0.25rem, 1.5vw);
-    border-radius: var(--radius);
-    font-size: clamp(0.5rem, 1vw + 0.25rem, 0.75rem);
-    font-weight: bold;
-
-    /* text-transform: uppercase; */
-    box-shadow: var(--shadow);
+  img {
+    object-fit: cover;
+    filter: grayscale(2);
+    filter: contrast(1.2);
   }
-  .latest-post-card {
+  .project-card {
     background-color: var(--yang);
     border-radius: var(--radius);
-
     box-shadow: var(--shadow);
     overflow-x: clip;
     width: 100%;
-
-    /* max-width: 400px; */
     transition:
       transform 0.2s ease,
       box-shadow 0.2s ease;
@@ -67,7 +39,7 @@ const minutesRead = parseFloat(minutesReadString) - 1;
 
     &:first-of-type {
       /* grid-column: 1 / -1; */
-      background-color: oklch(from var(--blu2) l c h / 0.3);
+      /* background-color: oklch(from var(--clr-accent) l c h / 0.4); */
     }
     &:nth-of-type(2) {
       /* grid-row: span 2; */
@@ -75,35 +47,23 @@ const minutesRead = parseFloat(minutesReadString) - 1;
     }
     &:nth-of-type(3) {
       /* grid-row: span 2; */
-      background-color: oklch(from var(--clr-accent) l c h / 0.4);
+      background-color: oklch(from var(--blu-2) l c h / 0.3);
       /* grid-column: span 2; */
     }
   }
 
-  /* .latest-post-card:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 8px 20px oklch(from var(--yin) l c h / 0.15);
-  } */
-
   .card-inner {
-    padding: 1.5rem;
+    /* padding: 1.5rem; */
     display: grid;
     /* Simplify grid rows to have more precise control */
-    grid-template-rows: 1fr auto 1fr auto;
-    grid-row: span 1;
+    /* grid-template-rows: 1fr auto 1fr auto;
+    grid-row: span 1; */
   }
 
   .title-area {
     /* min-height: 6rem; */
     display: flex;
     flex-direction: column;
-  }
-
-  .subtitle-container {
-    /* Fixed height for subtitle area */
-    height: 3rem;
-    display: flex;
-    align-items: flex-start;
   }
 
   h3 {
@@ -114,8 +74,7 @@ const minutesRead = parseFloat(minutesReadString) - 1;
     line-height: 1.2;
   }
 
-  h4,
-  .empty-subtitle {
+  h4 {
     font-size: 1rem;
     font-style: italic;
     margin: 0;
@@ -139,13 +98,6 @@ const minutesRead = parseFloat(minutesReadString) - 1;
     height: 1.5rem;
     margin-bottom: 1rem;
     font-weight: bold;
-  }
-
-  time,
-  .read-time {
-    font-size: 0.75rem;
-    color: var(--yin);
-    opacity: 0.7;
   }
 
   p {
