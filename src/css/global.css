@@ -111,6 +111,14 @@ summary {
   cursor: url("/mickey_pointer.png"), pointer;
 }
 
+a {
+  transition: opacity 0.15s ease-in-out;
+
+  &:hover {
+    opacity: var(--hover);
+  }
+}
+
 img,
 picture,
 video,

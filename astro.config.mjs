@@ -4,6 +4,8 @@ import { remarkReadingTime } from "./src/utils/readingtime";
 import icon from "astro-icon";
 import mdx from "@astrojs/mdx";
 
+import sitemap from "@astrojs/sitemap";
+
 // https://astro.build/config
 export default defineConfig({
   vite: {
@@ -19,6 +21,6 @@ export default defineConfig({
     },
     remarkPlugins: [remarkReadingTime],
   },
-
-  integrations: [icon(), mdx()],
+  site: "https://nope.digital/",
+  integrations: [icon(), mdx(), sitemap()],
 });

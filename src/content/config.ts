@@ -12,7 +12,7 @@ const ALLOWED_TAGS = [
 
 // Define schema separately
 const postSchema = z.object({
-  title: z.string(),
+  title: z.string().max(50),
   subtitle: z.string().optional(),
   pubDate: z.date(),
   description: z.string(),
