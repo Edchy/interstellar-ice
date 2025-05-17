@@ -29,6 +29,7 @@ const projectSchema = z.object({
   title: z.string().max(50),
   description: z.string(),
   url: z.string().optional(),
+  github: z.string().optional(),
   icons: z.array(z.string()).optional(),
 });
 

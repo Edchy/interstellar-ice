@@ -3,7 +3,7 @@ import { Icon } from "astro-icon/components";
 
 const { project } = Astro.props;
 console.log(project.data);
-const { title, description, frontend, backend, url, icons } = project.data;
+const { title, description, github, url, icons } = project.data;
 ---
 
 <li class="project-card">
@@ -23,13 +23,14 @@ const { title, description, frontend, backend, url, icons } = project.data;
         <ul class="logos">
           {icons.map((icon: string) => (
             <li class="tech-icon" title={icon}>
-              <Icon
-                class="tech-icon"
-                name={`catppuccin:${icon}`}
-                size="1.5rem"
-              />
+              <Icon class="tech-icon" name={`catppuccin:${icon}`} size={24} />
             </li>
           ))}
+          <li>
+            <a href={github} aria-label="github">
+              <Icon name="ri:github-line" size={24} color={"var(--yin)"} />
+            </a>
+          </li>
         </ul>
       )
     }
@@ -56,6 +57,9 @@ const { title, description, frontend, backend, url, icons } = project.data;
       list-style-type: none;
       display: flex;
       gap: 1rem;
+    }
+    li:last-child {
+      margin-left: auto;
     }
     .card-inner {
       /* padding: 1.5rem; */

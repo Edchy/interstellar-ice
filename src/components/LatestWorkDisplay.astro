@@ -4,12 +4,13 @@ import { getEntry } from "astro:content";
 
 const project1 = await getEntry("projects", "jr");
 const project2 = await getEntry("projects", "carboo");
+const project3 = await getEntry("projects", "last-todo");
 ---
 
 <ul>
   <ProjectCard project={project1} />
   <ProjectCard project={project2} />
-  <!-- <ProjectCard {project2} /> -->
+  <ProjectCard project={project3} />
 </ul>
 
 <style>

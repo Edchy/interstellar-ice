@@ -25,6 +25,12 @@ const allProjects = await getCollection("projects");
                   />
                 </li>
               ))}
+            <li>
+              {" "}
+              <a href={p.data.github} aria-label="github">
+                <Icon name="ri:github-line" size={24} color={"var(--yin)"} />
+              </a>
+            </li>
           </ul>
           <p class="description">{p.data.description}</p>
         </article>
@@ -60,6 +66,9 @@ const allProjects = await getCollection("projects");
     list-style-type: none;
     display: flex;
     gap: 1rem;
+  }
+  li:last-child {
+    margin-left: auto;
   }
   .grid {
     display: grid;
