@@ -57,10 +57,10 @@ const allPosts = filteredPosts || (await getPosts(true));
       border: 1px solid oklch(from var(--yin) l c h / 0.2);
 
      
-      /* &:hover {
-        background-color: var(--blueish);
-        color: var(--white);
-      } */
+      &:hover {
+        border-color: var(--clr-accent);
+        background-color: oklch(from var(--yang) l c h / 0.9);
+      }
 
   }
   a {
@@ -93,7 +93,7 @@ const allPosts = filteredPosts || (await getPosts(true));
     grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
     gap: 1rem;
 
-    @media (hover) and (prefers-reduced-motion: no-preference) {
+    /* @media (hover) and (prefers-reduced-motion: no-preference) {
       &>article {
       transition:
         transform 0.2s,
@@ -105,7 +105,7 @@ const allPosts = filteredPosts || (await getPosts(true));
         opacity: 0.2;
         transform: scale(0.95);
       }
-    }
+    } */
   }
 
   .description {

@@ -81,7 +81,7 @@ ul {
   padding-left: 1rem;
 }
 
-li {
+.post-content li {
   padding-left: 0.5rem;
 
   &>* {

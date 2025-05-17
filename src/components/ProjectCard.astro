@@ -8,22 +8,16 @@ const { title, description, github, url, icons } = project.data;
 
 <li class="project-card">
   <div class="card-inner">
-    {
-      url ? (
-        <a href={url}>
-          {" "}
-          <h3 transition:name={title}>{title} →</h3>
-        </a>
-      ) : (
-        <h3 transition:name={title}>{title}</h3>
-      )
-    }
+    <a href={url}>
+      <h3 transition:name={title}>{title} →</h3>
+    </a>
+
     {
       icons && (
         <ul class="logos">
           {icons.map((icon: string) => (
-            <li class="tech-icon" title={icon}>
-              <Icon class="tech-icon" name={`catppuccin:${icon}`} size={24} />
+            <li title={icon}>
+              <Icon class="tech-icon" name={`devicon:${icon}`} size={20} />
             </li>
           ))}
           <li>
@@ -40,8 +34,12 @@ const { title, description, github, url, icons } = project.data;
   </div>
 
   <style>
+    .tech-icon {
+      filter: drop-shadow(0 0 1px oklch(from var(--white) l c h / 0.8));
+    }
     .project-card {
       background-color: var(--yang);
+
       border-radius: var(--radius);
       box-shadow: var(--shadow);
       overflow-x: clip;
@@ -53,9 +51,10 @@ const { title, description, github, url, icons } = project.data;
       border: 1px solid oklch(from var(--yin) l c h / 0.1);
       padding-block: 1.5rem;
     }
-    ul {
+    .logos {
       list-style-type: none;
       display: flex;
+      align-items: center;
       gap: 1rem;
     }
     li:last-child {
@@ -77,6 +76,12 @@ const { title, description, github, url, icons } = project.data;
       margin: 0 0 0.5rem 0;
       color: var(--yin);
       line-height: 1.2;
+      display: inline-block;
+      transition: transform 0.2s ease;
+      text-decoration: underline;
+      &:hover {
+        transform: translateX(5px);
+      }
     }
     a:any-link {
       color: var(--yin);
