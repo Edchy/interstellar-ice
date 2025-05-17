@@ -1,124 +1,106 @@
 ---
-import { Image } from "astro:assets";
+import { Icon } from "astro-icon/components";
 
 const { project } = Astro.props;
 console.log(project.data);
-const { title, description, cover, alt } = project.data;
+const { title, description, frontend, backend, url, icons } = project.data;
 ---
 
 <li class="project-card">
   <div class="card-inner">
-    <!-- <Image width={1200} height={300} src={cover} alt={alt} /> -->
-    <h3 transition:name={title}>{title}</h3>
-    <img src={cover.src} alt={alt} />
+    {
+      url ? (
+        <a href={url}>
+          {" "}
+          <h3 transition:name={title}>{title} →</h3>
+        </a>
+      ) : (
+        <h3 transition:name={title}>{title}</h3>
+      )
+    }
+    {
+      icons && (
+        <ul class="logos">
+          {icons.map((icon: string) => (
+            <li class="tech-icon" title={icon}>
+              <Icon
+                class="tech-icon"
+                name={`catppuccin:${icon}`}
+                size="1.5rem"
+              />
+            </li>
+          ))}
+        </ul>
+      )
+    }
     <p>{description}</p>
-    <a href={`/blog/${project.id}`} class="read-more">More Info →</a>
+
+    <!-- <a href={`/blog/${project.id}`} class="read-more">More Info →</a> -->
   </div>
-</li>
 
-<style>
-  img {
-    object-fit: cover;
-    filter: grayscale(2);
-    filter: contrast(1.2);
-  }
-  .project-card {
-    background-color: var(--yang);
-    border-radius: var(--radius);
-    box-shadow: var(--shadow);
-    overflow-x: clip;
-    width: 100%;
-    transition:
-      transform 0.2s ease,
-      box-shadow 0.2s ease;
-    position: relative;
-    border: 1px solid oklch(from var(--yin) l c h / 0.1);
-    display: grid;
-    grid-template-rows: subgrid;
-    /* grid-row: span 1; */
-
-    &:first-of-type {
-      /* grid-column: 1 / -1; */
-      /* background-color: oklch(from var(--clr-accent) l c h / 0.4); */
+  <style>
+    .project-card {
+      background-color: var(--yang);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      overflow-x: clip;
+      width: 100%;
+      transition:
+        transform 0.2s ease,
+        box-shadow 0.2s ease;
+      position: relative;
+      border: 1px solid oklch(from var(--yin) l c h / 0.1);
+      padding-block: 1.5rem;
     }
-    &:nth-of-type(2) {
-      /* grid-row: span 2; */
-      background-color: oklch(from var(--yang) l c h / 0.3);
+    ul {
+      list-style-type: none;
+      display: flex;
+      gap: 1rem;
     }
-    &:nth-of-type(3) {
-      /* grid-row: span 2; */
-      background-color: oklch(from var(--blu-2) l c h / 0.3);
-      /* grid-column: span 2; */
-    }
-  }
-
-  .card-inner {
-    /* padding: 1.5rem; */
-    display: grid;
-    /* Simplify grid rows to have more precise control */
-    /* grid-template-rows: 1fr auto 1fr auto;
+    .card-inner {
+      /* padding: 1.5rem; */
+      padding-inline: 1.5rem;
+      display: grid;
+      gap: 1rem;
+      /* Simplify grid rows to have more precise control */
+      /* grid-template-rows: 1fr auto 1fr auto;
     grid-row: span 1; */
-  }
+    }
 
-  .title-area {
-    /* min-height: 6rem; */
-    display: flex;
-    flex-direction: column;
-  }
+    h3 {
+      font-family: var(--font-heading);
+      font-size: 1.5rem;
+      margin: 0 0 0.5rem 0;
+      color: var(--yin);
+      line-height: 1.2;
+    }
+    a:any-link {
+      color: var(--yin);
+      text-decoration: underline;
+      text-decoration-thickness: 0.125rem;
+      text-underline-offset: 0.25rem;
+      /* font-weight: bold; */
+    }
+    p {
+      margin-bottom: 1.5rem;
+      font-size: 0.9rem;
+      line-height: 1.5;
+      color: var(--yin);
+    }
 
-  h3 {
-    font-family: var(--font-heading);
-    font-size: 1.5rem;
-    margin: 0 0 0.5rem 0;
-    color: var(--yin);
-    line-height: 1.2;
-  }
+    .read-more {
+      display: inline-block;
+      /* color: var(--clr-accent); */
+      color: currentColor;
+      font-weight: bold;
+      text-decoration: none;
+      font-size: 0.9rem;
+      transition: transform 0.2s ease;
+      margin-top: auto;
+    }
 
-  h4 {
-    font-size: 1rem;
-    font-style: italic;
-    margin: 0;
-    color: var(--yin);
-    opacity: 0.5;
-    line-height: 1.4;
-    text-wrap: balance;
-    /* Have subtitle truncate if it's too long */
-    display: -webkit-box;
-    -webkit-line-clamp: 2;
-    -webkit-box-orient: vertical;
-    overflow: hidden;
-    max-width: 100%;
-  }
-
-  .container {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    /* Fixed height container for date/time info */
-    height: 1.5rem;
-    margin-bottom: 1rem;
-    font-weight: bold;
-  }
-
-  p {
-    margin-bottom: 1.5rem;
-    font-size: 0.9rem;
-    line-height: 1.5;
-    color: var(--yin);
-  }
-
-  .read-more {
-    display: inline-block;
-    /* color: var(--clr-accent); */
-    color: currentColor;
-    font-weight: bold;
-    text-decoration: none;
-    font-size: 0.9rem;
-    transition: transform 0.2s ease;
-    margin-top: auto;
-  }
-
-  .read-more:hover {
-    transform: translateX(5px);
-  }
-</style>
+    .read-more:hover {
+      transform: translateX(5px);
+    }
+  </style>
+</li>
