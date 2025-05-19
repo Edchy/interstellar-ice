@@ -33,7 +33,6 @@ import { Icon } from "astro-icon/components";
       opacity: var(--hover);
       color: var(--clr-accent);
     }
-    /* Show sun icon in light mode, hide moon icon */
     & .moon {
       display: block;
     }
@@ -42,7 +41,6 @@ import { Icon } from "astro-icon/components";
       display: none;
     }
 
-    /* When toggle has 'active' class (dark mode), show moon icon and hide sun icon */
     &.active .moon {
       display: none;
     }
@@ -138,7 +136,7 @@ import { Icon } from "astro-icon/components";
 </script>
 <!-- // This script runs immediately when the page loads -->
 <script is:inline>
-  console.log("inline script - theme toggle");
+  // console.log("inline script - theme toggle");
 
   function getThemePreference() {
     if (typeof localStorage !== "undefined" && localStorage.getItem("theme")) {
@@ -164,9 +162,6 @@ import { Icon } from "astro-icon/components";
 
   // run after each View Transition navigation
   document.addEventListener("astro:after-swap", () => {
-    console.log(
-      "Page loaded in the astro:page-load eventlistener in the Theme Toggle inline script, updating theme"
-    );
     updateTheme();
   });
 

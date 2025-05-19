@@ -5,7 +5,7 @@ pubDate: 2025-04-21
 description: "s"
 author: ""
 tags: ["nerdstuff", "life"]
-draft: false
+draft: true
 ---
 
 Growing up in the 90's

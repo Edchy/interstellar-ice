@@ -1,88 +1,166 @@
 ---
-import LatestPostCard from "@/components/LatestPostCard.astro";
-import PageLayout from "../layouts/PageLayout.astro";
-import { getCollection } from "astro:content";
-import Card from "@/components/Card.astro";
+import PageLayout from "@/layouts/PageLayout.astro";
 ---
 
-<PageLayout title="About" showAside={true}>
-  <main>
-    Hey I'm Eddie. CEO of Nope Digital, a fictive, completely made up Web
-    Agency. bla bla. Actually im just a
+<PageLayout title="About" description="Some words about me" showAside={true}>
+  <main class="">
+    <h1 transition:name="h1" transition:animate="slide">about</h1>
+    <p>
+      Hey, I'm Eddie. CEO of Nope Digital — a fictitious, entirely made-up web
+      agency that exists mostly in my head and sometimes on my resume.
+    </p>
+    <p>
+      It’s been about three years since I tripped into the wonderfully chaotic
+      world of web development. Since then, I’ve picked up a few things—like
+      JavaScript, a mild caffeine addiction, and an unhealthy number of tabs
+      open at all times.
+    </p>
+
+    <p>
+      One of the biggest takeaways so far? Curiosity > dogma. This field moves
+      fast. There’s always some shiny new framework, library, tool, or acronym
+      promising to “change the game.” And hey, some of them actually do. Most
+      just make Twitter threads longer.
+    </p>
+
+    <p>
+      What I’ve noticed (mostly from the loudest voices) is this weird
+      tribalism. People pick a tech stack and defend it like it’s their
+      childhood dog. React or die. Tailwind or fail. Vue? Never met her. But I
+      try not to get too attached. I like staying flexible, exploring what’s out
+      there, and understanding why things are built the way they are. That’s
+      kinda my thing—I don’t marry frameworks, I date around.
+    </p>
+
+    <p>
+      The way I see it: you don’t have to chase every trend like it’s the second
+      coming of sliced bread. But it’s smart to keep a hand on the pulse. See
+      what’s happening. Deep dive when something interests you. Use tools like
+      AI to help unpack the complicated stuff. Learn just enough to understand
+      what’s hype, what’s useful, and what’s just someone trying to sell a
+      course.
+    </p>
+    <p>i can certainly say AI did it! Hrmm, i mean I did it.</p>
+    <p>
+      So no, you don’t *have* to adapt constantly. But if you stay curious,
+      open-minded, and just a little skeptical—you’ll be fine.
+    </p>
+    <!--
+    <p>
+      It’s been about three years since I first fell into the rabbit hole of web
+      development, and in that time, I’ve picked up more than just JavaScript and
+      caffeine dependency.
+    </p>
+
+    <p>
+      One of the biggest lessons? Adaptability is everything. In this field, if
+      you’re not constantly learning, you’re basically decaying. New frameworks,
+      tools, acronyms—every week there’s a shiny new toy someone insists will
+      change your life. And honestly, maybe it will... but probably not.
+    </p>
+
+    <p>
+      What I’ve also noticed (atleast from the loudest) is this weird tribalism.
+      Some people pick a tech stack and worship it like it’s a holy text. React
+      or die. Tailwind or fail. Vue? Never heard of her. But me? I try to stay
+      curious, flexible, and open-minded. No tech loyalty cults here. Use what
+      works, see what’s new, and don’t be afraid to let go of what doesn’t serve
+      you anymore. That’s one of my strengths—I don’t cling. I adapt.
+    </p>
+
+    <p>
+      I've noticed a lot of people treat their favorite tech stack like a
+      religion. React or die. Tailwind or fail. Everything else? Heresy.
+    </p>
+
+    <p>
+      But here's the thing—if you're not adaptable, you're toast. You need to be
+      willing to learn, unlearn, and relearn. Like a wise Italian (probably)
+      once said: <em>Ancora Imparo</em>—I am still learning. But also... maybe
+      chill? Not every new JavaScript meta-framework with a pastel-colored logo
+      is worth your time. Choose wisely.
+    </p> -->
+
+    <p><strong>No stresso, no need to be depresso.</strong></p>
+
+    <p>
+      Flashback to Summer 2022: I was in a rut, mentally checked out of a job I
+      didn’t care about, quietly spiraling into a YouTube abyss. Then I stumbled
+      upon <a href="https://www.freecodecamp.org" target="_blank"
+        >freeCodeCamp</a
+      >. I had no clue what a <code>&lt;h1&gt;</code> was. But i was intrigued. I
+      started watching videos, reading articles, and before I knew it, I was knee-deep
+      in HTML, CSS, and JavaScript. I was hooked. I spent hours learning, building,
+      and breaking things. I was like a kid in a candy store —except the candy was
+      code, and the store was my laptop. I was
+      <em>obsessed</em>. I was learning to build websites, and it felt like
+      magic. I was creating something out of nothing, and it was exhilarating.
+      Now, i not only know what a &lt;h1&gt; is, but also what a &lt;h2&gt;,
+      &lt;h3&gt;, and even a &lt;h4&gt; is. I’m basically a web wizard now. I
+      can make things appear and disappear with a flick of my wrist (or a few
+      lines of code).
+    </p>
+
+    <p class="x">
+      Fast forward to today: Two educations later (yes, plural—because why do
+      things halfway?), countless hours of coding, debugging, crying, Googling
+      error messages, asking my robot buddys for help, and more crying... I can
+      confidently say: <strong>this is it</strong>. I love building. I love
+      solving problems. I love the flow state. I love creating something from
+      nothing. And above all, I love the feeling of not knowing something... and
+      figuring it out anyway.
+    </p>
+
+    <p>
+      That’s me. Developer. Problem-solver. Occasional existential-crisis-haver.
+      Welcome to my corner of the web.
+    </p>
   </main>
-  <p>
-    I feel like in this field you have to be adaptable and constantly be on your
-    toes. Its an ever evolving landscape. New technologies come along all the
-    time. In the few years that i have been playing around and studying in this
-    field. I've noticed alot of tribalism. People learn some framework or
-    technology and then swear to it as its a church. everything else is bad. new
-    stuff? nah. I feel like this is the wrong mentality in this field. You have
-    to adapt, learn new things, be able to let go. Ancora Imparo. But at the
-    same time, you dont have to jump on every new trend. You have to be able to
-    discern what is worth your time and what is not.
-  </p>
-
-  <!-- <LatestPostCard post={latestPost} />
-  <Card title={latestPost?.data.title} /> -->
-  <p>no stresso, no need to be depresso</p>
-  <p>
-    Summer 2022. I was lost. I was in a rut. I was stuck in a job that I didn't
-    like, doing work that I didn't care about. I stumbled upon <a
-      href="freecodecamp">a free coding site</a
-    >. I had no idea what a &lt;h1&gt; was. But i was hooked pretty much
-    immediately. Now, 3 years later. With two educations in my pocket and
-    countless hours spent building, watching youtube-videos tinkering with code,
-    I can say that I have found my passion. I love building things. I love the
-    feeling of creating something from nothing. I love the feeling of solving a
-    problem. I love the feeling of learning something new. I love the feeling of
-    being challenged. I love the feeling of being in flow. I love the feeling of
-    being in control. I love the feeling of being free.
-
-    <style>
-      h2 {
-        font-size: 2rem;
-        margin-bottom: 2rem;
-        text-align: center;
-      }
-
-      main {
-        --hdr-gradient: linear-gradient(
-          to top in oklab,
-          oklch(80% 0.29 149) 12% 12%,
-          oklch(98% 0 91) 68% 68%
-        );
-        background: var(--hdr-gradient);
-        padding: 3rem 1rem;
-      }
-
-      ul {
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-        gap: 0.5rem;
-        /* max-width: 1200px; */
-        margin: 0 auto;
-        grid-template-rows: auto;
-        /* Enable subgrid for columns */
-        grid-auto-flow: dense;
-      }
-
-      li {
-        display: grid;
-        grid-template-rows: subgrid;
-        grid-row: span 1;
-      }
-
-      @supports not (grid-template-rows: subgrid) {
-        li {
-          height: 100%;
-        }
-      }
-
-      @media (max-width: 768px) {
-        ul {
-          grid-template-columns: 1fr;
-        }
-      }
-    </style>
-  </p>
 </PageLayout>
+
+<style>
+  .x {
+    column-span: all;
+  }
+  p {
+    margin-bottom: 1lh;
+    orphans: 3;
+  }
+  p + p {
+    text-indent: 2ch;
+  }
+
+  p:first-of-type:first-letter {
+    initial-letter: 2;
+    -webkit-inital-letter: 2;
+    padding-right: 0.5rem;
+  }
+
+  @supports not (initial-letter: 2) {
+    p:first-of-type:first-letter {
+      font-size: 5rem;
+      float: left;
+      line-height: 0.8;
+      padding-right: 0.5rem;
+      margin-top: 4px;
+    }
+  }
+  h1 {
+    --text-huge: clamp(5rem, 1rem + 15vw, 15rem);
+
+    font-size: var(--text-huge);
+    font-family: var(--font-heading);
+    margin-block-end: 2rem;
+    column-span: all;
+  }
+  main {
+    padding-inline: 1rem;
+    min-height: 100vh;
+    column-count: 2;
+  }
+  @media (width < 1200px) {
+    main {
+      padding-top: var(--header-offset);
+    }
+  }
+</style>

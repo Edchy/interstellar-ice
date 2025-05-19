@@ -1,4 +1,4 @@
-const education = [
+export const education = [
   {
     program: "Frontend Developer",
     school: "Medieinstitutet",

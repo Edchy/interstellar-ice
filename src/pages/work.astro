@@ -9,11 +9,19 @@ import ProjectsDisplay from "@/layouts/ProjectsDisplay.astro";
   showAside={true}
 >
   <main>
+    <h1 transition:name="h1" transition:animate="slide">work</h1>
+
     <ProjectsDisplay />
   </main>
 </PageLayout>
 
 <style>
+  h1 {
+    --text-huge: clamp(5rem, 1rem + 15vw, 15rem);
+    font-size: var(--text-huge);
+    font-family: var(--font-heading);
+    margin-block-end: 2rem;
+  }
   main {
     padding-inline: 1rem;
     min-height: 100vh;

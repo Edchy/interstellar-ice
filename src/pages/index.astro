@@ -76,7 +76,16 @@ import LatestWorkDisplay from "@/components/LatestWorkDisplay.astro";
       <span data-entity="heavy-open-center-cross">&#x271C;</span>
       the work
     </h2>
-    <p class="motto-text">A small sample of some previous stuff</p>
+    <p class="motto-text">
+      Here's a small, humble sampling of things I’ve built. Is it a
+      <strong>groundbreaking, world-changing portfolio?</strong> Not exactly. It's
+      mostly
+      <em>todo apps</em>. Because apparently that’s the rite of passage in this
+      industry. But hey, every great developer has to start somewhere. So, while
+      I'm not exactly printing T-shirts of this stuff, it's all part of the
+      <strong>journey™</strong>. <strong>Progress over perfection</strong>,
+      right?
+    </p>
     <LatestWorkDisplay />
   </section>
 
@@ -118,10 +127,13 @@ import LatestWorkDisplay from "@/components/LatestWorkDisplay.astro";
     /* padding-inline: clamp(0.75rem, 0.5rem + 1vw, 2rem); */
 
     .motto-text {
+      --text-copy: clamp(0.875rem, 2vw + 0.5rem, 1rem);
+      /* font-family: var(--font-heading); */
       max-width: 65ch;
-      font-size: clamp(0.7292rem, 0.6515rem + 0.3313vw, 0.9rem);
+      font-size: var(--text-copy);
       margin-bottom: 3rem;
       text-wrap: pretty;
+      font-family: "Departure";
     }
 
     & > h2,
@@ -133,7 +145,12 @@ import LatestWorkDisplay from "@/components/LatestWorkDisplay.astro";
       margin-inline: 1rem;
     }
   }
-
+  h2 {
+    font-size: clamp(2rem, 6vw + 1rem, 6rem);
+    /* font-family: var(--font-brand); */
+    /* font-weight: normal; */
+    font-family: "Departure";
+  }
   main {
     position: relative;
     display: flex;

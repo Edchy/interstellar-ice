@@ -5,7 +5,6 @@ import { getCollection } from "astro:content";
 const allProjects = await getCollection("projects");
 ---
 
-<h1>work</h1>
 <div class="grid">
   {
     allProjects.map((p) => {
@@ -18,7 +17,7 @@ const allProjects = await getCollection("projects");
             {p.data.icons &&
               p.data.icons.map((icon: string) => (
                 <li class="tech-icon" title={icon}>
-                  <Icon class="tech-icon" name={`devicon:${icon}`} size={20} />
+                  <Icon class="tech-icon" name={`devicon:${icon}`} size={24} />
                 </li>
               ))}
             <li>
@@ -52,11 +51,7 @@ const allProjects = await getCollection("projects");
     text-underline-offset: 0.4rem;
     color: var(--yin);
   }
-  h1 {
-    font-size: var(--text-huge);
-    font-family: var(--font-heading);
-    margin-block-end: 2rem;
-  }
+
   h2,
   p {
     color: var(--yin);
@@ -79,7 +74,7 @@ const allProjects = await getCollection("projects");
     margin-left: auto;
   }
   .tech-icon {
-    filter: drop-shadow(0 0 1px oklch(from var(--white) l c h / 0.3));
+    filter: drop-shadow(0 0 1px oklch(from var(--white) l c h / 0.4));
   }
   .grid {
     display: grid;

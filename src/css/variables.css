@@ -83,6 +83,7 @@
    --shadow: 0 2px 4px oklch(from var(--black) l c h / 0.1);
    /* typography */
    --text-huge: clamp(5rem, 1rem + 10vw, 10rem);
+   --text-copy: clamp(1rem, 2vw + 0.5rem, 1.25rem);
    --font-brand: "Revenge",
      'Helvetica Neue',
      sans-serif;
