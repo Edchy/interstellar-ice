@@ -52,7 +52,7 @@ pre {
 }
 
 pre {
-  background-color: light-dark(oklch(from var(--blu2) 40% c h), var(--black)) !important;
+  background-color: light-dark(oklch(from var(--blu2) 20% c h), var(--black)) !important;
   padding: 1rem;
   border-radius: var(--radius);
 

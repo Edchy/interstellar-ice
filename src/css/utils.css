@@ -13,7 +13,13 @@
   /* gap: 1rem; */
 }
 
-
+.gradient-text {
+  background: var(--gradient);
+  background-clip: text;
+  font-weight: bold;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
 
 .sr-only {
   /* Hide text accessibly */
