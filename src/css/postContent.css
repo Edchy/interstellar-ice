@@ -1,5 +1,5 @@
 .post-content {
-  --flow-space: 1.5em;
+  --flow-space: 1em;
   width: 100%;
   max-width: 100%;
   /* overflow-x: hidden; */
@@ -34,23 +34,25 @@
   text-underline-offset: 0.3rem;
   text-decoration-thickness: 1px;
   text-decoration-color: var(--link-light);
-  color: var(--link-light);
+  color: var(--blueish2);
   /* font-weight: bold; */
-  background: var(--gradient);
+  /* background: var(--gradient);
   background-clip: text;
   -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
+  -webkit-text-fill-color: transparent; */
 }
 
 code,
 pre {
   font-size: clamp(0.875rem, 1.5vw, 1rem);
+  margin-block-start: 1rem;
+  margin-block-end: 2rem;
   /* padding: 0 !important; */
   /* font-family: "Departure"; */
 }
 
 pre {
-  background-color: light-dark(var(--blu), var(--black)) !important;
+  background-color: light-dark(oklch(from var(--blu2) 40% c h), var(--black)) !important;
   padding: 1rem;
   border-radius: var(--radius);
 
@@ -68,39 +70,37 @@ pre {
   border-radius: var(--radius);
 }
 
-ul,
-ol {
-  /* list-style-position: outside; */
+.post-content ul,
+.post-content ol {
+  list-style-position: inside;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+
+  li::marker {
+    font-size: 1.5rem;
+    color: var(--blueish2);
+
+  }
 }
 
 ol {
-  list-style-position: inside;
+  /* list-style-position: inside; */
+  /* list-style-type: lower-greek; */
 }
 
 ul {
-  list-style-type: "\261E";
-  padding-left: 1rem;
+  /* list-style-type: "\261E"; */
+  /* padding-left: 1rem; */
 }
 
-/* .post-content {
-  padding-left: 0.5rem;
 
-  &>* {
-    margin-block: 1rem;
-  }
-} */
 
-li {
-  padding-left: .5rem;
-}
 
-/* li::marker {
-  color: var(--yin);
-  padding-right: 1rem;
-} */
+
 
 h3 {
-  /* --flow-space: 2em; */
+  --flow-space: 1.5em;
   font-size: clamp(1.25rem, 1.1727rem + 0.9697vw, 1.75rem);
 
 

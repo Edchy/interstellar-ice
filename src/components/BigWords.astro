@@ -27,23 +27,19 @@
   .big-words {
     --hdr-gradient: radial-gradient(
       farthest-corner circle at 50% 50% in oklab,
-      var(--clr-accent) 12% 12%,
-      var(--yang) 56% 56%
+      var(--blueish2) 12% 12%,
+      var(--blueish) 56% 56%
     );
 
-    /* width: 100%;  */
-    /* -webkit-mask: var(--mask-edge-zig-zag-left);
-    -webkit-mask: var(--mask-edge-scalloped-horizontal); */
     background: var(--hdr-gradient);
-    /* z-index: calc(infinity - 1); */
-    /* left: 0; */
+    /* border-radius: var(--radius); */
     overflow-x: clip;
     padding-top: 2rem;
     padding-bottom: 2rem;
 
-    @media (prefers-reduced-motion: no-preference) {
+    /* @media (prefers-reduced-motion: no-preference) {
       animation: gradient-change 6s linear infinite alternate;
-    }
+    } */
 
     .inner {
       margin-inline: auto;
@@ -64,14 +60,13 @@
       display: block;
       font-family: var(--font-heading);
       line-height: 0.8;
+      color: var(--white);
     }
   }
 
   @keyframes gradient-change {
     to {
-      --clr-accent: oklch(30% 0.29 149);
-      /* --clr-accent: oklch(from var(--clr-accent) l c 249); */
-      /* --white: oklch(90% 0 91); */
+      --blueish2: oklch(30% 0.29 249);
     }
   }
 </style>

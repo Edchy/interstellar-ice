@@ -26,30 +26,32 @@ import LatestWorkDisplay from "@/components/LatestWorkDisplay.astro";
     <HeroText />
   </main>
 
-  <section>
-    <h2 data-aos="fade-right">
-      <span data-entity="heavy-open-center-cross">&#x271C;</span>
-      the spirit
-    </h2>
-    <p class="motto-text">
-      Here at <strong>Nope Digital&trade;</strong>, we believe in <em
-        >nothing.</em
-      >
-      <strong>Absolutely nothing.</strong> Optimism? <em>Pass.</em><br />
-      Team spirit? <em>Meh.</em> We take pride in saying <strong>“no”</strong> —
-      to ideas, to enthusiasm, to pretty much everything. While other studios are
-      busy chasing dreams and disrupting industries, <em
-        >we're busy disrupting coffee breaks</em
-      > and <em>declining meeting invites</em>. Our motto? <strong
-        >“Why bother.”</strong
-      > If you're looking for innovation, <strong
-        >you’ve come to the wrong place</strong
-      >. But if you’re into <em>bleak honesty</em>, <strong
-        >low-effort brilliance</strong
-      >, and <em>the art of doing the bare minimum with style</em> — <strong
-        >welcome home, baby!</strong
-      >
-    </p>
+  <section class="the-spirit">
+    <div style="padding-inline: 1rem">
+      <h2 data-aos="fade-right">
+        <span data-entity="heavy-open-center-cross">&#x271C;</span>
+        the spirit
+      </h2>
+      <p class="motto-text">
+        Here at <strong>Nope Digital&trade;</strong>, we believe in <em
+          >nothing.</em
+        >
+        <strong>Absolutely nothing.</strong> Optimism? <em>Pass.</em><br />
+        Team spirit? <em>Meh.</em> We take pride in saying <strong>“no”</strong>
+        — to ideas, to enthusiasm, to pretty much everything. While other studios
+        are busy chasing dreams and disrupting industries, <em
+          >we're busy disrupting coffee breaks</em
+        > and <em>declining meeting invites</em>. Our motto? <strong
+          >“Why bother.”</strong
+        > If you're looking for innovation, <strong
+          >you’ve come to the wrong place</strong
+        >. But if you’re into <em>bleak honesty</em>, <strong
+          >low-effort brilliance</strong
+        >, and <em>the art of doing the bare minimum with style</em> — <strong
+          >welcome home, baby!</strong
+        >
+      </p>
+    </div>
     <BigWords />
   </section>
   <section>
@@ -133,23 +135,27 @@ import LatestWorkDisplay from "@/components/LatestWorkDisplay.astro";
       font-size: var(--text-copy);
       margin-bottom: 3rem;
       text-wrap: pretty;
-      font-family: "Departure";
+      /* font-family: "Departure"; */
     }
 
     & > h2,
+    & > div h2,
     .idontfuckingknow {
       margin-bottom: 1rem;
     }
+  }
 
-    @media (width < 1200px) {
-      margin-inline: 1rem;
+  @media (width < 1200px) {
+    section:not(.the-spirit) {
+      padding-inline: 1rem;
     }
   }
+
   h2 {
-    font-size: clamp(2rem, 6vw + 1rem, 6rem);
+    font-size: clamp(2rem, 4vw + 1rem, 4rem);
     /* font-family: var(--font-brand); */
     /* font-weight: normal; */
-    font-family: "Departure";
+    /* font-family: "Departure"; */
   }
   main {
     position: relative;
@@ -161,14 +167,11 @@ import LatestWorkDisplay from "@/components/LatestWorkDisplay.astro";
     padding-block: 2rem;
     background-image: url("/img/no-motion-nik.webp");
     background-position: center;
-    background-color: var(--clr-accent);
-    background-color: var(--yin);
     background-color: var(--blueish);
     /* background-repeat: no-repeat; */
     background-size: cover;
     background-blend-mode: lighten;
     /* background-blend-mode: var(--blend-mode); */
-    /* background-color: var(--clr-accent); */
 
     &::before {
       content: "";
@@ -211,7 +214,9 @@ import LatestWorkDisplay from "@/components/LatestWorkDisplay.astro";
     min-height: 100%;
     transform: translate(-50%, -50%);
     object-fit: cover;
-    mix-blend-mode: luminosity;
+    mix-blend-mode: color-burn;
+    /* mix-blend-mode: difference; */
+    /* mix-blend-mode: exclusion; */
     opacity: 0.7;
     /* z-index: -1; */
   }

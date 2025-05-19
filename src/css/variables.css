@@ -54,8 +54,8 @@
    --clr-primary-300: oklch(90.37% 0.2209 27.39);
    --clr-primary-200: oklch(100.37% 0.2209 27.39);
    --nice-blueish-hue: oklch(50.58% 0.2956 266.08);
-   --blu: oklch(0% 0.2956 266.08);
-   --blu2: oklch(49.58% 0.2956 266.08);
+   --blu: oklch(20% 0.2956 266.08);
+   --blu2: oklch(55.58% 0.2956 266.08);
 
    /* mode */
    --yang: light-dark(var(--white), var(--black));
@@ -103,7 +103,7 @@
    --radius: 4px;
 
    /* State */
-   --hover: 0.85;
+   --hover: 0.75;
 
    /*  */
    --gap-xs: .5rem;

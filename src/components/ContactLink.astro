@@ -7,19 +7,16 @@ const { text } = Astro.props;
 
 <style>
   a:any-link {
-    color: light-dark(var(--clr-accent), var(--clr-accent));
+    color: var(--blueish2);
     /* text-decoration: none; */
     font-weight: bold;
     transition: text-decoration 0.2s ease-in-out;
     text-align: right;
     display: block;
     margin-left: auto;
-    font-size: 1.25rem;
-    font-family: var(--font-brand);
+    /* font-size: 1.25rem; */
+    /* font-family: var(--font-brand); */
 
-    &:hover {
-      text-decoration: underline;
-      text-underline-offset: 0.25em;
-    }
+    text-underline-offset: 0.25em;
   }
 </style>

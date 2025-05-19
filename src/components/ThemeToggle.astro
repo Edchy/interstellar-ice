@@ -27,11 +27,11 @@ import { Icon } from "astro-icon/components";
     align-items: center;
     justify-content: center;
     transition: color 0.2s ease-out;
-    color: var(--yin);
+    color: var(--white);
+    filter: drop-shadow(0 0 1px var(--blueish));
 
     &:hover {
       opacity: var(--hover);
-      color: var(--clr-accent);
     }
     & .moon {
       display: block;
@@ -65,6 +65,7 @@ import { Icon } from "astro-icon/components";
     @media (width > 1200px) {
       color: var(--yin);
       /* margin-bottom: 2rem; */
+      filter: none;
     }
   }
 

@@ -39,7 +39,7 @@
 }
 
 ::selection {
-  background-color: oklch(from var(--clr-accent) l c h / 0.9);
+  background-color: oklch(from var(--blueish2) l c h / 0.9);
   color: var(--yang);
 }
 
@@ -48,9 +48,7 @@ html {
   interpolate-size: allow-keywords;
   color-scheme: dark light;
   background-color: var(--yang);
-  /* background-color: var(--blueish); */
   color: var(--yin);
-  /* scrollbar-color: var(--clr-accent) var(--yang); */
 
   ::-webkit-scrollbar {
     height: 100%;
@@ -157,6 +155,8 @@ h6 {
   font-family: var(--font-heading);
 
 }
+
+
 
 /* p {
   margin-block: 1em;

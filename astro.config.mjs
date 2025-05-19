@@ -19,7 +19,7 @@ export default defineConfig({
   },
   markdown: {
     shikiConfig: {
-      theme: "plastic",
+      theme: "andromeeda",
     },
     remarkPlugins: [remarkReadingTime],
   },
