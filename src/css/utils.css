@@ -13,15 +13,26 @@
   /* gap: 1rem; */
 }
 
-.hidden {
+.gradient-text {
+  background: var(--gradient);
+  background-clip: text;
+  font-weight: bold;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.sr-only {
   /* Hide text accessibly */
+  position: absolute;
+  overflow: hidden;
   clip: rect(0 0 0 0);
   clip-path: inset(50%);
   height: 1px;
-  overflow: hidden;
-  position: absolute;
-  white-space: nowrap;
   width: 1px;
+  white-space: nowrap;
+  padding: 0;
+  margin: -1px;
+  border: 0;
 }
 
 /* .quick-flip {
@@ -69,7 +80,7 @@ a:focus-visible {
   &:focus-within {
     outline: 2px solid var(--yin);
     outline-offset: .5rem;
-    outline-color: var(--clr-accent);
+    outline-color: var(--blueish2);
     border-radius: var(--radius);
 
     &>* {

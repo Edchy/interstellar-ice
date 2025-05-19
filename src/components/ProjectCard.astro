@@ -1,0 +1,107 @@
+---
+import { Icon } from "astro-icon/components";
+
+const { project } = Astro.props;
+const { title, description, github, url, icons } = project.data;
+---
+
+<li class="project-card">
+  <div class="card-inner">
+    <a href={url}>
+      <h3 transition:name={title}>{title} →</h3>
+    </a>
+
+    {
+      icons && (
+        <ul class="logos">
+          {icons.map((icon: string) => (
+            <li title={icon}>
+              <Icon class="tech-icon" name={`devicon:${icon}`} size={20} />
+            </li>
+          ))}
+          <li>
+            <a href={github} aria-label="github">
+              <Icon name="ri:github-line" size={24} color={"var(--yin)"} />
+            </a>
+          </li>
+        </ul>
+      )
+    }
+    <p>{description}</p>
+  </div>
+
+  <style>
+    .tech-icon {
+      filter: drop-shadow(0 0 1px oklch(from var(--white) l c h / 0.8));
+    }
+    .project-card {
+      background-color: var(--yang);
+      background-color: oklch(from var(--blueish) l c h / 0.3);
+
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      overflow-x: clip;
+      width: 100%;
+      transition:
+        transform 0.2s ease,
+        box-shadow 0.2s ease;
+      position: relative;
+      border: 1px solid oklch(from var(--yin) l c h / 0.1);
+      padding-block: 1.5rem;
+    }
+    .logos {
+      list-style-type: none;
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+    }
+    li:last-child {
+      margin-left: auto;
+    }
+    .card-inner {
+      padding-inline: 1.5rem;
+      display: grid;
+      gap: 1rem;
+    }
+
+    h3 {
+      font-family: var(--font-heading);
+      font-size: 1.5rem;
+      margin: 0 0 0.5rem 0;
+      color: var(--yin);
+      line-height: 1.2;
+      display: inline-block;
+      transition: transform 0.2s ease;
+      text-decoration: underline;
+      &:hover {
+        transform: translateX(5px);
+      }
+    }
+    a:any-link {
+      color: var(--yin);
+      text-decoration: underline;
+      text-decoration-thickness: 0.125rem;
+      text-underline-offset: 0.25rem;
+    }
+    p {
+      margin-bottom: 1.5rem;
+      font-size: 0.9rem;
+      line-height: 1.5;
+      color: var(--yin);
+    }
+
+    .read-more {
+      display: inline-block;
+      color: currentColor;
+      font-weight: bold;
+      text-decoration: none;
+      font-size: 0.9rem;
+      transition: transform 0.2s ease;
+      margin-top: auto;
+    }
+
+    .read-more:hover {
+      transform: translateX(5px);
+    }
+  </style>
+</li>

@@ -6,10 +6,9 @@ import { Icon } from "astro-icon/components";
 import { fade } from "astro:transitions";
 import MDPostHeader from "./MDPostHeader.astro";
 import "@/css/postContent.css";
-import { EMAIL } from "@/utils/data";
+import MDPostFooter from "./MDPostFooter.astro";
 
 const { frontmatter } = Astro.props;
-
 // interface Props {
 //   frontmatter: {
 //     title: string;
@@ -23,7 +22,6 @@ const { frontmatter } = Astro.props;
 // }
 const { title, subtitle, minutesRead, description, pubDate, author, tags } =
   frontmatter;
-// console.log(tags);
 ---
 
 <PageLayout
@@ -40,10 +38,7 @@ const { title, subtitle, minutesRead, description, pubDate, author, tags } =
     <div class="post-content flow">
       <slot />
     </div>
-    <footer>
-      Add nav to other posts here. If you find any mistakes, errors or typos
-      please let me know <a href={`mailto:${EMAIL}`}>my email</a>
-    </footer>
+    <MDPostFooter {tags} {title} />
   </main>
 </PageLayout>
 

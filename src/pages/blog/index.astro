@@ -1,14 +1,14 @@
 ---
 import BlogPostDisplay from "@/layouts/blogLayouts/BlogPostDisplay.astro";
 import PageLayout from "@/layouts/PageLayout.astro";
-import TagsDisplay from "@/components/TagsDisplay.astro";
+
+const { tag } = Astro.props;
 ---
 
 <PageLayout
   title="Blog"
-  description="Blog posts about various topics, mostyly about web development."
-  showFooter={false}
-  showAside={false}
+  description="Blog posts about various topics, mostly about web-development."
+  showAside={true}
 >
   <main>
     <BlogPostDisplay />
@@ -17,6 +17,12 @@ import TagsDisplay from "@/components/TagsDisplay.astro";
 
 <style>
   main {
-    /* padding: 1rem; */
+    padding-inline: 1rem;
+    min-height: 100vh;
+  }
+  @media (width < 1200px) {
+    main {
+      padding-top: var(--header-offset);
+    }
   }
 </style>

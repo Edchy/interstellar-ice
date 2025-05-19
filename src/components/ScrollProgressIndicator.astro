@@ -6,11 +6,11 @@ const { anchor } = Astro.props;
 
 <a href={anchor} class="back-to-top" aria-label="Back to top">
   <!-- aria-hidden="true" to hide the icon from screen readers -->
-  <span class="hidden">Back to top</span>
+  <span class="hidden sr-only">Back to top</span>
   <Icon
     name="ri:arrow-down-s-line"
     size={24}
-    color={"var(--yin)"}
+    color={"oklch(from var(--blu) 70% c h )"}
     aria-hidden="true"
   />
 </a>
@@ -48,14 +48,13 @@ const { anchor } = Astro.props;
   .back-to-top {
     /* --clr-accent2: oklch(from var(--yin) l c h / 0.2); */
     background-image: linear-gradient(
-      var(--clr-accent) 0% var(--progress),
+      var(--blueish2) 0% var(--progress),
       transparent var(--progress) 100%
     );
     animation: progress linear;
     animation-timeline: scroll();
-    /* border: 1px dotted var(--clr-accent); */
-    /* border-bottom: 1px solid var(--clr-accent); */
-    box-shadow: 2px 2px oklch(from var(--clr-accent) l c h / 0.1);
+    border: 1px solid var(--blueish2);
+    box-shadow: 2px 2px oklch(from var(--clr-blueish2) l c h / 0.1);
     border-radius: var(--radius);
     padding: var(--gap-xs);
     /* position: fixed;
@@ -83,7 +82,7 @@ const { anchor } = Astro.props;
 
     @supports not (animation-timeline: scroll()) {
       --angle: -180deg;
-      background: var(--clr-accent);
+      background: var(--blueish2);
       /* transform: rotate(-180deg); */
     }
   }

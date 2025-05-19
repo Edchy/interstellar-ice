@@ -1,0 +1,94 @@
+---
+import { Icon } from "astro-icon/components";
+import { getCollection } from "astro:content";
+
+const allProjects = await getCollection("projects");
+---
+
+<div class="grid">
+  {
+    allProjects.map((p) => {
+      return (
+        <article class="blog-post">
+          <a href={p.data.url}>
+            <h2 transition:name={`${p.data.title}`}>{p.data.title} →</h2>
+          </a>
+          <ul class="logos">
+            {p.data.icons &&
+              p.data.icons.map((icon: string) => (
+                <li class="tech-icon" title={icon}>
+                  <Icon class="tech-icon" name={`devicon:${icon}`} size={24} />
+                </li>
+              ))}
+            <li>
+              {" "}
+              <a href={p.data.github} aria-label="github">
+                <Icon name="ri:github-line" size={20} color={"var(--yin)"} />
+              </a>
+            </li>
+          </ul>
+          <p class="description">{p.data.description}</p>
+        </article>
+      );
+    })
+  }
+</div>
+
+<style>
+  article {
+    background-color: var(--yang);
+
+    padding: 1rem;
+    border-radius: var(--radius);
+    color: var(--yin);
+    border: 1px solid oklch(from var(--yin) l c h / 0.2);
+    display: grid;
+    grid-template-rows: subgrid;
+    grid-row: span 3;
+  }
+  a:any-link {
+    text-decoration: underline;
+    text-underline-offset: 0.4rem;
+    color: var(--yin);
+  }
+
+  h2,
+  p {
+    color: var(--yin);
+  }
+  h2 {
+    line-height: 1.3;
+    display: inline-block;
+    transition: transform 0.2s ease;
+    text-decoration: underline;
+    &:hover {
+      transform: translateX(5px);
+    }
+  }
+  ul {
+    list-style-type: none;
+    display: flex;
+    gap: 1rem;
+  }
+  li:last-child {
+    margin-left: auto;
+  }
+  .tech-icon {
+    filter: drop-shadow(0 0 1px oklch(from var(--white) l c h / 0.4));
+  }
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+
+    gap: 1rem;
+  }
+
+  .description {
+    display: -webkit-box;
+    -webkit-line-clamp: 6;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    line-height: 1.2;
+  }
+</style>

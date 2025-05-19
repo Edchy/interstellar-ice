@@ -1,0 +1,129 @@
+---
+import { EMAIL } from "@/utils/data";
+import { getPosts } from "@/utils/posts";
+import { formatDate } from "@/utils/utils";
+const posts = await getPosts(false);
+const { tags: currentTags, title } = Astro.props;
+
+const relatedPosts = posts
+  .filter((post) => {
+    return (
+      post.data.tags.some((tag) => {
+        return currentTags.includes(tag);
+      }) && post.data.title !== title
+    );
+  })
+  .slice(0, 2);
+---
+
+<footer>
+  <div class="related-posts">
+    <h4>related posts</h4>
+    {
+      relatedPosts.length > 0 ? (
+        <section>
+          {relatedPosts.map((post) => {
+            return (
+              <a href={`/blog/${post.id}`}>
+                <h3>{post.data.title}</h3>
+                <ul class="tags">
+                  {post.data.tags.map((t) => (
+                    <li class="tag">{t}</li>
+                  ))}
+                </ul>
+                <span class="post-date">{formatDate(post.data.pubDate)}</span>
+                <span class="description">{post.data.description}</span>
+              </a>
+            );
+          })}
+        </section>
+      ) : (
+        <p class="empty">no related posts</p>
+      )
+    }
+  </div>
+  <div class="notify">
+    <p>
+      Hey! Thanks for reading — if you spot a mistake, typo, or just think
+      something could be clearer, I’d genuinely love to hear it. Feedback is
+      kinda my jam. <a href={`mailto:${EMAIL}`}>Drop a note</a> 💚
+    </p>
+  </div>
+</footer>
+
+<style>
+  footer {
+    padding-block-end: 5rem;
+    font-size: 0.875rem;
+  }
+  h2 {
+    font-size: 1rem;
+    /* text-align: center; */
+  }
+  h3 {
+    font-size: 1.5rem;
+    background-color: var(--yin);
+    color: var(--yang);
+    padding: 1rem;
+  }
+  span {
+    display: block;
+    padding-inline: 1rem;
+    padding-block-end: 1rem;
+  }
+  .post-date {
+    color: oklch(from var(--yin) l c h / 0.5);
+    font-weight: bold;
+  }
+  .empty {
+    text-align: right;
+  }
+  .tags {
+    display: flex;
+    list-style: none;
+    gap: 0.5rem;
+    font-size: 0.75rem;
+    padding-inline: 1rem;
+
+    .tag {
+      padding: 0.125rem 0.5rem;
+      border: 1px solid var(--yin);
+      border-radius: var(--radius);
+    }
+  }
+  .related-posts {
+    margin-block: 2rem;
+    border: 1px solid var(--yang);
+
+    section {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+
+      gap: 1rem;
+      margin-block: 2rem;
+    }
+
+    a {
+      text-decoration: none;
+      display: grid;
+      grid-template-rows: subgrid;
+      grid-row: 1 / 5;
+      gap: 1rem;
+      border: 1px solid var(--yin);
+      color: var(--yin);
+      border-radius: var(--radius);
+
+      &:hover {
+        border-color: var(--blueish2);
+      }
+    }
+  }
+  .notify p {
+    max-width: 65ch;
+    margin-inline: auto;
+  }
+  a:any-link {
+    text-underline-offset: 5px;
+    transition: opacity 0.1s ease-out;
+  }
+</style>

@@ -1,13 +1,15 @@
 ---
 import { EMAIL } from "@/utils/data";
+import ContactLink from "./ContactLink.astro";
 ---
 
 <p class="hero-text">
-  <!-- No, but really. <br /> As an aspiring web designer, developer, and programmer,
-  I focus on creating websites, apps, and interfaces that are not only functional
-  — but meaningful, sexy and intuitive. Need a hand with your next digital thing? -->
-  Bla bla bla bla blah blah. Need a hand with your next digital thing?
-  <a href={`mailto:${EMAIL}`}> &#x2937; Hit me up.</a>
+  <!-- Basically, <strong>we build for the web</strong>. Websites, apps, prototypes,
+  weird experiments — if it lives in a browser, we’re into it.<br /> -->
+  <strong>Need a hand with your next digital thing?</strong> Whether it's just an
+  idea — or halfway built and held together with duct tape, we’re here for it. Bring
+  the chaos — we’ll bring the code.
+  <ContactLink> Hit us up </ContactLink>
 </p>
 <style>
   p.hero-text {
@@ -16,26 +18,11 @@ import { EMAIL } from "@/utils/data";
     font-size: clamp(0.875rem, 1.5vw, 1rem);
     font-style: italic;
     text-wrap: pretty;
-    line-height: 1.2;
+    line-height: 1.4;
     max-width: 35ch;
     text-align: justify;
     align-self: flex-end;
     color: var(--yin);
     z-index: 2;
-
-    a:any-link {
-      color: light-dark(var(--clr-accent), var(--clr-accent));
-      text-decoration: none;
-      font-weight: bold;
-      transition: text-decoration 0.2s ease-in-out;
-      text-align: right;
-      display: block;
-      margin-left: auto;
-
-      &:hover {
-        text-decoration: underline;
-        text-underline-offset: 0.25em;
-      }
-    }
   }
 </style>

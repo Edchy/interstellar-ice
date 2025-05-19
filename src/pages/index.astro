@@ -13,29 +13,45 @@ import Footer from "@/layouts/Footer.astro";
 import LatestPostsDisplay from "@/components/LatestPostsDisplay.astro";
 import HeroText from "@/components/HeroText.astro";
 import BigWords from "@/components/BigWords.astro";
+import LatestWorkDisplay from "@/components/LatestWorkDisplay.astro";
 ---
 
-<PageLayout title="Nope Studios" showAside={true}>
-  <main>
+<PageLayout showAside={true}>
+  <main class="video-background">
+    <video id="bg-video" autoplay muted loop playsinline>
+      <source src="/img/nikita.mp4" type="video/mp4" />
+    </video>
+    <h1 class="hidden sr-only">Nope Digital. We build for the web.</h1>
     <WordMorph />
     <HeroText />
   </main>
 
-  <section>
-    <h2 data-aos="fade-right">
-      <span data-entity="heavy-open-center-cross">&#x271C;</span>
-      the spirit
-    </h2>
-    <p class="motto-text">
-      Here at Nope Haus, we believe in nothing. Absolutely nothing. Optimism?
-      Pass. Team spirit? Meh. We take pride in saying "no" — to ideas, to
-      enthusiasm, to pretty much everything. While other studios are busy
-      chasing dreams and disrupting industries, we're busy disrupting coffee
-      breaks and declining meeting invites. Our motto? <em>"Why bother."</em> If
-      you're looking for innovation, you've come to the wrong place. But if you're
-      into bleak honesty, low-effort brilliance, and the art of doing the bare minimum
-      with style — welcome home, baby!
-    </p>
+  <section class="the-spirit">
+    <div style="padding-inline: 1rem">
+      <h2 data-aos="fade-right">
+        <span data-entity="heavy-open-center-cross">&#x271C;</span>
+        the spirit
+      </h2>
+      <p class="motto-text">
+        Here at <strong>Nope Digital&trade;</strong>, we believe in <em
+          >nothing.</em
+        >
+        <strong>Absolutely nothing.</strong> Optimism? <em>Pass.</em>
+        Team spirit? <em>Meh.</em> We take pride in saying <strong>“no”</strong>
+        — to ideas, to enthusiasm, to pretty much everything. While other studios
+        are busy chasing dreams and disrupting industries, <em
+          >we're busy disrupting coffee breaks</em
+        > and <em>declining meeting invites</em>. Our motto? <strong
+          >“Why bother.”</strong
+        > If you're looking for innovation, <strong
+          >you’ve come to the wrong place</strong
+        >. But if you’re into <em>bleak honesty</em>, <strong
+          >low-effort brilliance</strong
+        >, and <em>the art of doing the bare minimum with style</em> — <strong
+          >welcome home, baby!</strong
+        >
+      </p>
+    </div>
     <BigWords />
   </section>
   <section>
@@ -44,101 +60,126 @@ import BigWords from "@/components/BigWords.astro";
       the blog
     </h2>
     <p class="motto-text">
-      A place for us to think out loud, cement what we’re learning, and maybe
-      help someone else along the way. From web development to the meaning of
-      life (spoiler: it’s nothing), we write to make sense of it all. Below are
-      our latest posts: part notes, part rants, occasionally useful.
+      <strong>A place for us to think out loud</strong>, <em
+        >cement what we’re learning</em
+      >, and maybe help someone else along the way. From <strong
+        >web development</strong
+      > to <em>the meaning of life</em>
+      <span title="Spoiler alert!"
+        >(spoiler: <strong>it’s nothing</strong>)</span
+      >, we write to make sense of it all. Below are our latest posts: <em
+        >part notes</em
+      >, <em>part rants</em>, <strong>occasionally useful</strong>.
     </p>
     <LatestPostsDisplay />
   </section>
-  <!-- <section class="cat-section">
-    &numero;&Popf;
-    <span>&#9787;</span>
-  </section> -->
+  <section>
+    <h2 data-aos="fade-right">
+      <span data-entity="heavy-open-center-cross">&#x271C;</span>
+      the work
+    </h2>
+    <p class="motto-text">
+      Here's a small, humble sampling of things I’ve built. Is it a
+      <strong>groundbreaking, world-changing portfolio?</strong> Not exactly. It's
+      mostly
+      <em>todo apps</em>. Because apparently that’s the rite of passage in this
+      industry. But hey, every great developer has to start somewhere. So, while
+      I'm not exactly printing T-shirts of this stuff, it's all part of the
+      <strong>journey™</strong>. <strong>Progress over perfection</strong>,
+      right?
+    </p>
+    <LatestWorkDisplay />
+  </section>
+
   <section class="bb">
     <div class="idontfuckingknow">
       <h2 data-aos="fade-right">
-        <span data-entity="heavy-open-center-cross">&#x271C; the tools</span>
+        <span data-entity="heavy-open-center-cross">&#x271C; the stack</span>
       </h2>
-      <span class="motto-text">
-        (most are just here because they have nice looking logos)
-      </span>
     </div>
+    <p class="motto-text">
+      A lovingly bloated shrine to <strong>the tools we claim to use</strong>,
+      plus a few that just have <strong>really sexy logos</strong>.
+      <em>Do we need all of them?</em>
+      <strong>Absolutely not.</strong> But nothing says “we know what we’re doing”
+      like a tech stack that could power a rocket launch — or at least a portfolio
+      site.
+      <em>Notice there’s no WordPress?</em> Yeah, that’s intentional. We prefer to
+      <strong>actually write code</strong>, not wrestle with themes, plugins, or
+      whatever cursed setup your cousin’s wedding site is running.
+      <strong>Build it from scratch or don’t bother.</strong>
+    </p>
     <IconCarousel />
   </section>
 </PageLayout>
-
+<script>
+  const prefersReducedMotion = window.matchMedia(
+    "(prefers-reduced-motion: reduce)"
+  );
+  if (prefersReducedMotion.matches) {
+    const video = document.getElementById("bg-video");
+    if (video) {
+      video.remove();
+    }
+  }
+</script>
 <style>
   section {
-    margin-block: 20rem;
-    padding-inline: clamp(0.75rem, 0.5rem + 1vw, 2rem);
+    margin-block: 15rem;
+    /* padding-inline: clamp(0.75rem, 0.5rem + 1vw, 2rem); */
 
     .motto-text {
+      --text-copy: clamp(0.875rem, 2vw + 0.5rem, 1rem);
+      /* font-family: var(--font-heading); */
       max-width: 65ch;
-      font-size: clamp(0.7292rem, 0.6515rem + 0.3313vw, 0.9rem);
+      font-size: var(--text-copy);
       margin-bottom: 3rem;
       text-wrap: pretty;
+      /* font-family: "Departure"; */
     }
 
     & > h2,
+    & > div h2,
     .idontfuckingknow {
       margin-bottom: 1rem;
     }
   }
-  /* section {
-    margin-block-end: 20rem;
-    padding-inline: 2rem;
-  }
-  h2 {
-    font-size: 1rem;
-    font-style: italic;
-    color: var(--clr-accent);
-    text-align: left;
-    margin-bottom: 1rem;
-  } */
-  /* .cat-section {
-    background-color: var(--clr-accent);
-    margin-block: 10rem;
-    position: absolute;
-    left: 0;
-    right: 0;
-    height: 20rem;
-    display: grid;
-    place-content: center;
 
-    & > span {
-      color: var(--yang);
-      font-size: 5rem;
-      font-family: var(--font-brand);
+  @media (width < 1200px) {
+    section:not(.the-spirit) {
+      padding-inline: 1rem;
     }
-  } */
+  }
 
+  h2 {
+    font-size: clamp(2rem, 4vw + 1rem, 4rem);
+    /* font-family: var(--font-brand); */
+    /* font-weight: normal; */
+    /* font-family: "Departure"; */
+  }
   main {
     position: relative;
     display: flex;
     justify-content: space-between;
     flex-direction: column;
-    min-height: 90vh;
+    min-height: 100vh;
+    padding-inline: 1rem;
+    padding-block: 2rem;
     background-image: url("/img/no-motion-nik.webp");
     background-position: center;
-    /* padding-inline: 1rem; */
-    padding-block: 2rem;
     background-color: var(--blueish);
-    background-color: var(--clr-accent);
-    background-color: var(--yang);
-    background-repeat: no-repeat;
+    /* background-repeat: no-repeat; */
     background-size: cover;
-    background-blend-mode: hard-light;
-    background-blend-mode: var(--blend-mode);
-    margin-block-end: 5rem;
+    background-blend-mode: lighten;
+    /* background-blend-mode: var(--blend-mode); */
 
     &::before {
       content: "";
       position: absolute;
+      z-index: 1;
       bottom: 0;
       left: 0;
       right: 0;
-      /* width: 20px; */
       height: 500px;
       --hdr-gradient: linear-gradient(
         to top in oklch,
@@ -149,22 +190,6 @@ import BigWords from "@/components/BigWords.astro";
 
       background: var(--hdr-gradient);
     }
-    &::after {
-      content: "";
-      position: absolute;
-      top: 0;
-      left: 0;
-      right: 0;
-      height: 20px;
-      --hdr-gradient: linear-gradient(
-        to bottom in oklch,
-        var(--yang) 17% 17%,
-        54%,
-        oklch(98% 0 91 / 0) 81% 81%
-      );
-
-      /* background: var(--hdr-gradient); */
-    }
 
     @media (width > 1200px) {
       min-height: 100vh;
@@ -173,9 +198,31 @@ import BigWords from "@/components/BigWords.astro";
         height: 0px;
       }
     }
+  }
+  .video-background {
+    position: relative;
+    width: 100%;
+    height: 100vh;
+    overflow: hidden;
+  }
 
-    @media (prefers-reduced-motion: no-preference) {
-      background-image: url("/img/nik.gif");
+  .video-background video {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    min-width: 100%;
+    min-height: 100%;
+    transform: translate(-50%, -50%);
+    object-fit: cover;
+    mix-blend-mode: color-burn;
+    /* mix-blend-mode: difference; */
+    /* mix-blend-mode: exclusion; */
+    opacity: 0.7;
+    /* z-index: -1; */
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .video-background video {
+      display: none;
     }
   }
 </style>

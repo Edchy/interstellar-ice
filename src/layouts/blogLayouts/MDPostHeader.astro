@@ -6,7 +6,6 @@ import { string_to_slug, formatDate } from "@/utils/utils";
 import { capitalizeFirstLetter } from "@/utils/utils";
 import { fade, slide } from "astro:transitions";
 import "@/css/postContent.css";
-// console.log(frontmatter);
 ---
 
 <header class="inner post-header content-grid">
@@ -43,13 +42,15 @@ import "@/css/postContent.css";
   header {
     margin-block-start: 2rem;
     margin-block-end: 5rem;
+    @media (width < 1200px) {
+      padding-top: var(--header-offset);
+    }
   }
 
   .post-title {
     /* text-box: trim-both cap alphabetic; */
 
     font-family: var(--font-heading);
-
     /* font-weight: 900;
     font-optical-sizing: auto;
     font-style: italic;
@@ -70,6 +71,8 @@ import "@/css/postContent.css";
     font-style: italic;
     color: var(--neutral-200);
     font-family: var(--font-heading);
+    /* font-family: "Departure"; */
+
     /* text-align: end; */
   }
   .pubdate,
@@ -87,6 +90,7 @@ import "@/css/postContent.css";
   .tags {
     display: flex;
     flex-wrap: wrap;
+    margin-left: 1rem;
     /* align-items: center; */
     gap: 0.5rem;
     /* margin-block-start: 1.5rem; */
@@ -102,8 +106,8 @@ import "@/css/postContent.css";
     border: 1px solid var(--yin);
 
     &:hover {
-      background-color: var(--clr-accent);
-      color: var(--black);
+      background-color: var(--blueish2);
+      color: var(--white);
     }
   }
 </style>

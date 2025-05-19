@@ -14,16 +14,17 @@ const { filteredPosts, tag } = Astro.props as Props;
 
 const blogPosts = filteredPosts || (await getPosts(true));
 
-const allPosts = blogPosts.filter((post) => !post.data.draft);
-
-allPosts.sort(
+// if (filteredPosts) {
+// }
+const allPosts = blogPosts.filter((post) => !post.data.draft).sort(
   (a, b) =>
     new Date(b.data.pubDate).valueOf() - new Date(a.data.pubDate).valueOf()
 );
 
+
 ---
 
-<h1>blog <span class="tag">{tag ? `@ ${tag}` : ""}</span></h1>
+<h1 transition:animate={slide({ duration: '0.4s' })}>blog <span class="tag">{tag ? `@ ${tag}` : ""}</span></h1>
 <TagsDisplay />
 <div class="grid">
   {
@@ -50,19 +51,24 @@ allPosts.sort(
       background-color: var(--yang);
       padding: 1rem;
       border-radius: var(--radius);
-      border-bottom: 1px solid var(--clr-accent);
+      /* border-bottom: 1px solid var(--yin);
+      border-left: 1px solid var(--yin); */
       color: var(--yin);
+      /* box-shadow: var(--shadow); */
+      border: 1px solid oklch(from var(--yin) l c h / 0.2);
 
-      /* &:hover {
-        background-color: var(--blueish);
-        color: var(--white);
-      } */
+     
+      &:hover {
+        border-color: var(--blueish2);
+        background-color: oklch(from var(--yang) l c h / 0.9);
+      }
 
   }
   a {
     --flow-space: 0.25em;
   }
   h1 {
+    --text-huge: clamp(5rem, 1rem + 15vw, 15rem);
     font-size: var(--text-huge);
     font-family: var(--font-heading);
     margin-block-end: 2rem;
@@ -73,11 +79,11 @@ allPosts.sort(
   }
   .subtitle {
     font-size: 1rem;
-    color: oklch(from var(--yin) l c h / 0.7);
+    color: oklch(from var(--yin) l c h / 0.6);
     /* color: oklch(from var(--yang) l c h / 0.7); */
   }
   .post-date {
-    color: oklch(from var(--yin) l c h / 0.5);
+    color: oklch(from var(--yin) l c h / 0.4);
     /* color: oklch(from var(--yang) l c h / 0.5); */
     font-weight: bold;
     font-size: 0.75rem;
@@ -87,9 +93,9 @@ allPosts.sort(
   .grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
-    gap: .5rem;
+    gap: 1rem;
 
-    @media (hover) and (prefers-reduced-motion: no-preference) {
+    /* @media (hover) and (prefers-reduced-motion: no-preference) {
       &>article {
       transition:
         transform 0.2s,
@@ -101,7 +107,7 @@ allPosts.sort(
         opacity: 0.2;
         transform: scale(0.95);
       }
-    }
+    } */
   }
 
   .description {

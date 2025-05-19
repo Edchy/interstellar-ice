@@ -3,8 +3,18 @@ import { Icon } from "astro-icon/components";
 ---
 
 <button aria-label="toggle-theme" class="toggle" title="toggle theme">
-  <Icon aria-hidden="true" name="ri:moon-line" size={20} class="moon" />
-  <Icon aria-hidden="true" name="ri:sun-line" size={20} class="sun" />
+  <Icon
+    aria-hidden="true"
+    name="line-md:sunny-outline-to-moon-alt-loop-transition"
+    size={20}
+    class="moon"
+  />
+  <Icon
+    aria-hidden="true"
+    name="line-md:moon-alt-to-sunny-outline-loop-transition"
+    size={20}
+    class="sun"
+  />
 </button>
 
 <style>
@@ -12,17 +22,17 @@ import { Icon } from "astro-icon/components";
     background: none;
     border: none;
     padding: var(--gap-xs);
+    /* padding-bottom: 2rem; */
     display: flex;
     align-items: center;
     justify-content: center;
     transition: color 0.2s ease-out;
-    color: var(--clr-accent);
+    color: var(--white);
+    filter: drop-shadow(0 0 1px var(--blueish));
 
     &:hover {
       opacity: var(--hover);
-      color: var(--clr-accent);
     }
-    /* Show sun icon in light mode, hide moon icon */
     & .moon {
       display: block;
     }
@@ -31,7 +41,6 @@ import { Icon } from "astro-icon/components";
       display: none;
     }
 
-    /* When toggle has 'active' class (dark mode), show moon icon and hide sun icon */
     &.active .moon {
       display: none;
     }
@@ -55,6 +64,8 @@ import { Icon } from "astro-icon/components";
     }
     @media (width > 1200px) {
       color: var(--yin);
+      /* margin-bottom: 2rem; */
+      filter: none;
     }
   }
 
@@ -73,24 +84,24 @@ import { Icon } from "astro-icon/components";
 </style>
 
 <script>
-  document.addEventListener("DOMContentLoaded", () => {
-    console.log("DOMContentLoaded");
-  });
-  document.addEventListener("astro:after-preparation", () => {
-    console.log("after-preparation");
-  });
-  document.addEventListener("astro:page-load", () => {
-    console.log("page-load");
-  });
-  document.addEventListener("astro:after-swap", () => {
-    console.log("after-swap");
-  });
-  document.addEventListener("astro:before-preparation", () => {
-    console.log("before-preparation");
-  });
-  document.addEventListener("astro:before-swap", () => {
-    console.log("before-swap");
-  });
+  // document.addEventListener("DOMContentLoaded", () => {
+  //   console.log("DOMContentLoaded");
+  // });
+  // document.addEventListener("astro:after-preparation", () => {
+  //   console.log("after-preparation");
+  // });
+  // document.addEventListener("astro:page-load", () => {
+  //   console.log("page-load");
+  // });
+  // document.addEventListener("astro:after-swap", () => {
+  //   console.log("after-swap");
+  // });
+  // document.addEventListener("astro:before-preparation", () => {
+  //   console.log("before-preparation");
+  // });
+  // document.addEventListener("astro:before-swap", () => {
+  //   console.log("before-swap");
+  // });
 
   function setupThemeToggle() {
     const toggle = document.querySelector(".toggle");
@@ -126,7 +137,7 @@ import { Icon } from "astro-icon/components";
 </script>
 <!-- // This script runs immediately when the page loads -->
 <script is:inline>
-  console.log("inline script - theme toggle");
+  // console.log("inline script - theme toggle");
 
   function getThemePreference() {
     if (typeof localStorage !== "undefined" && localStorage.getItem("theme")) {
@@ -152,9 +163,6 @@ import { Icon } from "astro-icon/components";
 
   // run after each View Transition navigation
   document.addEventListener("astro:after-swap", () => {
-    console.log(
-      "Page loaded in the astro:page-load eventlistener in the Theme Toggle inline script, updating theme"
-    );
     updateTheme();
   });
 

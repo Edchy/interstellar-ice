@@ -4,32 +4,13 @@ import logo from "../assets/img/pet.svg";
 ---
 
 <div class="logo">
-  <!-- <Image color="white" src={logo} width={30} height={30} alt="logo" /> -->
-
   <a href="/">
-    <span>Nope.</span>
-    <!-- <span>NØPE</span> -->
-    <span>haus.</span>
+    <span>Nope</span>
+    <span>digital</span>
   </a>
-
-  <!-- <span>e</span><span style="color: var(--clr-primary-500)">three</span><span
-    >e</span
-  ><span>&#123;:::::::::::&gt;</span> -->
-  <!-- <span style="rotate: -90deg; display: block">E</span>
-  <span style="rotate: -45deg; display: block; color: var(--clr-accent);"
-    >3</span
-  >
-  <span>E</span> -->
-  <!-- <span>Neon <br /> Rats</span> -->
 </div>
 <style>
-  /* span {
-    line-height: 0.9;
-    font-family: monospace;
-    font-family: "Kass", sans-serif;
-    text-transform: uppercase;
-  } */
-  /* .logo {
+  .logo {
     display: block;
     transform: translate(0);
     transition: all 0.5s ease-in-out;
@@ -37,7 +18,7 @@ import logo from "../assets/img/pet.svg";
     @starting-style {
       transform: translateY(-200%);
     }
-  } */
+  }
 
   .logo a:any-link {
     display: flex;
@@ -46,9 +27,8 @@ import logo from "../assets/img/pet.svg";
     line-height: 0.9;
     font-size: 1.5rem;
     font-weight: bold;
-    /* margin-top: 1rem; */
-    color: var(--clr-accent);
-    font-family: var(--font-heading);
+    color: var(--white);
+    text-shadow: 1px 0 0 var(--blueish);
     font-family: var(--font-brand);
     transition: color 0.125s ease-in-out;
 
@@ -56,10 +36,7 @@ import logo from "../assets/img/pet.svg";
       color: var(--yin);
       rotate: -90deg;
       transform: translateX(-20px);
-    }
-
-    &:hover {
-      color: var(--clr-accent);
+      text-shadow: none;
     }
   }
 </style>

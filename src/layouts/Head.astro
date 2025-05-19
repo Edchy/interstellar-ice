@@ -1,10 +1,10 @@
 ---
 import { ClientRouter } from "astro:transitions";
+import OG from "@/layouts/OG.astro";
+import { pageInfo } from "@/utils/data";
 
-const {
-  title = "Nope Studios",
-  description = "At Nope, we design and develop websites and apps that are easy on the eyes, fun to use, and actually do what they’re supposed to.",
-} = Astro.props;
+const { title = pageInfo.title, description = pageInfo.description } =
+  Astro.props;
 ---
 
 <head>
@@ -14,7 +14,14 @@ const {
   <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
   <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
   <link rel="manifest" href="/site.webmanifest" />
-
+  <!-- <link rel="sitemap" href="/sitemap-index.xml" /> -->
+  <link
+    rel="alternate"
+    type="application/rss+xml"
+    title="Your Site's Title"
+    href={new URL("rss.xml", Astro.site)}
+  />
+  <OG {title} {description} />
   <meta name="generator" content={Astro.generator} />
   <title>{title}</title>
   <meta name="description" content={description} />

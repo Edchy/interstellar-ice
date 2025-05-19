@@ -1,13 +1,17 @@
 ---
 import { Icon } from "astro-icon/components";
-import { devicon, devPlain, catppuccin } from "../utils/data.js";
+import { devPlain, catppuccin, devicon } from "../utils/data.js";
 ---
 
 <ul class="logos">
   {
-    devPlain.names.map((name) => (
+    catppuccin.names.map((name) => (
       <li class="tech-icon" title={name}>
-        <Icon class="tech-icon" name={`${devPlain.icon}:${name}`} size="2rem" />
+        <Icon
+          class="tech-icon"
+          name={`${catppuccin.icon}:${name}`}
+          size="2rem"
+        />
       </li>
     ))
   }
@@ -15,9 +19,17 @@ import { devicon, devPlain, catppuccin } from "../utils/data.js";
 
 <style>
   ul {
+    display: grid;
+    max-width: 600px;
+    margin-inline: auto;
+    place-items: center;
+
+    grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
     list-style: none;
-    display: flex;
-    flex-wrap: wrap;
+
     gap: 1rem;
+    @media (width < 600px) {
+      grid-template-columns: repeat(auto-fit, minmax(50px, 1fr));
+    }
   }
 </style>

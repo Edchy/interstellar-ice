@@ -22,7 +22,8 @@ const { title, description, showAside, showScrollProgress, showFooter = true } =
   <body id="page-top">
     <div class="grid-wrapper">
       <header >
-        <div class="inner">
+        <div class="backdrop-edge"></div>
+        <div class="inner backdrop">
           <Logo />
           <Nav />
           <div class="flex">
@@ -37,7 +38,8 @@ const { title, description, showAside, showScrollProgress, showFooter = true } =
         <slot />
       </div>
       <aside>
-        <div class="inner">
+        <div class="inner backdrop">
+
           {
             showAside && (
               // <p>아니 사진관</p>
@@ -50,6 +52,7 @@ const { title, description, showAside, showScrollProgress, showFooter = true } =
           {showScrollProgress && (
               <ScrollProgressIndicator anchor="#page-top"/>
           )}
+        
         </div>
       </aside>
 
@@ -59,29 +62,14 @@ const { title, description, showAside, showScrollProgress, showFooter = true } =
 </html>
 
 <style>
+
   .content {
     /* padding-inline: 1rem; */
+    /* margin-top: var(--header-offset); */
     
   }
-  header {
-    @media (width < 1200px) {
-      padding-inline: 1rem;
-      
-      position: sticky;
-      position: fixed;
-      /* position: absolute; */
-      top: 0;
-      z-index: calc(infinity - 1);
-      width: 100%;
-      /* background-image: url("/img/nik.gif"); */
-      /* background-color: lch(from var(--yang) l c h / .1); */
-      /* backdrop-filter: blur(0.3rem); */
 
-    }
-    
-  }
  
-
   .grid-wrapper {
     --width: 150px;
     --left-col-width: var(--width);
@@ -89,23 +77,48 @@ const { title, description, showAside, showScrollProgress, showFooter = true } =
   }
 
   .inner {
-    padding-block: 1rem;
-    padding-inline-start: 1rem;
-    padding-inline-end: 0.5rem;
+    padding-block-start: 1rem;
+    padding-block-end: 1rem;
+    padding-inline: 1rem;
+    /* padding-inline-start: 1rem;
+    padding-inline-end: 0.5rem; */
     display: flex;
     justify-content: space-between;
     align-items: center;
     z-index: 3;
-    /* background-color: var(--blueish); */
-    /* border: 14px solid var(--yin); */
-    
+      /* border: 20px solid var(--yin); */
+    /* -webkit-mask: var(--mask-edge-drip-bottom); */
+    /* border: 10px solid var(--blueish2); */
+    /* border-radius: var(--radius); */
+    backdrop-filter: blur(0.6rem);
+  
+
   }
 
   aside {
     display: none;
   }
 
+  /* @media (width < 768px) {
+    .inner {
+      border-color: transparent;
+      padding-block: unset;
+      padding-block: 1rem;
+    }
+  } */
+  header {
+      position: fixed;
+      top: 0;
+      z-index: calc(infinity - 1);
+      width: 100%;
+      padding: 0;
+      
+
+  }
   @media (width > 1200px) {
+    header {
+      position: relative;
+    }
     .grid-wrapper {
       display: grid;
       max-width: 1400px;
@@ -120,6 +133,14 @@ const { title, description, showAside, showScrollProgress, showFooter = true } =
       flex-direction: column;
       justify-content: space-between;
       align-items: center;
+      border-bottom: 0;
+      border-top: 0;
+      /* padding-inline: unset;
+      padding-block: unset; */
+      -webkit-mask: unset;
+      /* -webkit-mask: var(--mask-edge-drip-horizontal); */
+
+      
     }
     header {
       /* height: 100vb; */

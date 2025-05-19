@@ -4,8 +4,7 @@ import { getPosts } from "@/utils/posts";
 import { getCollection } from "astro:content";
 
 const posts = await getPosts(false);
-const sortedPosts = posts.filter((_, index) => index < 4);
-console.log(sortedPosts.length);
+const sortedPosts = posts.filter((_, index) => index < 3);
 ---
 
 <ul>
@@ -23,7 +22,7 @@ console.log(sortedPosts.length);
     text-align: center;
   }
 
-  main {
+  /* main {
     --hdr-gradient: linear-gradient(
       to top in oklab,
       oklch(80% 0.29 149) 12% 12%,
@@ -31,7 +30,7 @@ console.log(sortedPosts.length);
     );
     background: var(--hdr-gradient);
     padding: 3rem 1rem;
-  }
+  } */
 
   ul {
     display: grid;
@@ -59,12 +58,12 @@ console.log(sortedPosts.length);
 
   @media (max-width: 1000px) {
     ul {
-      grid-template-columns: 1fr 1fr;
-    }
-  }
-  @media (max-width: 600px) {
-    ul {
       grid-template-columns: 1fr;
     }
   }
+  /* @media (max-width: 600px) {
+    ul {
+      grid-template-columns: 1fr;
+    }
+  } */
 </style>

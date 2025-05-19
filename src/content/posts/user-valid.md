@@ -4,7 +4,7 @@ subtitle: "Enhancing User Experience with CSS Pseudo-Classes"
 pubDate: 2024-07-01
 description: "Simplifying form validation with CSS pseudo-classes"
 author: "E3E"
-tags: ["astro", "css"]
+tags: ["css", "nerdstuff", "ux"]
 ---
 
 Forms

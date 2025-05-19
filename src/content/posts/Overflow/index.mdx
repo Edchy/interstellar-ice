@@ -1,8 +1,8 @@
 ---
-title: "Overflow in CSS"
-subtitle: "Overflow, Scroll Containers, BFCs, Layout Modes, and Stacking Contexts Explained"
+title: "Scroll Containers & Overflow"
+subtitle: "Understanding the Overflow Property in CSS"
 pubDate: 2025-05-11
-description: "A deep (and slightly magical) dive into how CSS handles overflowing content — exploring everything from scroll containers to the mysteries of block formatting contexts and stacking order."
+description: "A deep (and slightly magical 🪄) dive into how CSS handles overflowing content — exploring everything from scroll containers to the mysteries of block formatting contexts and stacking order."
 author: ""
 tags: ["css"]
 draft: false
@@ -24,7 +24,7 @@ When something is overflowing, it just means it's too big to fit inside the thin
 Overflow happens in the real world, and also in the world of CSS.
 
 I say **CSS** here, because overflow usually occurs when you give elements fixed widths or heights. It's kind of hard to overflow with just plain HTML — unless you toss in a mega-large image or an unbreakable word like:
-<p>hahahahahahahahahahahahahahahahahahahahahahahahahahahahahahahaha(infinity)</p>
+`<p>thisissupermegamonsterduperquadruplebigandhugewordthathasnoblankspacetowrapatitcantgoanywherethingswillbreak</p>`
 
 Normally, text wraps automatically (especially inside paragraphs), so it won't overflow unless you stop it from wrapping or give it nowhere to go.
 
@@ -91,7 +91,7 @@ Well, we could either just "hide" the parts that are overflowing. Or we could cr
 
 Well here is the definition from [MDN](https://developer.mozilla.org/en-US/):
 A **scroll container** is an element box in which content can be scrolled, whether or not scroll bars are present. A user agent adds scroll bars to an element box to make it a scroll container when the CSS `overflow` property is set to `scroll` or when `overflow` is set to `auto` _and_ the content overflows the container.
-<InfoBox title='Techyunally'>
+<InfoBox title='Technically'>
   `overflow:hidden` also creates a scroll container, even though you can't scroll it. The content could still be scrolled programmatically, but the user can't do it.
 </InfoBox>
  
@@ -259,7 +259,7 @@ So, the next time something isn't acting the way you thought it would, try to fi
 ## z-index
 Another good example is z-index. Imagine you just created a new HTML-doc. You make two divs with different background-colors, put some widths and heights on there, which gives you two boxes of different colors, and since you are in flow mode, they line up as blocks, one at the top, and the other one below it. 
 <div style="display: flex; flex-direction: column; align-items: center; margin-bottom: 6rem; color: white;">
-  <div style="background-color: lime; width: 200px; height: 200px; display: grid; place-content: center;">A</div>
+  <div style="background-color: coral; width: 200px; height: 200px; display: grid; place-content: center;">A</div>
   <div style="background-color: navy; width: 200px; height: 200px; display: grid; place-content: center;">B</div>
 </div>
 
@@ -267,7 +267,7 @@ Another good example is z-index. Imagine you just created a new HTML-doc. You ma
 Now, you decide that you want them to overlap a bit. You put some negative margins on there and yeah, that looks sweet.
 
 <div style="display: flex; flex-direction: column; align-items: center; color: white;">
-  <div style="background-color: lime; width: 200px; height: 200px; margin-bottom: -50px; margin-left: 50px; display: grid; place-content: center;">A</div>
+  <div style="background-color: coral; width: 200px; height: 200px; margin-bottom: -50px; margin-left: 50px; display: grid; place-content: center;">A</div>
   <div style="background-color: navy; width: 200px; height: 200px; display: grid; place-content: center;">B</div>
 </div>
 
@@ -303,7 +303,7 @@ You place a bigger `<img>` on the window, but now, it not only takes up the wind
 <BlogPostImage src={two} alt="A window with a picture of a cat" />
 And this, dear conjurers of code, is where the true sorcery of `overflow` begins. You raise your wand, the DOM trembling ever so slightly, and with great flourish and with a twinkle in your eye, you cast the ancient spell:
 
-<p style="font-family: cursive; font-size: 2rem; text-align: center; letter-spacing: 2px;">"Overflowus hideamus!"</p>
+<p class="gradient-text" style="font-family: cursive; font-size: 2rem; text-align: center; letter-spacing: 2px;">"Overflowus hideamus!"</p>
 
 
 ...and *poof*, the image is no longer on the inside, but on the outside.

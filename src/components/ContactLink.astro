@@ -1,0 +1,22 @@
+---
+import { EMAIL } from "@/utils/data";
+const { text } = Astro.props;
+---
+
+<a href={`mailto:${EMAIL}`}> &#x2937; <slot /></a>
+
+<style>
+  a:any-link {
+    color: var(--blueish2);
+    /* text-decoration: none; */
+    font-weight: bold;
+    transition: text-decoration 0.2s ease-in-out;
+    text-align: right;
+    display: block;
+    margin-left: auto;
+    /* font-size: 1.25rem; */
+    /* font-family: var(--font-brand); */
+
+    text-underline-offset: 0.25em;
+  }
+</style>

@@ -1,76 +1,131 @@
 ---
-import LatestPostCard from "@/components/LatestPostCard.astro";
-import PageLayout from "../layouts/PageLayout.astro";
-import { getCollection } from "astro:content";
-import Card from "@/components/Card.astro";
-
-// Fetch posts and sort by publication date (newest first)
-const allPosts = await getCollection("posts");
-const sortedPosts = allPosts
-  .sort(
-    (a, b) =>
-      new Date(b.data.pubDate).valueOf() - new Date(a.data.pubDate).valueOf()
-  )
-  .filter((_, index) => index < 3);
-const latestPost = sortedPosts.length > 0 ? sortedPosts[0] : null;
-console.log(sortedPosts.length);
+import PageLayout from "@/layouts/PageLayout.astro";
 ---
 
-<PageLayout title="About">
-  <main>lol</main>
-  <h1>Add table of contents to blog posts!</h1>
-  <!-- <LatestPostCard post={latestPost} />
-  <Card title={latestPost?.data.title} /> -->
-  <ul>
-    {sortedPosts.map((post) => <LatestPostCard {post} />)}
-  </ul>
+<PageLayout title="About" description="Some words about me" showAside={true}>
+  <main class="">
+    <h1 transition:name="h1" transition:animate="slide">about</h1>
+    <p>
+      Hey, I'm Eddie. <strong><em>CEO</em></strong> of <strong
+        ><em>Nope Digital</em></strong
+      > — a fictitious, entirely made-up web agency that exists mostly in my head
+      and sometimes on my résumé.
+    </p>
 
-  <script></script>
+    <p>
+      It’s been about three years since I tripped into the wonderfully chaotic
+      world of web development. Since then, I’ve picked up a few things — like
+      <strong>JavaScript</strong>, a mild <em>caffeine addiction</em>, and an
+      unhealthy number of tabs open at all times.
+    </p>
 
-  <style>
-    h2 {
-      font-size: 2rem;
-      margin-bottom: 2rem;
-      text-align: center;
-    }
+    <p>
+      This field moves fast. There’s always some shiny new framework, library,
+      tool, or acronym promising to <em>“change the game.”</em> And hey, some of
+      them might actually do. But people seem to pick a tech stack and defend it
+      like it’s their childhood dog (<em>tribalism, yay</em>). <strong
+        >React or die. Tailwind or fail. Vue? Never met her.</strong
+      > But I try not to get too attached. I like staying
+      <strong>flexible</strong>, <strong>curious</strong>, <strong
+        >skeptical</strong
+      >, and exploring what’s out there, and understanding why things are built
+      the way they are. Doing deep dives when something interests me. That’s
+      kinda my thing — I don’t marry frameworks,
+      <em>I date around</em>.
+    </p>
 
-    main {
-      --hdr-gradient: linear-gradient(
-        to top in oklab,
-        oklch(80% 0.29 149) 12% 12%,
-        oklch(98% 0 91) 68% 68%
-      );
-      background: var(--hdr-gradient);
-      padding: 3rem 1rem;
-    }
+    <!-- <p><strong>No stresso, no need to be depresso.</strong></p> -->
 
-    ul {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-      gap: 0.5rem;
-      /* max-width: 1200px; */
-      margin: 0 auto;
-      grid-template-rows: auto;
-      /* Enable subgrid for columns */
-      grid-auto-flow: dense;
-    }
+    <p>
+      Flashback to Summer 2022: I was in a rut, mentally checked out of a job I
+      didn’t care about, quietly spiraling into a YouTube abyss. Then I stumbled
+      upon <a href="https://www.freecodecamp.org" target="_blank"
+        >freeCodeCamp</a
+      >. I had no clue what a <code>&lt;h1&gt;</code> was. But I was intrigued. I
+      started watching videos, reading articles, and before I knew it, I was knee-deep
+      in <strong>HTML</strong>, <strong>CSS</strong>, and <strong
+        >JavaScript</strong
+      >. I was <em>hooked</em>.
+    </p>
 
-    li {
-      display: grid;
-      grid-template-rows: subgrid;
-      grid-row: span 1;
-    }
+    <p class="x">
+      Fast forward to today: Two educations later (<em
+        >yes, plural—because why do things halfway?</em
+      > (also they were quite short)), countless hours of coding, debugging, crying,
+      Googling error messages, asking my robot buddys for help, and more crying...
+      I can confidently say: <strong>this is it</strong>. I <strong
+        >love building</strong
+      >. I <strong>love solving problems</strong>. I <em>love the flow state</em
+      >. I <strong>love creating something from nothing</strong>. And above all,
+      I love the feeling of <em
+        >not knowing something... and figuring it out anyway</em
+      >.
+    </p>
 
-    @supports not (grid-template-rows: subgrid) {
-      li {
-        height: 100%;
-      }
-    }
+    <p>
+      Now I can proudly tell my Mama that <strong><em>AI</em> did it!</strong> Jesus,
+      I mean <strong>I</strong> did it (<em>schh, stupid Copilot tab</em>).
+      Fine... <strong>we</strong> did it.
+    </p>
 
-    @media (max-width: 768px) {
-      ul {
-        grid-template-columns: 1fr;
-      }
-    }
-  </style>
+    <p>
+      That’s us...me! <strong>Developer(s)</strong>. <strong
+        >Problem-solver(s)</strong
+      >. <em>Occasional existential-crisis-haver(s)</em>. Welcome to our...my
+      corner of the web.
+    </p>
+  </main>
 </PageLayout>
+
+<style>
+  p {
+    margin-bottom: 1lh;
+    orphans: 3;
+  }
+  p + p {
+    /* text-indent: 2ch; */
+  }
+
+  p:first-of-type:first-letter {
+    initial-letter: 2;
+    -webkit-inital-letter: 2;
+    padding-right: 0.5rem;
+  }
+
+  @supports not (initial-letter: 2) {
+    p:first-of-type:first-letter {
+      font-size: 5rem;
+      float: left;
+      line-height: 0.8;
+      padding-right: 0.5rem;
+      margin-top: 4px;
+    }
+  }
+  h1 {
+    --text-huge: clamp(5rem, 1rem + 15vw, 15rem);
+
+    font-size: var(--text-huge);
+    font-family: var(--font-heading);
+    margin-block-end: 2rem;
+    column-span: all;
+  }
+  main {
+    padding-inline: 1rem;
+    min-height: 100vh;
+    column-count: 2;
+  }
+  @media (width < 1200px) {
+    main {
+      padding-top: var(--header-offset);
+    }
+  }
+  @media (width < 900px) {
+    main {
+      column-count: 1;
+    }
+    p {
+      max-width: 65ch;
+      margin-inline: auto;
+    }
+  }
+</style>

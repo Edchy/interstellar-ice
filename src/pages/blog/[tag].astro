@@ -27,18 +27,23 @@ const { tag } = Astro.params;
 const { filteredPosts, originalTag } = Astro.props;
 ---
 
-<main>
-  <PageLayout
-    title={`Blog | ${tag}`}
-    description={`Blogposts filed under category ${tag}`}
-  >
+<PageLayout
+  title={`Blog | ${tag}`}
+  description={`Blogposts filed under category ${tag}`}
+>
+  <main>
     <!-- <p>Posts tagged with {tag}</p> -->
     <BlogPostDisplay {filteredPosts} tag={originalTag} />
-  </PageLayout>
-</main>
+  </main>
+</PageLayout>
 
 <style>
   main {
-    padding-inline: 1rem;
+    min-height: 100vh;
+  }
+  @media (width < 1200px) {
+    main {
+      padding-top: var(--header-offset);
+    }
   }
 </style>

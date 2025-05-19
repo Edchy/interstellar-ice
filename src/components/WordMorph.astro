@@ -35,7 +35,9 @@
     width: 100%;
     max-width: 100vw;
     display: block;
-    padding-top: 4rem;
+    @media (width < 1200px) {
+      padding-top: var(--header-offset);
+    }
   }
 
   #text1,
@@ -57,16 +59,15 @@
     display: inline-block;
     font-family: var(--font-heading);
     font-family: var(--font-brand);
+    /* font-family: "Departure"; */
+
     font-size: clamp(7rem, 1rem + 15vw, 15rem);
     font-size: clamp(4rem, 1rem + 12vw, 12rem);
     text-align: center;
     user-select: none;
     line-height: 1;
-    color: var(--white);
-    color: var(--yin);
-    color: var(--clr-accent);
+
     color: light-dark(var(--white), var(--white));
-    /* color: rgba(128, 128, 128, 0.552); */
     text-wrap: balance;
   }
 </style>
