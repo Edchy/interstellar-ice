@@ -23,16 +23,32 @@ When something is overflowing, it just means it's too big to fit inside the thin
 
 Overflow happens in the real world, and also in the world of CSS.
 
-I say **CSS** here, because overflow usually occurs when you give elements fixed widths or heights. It's kind of hard to overflow with just plain HTML — unless you toss in a mega-large image or an unbreakable word like:
-`<p>thisissupermegamonsterduperquadruplebigandhugewordthathasnoblankspacetowrapatitcantgoanywherethingswillbreak</p>`
+I say **CSS** here, because overflow usually occurs when you give elements fixed widths or heights. It's kind of hard to overflow with just plain HTML — unless you toss in a mega-large image or an unbreakable word.
+
+For example, if you have a `<div>` with a fixed width of 200px and you put a `<p>` inside it with a long word like "supercalifragilisticexpialidocious", the word will overflow the container. 
+
+```html
+<div class="container">
+  <p>supercalifragilisticexpialidocious</p>
+</div>
+```
+
+```css
+.container {
+  width: 200px;
+  border: 1px solid black;
+}
+```
+
 
 Normally, text wraps automatically (especially inside paragraphs), so it won't overflow unless you stop it from wrapping or give it nowhere to go.
 
 
 ```css
     p {
+      /* default value */
       /* lines wrap */
-      white-space: normal; // Default value
+      white-space: normal; 
     }
 	
     p {

@@ -4,7 +4,9 @@
     url('/fonts/Revenge.otf') format('opentype');
   font-weight: normal;
   font-style: normal;
-  font-display: block;
+  /* block font-swapping */
+  /* font-display: block; */
+  font-display: swap;
 }
 
 
@@ -14,8 +16,7 @@
     url('/fonts/brockmann-medium-webfont.ttf') format('truetype');
   font-weight: normal;
   font-style: normal;
-  /* block font-swapping */
-  font-display: block;
+  font-display: swap;
 }
 
 @font-face {
