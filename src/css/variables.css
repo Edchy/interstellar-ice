@@ -62,12 +62,15 @@
    --yin: light-dark(var(--black), var(--white));
    --blueish: light-dark(var(--blu2), var(--blu));
    --blueish2: light-dark(var(--blu), var(--blu2));
+   /* --blueish: light-dark(var(--clr-primary-400), var(--clr-primary-700));
+   --blueish2: light-dark(var(--clr-primary-700), var(--clr-primary-400)); */
 
    --dark-gradient: linear-gradient(270deg, #007a2b, #007545, #006e5b, #00636d, #00557b, #004584, #003286, #0f1c82);
    --light-gradient: linear-gradient(270deg, #00d64b, #00cd79, #00c09e, #00adbc, #0095d3, #0079e2, #0058e6, #1a30de);
 
    --gradient: linear-gradient(270deg, #00d64b, #00cd79, #00c09e, #00adbc, #0095d3, #0079e2, #0058e6, #1a30de);
 
+   --link-light: oklch(from var(--nice-blueish-hue) 60% c h);
    /* --surface-1: black;
    --surface-2: var(--neutral-200);
    --surface-3: var(--neutral-300);

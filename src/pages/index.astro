@@ -18,11 +18,22 @@ import LatestWorkDisplay from "@/components/LatestWorkDisplay.astro";
 
 <PageLayout showAside={true}>
   <main class="video-background">
-    <video id="bg-video" autoplay muted loop playsinline>
+    <!-- Video only shows on desktop -->
+    <video id="bg-video" autoplay muted loop playsinline class="desktop-only">
       <source src="/img/nikita.mp4" type="video/mp4" />
     </video>
-    <h1 class="hidden sr-only">Nope Digital. We build for the web.</h1>
-    <WordMorph />
+
+    <!-- WordMorph only shows on desktop -->
+    <div class="desktop-only">
+      <WordMorph />
+    </div>
+
+    <!-- Simple headline only shows on mobile -->
+    <div class="mobile-only">
+      <p class="mobile-tagline">Where Web Ideas Come to Life.</p>
+    </div>
+
+    <!-- HeroText shows on both -->
     <HeroText />
   </main>
 
@@ -33,7 +44,7 @@ import LatestWorkDisplay from "@/components/LatestWorkDisplay.astro";
         the spirit
       </h2>
       <p class="motto-text">
-        Here at <strong>Nope Digital&trade;</strong>, we believe in <em
+        Here at <strong>Nope Studio&trade;</strong>, we believe in <em
           >nothing.</em
         >
         <strong>Absolutely nothing.</strong> Optimism? <em>Pass.</em>
@@ -162,17 +173,17 @@ import LatestWorkDisplay from "@/components/LatestWorkDisplay.astro";
     display: flex;
     justify-content: space-between;
     flex-direction: column;
-    min-height: 100vh;
+    min-height: 100dvh;
     padding-inline: 1rem;
     padding-block: 2rem;
     background-image: url("/img/no-motion-nik.webp");
     background-position: center;
     background-color: var(--blueish);
-    /* background-repeat: no-repeat; */
     background-size: cover;
-    background-blend-mode: lighten;
+    background-blend-mode: hard-light;
     /* background-blend-mode: var(--blend-mode); */
-
+    /* animation: hueShift 10s linear infinite alternate;
+    filter: hue-rotate(0deg); */
     &::before {
       content: "";
       position: absolute;
@@ -180,12 +191,13 @@ import LatestWorkDisplay from "@/components/LatestWorkDisplay.astro";
       bottom: 0;
       left: 0;
       right: 0;
+
       height: 500px;
       --hdr-gradient: linear-gradient(
         to top in oklch,
         var(--yang) 17% 17%,
         54%,
-        oklch(98% 0 91 / 0) 81% 81%
+        oklch(0% 0 91 / 0) 81% 81%
       );
 
       background: var(--hdr-gradient);
@@ -193,10 +205,6 @@ import LatestWorkDisplay from "@/components/LatestWorkDisplay.astro";
 
     @media (width > 1200px) {
       min-height: 100vh;
-
-      &::after {
-        height: 0px;
-      }
     }
   }
   .video-background {
@@ -217,12 +225,66 @@ import LatestWorkDisplay from "@/components/LatestWorkDisplay.astro";
     mix-blend-mode: color-burn;
     /* mix-blend-mode: difference; */
     /* mix-blend-mode: exclusion; */
+    mix-blend-mode: darken;
+    mix-blend-mode: hard-light;
     opacity: 0.7;
     /* z-index: -1; */
   }
   @media (prefers-reduced-motion: reduce) {
     .video-background video {
       display: none;
+    }
+  }
+  /* Mobile styles */
+  .mobile-only {
+    display: none;
+    font-family: var(--font-brand);
+    p {
+    }
+  }
+
+  .mobile-tagline {
+    margin-top: 10vh;
+    font-size: 4.25rem;
+    text-align: center;
+    text-wrap: balance;
+    line-height: 1;
+    color: var(--yang);
+    color: var(--white);
+  }
+
+  /* Media query for mobile devices */
+  @media (max-width: 500px) {
+    .desktop-only {
+      display: none;
+    }
+
+    .mobile-only {
+      display: block;
+    }
+
+    main {
+      /* background-image: none; */
+      background-color: var(--blueish);
+      background-blend-mode: color-burn;
+      background-blend-mode: color-dodge;
+      background-blend-mode: hard-light;
+    }
+    /* main::before {
+      display: none;
+      height: 0px;
+    } */
+    section {
+      margin-block: 7.5rem;
+    }
+  }
+
+  @keyframes hueShift {
+    from {
+      filter: hue-rotate(0deg);
+    }
+    to {
+      filter: hue-rotate(36deg);
     }
   }
 </style>

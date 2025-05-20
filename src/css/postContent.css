@@ -30,7 +30,6 @@
 }
 
 .post-content :any-link {
-  --link-light: oklch(from var(--nice-blueish-hue) 60% c h);
   text-underline-offset: 0.3rem;
   text-decoration-thickness: 1px;
   text-decoration-color: var(--link-light);

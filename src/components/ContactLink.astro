@@ -7,12 +7,13 @@ const { text } = Astro.props;
 
 <style>
   a:any-link {
-    color: var(--blueish2);
+    color: light-dark(oklch(from var(--clr-accent) 70% c h), var(--clr-accent));
     /* text-decoration: none; */
     font-weight: bold;
     transition: text-decoration 0.2s ease-in-out;
     text-align: right;
     display: block;
+    padding-top: 0.5rem;
     margin-left: auto;
     /* font-size: 1.25rem; */
     /* font-family: var(--font-brand); */

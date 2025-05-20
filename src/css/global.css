@@ -138,6 +138,7 @@ summary {
 
 a {
   transition: opacity 0.15s ease-in-out;
+  text-decoration-color: var(--link-light);
 
   &:hover {
     opacity: var(--hover);

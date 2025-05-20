@@ -8,7 +8,6 @@
   <svg id="filters">
     <defs>
       <filter id="threshold">
-        <!-- Basically just a threshold effect - pixels with a high enough opacity are set to full opacity, and all other pixels are set to completely transparent. -->
         <feColorMatrix
           in="SourceGraphic"
           type="matrix"
@@ -21,7 +20,6 @@
     </defs>
   </svg>
 </div>
-<!-- The SVG filter used to create the merging effect -->
 
 <style>
   .text-container {
@@ -72,7 +70,7 @@
   }
 </style>
 
-<script>
+<script is:inline>
   document.addEventListener("astro:page-load", () => {
     const text1El = document.getElementById("text1");
     const text2El = document.getElementById("text2");
@@ -83,23 +81,25 @@
       return;
     }
 
-    console.log("Word Morphing effect loaded");
-
     const elts = {
       text1: text1El,
       text2: text2El,
     };
 
-    // The strings to morph between. You can change these to anything you want!
     const texts = [
-      "Designers of unseen doorways",
-      // "Developer of journeys",
-      // "That goes Beyond the screen",
-      "Styling the void into being",
-      "Architects of the digital realm",
-      "Breathing life into pixels",
+      "Where Web Ideas Come to Life",
+      "Digital Midwives for Your Next Big Thing",
+      "Pushing Pixels Into This World",
+      "From Womb to Web. We Deliver",
+      "Your Idea. Our Contraction",
+      "From First Kick to Final Click",
+      "Hello, Website!",
+      "Breathing life to the static",
       "From thought to existence",
-      "Forging worlds in code",
+      "Styling the void into being",
+      "Designers of unseen doorways",
+      "Architects of the digital realm",
+      "From Concept to Cradle, in Code",
       "Creators of fleeting infinities",
       "Gods of the in-between",
       "Conjurers of interactive dreams",
@@ -109,7 +109,7 @@
     ];
 
     // Controls the speed of morphing.
-    const morphTime = 4;
+    const morphTime = 3;
     const cooldownTime = 0.25;
 
     let textIndex = texts.length - 1;
@@ -135,7 +135,7 @@
     }
 
     // A lot of the magic happens here, this is what applies the blur filter to the text.
-    function setMorph(fraction: number) {
+    function setMorph(fraction) {
       // fraction = Math.cos(fraction * Math.PI) / -2 + .5;
 
       elts.text2.style.filter = `blur(${Math.min(8 / fraction - 8, 100)}px)`;
@@ -180,6 +180,16 @@
         doCooldown();
       }
     }
-    animate();
+    let isMobile = window.innerWidth <= 500;
+    if (!isMobile) {
+      animate();
+    }
+    window.addEventListener("resize", () => {
+      isMobile = window.innerWidth <= 500;
+      if (!isMobile) {
+        animate();
+      }
+    });
+    // animate();
   });
 </script>

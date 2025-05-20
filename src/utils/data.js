@@ -1,6 +1,6 @@
 export const EMAIL = "edchy@proton.me";
 export const pageInfo = {
-  title: "Nope Digital",
+  title: "Nope Studio",
   description:
     "At Nope, we design and develop websites and apps that are easy on the eyes, fun to use, and actually do what they’re supposed to.",
 };
