@@ -72,13 +72,18 @@ pre {
   list-style-position: inside;
   display: flex;
   flex-direction: column;
-  gap: 0.5rem;
+  gap: 1rem;
 
   li::marker {
-    font-size: 1.5rem;
+    font-size: 1rem;
     color: var(--blueish2);
 
+
   }
+}
+
+li {
+  font-size: 1.125rem;
 }
 
 ol {
@@ -124,8 +129,11 @@ h2 {
   }
 }
 
-p:not(li p) {
+P {
   text-wrap: pretty;
+}
+
+p:not(li p) {
   position: relative;
 
   @media (hover: hover) and (width > 850px) {
