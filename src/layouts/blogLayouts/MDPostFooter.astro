@@ -46,7 +46,9 @@ const relatedPosts = posts
     <p>
       Hey! Thanks for reading — if you spot a mistake, typo, or just think
       something could be clearer, I’d genuinely love to hear it. Feedback is
-      kinda my jam. <a href={`mailto:${EMAIL}`}>Drop a note</a> 💚
+      kinda my jam. <a class="note" href={`mailto:${EMAIL}`}
+        ><span>Drop a Note</span></a
+      >
     </p>
   </div>
 </footer>
@@ -76,7 +78,7 @@ const relatedPosts = posts
     font-weight: bold;
   }
   .empty {
-    text-align: right;
+    text-align: center;
   }
   .tags {
     display: flex;
@@ -121,11 +123,21 @@ const relatedPosts = posts
   .notify p {
     max-width: 65ch;
     margin-inline: auto;
+    text-wrap: pretty;
   }
   a:any-link {
     text-underline-offset: 5px;
     transition: opacity 0.1s ease-out;
     color: var(--blueish2);
-    white-space: nowrap;
+    color: currentColor;
+    /* white-space: nowrap; */
+  }
+  a:any-link.note {
+    display: block;
+    margin-top: 0.5rem;
+    text-align: center;
+    color: var(--blueish2);
+    font-weight: bold;
+    text
   }
 </style>
