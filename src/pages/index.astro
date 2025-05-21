@@ -63,6 +63,10 @@ import LatestWorkDisplay from "@/components/LatestWorkDisplay.astro";
         >
       </p>
     </div>
+    <p class="big-words-explainer">
+      "nope" in different langs because - no reason
+    </p>
+
     <BigWords />
   </section>
   <section>
@@ -161,7 +165,12 @@ import LatestWorkDisplay from "@/components/LatestWorkDisplay.astro";
       padding-inline: 1rem;
     }
   }
-
+  .big-words-explainer {
+    font-size: 0.75rem;
+    text-align: right;
+    padding-right: 1rem;
+    color: var(--blueish2);
+  }
   h2 {
     font-size: clamp(2rem, 4vw + 1rem, 4rem);
     /* font-family: var(--font-brand); */

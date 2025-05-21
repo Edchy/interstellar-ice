@@ -46,8 +46,6 @@ pre {
   font-size: clamp(0.875rem, 1.5vw, 1rem);
   margin-block-start: 1rem;
   margin-block-end: 2rem;
-  /* padding: 0 !important; */
-  /* font-family: "Departure"; */
 }
 
 pre {
@@ -94,14 +92,9 @@ ul {
 }
 
 
-
-
-
-
 h3 {
   --flow-space: 1.5em;
   font-size: clamp(1.25rem, 1.1727rem + 0.9697vw, 1.75rem);
-
 
 }
 
@@ -161,10 +154,7 @@ blockquote {
   position: relative;
   color: oklch(from var(--yin) l c h / .7);
   padding: 1rem;
-  /* font-family: Seravek, 'Gill Sans Nova', Ubuntu, Calibri, 'DejaVu Sans', source-sans-pro, sans-serif; */
   font-weight: 400;
-
-
 
   p {
     font-style: italic;
@@ -192,7 +182,6 @@ blockquote {
 
     &::before,
     &::after {
-      /* font-family: Didot, 'Bodoni MT', 'Noto Serif Display', 'URW Palladio L', P052, Sylfaen, serif; */
       font-weight: 300;
       font-size: 6rem;
       color: inherit;
@@ -203,7 +192,6 @@ blockquote {
       content: open-quote;
       left: -30px;
       top: -30px;
-
 
     }
 
