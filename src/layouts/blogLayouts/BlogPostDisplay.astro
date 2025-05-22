@@ -24,7 +24,7 @@ const allPosts = blogPosts.filter((post) => !post.data.draft).sort(
 
 ---
 
-<h1 transition:animate={slide({ duration: '0.4s' })}>blog <span class="tag">{tag ? `@ ${tag}` : ""}</span></h1>
+<h1 transition:animate={slide({ duration: '0.4s' })}>writing <span class="tag">{tag ? `@ ${tag}` : ""}</span></h1>
 <TagsDisplay />
 <div class="grid">
   {

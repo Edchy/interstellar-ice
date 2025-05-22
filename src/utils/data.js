@@ -6,9 +6,9 @@ export const pageInfo = {
 };
 
 export const navItems = [
-  { name: "about", path: "/me" },
-  { name: "blog", path: "/blog" },
-  { name: "work", path: "/work" },
+  { name: "hello", path: "/me" },
+  { name: "writing", path: "/blog" },
+  { name: "projects", path: "/work" },
   // { name: "news", path: "/blog" },
   { name: "fun", path: "/fun" },
 ];
