@@ -6,12 +6,15 @@ interface Props {
 const { title = "" } = Astro.props;
 import ack from "../assets/img/ack-nobg.avif";
 import Image from "astro/components/Image.astro";
+import { Icon } from "astro-icon/components";
 ---
 
 <div class="info-box">
   <Image src={ack} alt="ack" width={100} height={100} class="rounded" />
   <div class="info-box-title">
-    <span class="info-icon">💡</span>
+    <span class="info-icon"
+      ><Icon name="line-md:lightbulb" size={24} color={"var(--yin)"} /></span
+    >
     <h4>{title}</h4>
   </div>
   <div class="info-box-content flow">

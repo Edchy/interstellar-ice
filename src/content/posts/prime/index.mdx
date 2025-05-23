@@ -7,7 +7,7 @@ draft: false
 tags: ["nerdstuff", "js"]
 ---
 import { Icon } from "astro-icon/components";
-
+import SparklyText from "@/layouts/blogLayouts/SparklyText.astro";
 
 Cryptopgraphy, number theory, algebra, calculus, combinatorics, probability, topology, mother nature, the universe, God, the devil, aliens, the government, the Illuminati, the Freemasons, the Knights Templar, the Vatican. Prime numbers are everywhere. They are the building blocks of all numbers, and they are used in everything from encryption to life itself. But what are they? How do they work? Why are they so important?
 I have been reading about them for a while now, and I still don't understand them. I'm not a math person, but lately i've been more and more fascinated by it. I wanted to learn more about prime numbers, and how they work. I also wanted to learn about the algorithms used to check if a number is prime, and how they work. So I decided to write this post to help myself understand it better, and maybe help someone else along the way.
@@ -40,7 +40,7 @@ The number __2__ is prime because it has exactly two distinct positive divisors:
   If it is, it’s not a prime (unless the number is exactly 2).
 - Then, we check if it’s divisible by 3. If it is, it’s not a prime.
 - We keep checking divisibility with every number up to number - 1.
-<hr/>
+
 For example, to check if 7 is prime:
 1. 7 is greater than 1 → continue.
 2. 7 is not divisible by 2 → continue. // 3.5
@@ -50,13 +50,13 @@ For example, to check if 7 is prime:
 6. 7 is not divisible by 6 → continue. // 1.1666666666666667
 
 Since none of these divide 7 evenly, 7 is a prime number.
-<hr/>
+
 
 Check if 6 is prime:
 1. 6 is greater than 1 → continue.
 2. 6 is divisible by 2 → stop. // 3
 3. 6 is not prime.
-<hr/>
+
 
 
 Basically, when checking if a number is prime, you test whether it is divisible by any number between 2 and the number - 1.
@@ -180,7 +180,7 @@ Let’s test if 9 is prime.
 -	The loop starts at 5, but 5 > 3, so the loop doesn’t run.
 -	If we don’t check num % 3 === 0 earlier, the function skips the fact that 9 is divisible by 3, and wrongly returns true.
 
-We then do the magic of checking only numbers of the form 6k ± 1.
+We then do the <SparklyText>magic</SparklyText> of checking only numbers of the form 6k ± 1.
 ```javascript
 // check only numbers of the form 6k ± 1
  for (let i = 5; i <= Math.sqrt(num); i += 6) { 

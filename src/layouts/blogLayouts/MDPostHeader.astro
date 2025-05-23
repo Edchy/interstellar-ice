@@ -20,6 +20,7 @@ import "@/css/postContent.css";
   <h1 transition:name={title} class="post-title">
     {capitalizeFirstLetter(title)}
   </h1>
+
   {subtitle && <p class="subtitle">{subtitle}</p>}
   <ul class="tags">
     {
@@ -36,13 +37,13 @@ import "@/css/postContent.css";
       {updated && <span class="updated">Updated: {formatDate(updated)}</span>}
     </time>
     <!-- {
-          author && (
-            <>
-              <span>by</span>
-              <a href={`/about#${string_to_slug(author)}`}>{author}</a>
-            </>
-          )
-        } -->
+      author && (
+        <>
+          <span>by</span>
+          <a href={`/about#${string_to_slug(author)}`}>{author}</a>
+        </>
+      )
+    } -->
 
     <span class="read-time">{minutesRead}</span>
   </div>
@@ -59,7 +60,7 @@ import "@/css/postContent.css";
   }
   header {
     margin-block-start: 2rem;
-    margin-block-end: 5rem;
+    margin-block-end: 3rem;
     @media (width < 1200px) {
       padding-top: var(--header-offset);
     }
@@ -67,7 +68,7 @@ import "@/css/postContent.css";
 
   .post-title {
     /* text-box: trim-both cap alphabetic; */
-
+    max-width: fit-content;
     font-family: var(--font-heading);
     /* font-weight: 900;
     font-optical-sizing: auto;
@@ -122,7 +123,7 @@ import "@/css/postContent.css";
     color: var(--yin);
     background-color: var(--yang);
     padding: 0rem 0.55rem;
-    border: 1px solid var(--yin);
+    border: 1px solid oklch(from var(--blueish2) l c h / 0.6);
 
     &:hover {
       background-color: var(--blueish2);

@@ -44,12 +44,12 @@
 code,
 pre {
   font-size: clamp(0.875rem, 1.5vw, 1rem);
-  margin-block-start: 1rem;
-  margin-block-end: 2rem;
+  margin-block-start: 4em;
+  margin-block-end: 6em;
 }
 
 pre {
-  background-color: light-dark(oklch(from var(--blu2) 20% c h), var(--black)) !important;
+  background-color: light-dark(oklch(from var(--white) 10% c h), var(--black)) !important;
   padding: 1rem;
   border-radius: var(--radius);
 
@@ -82,8 +82,22 @@ pre {
   }
 }
 
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  --flow-space: 3em;
+}
+
 li {
-  font-size: 1.125rem;
+  /* font-size: 1.125rem; */
+}
+
+ul,
+ol {
+  list-style-type: none;
 }
 
 ol {
@@ -98,13 +112,13 @@ ul {
 
 
 h3 {
-  --flow-space: 1.5em;
+  /* --flow-space: 1.5em; */
   font-size: clamp(1.25rem, 1.1727rem + 0.9697vw, 1.75rem);
 
 }
 
 h2 {
-  --flow-space: 2em;
+  /* --flow-space: 2em; */
   font-size: clamp(2rem, 1.5455rem + 1.9394vw, 3rem);
   position: relative;
   text-wrap: balance;

@@ -7,7 +7,7 @@ author: ""
 tags: ["css"]
 draft: false
 ---
-
+import SparklyText from "@/layouts/blogLayouts/SparklyText.astro"
 import InfoBox from "../../../components/InfoBox.astro"
 import SourceList from "@/components/SourceList.astro"
 import BlogPostImage from "@/layouts/blogLayouts/BlogPostImage.astro"
@@ -20,8 +20,7 @@ import four from "./4.png"
 
 
 When something is overflowing, it just means it's too big to fit inside the thing it's in. Like pouring too much water into a glass — the water spills over. That's overflow.
-
-Overflow happens in the real world, and also in the world of CSS.
+It happens in the real world, and also in the world of CSS.
 
 I say **CSS** here, because overflow usually occurs when you give elements fixed widths or heights. It's kind of hard to overflow with just plain HTML — unless you toss in a mega-large image or an unbreakable word.
 
@@ -114,7 +113,7 @@ A **scroll container** is an element box in which content can be scrolled, wheth
 
 Bunch of words... Lets simplify: A _scroll container_ is a HTML-element that has `overflow` set to either `scroll` or `auto`. Meaning that if you cram something inside of this element that doesn't fit, would make it scrollable instead of it overflowing. 
 
-Like, think about it. This is kinda genius. It pretty much becomes a magic box ✨ that you could put anything and everything inside of, without it spilling out. Imagine if you could have a scrollable backpack or something. You'd fit all your belongings in there.
+Like, think about it. This is kinda genius. It pretty much becomes a <SparklyText>magic</SparklyText> box ✨ that you could put anything and everything inside of, without it spilling out. Imagine if you could have a scrollable backpack or something. You'd fit all your belongings in there.
 
 ## Ok, so whats the difference between scroll and auto?
 Shit... yeah i guess i'll have to try and answer that.
@@ -319,7 +318,9 @@ You place a bigger `<img>` on the window, but now, it not only takes up the wind
 <BlogPostImage src={two} alt="A window with a picture of a cat" />
 And this, dear conjurers of code, is where the true sorcery of `overflow` begins. You raise your wand, the DOM trembling ever so slightly, and with great flourish and with a twinkle in your eye, you cast the ancient spell:
 
-<p class="gradient-text" style="font-family: cursive; font-size: 2rem; text-align: center; letter-spacing: 2px;">"Overflowus hideamus!"</p>
+<SparklyText num={10} color="orange">
+  <p class="gradient-text" style="font-family: cursive; font-size: 2rem; text-align: center; letter-spacing: 2px; padding-block: 10rem;">"Overflowus hideamus!"</p>
+</SparklyText>
 
 
 ...and *poof*, the image is no longer on the inside, but on the outside.
