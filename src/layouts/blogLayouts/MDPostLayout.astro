@@ -1,27 +1,32 @@
 ---
 import PageLayout from "@/layouts/PageLayout.astro";
-import { capitalizeFirstLetter } from "@/utils/utils";
-import { string_to_slug, formatDate } from "@/utils/utils";
-import { Icon } from "astro-icon/components";
-import { fade } from "astro:transitions";
 import MDPostHeader from "./MDPostHeader.astro";
-import "@/css/postContent.css";
 import MDPostFooter from "./MDPostFooter.astro";
+import "@/css/postContent.css";
 
 const { frontmatter } = Astro.props;
-// interface Props {
-//   frontmatter: {
-//     title: string;
-//     subtitle?: string;
-//     description: string;
-//     author: string;
-//     pubDate: Date;
-//     tags: string[];
-//     minutesRead: string;
-//   };
-// }
-const { title, subtitle, minutesRead, description, pubDate, author, tags } =
-  frontmatter;
+const {
+  title,
+  subtitle,
+  minutesRead,
+  description,
+  pubDate,
+  updated,
+  author,
+  tags,
+} = frontmatter;
+
+const postJsonLD = {
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  headline: title,
+  datePublished: pubDate,
+  dateModified: updated || pubDate,
+  author: {
+    "@type": "Person",
+    name: author || "Edvard Söderblom",
+  },
+};
 ---
 
 <PageLayout
@@ -30,8 +35,9 @@ const { title, subtitle, minutesRead, description, pubDate, author, tags } =
   showAside={false}
   showScrollProgress={true}
   showFooter={false}
+  jsonLD={postJsonLD}
 >
-  <MDPostHeader frontmatter={frontmatter} />
+  <MDPostHeader {frontmatter} />
 
   <main class="content-grid">
     <!-- <p class="post-description">{description}</p> -->

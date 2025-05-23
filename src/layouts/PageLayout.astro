@@ -13,12 +13,12 @@ import { Image } from "astro:assets";
 import v from "@/assets/img/mickey-v.png";
 import thumb from "@/assets/img/mickey-dislike.png";
 
-const { title, description, showAside, showScrollProgress, showFooter = true } = Astro.props;
+const { title, description, showAside, showScrollProgress, showFooter = true, jsonLD } = Astro.props;
 ---
 
 <!doctype html>
 <html lang="en">
-  <Head {title} {description} />
+  <Head {title} {description} {jsonLD} />
   <body id="page-top">
     <div class="grid-wrapper">
       <header >

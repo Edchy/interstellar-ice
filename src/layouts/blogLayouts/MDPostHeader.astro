@@ -1,7 +1,15 @@
 ---
 const { frontmatter } = Astro.props;
-const { title, subtitle, minutesRead, description, pubDate, author, tags } =
-  frontmatter;
+const {
+  title,
+  subtitle,
+  minutesRead,
+  description,
+  pubDate,
+  updated,
+  author,
+  tags,
+} = frontmatter;
 import { string_to_slug, formatDate } from "@/utils/utils";
 import { capitalizeFirstLetter } from "@/utils/utils";
 import { fade, slide } from "astro:transitions";
@@ -13,10 +21,20 @@ import "@/css/postContent.css";
     {capitalizeFirstLetter(title)}
   </h1>
   {subtitle && <p class="subtitle">{subtitle}</p>}
-  <div class="flex">
+  <ul class="tags">
+    {
+      tags.map((tag: string) => (
+        <a class="tag" href={`/blog/${string_to_slug(tag)}`}>
+          {tag}
+        </a>
+      ))
+    }
+  </ul>
+  <div class="flex x">
     <time datetime={pubDate.toISOString()} class="pubdate"
-      >{formatDate(pubDate)}</time
-    >
+      >{formatDate(pubDate)}
+      {updated && <span class="updated">Updated: {formatDate(updated)}</span>}
+    </time>
     <!-- {
           author && (
             <>
@@ -25,20 +43,20 @@ import "@/css/postContent.css";
             </>
           )
         } -->
-    <ul class="tags">
-      {
-        tags.map((tag: string) => (
-          <a class="tag" href={`/blog/${string_to_slug(tag)}`}>
-            {tag}
-          </a>
-        ))
-      }
-    </ul>
+
     <span class="read-time">{minutesRead}</span>
   </div>
 </header>
 
 <style>
+  .x {
+    flex-wrap: wrap;
+  }
+  .updated {
+    font-size: 0.75rem;
+    color: var(--neutral-100);
+    font-style: italic;
+  }
   header {
     margin-block-start: 2rem;
     margin-block-end: 5rem;
@@ -90,8 +108,9 @@ import "@/css/postContent.css";
   .tags {
     display: flex;
     flex-wrap: wrap;
-    margin-left: 1rem;
-    /* align-items: center; */
+    /* margin-left: 1rem; */
+    align-items: center;
+    justify-content: flex-end;
     gap: 0.5rem;
     /* margin-block-start: 1.5rem; */
   }

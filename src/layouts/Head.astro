@@ -2,9 +2,20 @@
 import { ClientRouter } from "astro:transitions";
 import OG from "@/layouts/OG.astro";
 import { pageInfo } from "@/utils/data";
+import JsonLD from "@/components/JsonLD.astro";
 
-const { title = pageInfo.title, description = pageInfo.description } =
-  Astro.props;
+const defaultJsonLD = {
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  name: pageInfo.title,
+  url: Astro.site?.toString(),
+  description: pageInfo.description,
+};
+const {
+  title = pageInfo.title,
+  description = pageInfo.description,
+  jsonLD = defaultJsonLD,
+} = Astro.props;
 ---
 
 <head>
@@ -27,5 +38,6 @@ const { title = pageInfo.title, description = pageInfo.description } =
   <meta name="description" content={description} />
   <link rel="canonical" href={new URL(Astro.url.pathname, Astro.site).href} />
 
+  <JsonLD data={jsonLD} />
   <ClientRouter />
 </head>

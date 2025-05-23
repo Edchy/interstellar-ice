@@ -17,11 +17,13 @@ const postSchema = z.object({
   title: z.string().max(50),
   subtitle: z.string().optional(),
   pubDate: z.date(),
+  updated: z.date().optional(),
   description: z.string(),
-  author: z.string().optional(),
+  author: z.string().default("Edvard Söderblom"),
   tags: z.array(z.enum(ALLOWED_TAGS)).default(["life"]),
   draft: z.boolean().default(true),
   image: z.string().optional(),
+
   // minutesRead: z.string().optional(),
 });
 
