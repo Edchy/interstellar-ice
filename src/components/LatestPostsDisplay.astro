@@ -16,20 +16,10 @@ const sortedPosts = posts.filter((_, index) => index < 3);
 </ul>
 
 <style>
-  h2 {
+  /* h2 {
     font-size: 2rem;
     margin-bottom: 2rem;
     text-align: center;
-  }
-
-  /* main {
-    --hdr-gradient: linear-gradient(
-      to top in oklab,
-      oklch(80% 0.29 149) 12% 12%,
-      oklch(98% 0 91) 68% 68%
-    );
-    background: var(--hdr-gradient);
-    padding: 3rem 1rem;
   } */
 
   ul {
@@ -37,10 +27,8 @@ const sortedPosts = posts.filter((_, index) => index < 3);
     grid-template-columns: 1fr 1fr 1fr;
     grid-template-columns: repeat(3, minmax(300px, 1fr));
     gap: 0.5rem;
-    /* max-width: 1200px; */
     margin: 0 auto;
     grid-template-rows: auto;
-    /* Enable subgrid for columns */
     grid-auto-flow: dense;
   }
 

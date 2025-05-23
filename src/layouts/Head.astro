@@ -18,12 +18,14 @@ const { title = pageInfo.title, description = pageInfo.description } =
   <link
     rel="alternate"
     type="application/rss+xml"
-    title="Your Site's Title"
+    title="Nope Studio RSS Feed"
     href={new URL("rss.xml", Astro.site)}
   />
   <OG {title} {description} />
   <meta name="generator" content={Astro.generator} />
   <title>{title}</title>
   <meta name="description" content={description} />
+  <link rel="canonical" href={new URL(Astro.url.pathname, Astro.site).href} />
+
   <ClientRouter />
 </head>
