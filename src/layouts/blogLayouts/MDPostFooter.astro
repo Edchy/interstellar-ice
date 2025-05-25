@@ -91,7 +91,7 @@ const relatedPosts = posts
       padding: 0.125rem 0.5rem;
       border: 1px solid var(--yin);
       border-radius: var(--radius);
-      font-size: .75rem;
+      font-size: 0.75rem;
     }
   }
   .related-posts {
@@ -100,8 +100,8 @@ const relatedPosts = posts
 
     section {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-
+      /* grid-template-columns: repeat(auto-fit, minmax(min(100%, 300px), 1fr)); */
+      grid-template-columns: 1fr 1fr;
       gap: 1rem;
       margin-block: 2rem;
     }
@@ -119,6 +119,16 @@ const relatedPosts = posts
       &:hover {
         border-color: var(--blueish2);
       }
+    }
+  }
+
+  @media (width < 600px) {
+    .related-posts a {
+      grid-template-rows: auto;
+      grid-row: auto;
+    }
+    .related-posts section {
+      grid-template-columns: 1fr;
     }
   }
   .notify p {
@@ -139,6 +149,5 @@ const relatedPosts = posts
     text-align: center;
     color: var(--blueish2);
     font-weight: bold;
-    text
   }
 </style>

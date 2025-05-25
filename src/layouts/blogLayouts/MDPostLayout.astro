@@ -22,6 +22,12 @@ const postJsonLD = {
   headline: title,
   datePublished: pubDate,
   dateModified: updated || pubDate,
+  url: Astro.url.href,
+  description: description || subtitle,
+  mainEntityOfPage: {
+    "@type": "WebPage",
+    "@id": Astro.url.href,
+  },
   author: {
     "@type": "Person",
     name: author || "Edvard Söderblom",
