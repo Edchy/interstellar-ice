@@ -24,7 +24,7 @@ const allPosts = blogPosts.filter((post) => !post.data.draft).sort(
 
 ---
 
-<h1 transition:animate={slide({ duration: '0.4s' })}>writing <span class="tag">{tag ? `@ ${tag}` : ""}</span></h1>
+<h1 transition:animate={slide({ duration: '0.4s' })}>writing <span class="tag">{tag ? `// ${tag}` : ""}</span></h1>
 <TagsDisplay />
 <div class="grid">
   {
@@ -68,7 +68,7 @@ const allPosts = blogPosts.filter((post) => !post.data.draft).sort(
     --flow-space: 0.25em;
   }
   h1 {
-    --text-huge: clamp(5rem, 1rem + 15vw, 15rem);
+    --text-huge: clamp(3rem, 1rem + 15vw, 15rem);
     font-size: var(--text-huge);
     font-family: var(--font-heading);
     margin-block-end: 2rem;

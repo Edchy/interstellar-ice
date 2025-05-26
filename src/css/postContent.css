@@ -44,8 +44,8 @@
 code,
 pre {
   font-size: clamp(0.875rem, 1.5vw, 1rem);
-  margin-block-start: 4em;
-  margin-block-end: 6em;
+  margin-block-start: 2em;
+  margin-block-end: 3em;
 }
 
 pre {
@@ -54,10 +54,10 @@ pre {
   border-radius: var(--radius);
 
   /*  */
-  overflow-x: auto;
+  overflow-x: scroll;
   max-width: 100%;
-  white-space: pre-wrap;
-  word-break: break-word;
+  /* white-space: pre-wrap; */
+  /* word-break: break-word; */
 }
 
 :not(pre)>code {
@@ -88,7 +88,7 @@ h3,
 h4,
 h5,
 h6 {
-  --flow-space: 3em;
+  --flow-space: 2em;
 }
 
 li {

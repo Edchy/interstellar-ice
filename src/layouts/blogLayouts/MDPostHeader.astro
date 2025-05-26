@@ -59,8 +59,8 @@ import "@/css/postContent.css";
     font-style: italic;
   }
   header {
-    margin-block-start: 2rem;
-    margin-block-end: 3rem;
+    margin-block-start: 1rem;
+    margin-block-end: 2rem;
     @media (width < 1200px) {
       padding-top: var(--header-offset);
     }
@@ -77,7 +77,7 @@ import "@/css/postContent.css";
     font-variant-numeric: diagonal-fractions; */
     line-height: 1;
     text-wrap: balance;
-    font-size: clamp(2.5rem, 5vw + 1rem, 4rem);
+    font-size: clamp(1.5rem, 4vw + 1rem, 3rem);
     /* margin-left: -1rem; */
 
     @media (width > 500px) {
@@ -86,10 +86,13 @@ import "@/css/postContent.css";
     }
   }
   .subtitle {
-    font-size: 1.5rem;
+    font-size: clamp(1rem, 1rem + 1vw, 2rem);
+    line-height: 1.1;
     font-style: italic;
     color: var(--neutral-200);
     font-family: var(--font-heading);
+    text-wrap: pretty;
+
     /* font-family: "Departure"; */
 
     /* text-align: end; */
@@ -97,8 +100,9 @@ import "@/css/postContent.css";
   .pubdate,
   .read-time {
     font-family: var(--font-heading);
-    font-size: 0.875rem;
+    font-size: clamp(0.5rem, 0.5rem + 1vw, 0.875rem);
     /* font-weight: bold; */
+    color: oklch(from var(--yin) l c h / 0.6);
   }
   .read-time {
     display: block;
@@ -111,8 +115,8 @@ import "@/css/postContent.css";
     flex-wrap: wrap;
     /* margin-left: 1rem; */
     align-items: center;
-    justify-content: flex-end;
-    gap: 0.5rem;
+    justify-content: flex-start;
+    gap: 0.25rem;
     /* margin-block-start: 1.5rem; */
   }
 
@@ -120,11 +124,11 @@ import "@/css/postContent.css";
     font-size: 0.75rem;
     border-radius: var(--radius);
     text-decoration: none;
-    color: var(--yin);
-    background-color: var(--yang);
+    color: oklch(from var(--yin) l c h / 0.6);
+    /* background-color: var(--yin); */
     padding: 0rem 0.55rem;
     border: 1px solid oklch(from var(--blueish2) l c h / 0.6);
-
+    border: 1px solid oklch(from var(--yin) l c h / 0.6);
     &:hover {
       background-color: var(--blueish2);
       color: var(--white);
