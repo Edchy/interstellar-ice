@@ -7,6 +7,9 @@ author: "E3E"
 tags: ["css", "nerdstuff", "ux"]
 ---
 
+What pseudo-classes
+difference between psudo-classes and pseudo-elements
+
 Forms
 
 Improve forms with :user-valid and :user-invalid

@@ -5,7 +5,7 @@ import { getPosts } from "@/utils/posts";
 
 export async function GET(context) {
   const blogPosts = await getPosts();
-
+  console.log("Generating RSS feed with posts:", blogPosts.length);
   return rss({
     title: pageInfo.title,
     description: pageInfo.description,
