@@ -32,6 +32,21 @@ const {
     title="Nope Studio RSS Feed"
     href={new URL("rss.xml", Astro.site)}
   />
+  <link
+    rel="preload"
+    href="/fonts/Literata-Regular.woff2"
+    as="font"
+    type="font/woff2"
+    crossorigin
+  />
+
+  <link
+    rel="preload"
+    href="/fonts/Revenge.woff2"
+    as="font"
+    type="font/woff2"
+    crossorigin
+  />
   <OG {title} {description} />
   <meta name="generator" content={Astro.generator} />
   <title>{title}</title>

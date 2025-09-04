@@ -289,7 +289,8 @@ const { text = "click" } = Astro.props;
 
     // Add reset functionality
     resetButton?.addEventListener("click", () => {
-      location.reload();
+      // location.reload();
+      window.history.go(-1);
     });
 
     chaosButton?.addEventListener("click", () => {

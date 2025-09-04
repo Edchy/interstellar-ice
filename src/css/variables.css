@@ -91,15 +91,17 @@
      'Helvetica Neue',
      sans-serif;
    --font-heading: "Brockmann",
-     'Helvetica Neue',
+     Bahnschrift,
+     'DIN Alternate',
+     'Franklin Gothic Medium',
+     'Nimbus Sans Narrow',
+     sans-serif-condensed,
      sans-serif;
-   --font-body: "Literata", Inter,
-     Roboto,
-     'Helvetica Neue',
-     'Arial Nova',
-     'Nimbus Sans',
-     Arial,
-     sans-serif;
+   --font-body: "Literata", Charter,
+     'Bitstream Charter',
+     'Sitka Text',
+     Cambria,
+     serif;
 
    /* layout */
    --page-width: min(100% - 1rem, 1500px);
