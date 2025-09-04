@@ -15,7 +15,7 @@ export async function getPosts(
   const posts = includeDrafts
     ? allPosts
     : allPosts.filter((post) => !post.data.draft);
-  console.log(posts.length, "posts found");
+  // console.log(posts.length, "posts found");
   // Sort by publication date (newest first)
   return posts.sort(
     (a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf()

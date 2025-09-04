@@ -4,12 +4,12 @@ import PageLayout from "@/layouts/PageLayout.astro";
 
 <PageLayout title="About" description="Some words about me" showAside={true}>
   <main class="">
-    <h1 transition:name="h1" transition:animate="slide">hello</h1>
+    <h1 transition:name="h1" transition:animate="slide">bonsoir</h1>
+    <p class="subtitle">I am a frontned envelopr</p>
     <p>
-      Hey, I'm Eddie. <strong><em>CEO</em></strong> of <strong
-        ><em>Nope Studio</em></strong
-      > — a fictitious, entirely made-up web agency that exists mostly in my head
-      and sometimes on my résumé.
+      Hey, I'm Eddie - <strong><em>CEO</em></strong> of
+      <strong><em>Nope Studio</em></strong> — a fictitious, entirely made-up web
+      agency that exists mostly in my head and sometimes on my résumé.
     </p>
 
     <p>
@@ -63,19 +63,13 @@ import PageLayout from "@/layouts/PageLayout.astro";
     </p>
 
     <p>
-      Now I can proudly tell my Mama that <strong><em>AI</em> did it!</strong> Jesus,
-      I mean <strong>I</strong> did it (<em>schh, stupid Copilot tab</em>).
-      Fine... <strong>we</strong> did it.
+      Now I can proudly tell my Mama that <strong><em>(a)I</em> did it!</strong>
     </p>
 
     <p>
-      That’s us...me! <strong>Developer(s)</strong>. <strong
-        >Problem-solver(s)</strong
-      >. <em>Occasional existential-crisis-haver(s)</em>. (can you please stop
-      adding those <em>S's</em> Bobby!).
-    </p>
-    <p>
-      <strong>Welcome</strong> to our... <strong>my</strong> corner of the web 😅.
+      That’s me! <strong>Developer</strong>. <strong>Problem-solver</strong>. <em
+        >Occasional existential-crisis-haver</em
+      >. <strong>Welcome</strong> to my corner of the web 😅.
     </p>
   </main>
 </PageLayout>
@@ -111,6 +105,15 @@ import PageLayout from "@/layouts/PageLayout.astro";
     font-family: var(--font-heading);
     margin-block-end: 2rem;
     column-span: all;
+  }
+  .subtitle {
+    font-size: 2rem;
+    font-style: italic;
+    margin-block-end: 2rem;
+    color: var(--nice-blueish-hue);
+    font-family: var(--font-heading);
+
+    /* column-span: all; */
   }
   main {
     padding-inline: 1rem;
